@@ -36,19 +36,56 @@ figcaption {
 }
 
 
+.aa-Autocomplete .aa-Form, 
+.aa-DetachedFormContainer .aa-Form {
+    align-items: center;
+    background-color: #fff; /* White background */
+    border: 6px solid #2a6eb3; /* Blue border */
+    border-radius: .25rem; /* Slightly rounded corners */
+    color: #212529; /* Dark text color */
+    display: flex;
+    line-height: 1em;
+    margin: 0;
+    position: relative;
+    width: 100%;
+}
 
 
 
+.aa-DetachedSearchButtonIcon::after {
+  margin-left:10px;
+  content: " Search (or `f`)";
+}
 
 
 
+.sidebar-tools-main:not(.tools-wide) {
+  border: 4px solid white; /* Blue border - this helps to make search bar more obvious */
+  border-radius: 5px; /* Optional: Rounded corners */
+    padding: 10px; /* Optional: Adds spacing inside the border */
+}
 
 
 
+.sidebar-tools-collapse #quarto-search .aa-DetachedSearchButton,
+.sidebar-tools-main #quarto-search .aa-DetachedSearchButton {
+    border: 3px solid #2a6eb3; /* Blue border */
+    border-radius: 5px; /* Optional: Rounded corners */
+    padding: 5px; /* Adjust padding inside the border */
+    background-color: #ffffff; /* Optional: Ensure background is white */
+}
 
 
+/* Adjust search bar width */
+#quarto-search .aa-DetachedSearchButton {
+    width: 200px; /* Adjust width as needed */
+    max-width: 90%; /* Prevent it from overflowing */
+}
 
-
+/* If modifying the expanded search input */
+#quarto-search .aa-Autocomplete {
+    width: 200px; /* Adjust for expanded search */
+}
 
 
 
