@@ -1,22 +1,18 @@
 # CVERA related bTB publications {#sec-publications}
 
----
+------------------------------------------------------------------------
 
 $~$ $~$
 
+## List of publications
 
-## List of publications 
-
-Below is a list of bTB related publications from [CVERA](https://www.ucd.ie/cvera/) (from 1990 to current day). This also encompasses publications that may not be directly from CVERA (e.g., where a CVERA member is only a co-author on the publication, the list also includes publications from the [Tuberculosis Diagnostics & Immunology Research Laboratory](https://www.ucd.ie/vetmed/research/researchthemes/veterinaryepidemiologyandnationaldiseasecontrol/) in UCD). 
+Below is a list of bTB related publications from [CVERA](https://www.ucd.ie/cvera/) (from 1990 to current day). This also encompasses publications that may not be directly from CVERA (e.g., where a CVERA member is only a co-author on the publication, the list also includes publications from the [Tuberculosis Diagnostics & Immunology Research Laboratory](https://www.ucd.ie/vetmed/research/researchthemes/veterinaryepidemiologyandnationaldiseasecontrol/) in UCD).
 
 Thanks to Dan Collins for maintaining the list.
-
 
 Use the **search bar** in the table heading to search by any word.
 
 $~$ $~$
-
-
 
 ```{r}
 #| label: global-options
@@ -32,7 +28,6 @@ knitr::opts_chunk$set(fig.align = "center")
 source("R_files/read_in_quarto_trends.R")
 publications_df <- read_csv(paste0("data/edited_output/publications_df.csv")) 
 ```
-
 
 ```{r}
 #| label: tbl-publications
