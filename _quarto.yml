@@ -1,0 +1,64 @@
+project:
+  type: book
+  output-dir: docs
+
+
+book:
+  title: "DRAFT Temporal trends in bovine herds and bovine tuberculosis breakdowns in Ireland (2008-2023)"
+  author: "Jamie Madden (CVERA)"
+  date: today
+  chapters:
+    - index.qmd
+    - part: "Timeline"
+      chapters: 
+        - timeline_policy.qmd
+    - part: "Demographics"
+      chapters: 
+        - demographics.qmd
+    - part: "bTB cases"
+      chapters: 
+        - case_numbers.qmd
+    - part: "Lesion prevalence"
+      chapters:
+        - reactor_lesion_skin_gif_seperately.qmd
+        - lesion_prevalence_trends.qmd
+    - part: "Breakdowns (BDs)"
+      chapters:
+        - breakdown_page.qmd 
+    - part: "Publications"
+      chapters:
+        - publications.qmd
+    #- references.qmd
+  page-navigation: true  # navigate option at bottom of page to next or previous page
+
+  search:
+    #location: navbar # i dont think navbar works in book (only website)
+    type: overlay
+
+bibliography: references.bib
+
+format:
+  html:
+    #grid:
+      #body-width: 900px # default 800px, i think page-layout full takes care of this
+    theme: flatly
+    css: style.css
+
+    number-sections: true #you need this for cross referencing
+    top-level-division: chapter
+    page-layout: full
+    toc: true
+    toc-location: left  # Equivalent to `toc_float: true`
+    code-fold: false      # Equivalent to `code_folding: show`
+  pdf:
+    documentclass: scrreprt
+
+editor: visual
+
+execute:
+  cache: false  # Ensures inline R in YAML updates correctly
+knitr:
+  opts_knit:
+    root.dir: "D:/Files/bTB_breakdown_trends_paper"
+    
+    

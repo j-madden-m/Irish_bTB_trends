@@ -1,0 +1,37 @@
+# Background {.unnumbered}
+
+---
+
+**DRAFT DOCUMENT**
+
+This is an accompanying website to supplement a paper submitted to journal XXX. The purpose of this supplementary website is to have a semi-live version of the output of the paper after it has been published (once new data becomes available). It also acts as a location to include excess output that didn't make it into the main paper but which we think is still useful for readers. Additional analysis will be added over time.
+
+INCLUDE paper reference here
+
+The paper highlights various trends from different components of the bovine tuberculosis (bTB) eradication programme in Ireland (from 2008 onwards). This includes cattle population demographics, herd enterprise types, bTB case numbers, herd-level bTB breakdowns, lesion detection at slaughter inspections both in bTB positive animals and routinely slaughtered animals. The data used has been obtained from the Irish national bTB eradication programme (Animal Health Computer System (AHCS) (Department of Agriculture, Food and the Marine (DAFM)), Animal Identification and Movement System (AIM), Laboratory Information Management System (LIMS)), which included results from herd-level skin tests, animal-level laboratory tests (from animals with suspect bTB lesions) and the animal-level IFN-γ blood tests. It has been processed by Centre for Veterinary Epidemiology and Risk Analysis [CVERA](https://www.ucd.ie/cvera/){target="_blank"} for research purposes and as a result, there may be minor discrepancies between DAFM output and ours. A bTB eradication timeline is also included which highlights some of the major trials and policy and diagnostic changes introduced during the programme. 
+
+## What's included? {-}
+
+The wesbite is divided into these parts:
+
+- [**Interactive timeline**](#sec-timeline): Highlights major trials, diagnostic and policy changes during the Irish bTB eradication (2005 - 2023).
+- [**Demographics**](#sec-demographics): Changes to demographics over time (herd-types, bovine numbers etc.).
+- [**bTB case numbers and herd-prevalence**](#sec-casenumbers): Examines bTB case numbers over time along with herd prevalence by different herd-types. 
+- **Lesion prevalence**: This includes both visible lesions in animals already classified as a [bTB case entering the factory](#sec-btblesions) and *M.bovis* confirmed [lesions found in animals at routine slaughter](#sec-healthlylesion) (healthy animals)
+- [**bTB breakdowns (BDs)**](#sec-breakdown): This explores changes to herd-level BDs over time.
+- [**CVERA related bTB publications**](#sec-publications): Almost an exhaustive list of bTB related publications from CVERA (from 1990 to current day). This encompasses publications that may not be directly from CVERA (e.g., where CVERA member is only a co-author on the publication, the list also includes publications from the [Tuberculosis Diagnostics & Immunology Research Laboratory](https://www.ucd.ie/vetmed/research/researchthemes/veterinaryepidemiologyandnationaldiseasecontrol/){target="_blank"} in UCD). 
+
+
+## What's not included (yet)? {-}
+
+The focus is primarily at a national level although some county level output is included. We acknowledge there is a strong spatio-temporal distribution of bTB in Ireland but exploring spatial trends is not the focus of this particular work. For a recent spatial analysis of bTB trends in Ireland, see [Madden et al.](https://www.sciencedirect.com/science/article/pii/S187758452100040X){target="_blank"} and for a more current spatial exploration of bTB, see [here](https://www.arcgis.com/apps/dashboards/9306f7eb60b1401a8b18f76f61f20aea){target="_blank"}. There is also no analysis included on age-specific bTB trends - that is a separate piece of work that is ongoing. Time-series analysis will be included in future work.
+
+
+
+---
+
+
+
+
+
+

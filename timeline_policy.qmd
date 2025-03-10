@@ -1,0 +1,436 @@
+
+# Irsh bTB eradication programme timeline {#sec-timeline}
+
+
+```{r}
+#| label: global-options
+#| include: false
+# Center figures (alternative approach in Quarto)
+knitr::opts_chunk$set(fig.align = "center")
+# like this: #| fig-align: center
+```
+
+
+
+
+```{r}
+#| label: readin-data
+#| include: false
+
+# taken from "vistime_policy_plot.R"
+
+# read in kilkenny functions
+source("R_files/read_in_quarto_trends.R")
+# taken from policy timeline project
+library(ggnewscale)
+library(magick)
+ 
+add_space_line <- function() {
+  cat("$~$ $~$\n\n---\n\n$~$ $~$\n")
+} 
+# # read in ----
+ 
+# # read in historic timeline plot ()
+# save image as ggplot
+historic_plot_88_05 <- image_read("D:/Files/Miriam/policy_timeline/data/screenshot_more_good_time_2006_paper.png") %>% 
+  image_ggplot(interpolate = TRUE)
+
+
+policy_caption <- "A timeline highlighting advances, in Ireland since 1988, in scientific knowledge of the epidemiology of bovine tuberculosis and policy relating to bovine control and eradication ([ref](https://www.sciencedirect.com/science/article/pii/S0378113505003986?via%3Dihub))"
+
+badger_trial_plot_after_2005 <- image_read("D:/Files/bTB_breakdown_trends_paper/data/badger_timeline_from_presentation/Madden_bTB_seminar_06_dec_24.png") %>% 
+  image_ggplot(interpolate = TRUE)
+
+
+
+# readin in basic prevalence data 
+# from case_numbers.qmd
+# the 05 (from 2005 onwards) i added manually after removing "filter(year > 2007" at start of "case_numbers.qmd"
+herd_level_prevalance_data <- read_csv("data/edited_output/herd_level_prevalance_data_05.csv")
+case_count_year <- read_csv("data/edited_output/case_count_year_05.csv") %>% 
+  filter(best_estimate_gif_skin_lab_string == "All cases") %>% 
+  select(year, btb_cases = cases)
+herd_level_prevalance_data <- herd_level_prevalance_data %>% 
+  left_join(case_count_year)
+
+herd_level_prevalance_data <- herd_level_prevalance_data %>% 
+  mutate(start_date = ymd(paste0(year, "-01-01")))
+
+
+
+#read in timelines
+timelines <- read_csv("D:/Files/Miriam/policy_timeline/data/timeline_dates.csv") %>% 
+  mutate(end_date = ifelse(current_or_once_off == "current", format(Sys.Date(), format = "%d-%m-%Y"), end_date),
+         start_date = dmy(start_date),
+         end_date = dmy(end_date),
+         # vistime wants start and end names
+         start = start_date,
+         end = end_date,
+         # add todays date for current group, i.e. still ongoing
+         end_date = if_else(is.na(end_date) & current_or_once_off == "current", as.Date("28-02-2025"), end_date),
+         #once date is fixed, change current to fixed time period
+         current_or_once_off = ifelse(current_or_once_off == "current", "fixed_period", current_or_once_off)) %>% 
+  # probably want to order by date?
+  arrange(start_date) %>% 
+  filter(type != "Weather") %>% 
+  #filter(event != "Tuberculin potency quality control and extra controls for feedlot cattle.") %>% 
+  # add html text stuff bold, next line etc
+  mutate(details = paste0(bold_html,
+                          event_long, 
+                          bold_html, 
+                          html_next_line,
+                          html_next_line,
+                          details)) %>% 
+  # replace GIF with correct gif
+  mutate(across(where(is.character), ~ str_replace_all(., "GIF", gif_string))) %>% 
+  mutate(across(where(is.character), ~ str_replace_all(., "gif", gif_string))) %>% 
+  mutate(across(where(is.character), ~ str_replace_all(., "Gif", gif_string)))
+
+
+
+# *************************************************************************
+# extract min max prevalence ----
+max_prevalence <- max(herd_level_prevalance_data$prevalence)
+min_prevalence <- min(herd_level_prevalance_data$prevalence)
+max_prevalence
+min_prevalence
+diff_in_prevalence <- max_prevalence - min_prevalence
+diff_in_prevalence
+policy_fixed_period <- timelines %>% 
+  filter(current_or_once_off == "fixed_period") 
+nrow(policy_fixed_period)
+# 20
+# policy_fixed_period <- policy_fixed_period %>% 
+#   # split string so "\n" is inserted after every second word
+#   mutate(event_new = map_chr(event, ~ insert_newlines(.x, 2))) %>% 
+#   #rowwise() %>% 
+#   #mutate(random_height = sample(1:10, 1)) 
+#   mutate(prevalence = seq(min_prevalence, max_prevalence, length.out = nrow(.))) %>% 
+#   # calculate midpoint of dates
+#   mutate(midpoint_date = start + (end - start) / 2)
+
+# so we want timeline above the herd-level prevalence plot but it to take up more
+# space proportionally on the plot so the timeline is the main component of the plot
+# maybe we would say timeline is 3.5 times the size of the trends plot?
+
+# diff_in_prevalence
+
+policy_fixed_period_after_06 <- policy_fixed_period %>% 
+  # pick dates after 2006
+  #filter(start_date >= dmy("31-12-2006")) %>% 
+  filter(start_date >= dmy("31-12-2003")) %>%  # this will get in ahcs
+  # pick dates before 2025 for now
+  filter(start_date <= dmy("01-01-2025")) %>% 
+  # split string so "\n" is inserted after every second word
+  mutate(event_new = map_chr(event, ~ insert_newlines(.x, 2))) %>% 
+  #rowwise() %>% 
+  #mutate(random_height = sample(1:10, 1)) 
+  # timeline height 3 times size of prevalence plot
+  # .007 is to being it up to 7%
+  mutate(prevalence = seq(max_prevalence + 0.007, diff_in_prevalence*6.1, length.out = nrow(.))) %>% 
+  mutate(prevalence = seq(0.07, diff_in_prevalence*5, length.out = nrow(.))) %>% 
+  
+  # calculate midpoint of dates
+  mutate(midpoint_date = start + (end - start) / 2)
+#policy_fixed_period_after_06
+
+
+```
+
+
+
+
+## Recent timeline plot 
+
+
+Although the focus in the paper is on data from 2008-2023, here we go slightly further back to help understand important changes to the programme that happended in earlier years.
+
+$~$ $~$
+
+```{r}
+#| label: fig-policy
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 14 
+#| fig.cap: "Timeline of major events during the eradication programme."
+
+
+# *************************************************************************
+# main working version ----
+# *************************************************************************
+# Define a scaling factor to match cases to prevalence
+scale_factor <- max(herd_level_prevalance_data$btb_cases) / max(herd_level_prevalance_data$prevalence)
+
+jj <- ggplot(herd_level_prevalance_data, aes(x = start_date, y = prevalence)) +
+  geom_ribbon(aes(ymin = conf.low, ymax = conf.high, fill = "Confidence Interval"), 
+              alpha = 0.7, 
+              linetype = "dashed",
+              show.legend = FALSE) +
+  scale_fill_manual(values = c("Confidence Interval" = "gray80")) +
+  scale_x_date(date_breaks = "1 year", date_labels = "%Y")  +
+  new_scale_fill() + 
+  
+  # Bar plot for cases (right y-axis, scaled)
+  geom_bar(aes(y = btb_cases/scale_factor, 
+               fill = "bTB cases" # inside aes as we want a scale
+               ), stat = "identity", alpha = 0.5,
+  ) +
+  # Scale y-axis for prevalence and create a secondary y-axis for cases
+  scale_y_continuous(
+    labels = scales::percent,
+    breaks = c(0.03, 0.04, 0.05, 0.06),
+    name = "",  # Left y-axis label
+    sec.axis = sec_axis(~ . * scale_factor, 
+                        name = NULL, #bTB cases
+                        breaks = seq(from = 15000, to = 30000, 5000)
+                        #, 0.04, 0.05, 0.06),
+    )  # Right y-axis label
+  ) +
+  scale_fill_manual(name = "bTB cases", values = c("#86BCB6")) +
+  
+  coord_cartesian(ylim = c(0.03, 
+                           #0.065), # This focuses the x-axis on the range of interest
+                           max(policy_fixed_period_after_06$prevalence))
+                  #clip = 'off'
+  ) +
+  new_scale_fill() + 
+  geom_line(aes(color = prevalence), linewidth = 1.2, show.legend = FALSE) +  # Line with color mapped to hp
+  geom_point(size = 5, shape = 21, color = "black", stroke = 1, aes(fill = prevalence)) +  # Points with fill and black border
+  scale_fill_gradient(low = "#0201A5", high = "#E28A00", name = "Herd prevalence", labels = scales::label_percent()) +  # Gradient for fill (points)
+  scale_color_gradient(low = "#0201A5", high = "#E28A00") +
+  theme_jamie +
+  new_scale_fill() +
+  geom_rect_interactive(data = policy_fixed_period_after_06, 
+                        mapping = aes(xmin = start_date, 
+                                      xmax = end_date, 
+                                      ymin = prevalence - 0.0006, #as.numeric(factor(Event)) - 0.4, 
+                                      ymax = prevalence + 0.0006, 
+                                      fill = type,
+                                      tooltip = details, data_id = details), 
+                        size = 1.5, hover_nearest = TRUE, alpha = 0.6) +
+  scale_fill_manual(values = c(
+    #"#4E79A7",  
+    "#FAD892", "#EE6A64" ,"#82BD4E"), name = "Type") +
+  geom_text(data = policy_fixed_period_after_06, aes(x = midpoint_date, y = prevalence + 0.0015, label = event), color = "white", fontface = "bold") +
+  theme_45_x +
+  # scale_y_continuous(labels = scales::percent,
+  #                    breaks = c(0.03, 0.04, 0.05, 0.06)) +
+  geom_hline(yintercept = 0.068) +
+  labs(x = "Year",
+       y = "Prevalence",
+       caption = paste0(next_line,
+                        "Interpret dates as being approximate (best ",
+                        "efforts have been made to ensure they are accurate)",
+                        next_line,
+                        "Herd prevalence estimate includes 95% CI (in grey)",
+                        next_line,
+                        next_line,
+                        "Other notable dates: ",
+                        "\n",
+                        "1974: First infected badger detected in Ireland",
+                        next_line,
+                        "1988: ERAD established",
+                        next_line,
+                        "1988-1995: East Offaly badger culling trial",
+                        next_line,
+                        "1997-2002: Four area badger trial",
+                        next_line,
+                        "1990-2002: Ad hoc badger removal",
+                        next_line,
+                        "2002: DAFM wildlife programme starts"#,
+                       # next_line,
+                      #  "2004: AHCS established"
+       ),
+       title = paste0("Timeline of major trials, diagnostic and policy changes during the Irish bTB eradication (2005 - 2023)"),
+       subtitle = paste0(
+                      "Hover over timeline for more details",
+                      "\n",
+                      "Herd-level bTB prevalence and animal level case count is included for reference")
+       ) +
+  theme(panel.background = element_rect(fill = "transparent", color = "transparent"),
+        plot.background = element_rect(color = "#4E5D6C", fill = "#4E5D6C"),
+          #x2 = unit(0, 'npc'))),
+        #panel.grid.major = element_blank(),
+        # panel.grid.major = element_line(color = "gray", alpha = 0.1),
+        # panel.grid.minor = element_blank(),
+        #panel.grid.major = element_line(color = "gray", size = 0.5, alpha = 0.1),  # Add alpha to grid lines
+        #panel.grid.minor = element_line(color = "gray", size = 0.2, alpha = 0.1) ,
+        panel.grid.major.y = element_blank(),
+        # explicitly set the horizontal lines (or they will disappear too)
+        panel.grid.major.x = element_line(linewidth = 0.1, color = "gray80"),
+        #panel.grid.minor.x = element_line(size = 0.1, color = "white"), 
+        plot.caption.position = "plot",
+        #plot.title.position = "plot",
+        #plot.margin = margin(t = 20, r = 10, b = 10, l = 10),
+        text = element_text(color = "white"),
+        plot.subtitle = element_text(colour = "gray80"),
+        axis.text = element_text(size = 12, face = "bold", colour = "gray80"), # "white"),
+        axis.title = element_text(size = 16, face = "bold", colour = "gray80"),
+        axis.title.y.right = element_text(vjust = 1)#  "white"),
+  )
+#jj
+
+# add two y-axis title:
+jj <- ggdraw() +
+  draw_plot(jj + labs(y=""), 0,0,1,1) +
+  draw_label("Prevalence", x = 0.01, y = 0.3, color = "gray80", size = 16, angle = 90,
+             fontface = "bold") +
+  draw_label("Events", x = 0.01, y = 0.75, color = "gray80", size = 16, angle = 90,
+             fontface = "bold") +
+  draw_label("bTB cases", x = 0.91, y = 0.3, color = "gray80", size = 16, angle = -90,
+             fontface = "bold") 
+
+# plot interactive ggiraph object
+girafe(
+  ggobj = jj,
+  options = list(
+    #opts_sizing(width = .7),
+    opts_zoom(max = 5),
+    opts_toolbar(position = #"bottom",
+                   "bottomleft"),
+    opts_hover(css = "stroke:red;stroke-width:2;")
+  ),
+  width_svg = 12, height_svg = 14)
+
+
+
+```
+
+
+$~$ $~$
+
+---
+
+$~$ $~$
+
+
+
+## Historic timeline plot (1988-2005) 
+
+The following image has been extracted from More SJ & Good M [2006](https://www.sciencedirect.com/science/article/pii/S0378113505003986?via%3Dihub) with permission.
+
+
+```{r}
+#| label: fig-policyplot19882005
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 8 
+#| fig.cap: !expr policy_caption
+
+# If inside an R chunk: Use knitr::include_graphics().
+# If outside a code chunk: Use Markdown ![Alt text](path/to/image).
+
+#knitr::include_graphics("timeline.png")
+#knitr::include_graphics(historic_plot_88_05)
+#![Elephant](D:/Files/Miriam/policy_timeline/data/screenshot_more_good_time_2006_paper.png)
+# knitr::include_graphics("D:/Files/Miriam/policy_timeline/data/screenshot_more_good_time_2006_paper.png")
+# historic_plot_88_05 <- image_read("D:/Files/Miriam/policy_timeline/data/screenshot_more_good_time_2006_paper.png")
+historic_plot_88_05
+```
+
+
+
+$~$ $~$
+
+---
+
+$~$ $~$
+
+
+
+## Spatial location and timeline of badger trials (after 2005) 
+
+
+The plot below does not include two badger trials that occured much earlier:
+
+- East Offaly project (1988–1995)
+
+Ó Máirtín D, Williams DH, Griffin JM, Dolan L, Eves JA. The effect of a badger removal programme on the incidence of tuberculosis in an Irish cattle population. Preventive Veterinary Medicine. 1998;34:47–56. doi: 10.1016/s0167-5877(97)00067-6
+The effect of a badger removal programme on the incidence of tuberculosis in an Irish cattle population <https://www.sciencedirect.com/science/article/pii/S0167587797000676> 1998
+
+
+Eves JA. Impact of badger removal on bovine tuberculosis in east County Offaly. Irish Veterinary Journal. 1999;52:199–203
+
+
+- Four area badger culling trial (1997 - 2002) (also known as reference area trial)
+
+
+**The impact of badger removal on the control of tuberculosis in cattle herds in Ireland.**
+Griffin, J.M.,illiams,.H., Kelly, G.E.,legg,T.., O'Boyle, I.,ollins, J.. and More,.J. (**2005**).  Preventive
+Veterinary Medicine 67: 237-266
+<https://pubmed.ncbi.nlm.nih.gov/15748755/>
+
+
+Tuberculosis in cattle: the results of the four-area project Griffin et al. 2005 
+<https://pmc.ncbi.nlm.nih.gov/articles/PMC3113914/pdf/2046-0481-58-11-629.pdf>
+
+
+
+```{r}
+#| label: fig-badgerplot
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 8 
+#| fig.cap: "A timeline and location of badger studies within Ireland (after 2005)"
+
+# If inside an R chunk: Use knitr::include_graphics().
+# If outside a code chunk: Use Markdown ![Alt text](path/to/image).
+
+#knitr::include_graphics("timeline.png")
+#knitr::include_graphics(historic_plot_88_05)
+#![Elephant](D:/Files/Miriam/policy_timeline/data/screenshot_more_good_time_2006_paper.png)
+# knitr::include_graphics("D:/Files/Miriam/policy_timeline/data/screenshot_more_good_time_2006_paper.png")
+# historic_plot_88_05 <- image_read("D:/Files/Miriam/policy_timeline/data/screenshot_more_good_time_2006_paper.png")
+badger_trial_plot_after_2005
+```
+
+
+
+$~$ $~$
+
+---
+
+$~$ $~$
+
+
+
+## Irish bTB eradication trends/timeline references
+
+- Watchorn, R.C.(1965). Bovine Tuberculosis Eradication Scheme 1954-1965. Dublin: Department of Agriculture and Fisheries <https://catalog.hathitrust.org/Record/009378520>
+
+
+- Sheehy, S.J., Christiansen, K.H., 1992. A cost/benefit analysis of future options for bovine tuberculosis control. Dublin: University College Dublin. <https://researchrepository.ucd.ie/server/api/core/bitstreams/4c2b9eee-71b7-4d68-b718-f1cddf7e1f24/content>
+
+- Good M. Bovine Tuberculosis Eradication in Ireland. 2006. Irish Veterinary Journal. 59(3):March 2006 <https://www.bovinetb.info/docs/bovine-tuberculosis-eradication-in-ireland.pdf>
+
+- More SJ, Good M. The tuberculosis eradication programme in Ireland: a review of scientific and policy advances since 1988. Vet Microbiol. 2006 Feb 25;112(2-4):239-51. doi: 10.1016/j.vetmic.2005.11.022. Epub 2005 Dec 6. PMID: 16337345. <https://www.sciencedirect.com/science/article/pii/S0378113505003986?via%3Dihub>
+
+- Sheridan M. Progress in tuberculosis eradication in Ireland. Vet Microbiol. 2011 Jul 5;151(1-2):160-9. doi: 10.1016/j.vetmic.2011.02.040. Epub 2011 Mar 8. PMID: 21482040. <https://pubmed.ncbi.nlm.nih.gov/21482040/>
+
+- Duignan A, Good M, More SJ. Quality control in the national bovine tuberculosis eradication programme in Ireland. Rev Sci Tech. 2012;31(3):845–60 <https://doi.org/10.20506/rst.31.3.2166>. PMID:
+23520738
+
+- Sheridan, M., Good, M., More, S.J. and Gormley, E., 2014. The impact of an integrated wildlife and bovine tuberculosis eradication program in Ireland. Zoonotic Tuberculosis: Mycobacterium bovis and Other Pathogenic Mycobacteria, Third Edition, pp.323-340.<https://onlinelibrary.wiley.com/doi/10.1002/9781118474310.ch28>
+
+- More SJ, Houtsma E, Doyle L, McGrath G, Clegg TA, de la Rua-Domenech R, Duignan A, Blissitt MJ, Dunlop M, Schroeder PG, Pike R, Upton P. Further description of bovine tuberculosis trends in the United Kingdom and the Republic of Ireland, 2003-2015. Vet Rec. 2018 Dec 15;183(23):717. doi: 10.1136/vr.104718. Epub 2018 Nov 28. PMID: 30487295; PMCID: PMC6312888. <https://pubmed.ncbi.nlm.nih.gov/30487295/>
+
+
+- DAFM bTB eradication programme (New Bovine TB Testing Requirements for animal movements etc)
+<http://www.bovinetb.ie/>
+
+
+### Northern Ireland
+
+Robinson PA. A history of bovine tuberculosis eradication policy in Northern Ireland. Epidemiol Infect. 2015 Nov;143(15):3182-95. doi: 10.1017/S0950268815000291. Epub 2015 Mar 17. PMID: 25778830; PMCID: PMC9150964. <https://pubmed.ncbi.nlm.nih.gov/25778830/>

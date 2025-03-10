@@ -1,0 +1,56 @@
+/*| echo: false */
+figcaption {
+  margin: auto;
+  text-align: center;
+  font-weight: bold; /* Makes captions bold */
+  font-size: 1.5em; /* Adjust size as needed, using em, px, or % depending on your preference */
+}
+/*| in quarto, the rmarkdown flatly theme doesnt transfer over exactly so pulling in  the colours here*/
+:root {
+  --bs-primary: #2c3e50;  /* Dark Blue */
+  --bs-secondary: #18bc9c; /* Teal */
+  --bs-success: #1abc9c;  /* Green */
+  --bs-info: #3498db;     /* Light Blue */
+  --bs-warning: #f39c12;  /* Orange */
+  --bs-danger: #e74c3c;   /* Red */
+  --bs-light: #ecf0f1;    /* Light Gray */
+  --bs-dark: #34495e;     /* Dark Gray */
+  
+  /* Text & Background Adjustments */
+  --bs-body-color: #2c3e50;
+  --bs-body-bg: #ffffff;
+  --bs-link-color: #18bc9c;
+  --bs-link-hover-color: #148f77;
+
+  /* Button Styles */
+  --bs-btn-bg: var(--bs-primary);
+  --bs-btn-hover-bg: var(--bs-dark);
+
+  /* Table Styling */
+  --bs-table-bg: #ecf0f1;
+  --bs-table-striped-bg: #d5dbdb;
+  --bs-table-hover-bg: #bdc3c7;
+
+  /* Code Blocks */
+  --bs-code-color: #e74c3c;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

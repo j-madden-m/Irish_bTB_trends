@@ -1,0 +1,1991 @@
+
+# Prevalence of confirmed *M.bovis* lesions found in animals at routine slaughter {#sec-healthlylesion}
+
+---
+
+
+$~$ $~$
+
+
+
+```{r}
+#| label: global-options
+#| include: false
+# Center figures (alternative approach in Quarto)
+knitr::opts_chunk$set(fig.align = "center")
+# like this: #| fig-align: center
+```
+
+```{r}
+#| label: readin-data
+#| include: false
+#setwd(rprojroot::find_rstudio_root_file())
+# read_in_trends_short.R
+#source(file.path("R_files", "read_in_quarto_trends.R"))
+
+# this reads in kilkenny functions
+source("R_files/read_in_quarto_trends.R")
+# read in data
+#healthy_lesion_rate <- read_csv("data/edited_output/healthy_lesion_rate.csv")
+healthy_lesion_rate <- readRDS("data/edited_output/healthy_lesion_rate.Rds")
+
+# same but monthly
+#healthy_lesion_rate_month <- read_csv("data/edited_output/healthy_lesion_rate_month.csv")
+healthy_lesion_rate_month <- readRDS("data/edited_output/healthy_lesion_rate_month.Rds")
+
+
+min_year <- min(healthy_lesion_rate$year)
+max_year <- max(healthy_lesion_rate$year)
+years_for_study <- c(min_year:max_year)
+
+
+# text vectors
+lesion_types <- read_csv("data/lesion_types_eamonn_jamie.csv") %>% 
+  mutate(lesion_name = tolower(lesion_name)) %>% 
+  select(les, lesion_name, head_or_chest) %>% 
+  rename(lesion = les) #%>% 
+  #filter(!is.na(head_or_chest))
+
+lesion_types_text <- lesion_types %>% 
+    filter(!is.na(head_or_chest)) %>% 
+  # i might need to run this too:
+  # there are some positive cases with NVLs
+  # I am keeping this in the count but excluding it here so people arent confused!
+  filter(head_or_chest != "Non-visible lesions") %>% 
+  group_by(head_or_chest) %>% 
+  summarise(lesion_name = paste(unique(lesion_name), collapse = ", ")) %>% 
+  mutate(lesion_definitions = paste0(head_or_chest, ": ", lesion_name)) %>% 
+  select(-head_or_chest, -lesion_name)
+lesion_types_text
+lesion_types_text <- paste0(lesion_types_text$lesion_definitions, " \n")
+lesion_types_text_vector <- paste(lesion_types_text, collapse = '')
+lesion_types_text_vector
+all_lesions_vector <- paste0("Lesions: ", paste0(unique(lesion_types$lesion_name) %>% 
+                                                   purrr::discard(~ .x %in% c(NA, "sub?")), collapse = ", "))
+all_lesions_vector
+
+
+# what do i call these?
+#Animals with confirmed lesions found at routine slaughter (LRS, also known as ‘factory lesion cases’)
+title_lesions <- paste0("proportion*M.bovis* confirmed lesion at routine slaughter")
+# ~ is space
+title_lesions <- expression("Prevalence of"~italic(m.bovis)~"confirmed lesions at routine slaughter (healthy animals)")
+title_lesions
+title_lesions_ahcs <- expression("Prevalence of"~italic(m.bovis)~"confirmed lesions at routine slaughter (healthy animals) by AHCS herd-type")
+title_lesions_ahcs
+title_lesions_brock <- expression("Prevalence of"~italic(m.bovis)~"confirmed lesions at routine slaughter (healthy animals) by Brock et al. herd-type")
+title_lesions_brock
+# footnote text
+numerator <- paste0("Animals that did not have a positive SICTT or ", gif_string, 
+                    " result but had a visible lesion detected during routine slaughter ",
+                    "checks which was laboratory confirmed M. bovis")
+denominator <- paste0("Count of the number of animals sent to either a factory or an abattoir",
+                      " (minus the count of animals classified as a bTB case via SICTT or ", gif_string, ")")
+healthy_definition <- paste0("Numerator: ", numerator, "\n", "Denominator: ", denominator)
+healthy_definition
+
+
+# set as TRUE or FALSE
+include_co_op_chunks = TRUE
+```
+
+
+
+
+
+
+
+
+
+\newpage
+
+<!---BLOCK_LANDSCAPE_START--->
+
+## Introduction
+
+This document presents the prevalence of animals with confirmed *m.bovis* lesions found at routine slaughter (also known as ‘factory lesion cases’). **Note, we are missing some lesions for Dec 2023.** 
+
+## Definitions
+
+### Proportion of animals with lesions at routine slaughter 
+
+Lab file:
+
+
+```{r}
+#| echo: true
+#| eval: false
+#| include: true
+# $description
+#                       .     n       percent
+#            INCONCLUSIVE  3715 0.03394554094
+#           OTHER REACTOR   873 0.00797697368
+#                RESEARCH     2 0.00001827485
+#               SINGLETON  7463 0.06819261696
+#         SLAUGHTER CHECK 87406 0.79866593567
+#  SLAUGHTER CHECK (ER36)  1246 0.01138523392
+#   SPECIAL INVESTIGATION  7039 0.06431834795
+#             STRAIN TYPE  1696 0.01549707602
+```
+
+
+AIM database:
+
+```{r}
+#| echo: true
+#| eval: false
+#| include: true
+#   data_type no_by_type
+#   <chr>          <int>
+# 1 ABAT         1695012
+# 2 DoF          4992685
+# 3 EXP          4467609
+# 4 F_to_F      20715340
+# 5 FACT        31456498
+# 6 IMP           237290
+# 7 Mart        29832107
+# 8 OLD          1218543
+```
+
+
+
+**Numerator**: 
+
+- Extracted `SLAUGHTER CHECK` and `SLAUGHTER CHECK (ER36)` (negative animal came from a herd that is in a bTB breakdown)
+- dropped any that had a positive SICTT or positive `r gif_string` result
+- positive lab result (even if `lesion = "NVL"`? must have been positive on `macroscopic`, `hist`, `culture` or **PCR**?)
+
+
+**Denominator**: 
+
+- From AIM database, extracted `data_type  %in%  c("FACT", "ABAT")` (excluding `DoF` as it is not routine to do inspections in knackeries, which we think includes young reactor calves - are these killed on farm first?) - John - You are not legally allowed bring a live animal to a knackery
+- summarised by `move_from_final` 
+- merged in herd-type from AHCS/Brock et al.  
+- subtracted count of animals already classified as a bTB case via SICTT or `r gif_string`
+
+### Lesions
+
+We classified lesions into head or chest:
+
+```{r}
+#| echo: true
+#| eval: false
+#| include: true
+lesion_types
+```
+
+
+Some animals have `NVL` but a positive result in the lab file even though they are `SLAUGHTER CHECK` or `SLAUGHTER CHECK (ER36)`:
+
+```{r}
+#| echo: true
+#| eval: false
+#| include: true
+#        head_or_chest     n     percent valid_percent
+#                Chest 12742 0.385863969    0.39113485
+#                 Head 10285 0.311459027    0.31571354
+#     Multiple lesions  6940 0.210162922    0.21303374
+#  Non-visible lesions  2464 0.074616922    0.07563619
+#                Other   146 0.004421295    0.00448169
+#                 <NA>   445 0.013475865            NA
+```
+
+
+In my overall lesion prevalence calculations, I have included these `NVL` cases which we came to conclude is correct as they had an overall lab positive result.
+
+
+
+$~$ $~$
+
+------------------------------------------------------------------------
+
+$~$ $~$
+
+\newpage
+
+## Number of animals sent to slaughter
+
+### Overall
+
+```{r}
+#| label: fig-nosenttoslaughter
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 8 
+#| fig.cap: "Overall number of animals sent to slaughter."
+
+no_animals_sent_to_slaughter <- healthy_lesion_rate %>% 
+  group_by(year) %>% 
+  summarise(no_of_animals_sent_to_slaughter = sum(no_movements_to_factory)) %>% 
+  ungroup()
+
+ggplot(no_animals_sent_to_slaughter, aes(x = year, y = no_of_animals_sent_to_slaughter)) +
+  geom_line(linewidth = 2, color = "#4E79A7") +
+  labs(x = "Year", 
+       y = "No animals sent to slaughter", 
+       title = "Total number of animals sent to slaughter",
+       caption = paste0("Only includes animals sent to slaughter-houses or abattoirs ",
+       "(animals sent to knackeries are excluded here as they are not routinely inspected for lesions)")) +
+  #caption = paste0(all_lesions_vector)
+  theme_jamie +
+  scale_colour_nejm() +
+  scale_y_continuous(labels = scales::comma) +
+  scale_x_continuous(breaks = nth_element(c(unique(no_animals_sent_to_slaughter$year)), 1, 2)) +
+  
+  #scale_color_simpsons(name = "Quartile type") +
+  # need this for bold headings
+  theme(title = element_text(size = 18, face = "bold"),
+        legend.text = element_markdown(size = 16),
+        plot.caption.position = "plot",
+        legend.title = element_text(size = 16, face = "bold"),
+        plot.caption = element_text(size = 9, color = "black", face = "italic"),
+        # remove legend so its zoomed in, then add legend seperately
+        legend.position = "none"
+        #legend.position = c(0.2, 0.9))  
+  )
+
+```
+
+$~$ $~$
+
+------------------------------------------------------------------------
+
+$~$ $~$
+
+\newpage
+
+
+Monthly:
+
+
+```{r}
+#| label: fig-nosenttoslaughtermonth
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 8 
+#| fig.cap: "Overall number of animals sent to slaughter by month."
+
+# all animals ----
+no_animals_sent_to_slaughter_month <- healthy_lesion_rate_month %>% 
+  group_by(year_month) %>% 
+  summarise(no_of_animals_sent_to_slaughter = sum(no_movements_to_factory)) %>% 
+  ungroup() %>% 
+  mutate(year = year(year_month),
+         year_f = as.character(year))
+
+pp <- ggplot(no_animals_sent_to_slaughter_month, aes(x = year_month, y = no_of_animals_sent_to_slaughter, color = year_f)) +
+  geom_line(linewidth = 2) + #, color = "#4E79A7") +
+  labs(x = "Year", 
+       y = "No animals sent to slaughter", 
+       title = "Total number of animals sent to slaughter",
+       caption = paste0("Only includes animals sent to slaughter-houses or abattoirs ",
+       "(animals sent to knackeries are excluded here as they are not routinely inspected for lesions)")) +
+  #caption = paste0(all_lesions_vector)
+  theme_jamie +
+  scale_colour_nejm() +
+  scale_y_continuous(labels = scales::comma) +
+  scale_color_manual(name = "Year", values = tableau_color_pal('Tableau 20')(n_distinct(no_animals_sent_to_slaughter_month$year))) +
+  scale_x_continuous(breaks = nth_element(ymd(unique(no_animals_sent_to_slaughter_month$year), truncated = 2L), 1, 1)) +
+  # theme_45_x +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) + 
+  #scale_color_simpsons(name = "Quartile type") +
+  # need this for bold headings
+  theme(title = element_text(size = 18, face = "bold"),
+        legend.text = element_markdown(size = 16),
+        plot.caption.position = "plot",
+        legend.title = element_text(size = 16, face = "bold"),
+        plot.caption = element_text(size = 9, color = "black", face = "italic"),
+        # remove legend so its zoomed in, then add legend seperately
+        legend.position = "top"
+        #legend.position = c(0.2, 0.9))  
+  ) +
+  # legend is 1 row
+  guides(colour = guide_legend(nrow = 1))
+#ggplotly(pp)
+pp
+```
+
+$~$ $~$
+
+------------------------------------------------------------------------
+
+$~$ $~$
+
+\newpage
+
+### By AHCS herd-type
+
+
+```{r}
+#| label: fig-nosenttoslaughterahcs
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 8 
+#| fig.cap: "Overall number of animals sent to slaughter by AHCS herd-type."
+
+no_animals_sent_to_slaughter_ahcs_herd_type <- healthy_lesion_rate %>% 
+  group_by(year, herd_type) %>% 
+  summarise(no_of_animals_sent_to_slaughter = sum(no_movements_to_factory)) %>% 
+  ungroup()
+
+
+ggplot(no_animals_sent_to_slaughter_ahcs_herd_type, aes(x = year, y = no_of_animals_sent_to_slaughter, color = herd_type)) +
+  geom_line(linewidth = 2) +
+  labs(x = "Year", 
+       y = "No animals sent to slaughter", 
+       title = "Total number of animals sent to slaughter",
+       caption = paste0("Only includes animals sent to slaughter-houses or abattoirs ",
+                        "(animals sent to knackeries are excluded here as they are not routinely inspected for lesions)")) +
+  #caption = paste0(all_lesions_vector)
+  theme_jamie +
+  scale_colour_nejm(name = "Herd-type") +
+  scale_y_continuous(labels = scales::comma) +
+  scale_x_continuous(breaks = nth_element(c(unique(no_animals_sent_to_slaughter_ahcs_herd_type$year)), 1, 2)) +
+  
+  #scale_color_simpsons(name = "Quartile type") +
+  # need this for bold headings
+  theme(title = element_text(size = 18, face = "bold"),
+        legend.text = element_markdown(size = 16),
+        plot.caption.position = "plot",
+        legend.title = element_text(size = 16, face = "bold"),
+        plot.caption = element_text(size = 9, color = "black", face = "italic"),
+        # remove legend so its zoomed in, then add legend seperately
+        #legend.position = "none"
+        #legend.position = c(0.2, 0.9))  
+  )
+```
+
+$~$ $~$
+
+------------------------------------------------------------------------
+
+$~$ $~$
+
+\newpage
+
+Monthly:
+
+```{r}
+#| label: fig-nosenttoslaughterahcsmonth
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 8 
+#| fig.cap: "Overall number of animals sent to slaughter by AHCS herd-type by month."
+
+# by ahcs herds ----
+no_animals_sent_to_slaughter_ahcs_herd_type_month <- healthy_lesion_rate_month %>% 
+  group_by(year_month, herd_type) %>% 
+  summarise(no_of_animals_sent_to_slaughter = sum(no_movements_to_factory)) %>% 
+  ungroup() %>% 
+  mutate(year = year(year_month),
+         year_f = as.character(year)) %>% 
+  filter(!is.na(herd_type))
+
+
+# extract min/max dates for geom_react
+min_max_dates_df <- no_animals_sent_to_slaughter_ahcs_herd_type_month %>% 
+  group_by(year) %>% 
+  summarise(min_date = min(year_month),
+            # add 1 year lubridate
+            max_date = min_date %m+% years(1),
+            # subtract 1 days
+            max_date = max_date %m-% days(1)) %>% 
+  ungroup() %>% 
+  mutate(year_f = as.character(year))
+
+
+# min/max prevalence for geom_react
+# min_prev <- min(healthy_lesion_rate_all_month_by_type$lesion_rate)
+# max_prev <- max(healthy_lesion_rate_all_month_by_type$lesion_rate)
+min_max_dates_df$min_prev <- min(no_animals_sent_to_slaughter_ahcs_herd_type_month$no_of_animals_sent_to_slaughter)
+min_max_dates_df$max_prev <- max(no_animals_sent_to_slaughter_ahcs_herd_type_month$no_of_animals_sent_to_slaughter)
+
+ggplot(no_animals_sent_to_slaughter_ahcs_herd_type_month, aes(x = year_month, y = no_of_animals_sent_to_slaughter, color = herd_type)) +
+  geom_line(linewidth = 2) +
+  geom_rect(
+    data = min_max_dates_df, 
+    mapping = aes(
+      xmin = min_date,
+      xmax = max_date,
+      ymin = min_prev,
+      ymax = max_prev,
+      fill = year_f),
+    inherit.aes = FALSE,
+    #fill = df2$colour_me,
+    alpha = 0.2) +
+  scale_fill_manual(name = "Year", values = tableau_color_pal('Tableau 20')(n_distinct(no_animals_sent_to_slaughter_ahcs_herd_type_month$year))) +
+  labs(x = "Year", 
+       y = "No animals sent to slaughter", 
+       title = "Total number of animals sent to slaughter",
+       caption = paste0("Only includes animals sent to slaughter-houses or abattoirs ",
+                        "(animals sent to knackeries are excluded here as they are not routinely inspected for lesions)")) +
+  #caption = paste0(all_lesions_vector)
+  theme_jamie +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) + 
+  scale_colour_nejm(name = "Herd-type") +
+  scale_y_continuous(labels = scales::comma) +
+  scale_x_continuous(breaks = nth_element(ymd(unique(no_animals_sent_to_slaughter_ahcs_herd_type_month$year), truncated = 2L), 1, 1)) +
+  #scale_x_continuous(breaks = nth_element(c(unique(no_animals_sent_to_slaughter_ahcs_herd_type$year)), 1, 2)) +
+  
+  #scale_color_simpsons(name = "Quartile type") +
+  # need this for bold headings
+  theme(title = element_text(size = 18, face = "bold"),
+        legend.text = element_markdown(size = 16),
+        plot.caption.position = "plot",
+        legend.title = element_text(size = 16, face = "bold"),
+        plot.caption = element_text(size = 9, color = "black", face = "italic"),
+        # remove legend so its zoomed in, then add legend seperately
+        #legend.position = "none"
+        #legend.position = c(0.2, 0.9))  
+  )
+```
+
+
+
+### By Brock et al. herd-type
+
+
+```{r}
+#| label: fig-nosenttoslaughterbrock
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 8 
+#| fig.cap: "Overall number of animals sent to slaughter by Brock et al."
+
+no_animals_sent_to_slaughter_brock_herd_type <- healthy_lesion_rate %>% 
+  group_by(year, herd_type_ml_description) %>% 
+  summarise(no_of_animals_sent_to_slaughter = sum(no_movements_to_factory)) %>% 
+  ungroup()
+
+
+ggplot(no_animals_sent_to_slaughter_brock_herd_type, aes(x = year, y = no_of_animals_sent_to_slaughter, color = herd_type_ml_description)) +
+  geom_line(linewidth = 2) +
+  labs(x = "Year", 
+       y = "No animals sent to slaughter", 
+       title = "Total number of animals sent to slaughter",
+       caption = paste0("Only includes animals sent to slaughter-houses or abattoirs ",
+                        "(animals sent to knackeries are excluded here as they are not routinely inspected for lesions)")) +
+  #caption = paste0(all_lesions_vector)
+  theme_jamie +
+  scale_colour_nejm(name = "Herd-type") +
+  scale_y_continuous(labels = scales::comma) +
+  scale_x_continuous(breaks = nth_element(c(unique(no_animals_sent_to_slaughter_brock_herd_type$year)), 1, 2)) +
+  
+  #scale_color_simpsons(name = "Quartile type") +
+  # need this for bold headings
+  theme(title = element_text(size = 18, face = "bold"),
+        legend.text = element_markdown(size = 16),
+        plot.caption.position = "plot",
+        legend.title = element_text(size = 16, face = "bold"),
+        plot.caption = element_text(size = 9, color = "black", face = "italic"),
+        # remove legend so its zoomed in, then add legend seperately
+        #legend.position = "none"
+        #legend.position = c(0.2, 0.9))  
+  )
+
+```
+
+
+
+
+$~$ $~$
+
+------------------------------------------------------------------------
+
+$~$ $~$
+
+\newpage
+
+Monthly:
+
+```{r}
+#| label: fig-nosenttoslaughterbrockmonth
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 8 
+#| fig.cap: "Overall number of animals sent to slaughter by Brock et al. and month"
+
+no_animals_sent_to_slaughter_brock_herd_type_month <- healthy_lesion_rate_month %>% 
+  group_by(year_month, herd_type_ml_description) %>% 
+  summarise(no_of_animals_sent_to_slaughter = sum(no_movements_to_factory)) %>% 
+  ungroup() %>% 
+  mutate(year = year(year_month),
+         year_f = as.character(year)) %>% 
+  filter(!is.na(herd_type_ml_description))
+
+
+# extract min/max dates for geom_react
+min_max_dates_df <- no_animals_sent_to_slaughter_brock_herd_type_month %>% 
+  group_by(year) %>% 
+  summarise(min_date = min(year_month),
+            # add 1 year lubridate
+            max_date = min_date %m+% years(1),
+            # subtract 1 days
+            max_date = max_date %m-% days(1)) %>% 
+  ungroup() %>% 
+  mutate(year_f = as.character(year))
+
+
+# min/max prevalence for geom_react
+# min_prev <- min(healthy_lesion_rate_all_month_by_type$lesion_rate)
+# max_prev <- max(healthy_lesion_rate_all_month_by_type$lesion_rate)
+min_max_dates_df$min_prev <- min(no_animals_sent_to_slaughter_brock_herd_type_month$no_of_animals_sent_to_slaughter)
+min_max_dates_df$max_prev <- max(no_animals_sent_to_slaughter_brock_herd_type_month$no_of_animals_sent_to_slaughter)
+
+ggplot(no_animals_sent_to_slaughter_brock_herd_type_month, aes(x = year_month, y = no_of_animals_sent_to_slaughter, color = herd_type_ml_description)) +
+  geom_line(linewidth = 2) +
+  geom_rect(
+    data = min_max_dates_df, 
+    mapping = aes(
+      xmin = min_date,
+      xmax = max_date,
+      ymin = min_prev,
+      ymax = max_prev,
+      fill = year_f),
+    inherit.aes = FALSE,
+    #fill = df2$colour_me,
+    alpha = 0.2) +
+  scale_fill_manual(name = "Year", values = tableau_color_pal('Tableau 20')(n_distinct(no_animals_sent_to_slaughter_brock_herd_type_month$year))) +
+  
+  labs(x = "Year", 
+       y = "No animals sent to slaughter", 
+       title = "Total number of animals sent to slaughter",
+       caption = paste0("Only includes animals sent to slaughter-houses or abattoirs ",
+                        "(animals sent to knackeries are excluded here as they are not routinely inspected for lesions)")) +
+  #caption = paste0(all_lesions_vector)
+  theme_jamie +
+  scale_colour_nejm(name = "Herd-type") +
+  scale_y_continuous(labels = scales::comma) +
+  scale_x_continuous(breaks = nth_element(ymd(unique(no_animals_sent_to_slaughter_ahcs_herd_type_month$year), truncated = 2L), 1, 1)) +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) + 
+  
+  #scale_color_simpsons(name = "Quartile type") +
+  # need this for bold headings
+  theme(title = element_text(size = 18, face = "bold"),
+        legend.text = element_markdown(size = 16),
+        plot.caption.position = "plot",
+        legend.title = element_text(size = 16, face = "bold"),
+        plot.caption = element_text(size = 9, color = "black", face = "italic"),
+        # remove legend so its zoomed in, then add legend seperately
+        #legend.position = "none"
+        #legend.position = c(0.2, 0.9))  
+  )
+```
+
+------------------------------------------------------------------------
+
+Interesting that beef (which are primarly suckler herds) seem to be sending less animals to slaughter and are less erratic in terms of sending pattern in a year (in recent years).
+
+Possible reasons:
+
+- The number of beef herds are going down in general
+- They are sending their animals to fatteners/traders
+
+
+Dairy send most animals to slaughter around drying off period (60 days prior to calving)
+
+
+$~$ $~$
+
+------------------------------------------------------------------------
+
+$~$ $~$
+
+\newpage
+
+
+
+## Overall lesion prevalence at routine slaughter animals
+
+### All
+
+```{r}
+#| label: fig-allhealthylesionprev
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 8 
+#| fig.cap: "Overall lesion prevalence at routine slaughter."
+
+# *************************************************************************
+# lesion rate overall  ----
+# *************************************************************************
+
+healthy_lesion_rate_all <- healthy_lesion_rate %>% 
+  group_by(year) %>% 
+  summarise_at(vars(names_cont(healthy_lesion_rate, "no_")),
+               list(~sum(.))) %>% 
+  ungroup() %>% 
+  mutate(lesion_rate_overall = no_of_lab_only/no_of_moves_to_factory_not_skin_gif,
+         lesion_rate_chest = no_of_chest_lesions/no_of_moves_to_factory_not_skin_gif,
+         lesion_rate_head = no_of_head_lesions/no_of_moves_to_factory_not_skin_gif,
+         lesion_rate_other = no_of_other_lesions/no_of_moves_to_factory_not_skin_gif,
+         lesion_rate_multiple_lesions = no_of_multiple_lesions/no_of_moves_to_factory_not_skin_gif) 
+
+
+
+ggplot(healthy_lesion_rate_all, aes(x = year, y = lesion_rate_overall, color = "#4E79A7")) +
+  geom_line(linewidth = 2) +
+  labs(x = "Year", 
+       y = "Lesion prevalence", 
+       title = title_lesions,
+       caption = paste0("All animals included \n",
+                        all_lesions_vector, "\n",
+                        healthy_definition)) +
+       #caption = paste0(all_lesions_vector)
+  theme_jamie +
+  scale_colour_nejm() +
+  scale_y_continuous(labels = scales::label_percent(scale = 100)) +
+  scale_x_continuous(breaks = nth_element(c(unique(healthy_lesion_rate_all$year)), 1, 2)) +
+  
+  #scale_color_simpsons(name = "Quartile type") +
+  # need this for bold headings
+  theme(title = element_text(size = 18, face = "bold"),
+        legend.text = element_markdown(size = 16),
+        plot.caption.position = "plot",
+        legend.title = element_text(size = 16, face = "bold"),
+        plot.caption = element_text(size = 9, color = "black", face = "italic"),
+        # remove legend so its zoomed in, then add legend seperately
+        legend.position = "none"
+        #legend.position = c(0.2, 0.9))  
+  )
+```
+
+$~$ $~$
+
+------------------------------------------------------------------------
+
+$~$ $~$
+
+\newpage
+
+Monthly version:
+
+```{r}
+#| label: fig-allhealthylesionprevmonthly
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 8 
+#| fig.cap: "Overall lesion prevalence at routine slaughter by month."
+
+# *************************************************************************
+# lesion rate overall  ----
+# *************************************************************************
+
+healthy_lesion_rate_all_month <- healthy_lesion_rate_month %>% 
+  group_by(year_month) %>% 
+  summarise_at(vars(names_cont(healthy_lesion_rate, "no_")),
+               list(~sum(.))) %>% 
+  ungroup() %>% 
+  mutate(lesion_rate_overall = no_of_lab_only/no_of_moves_to_factory_not_skin_gif,
+         lesion_rate_chest = no_of_chest_lesions/no_of_moves_to_factory_not_skin_gif,
+         lesion_rate_head = no_of_head_lesions/no_of_moves_to_factory_not_skin_gif,
+         lesion_rate_other = no_of_other_lesions/no_of_moves_to_factory_not_skin_gif,
+         lesion_rate_multiple_lesions = no_of_multiple_lesions/no_of_moves_to_factory_not_skin_gif) %>% 
+  mutate(year = year(year_month),
+         year_f = as.character(year))
+
+
+
+p <- ggplot(healthy_lesion_rate_all_month, aes(x = year_month, y = lesion_rate_overall, color = year_f)) +
+  geom_line(linewidth = 2) +
+  labs(x = "Year", 
+       y = "Lesion prevalence", 
+       title = title_lesions,
+       caption = paste0("All animals included\n",
+                        all_lesions_vector, "\n",
+                        healthy_definition)) +
+  #caption = paste0(all_lesions_vector)
+  theme_jamie +
+  scale_color_manual(name = "Year", values = tableau_color_pal('Tableau 20')(n_distinct(healthy_lesion_rate_all_month$year))) +
+  
+  #scale_color_nejm() +
+  scale_y_continuous(labels = scales::label_percent(scale = 100)) +
+  #scale_x_continuous(breaks = nth_element(ymd(unique(healthy_lesion_rate_all_month$year), truncated = 2L), 1, 2)) +
+  scale_x_continuous(breaks = nth_element(ymd(unique(healthy_lesion_rate_all_month$year), truncated = 2L), 1, 1)) +
+  theme_45_x +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) + 
+
+  #scale_color_simpsons(name = "Quartile type") +
+  # need this for bold headings
+  theme(title = element_text(size = 18, face = "bold"),
+        legend.text = element_markdown(size = 16),
+        plot.caption.position = "plot",
+        legend.title = element_text(size = 16, face = "bold"),
+        plot.caption = element_text(size = 9, color = "black", face = "italic"),
+        # remove legend so its zoomed in, then add legend seperately
+        legend.position = "top"
+        #legend.position = c(0.2, 0.9))  
+  ) +
+  # legend is 1 row
+  guides(colour = guide_legend(nrow = 1))
+ggplotly(p)
+
+```
+
+$~$ $~$
+
+------------------------------------------------------------------------
+
+$~$ $~$
+
+\newpage
+
+
+<!---BLOCK_LANDSCAPE_START--->
+
+### All by lesion type
+
+
+```{r}
+#| label: fig-allhealthylesiontypesprev
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 8 
+#| fig.cap: "Overall lesion prevalence at routine slaughter by lesion location."
+
+# by lesion type
+healthy_lesion_rate_all_by_type <- healthy_lesion_rate_all %>%
+  select(year, contains("lesion_rate_")) %>%
+  select(-lesion_rate_overall) %>% 
+  #rename(c("wt name" = "wt", "drat name" = "drat")) %>%
+  #mutate(time = row_number()) %>%
+  pivot_longer(
+    cols = contains("lesion_rate_"),
+    names_to = "lesion_type",
+    values_to = "lesion_rate"
+  ) %>% 
+  mutate(lesion_type = case_when(lesion_type == "lesion_rate_chest" ~ "Chest",
+                                 lesion_type == "lesion_rate_head" ~ "Head",
+                                 lesion_type == "lesion_rate_other" ~ "Other",
+                                 lesion_type == "lesion_rate_multiple_lesions" ~ "Multiple lesions"))
+# healthy_lesion_rate_all_by_type
+
+# remove unknown herd type (although these are interesting in themselves)
+ggplot(healthy_lesion_rate_all_by_type, aes(x = year, y = lesion_rate, color = lesion_type)) +
+  geom_line(linewidth = 2) +
+  labs(x = "Year", 
+       y = "Lesion prevalence", 
+       title = title_lesions,
+       caption = paste0(lesion_types_text_vector,
+                        healthy_definition)) +
+       #caption = paste0(lesion_types_text_vector)) +
+  theme_jamie +
+  #scale_colour_nejm(name = "Lesion type") +
+  ggsci::scale_color_simpsons(name = "Lesion type") +
+  scale_y_continuous(labels = scales::label_percent(scale = 100)) +
+  scale_x_continuous(breaks = nth_element(c(unique(healthy_lesion_rate_all_by_type$year)), 1, 2)) +
+  
+  #scale_color_simpsons(name = "Quartile type") +
+  # need this for bold headings
+  theme(title = element_text(size = 18, face = "bold"),
+        legend.text = element_markdown(size = 16),
+        plot.caption.position = "plot",
+        legend.title = element_text(size = 16, face = "bold"),
+        plot.caption = element_text(size = 9, color = "black", face = "italic"),
+        # remove legend so its zoomed in, then add legend seperately
+        #legend.position = "none"
+        #legend.position = c(0.2, 0.9))  
+  )
+```
+
+
+$~$ $~$
+
+------------------------------------------------------------------------
+
+$~$ $~$
+
+\newpage
+
+Monthly version:
+
+```{r}
+#| label: fig-allhealthylesiontypesprevmonth
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 8 
+#| fig.cap: "Overall lesion prevalence at routine slaughter by lesion location by month."
+
+# by lesion type ----
+healthy_lesion_rate_all_month_by_type <- healthy_lesion_rate_all_month %>%
+  select(year_month , contains("lesion_rate_")) %>%
+  select(-lesion_rate_overall) %>% 
+  #rename(c("wt name" = "wt", "drat name" = "drat")) %>%
+  #mutate(time = row_number()) %>%
+  pivot_longer(
+    cols = contains("lesion_rate_"),
+    names_to = "lesion_type",
+    values_to = "lesion_rate"
+  ) %>% 
+  mutate(lesion_type = case_when(lesion_type == "lesion_rate_chest" ~ "Chest",
+                                 lesion_type == "lesion_rate_head" ~ "Head",
+                                 lesion_type == "lesion_rate_other" ~ "Other",
+                                 lesion_type == "lesion_rate_multiple_lesions" ~ "Multiple lesions")) %>% 
+  mutate(year = year(year_month),
+         year_f = as.character(year))
+# healthy_lesion_rate_all_by_type
+
+
+# extract min/max dates for geom_react
+min_max_dates_df <- healthy_lesion_rate_all_month_by_type %>% 
+  group_by(year) %>% 
+  summarise(min_date = min(year_month),
+            # add 1 year lubridate
+            max_date = min_date %m+% years(1),
+            # subtract 1 days
+            max_date = max_date %m-% days(1)) %>% 
+  ungroup() %>% 
+  mutate(year_f = as.character(year))
+
+
+# min/max prevalence for geom_react
+# min_prev <- min(healthy_lesion_rate_all_month_by_type$lesion_rate)
+# max_prev <- max(healthy_lesion_rate_all_month_by_type$lesion_rate)
+min_max_dates_df$min_prev <- min(healthy_lesion_rate_all_month_by_type$lesion_rate)
+min_max_dates_df$max_prev <- max(healthy_lesion_rate_all_month_by_type$lesion_rate)
+
+
+
+# remove unknown herd type (although these are interesting in themselves)
+ggplot(healthy_lesion_rate_all_month_by_type, aes(x = year_month, y = lesion_rate, color = lesion_type)) +
+  geom_line(linewidth = 2) +
+  geom_rect(
+    data = min_max_dates_df, 
+    mapping = aes(
+      xmin = min_date,
+      xmax = max_date,
+      ymin = min_prev,
+      ymax = max_prev,
+      fill = year_f),
+      inherit.aes = FALSE,
+      #fill = df2$colour_me,
+      alpha = 0.2) +
+  scale_fill_manual(name = "Year", values = tableau_color_pal('Tableau 20')(n_distinct(healthy_lesion_rate_all_month_by_type$year))) +
+  labs(x = "Year", 
+       y = "Lesion prevalence", 
+       title = title_lesions,
+       caption = paste0(lesion_types_text_vector,
+                        healthy_definition)) +
+  #caption = paste0(lesion_types_text_vector)) +
+  theme_jamie +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) + 
+  scale_color_simpsons(name = "Lesion type") +
+  scale_y_continuous(labels = scales::label_percent(scale = 100)) +
+  #scale_x_continuous(breaks = nth_element(c(unique(healthy_lesion_rate_all_by_type$year)), 1, 2)) +
+  scale_x_continuous(breaks = nth_element(ymd(unique(healthy_lesion_rate_all_month$year), truncated = 2L), 1, 1)) +
+  
+  #scale_color_simpsons(name = "Quartile type") +
+  # need this for bold headings
+  theme(title = element_text(size = 18, face = "bold"),
+        legend.text = element_markdown(size = 16),
+        plot.caption.position = "plot",
+        legend.title = element_text(size = 16, face = "bold"),
+        plot.caption = element_text(size = 9, color = "black", face = "italic"),
+        # remove legend so its zoomed in, then add legend seperately
+        #legend.position = "none"
+        #legend.position = c(0.2, 0.9))  
+  )
+```
+
+
+$~$ $~$
+
+------------------------------------------------------------------------
+
+$~$ $~$
+
+\newpage
+
+## AHCS herd-type 
+
+For reference, this is the proportion of different herd-types:
+
+```{r}
+#| label: tbl-ahcsherdtype
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+prop_herd_type_table <- split_tabyl_df_wide_quiet(healthy_lesion_rate, year, herd_type) %>% 
+filter(!is.na(herd_type))
+header_names <- setNames(c("Herd-type", years_for_study),
+                         names(prop_herd_type_table))
+ft <- flextable(prop_herd_type_table) %>% 
+  align_text_col(align = "center") %>% 
+  align(i = NULL, j = 1, align = "left", part = "body") %>% 
+  bold(part = "header") %>%  # bold header
+  set_header_labels(values = header_names) %>% 
+  bold(j = c(1, 1)) %>% 
+  set_caption(paste0("The number and proportion of different herd-types (as classified by the AHCS classification) by year")) %>% 
+  #bold(i = 1) %>%  # bold header
+  add_footer_row(values = glue::glue("AHCS: Animal Health Computer System"),
+                 colwidths = length(prop_herd_type_table)) %>% 
+  #width of column if too narrow (only visable in word, not )
+  width(width = 2) %>% 
+  fontsize(part = "footer", size = 10) %>% 
+  #title autonum = autonum numbering in word if needed
+  autofit()  %>% 
+  set_table_properties(layout = "autofit")
+ft
+```
+
+
+### Lesion prevalence 
+
+```{r}
+#| label: fig-ahcshealtylesion
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 8 
+#| fig.cap: "Overall lesion prevalence at routine slaughter by AHCS herd-type."
+
+
+# *************************************************************************
+# lesion rate herd type AHCS ----
+# *************************************************************************
+
+healthy_lesion_rate_ahcs_herd_type <- healthy_lesion_rate %>% 
+  group_by(year, herd_type) %>% 
+  summarise_at(vars(names_cont(healthy_lesion_rate, "no_")),
+               list(~sum(.))) %>% 
+  ungroup() %>% 
+  mutate(lesion_rate_overall = no_of_lab_only/no_of_moves_to_factory_not_skin_gif,
+         lesion_rate_chest = no_of_chest_lesions/no_of_moves_to_factory_not_skin_gif,
+         lesion_rate_head = no_of_head_lesions/no_of_moves_to_factory_not_skin_gif,
+         lesion_rate_other = no_of_other_lesions/no_of_moves_to_factory_not_skin_gif,
+         lesion_rate_multiple_lesions = no_of_multiple_lesions/no_of_moves_to_factory_not_skin_gif) %>% 
+  filter(!is.na(herd_type))
+
+
+ggplot(healthy_lesion_rate_ahcs_herd_type, aes(x = year, y = lesion_rate_overall, color = herd_type)) +
+  geom_line(linewidth = 2) +
+  labs(x = "Year", 
+       y = "Lesion prevalence", 
+       title = title_lesions_ahcs,
+       caption = paste0(all_lesions_vector, " \n",
+                 healthy_definition)) +
+  theme_jamie +
+  scale_colour_nejm(name = "Herd-type") +
+  scale_y_continuous(labels = scales::label_percent(scale = 100)) +
+  scale_x_continuous(breaks = nth_element(c(unique(healthy_lesion_rate_ahcs_herd_type$year)), 1, 2)) +
+
+  #scale_color_simpsons(name = "Quartile type") +
+  # need this for bold headings
+  theme(title = element_text(size = 18, face = "bold"),
+        legend.text = element_markdown(size = 16),
+        plot.caption.position = "plot",
+        legend.title = element_text(size = 16, face = "bold"),
+        plot.caption = element_text(size = 9, color = "black", face = "italic"),
+        # remove legend so its zoomed in, then add legend seperately
+        #legend.position = "none"
+        #legend.position = c(0.2, 0.9))  
+  )
+```
+
+
+Why is suckler/beef higher than dairy (if we think of dairy as being the primary problem in terms of transmission e.g. dairy intensification etc)?
+
+Possible explanations:
+
+- Possibly a consequence of testing
+- Dairy vs suckler/beef testing is completely different 
+- Suckler herds are wilder and harder to test, dairy are usually much easier to test 
+- Possibly more incentive in a large dairy herd to quickly get rid of the problem before it goes through the herd (sucklers will be more out in the open and possibly less chance of spreading quickly)
+- Infection is probably caught earlier in dairy herds (as they are easier to test and more `r gif_string` testing is also done which should get earlier infection)
+ 
+
+$~$ $~$
+
+------------------------------------------------------------------------
+
+$~$ $~$
+
+\newpage
+
+Monthly version:
+
+```{r}
+#| label: fig-ahcshealtylesionmonth
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 8 
+#| fig.cap: "Overall lesion prevalence at routine slaughter by AHCS herd-type and month."
+
+# *************************************************************************
+# lesion rate herd type AHCS ----
+# *************************************************************************
+
+healthy_lesion_rate_ahcs_herd_type_month <- healthy_lesion_rate_month %>% 
+  group_by(year_month, herd_type) %>% 
+  summarise_at(vars(names_cont(healthy_lesion_rate, "no_")),
+               list(~sum(.))) %>% 
+  ungroup() %>% 
+  mutate(lesion_rate_overall = no_of_lab_only/no_of_moves_to_factory_not_skin_gif,
+         lesion_rate_chest = no_of_chest_lesions/no_of_moves_to_factory_not_skin_gif,
+         lesion_rate_head = no_of_head_lesions/no_of_moves_to_factory_not_skin_gif,
+         lesion_rate_other = no_of_other_lesions/no_of_moves_to_factory_not_skin_gif,
+         lesion_rate_multiple_lesions = no_of_multiple_lesions/no_of_moves_to_factory_not_skin_gif) %>% 
+  filter(!is.na(herd_type)) %>% 
+  mutate(year = year(year_month),
+         year_f = as.character(year))  
+
+
+# extract min/max dates for geom_react
+min_max_dates_df <- healthy_lesion_rate_ahcs_herd_type_month %>% 
+  group_by(year) %>% 
+  summarise(min_date = min(year_month),
+            # add 1 year lubridate
+            max_date = min_date %m+% years(1),
+            # subtract 1 days
+            max_date = max_date %m-% days(1)) %>% 
+  ungroup() %>% 
+  mutate(year_f = as.character(year))
+
+
+# min/max prevalence for geom_react
+# min_prev <- min(healthy_lesion_rate_all_month_by_type$lesion_rate)
+# max_prev <- max(healthy_lesion_rate_all_month_by_type$lesion_rate)
+min_max_dates_df$min_prev <- min(healthy_lesion_rate_ahcs_herd_type_month$lesion_rate_overall)
+min_max_dates_df$max_prev <- max(healthy_lesion_rate_ahcs_herd_type_month$lesion_rate_overall)
+
+
+
+ggplot(healthy_lesion_rate_ahcs_herd_type_month, aes(x = year_month, y = lesion_rate_overall, color = herd_type)) +
+  geom_line(linewidth = 1.5, alpha = 0.8) +
+  geom_rect(
+    data = min_max_dates_df, 
+    mapping = aes(
+      xmin = min_date,
+      xmax = max_date,
+      ymin = min_prev,
+      ymax = max_prev,
+      fill = year_f),
+    inherit.aes = FALSE,
+    #fill = df2$colour_me,
+    alpha = 0.2) +
+  scale_fill_manual(name = "Year", values = tableau_color_pal('Tableau 20')(n_distinct(healthy_lesion_rate_ahcs_herd_type_month$year))) +
+  labs(x = "Year", 
+       y = "Lesion prevalence", 
+       title = title_lesions_ahcs,
+       caption = paste0(all_lesions_vector, " \n",
+                        healthy_definition)) +
+  theme_jamie +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) + 
+  scale_colour_nejm(name = "Herd-type") +
+  scale_y_continuous(labels = scales::label_percent(scale = 100)) +
+  scale_x_continuous(breaks = nth_element(ymd(unique(healthy_lesion_rate_ahcs_herd_type_month$year), truncated = 2L), 1, 1)) +
+  
+  #scale_color_simpsons(name = "Quartile type") +
+  # need this for bold headings
+  theme(title = element_text(size = 18, face = "bold"),
+        legend.text = element_markdown(size = 16),
+        plot.caption.position = "plot",
+        legend.title = element_text(size = 16, face = "bold"),
+        plot.caption = element_text(size = 9, color = "black", face = "italic"),
+        # remove legend so its zoomed in, then add legend seperately
+        #legend.position = "none"
+        #legend.position = c(0.2, 0.9))  
+  )
+```
+
+
+$~$ $~$
+
+------------------------------------------------------------------------
+
+$~$ $~$
+
+\newpage
+
+### By lesion type
+
+```{r}
+#| label: fig-ahcshealtylesionbytype
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 8 
+#| fig.cap: "Overall lesion prevalence at routine slaughter by AHCS herd-type and lesion location."
+
+# by lesion type
+healthy_lesion_rate_ahcs_herd_type_by_type <- healthy_lesion_rate_ahcs_herd_type %>%
+  select(year, herd_type, contains("lesion_rate_")) %>%
+  select(-lesion_rate_overall) %>% 
+  #rename(c("wt name" = "wt", "drat name" = "drat")) %>%
+  #mutate(time = row_number()) %>%
+  pivot_longer(
+    cols = contains("lesion_rate_"),
+    names_to = "lesion_type",
+    values_to = "lesion_rate"
+  ) %>% 
+  mutate(lesion_type = case_when(lesion_type == "lesion_rate_chest" ~ "Chest",
+                                 lesion_type == "lesion_rate_head" ~ "Head",
+                                 lesion_type == "lesion_rate_other" ~ "Other",
+                                 lesion_type == "lesion_rate_multiple_lesions" ~ "Multiple lesions"))
+#healthy_lesion_rate_ahcs_herd_type_by_type
+
+
+# remove unknown herd type (although these are interesting in themselves)
+ggplot(healthy_lesion_rate_ahcs_herd_type_by_type, aes(x = year, y = lesion_rate, color = lesion_type)) +
+  geom_line(linewidth = 2) +
+  labs(x = "Year", 
+       y = "Lesion prevalence", 
+       title = title_lesions_ahcs,
+       caption = paste0(lesion_types_text_vector,
+                        healthy_definition)) +
+  facet_wrap(~herd_type, dir = "h", ncol = 2) +
+  
+  #caption = paste0(lesion_types_text_vector)) +
+  theme_jamie +
+  scale_color_simpsons(name = "Lesion type") +
+  scale_y_continuous(labels = scales::label_percent(scale = 100)) +
+  scale_x_continuous(breaks = nth_element(c(unique(healthy_lesion_rate_all_by_type$year)), 1, 2)) +
+  
+  #scale_color_simpsons(name = "Quartile type") +
+  # need this for bold headings
+  theme(title = element_text(size = 18, face = "bold"),
+        legend.text = element_markdown(size = 16),
+        plot.caption.position = "plot",
+        legend.title = element_text(size = 16, face = "bold"),
+        plot.caption = element_text(size = 9, color = "black", face = "italic"),
+        # remove legend so its zoomed in, then add legend seperately
+        #legend.position = "none"
+        #legend.position = c(0.2, 0.9))  
+  )
+```
+
+$~$ $~$
+
+------------------------------------------------------------------------
+
+$~$ $~$
+
+Monthly version:
+
+```{r}
+#| label: fig-ahcshealtylesionbytypemonth
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 8 
+#| fig.cap: "Overall lesion prevalence at routine slaughter by AHCS herd-type and lesion location by month."
+
+healthy_lesion_rate_ahcs_herd_type_by_type_month <- healthy_lesion_rate_ahcs_herd_type_month %>%
+  select(year_month, herd_type, contains("lesion_rate_")) %>%
+  select(-lesion_rate_overall) %>% 
+  #rename(c("wt name" = "wt", "drat name" = "drat")) %>%
+  #mutate(time = row_number()) %>%
+  pivot_longer(
+    cols = contains("lesion_rate_"),
+    names_to = "lesion_type",
+    values_to = "lesion_rate"
+  ) %>% 
+  mutate(lesion_type = case_when(lesion_type == "lesion_rate_chest" ~ "Chest",
+                                 lesion_type == "lesion_rate_head" ~ "Head",
+                                 lesion_type == "lesion_rate_other" ~ "Other",
+                                 lesion_type == "lesion_rate_multiple_lesions" ~ "Multiple lesions")) %>% 
+  mutate(year = year(year_month),
+         year_f = as.character(year))
+# healthy_lesion_rate_ahcs_herd_type_by_type_month
+
+
+# extract min/max dates for geom_react
+min_max_dates_df <- healthy_lesion_rate_ahcs_herd_type_by_type_month %>% 
+  group_by(year) %>% 
+  summarise(min_date = min(year_month),
+            # add 1 year lubridate
+            max_date = min_date %m+% years(1),
+            # subtract 1 days
+            max_date = max_date %m-% days(1)) %>% 
+  ungroup() %>% 
+  mutate(year_f = as.character(year))
+
+
+# min/max prevalence for geom_react
+# min_prev <- min(healthy_lesion_rate_all_month_by_type$lesion_rate)
+# max_prev <- max(healthy_lesion_rate_all_month_by_type$lesion_rate)
+min_max_dates_df$min_prev <- min(healthy_lesion_rate_ahcs_herd_type_by_type_month$lesion_rate)
+min_max_dates_df$max_prev <- max(healthy_lesion_rate_ahcs_herd_type_by_type_month$lesion_rate)
+
+
+
+# remove unknown herd type (although these are interesting in themselves)
+ggplot(healthy_lesion_rate_ahcs_herd_type_by_type_month, aes(x = year_month, y = lesion_rate, color = lesion_type)) +
+  geom_line(linewidth = 1.5) +
+  geom_rect(
+    data = min_max_dates_df, 
+    mapping = aes(
+      xmin = min_date,
+      xmax = max_date,
+      ymin = min_prev,
+      ymax = max_prev,
+      fill = year_f),
+    inherit.aes = FALSE,
+    #fill = df2$colour_me,
+    alpha = 0.2) +
+  scale_fill_manual(name = "Year", values = tableau_color_pal('Tableau 20')(n_distinct(healthy_lesion_rate_ahcs_herd_type_by_type_month$year))) +
+  labs(x = "Year", 
+       y = "Lesion prevalence", 
+       title = title_lesions_ahcs,
+       caption = paste0(lesion_types_text_vector,
+                        healthy_definition)) +
+  facet_wrap(~herd_type, dir = "h", ncol = 2) +
+  
+  #caption = paste0(lesion_types_text_vector)) +
+  theme_jamie +
+  scale_color_simpsons(name = "Lesion type") +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) + 
+  scale_y_continuous(labels = scales::label_percent(scale = 100)) +
+  scale_x_continuous(breaks = nth_element(ymd(unique(healthy_lesion_rate_ahcs_herd_type_by_type_month$year), truncated = 2L), 1, 2)) +
+  
+  #scale_color_simpsons(name = "Quartile type") +
+  # need this for bold headings
+  theme(title = element_text(size = 18, face = "bold"),
+        legend.text = element_markdown(size = 16),
+        plot.caption.position = "plot",
+        legend.title = element_text(size = 16, face = "bold"),
+        plot.caption = element_text(size = 9, color = "black", face = "italic"),
+        # remove legend so its zoomed in, then add legend seperately
+        #legend.position = "none"
+        #legend.position = c(0.2, 0.9))  
+  )
+```
+
+
+
+$~$ $~$
+
+------------------------------------------------------------------------
+
+$~$ $~$
+
+\newpage
+
+## Brock et al. herd-type 
+
+For reference, this is the proportion of different herd-types:
+
+```{r}
+#| label: tbl-brockherdtype
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+prop_herd_type_brock_table <- split_tabyl_df_wide_quiet(healthy_lesion_rate, year, herd_type_ml_description) %>% 
+filter(!is.na(herd_type_ml_description))
+header_names <- setNames(c("Herd-type", years_for_study),
+                         names(prop_herd_type_brock_table))
+ft <- flextable(prop_herd_type_brock_table) %>% 
+  align_text_col(align = "center") %>% 
+  align(i = NULL, j = 1, align = "left", part = "body") %>% 
+  bold(part = "header") %>%  # bold header
+  set_header_labels(values = header_names) %>% 
+  bold(j = c(1, 1)) %>% 
+  set_caption(paste0("The number and proportion of different herd-types (as classified by the AHCS classification) by year")) %>% 
+  #bold(i = 1) %>%  # bold header
+  add_footer_row(values = glue::glue("AHCS: Animal Health Computer System"),
+                 colwidths = length(prop_herd_type_brock_table)) %>% 
+  #width of column if too narrow (only visable in word, not )
+  width(width = 2) %>% 
+  fontsize(part = "footer", size = 10) %>% 
+  #title autonum = autonum numbering in word if needed
+  autofit()  %>% 
+  set_table_properties(layout = "autofit")
+ft
+```
+
+### Lesion prevalence 
+
+
+```{r}
+#| label: fig-brockhealtylesion
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 8 
+#| fig.cap: "Overall lesion prevalence at routine slaughter by Brock et al. herd-type."
+
+# *************************************************************************
+# lesion rate herd type Brock et al ----
+# *************************************************************************
+
+healthy_lesion_rate_brock_herd_type <- healthy_lesion_rate %>% 
+  group_by(year, herd_type_ml_description) %>% 
+  summarise_at(vars(names_cont(healthy_lesion_rate, "no_")),
+               list(~sum(.))) %>% 
+  ungroup() %>% 
+  mutate(lesion_rate_overall = no_of_lab_only/no_of_moves_to_factory_not_skin_gif,
+         lesion_rate_chest = no_of_chest_lesions/no_of_moves_to_factory_not_skin_gif,
+         lesion_rate_head = no_of_head_lesions/no_of_moves_to_factory_not_skin_gif,
+         lesion_rate_other = no_of_other_lesions/no_of_moves_to_factory_not_skin_gif,
+         lesion_rate_multiple_lesions = no_of_multiple_lesions/no_of_moves_to_factory_not_skin_gif) %>% 
+  filter(!is.na(herd_type_ml_description))
+
+
+
+ggplot(healthy_lesion_rate_brock_herd_type, aes(x = year, y = lesion_rate_overall, color = herd_type_ml_description)) +
+  geom_line(linewidth = 2) +
+  labs(x = "Year", 
+       y = "Lesion prevalence", 
+       title = title_lesions_brock,
+       caption = paste0(all_lesions_vector, " \n",
+                        healthy_definition)) +
+  theme_jamie +
+  scale_colour_nejm(name = "Brock et al. herd type") +
+  scale_y_continuous(labels = scales::label_percent(scale = 100)) +
+  scale_x_continuous(breaks = nth_element(c(unique(healthy_lesion_rate_brock_herd_type$year)), 1, 2)) +
+  
+  #scale_color_simpsons(name = "Quartile type") +
+  # need this for bold headings
+  theme(title = element_text(size = 18, face = "bold"),
+        legend.text = element_markdown(size = 16),
+        plot.caption.position = "plot",
+        legend.title = element_text(size = 16, face = "bold"),
+        plot.caption = element_text(size = 9, color = "black", face = "italic"),
+        # remove legend so its zoomed in, then add legend seperately
+        #legend.position = "none"
+        #legend.position = c(0.2, 0.9))  
+  )
+```
+
+
+
+$~$ $~$
+
+------------------------------------------------------------------------
+
+$~$ $~$
+
+\newpage
+
+
+
+Redone **excluding** `Unknown` category:
+
+
+```{r}
+#| label: fig-brockhealtylesionunknownremoved
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 8 
+#| fig.cap: "Overall lesion prevalence at routine slaughter by Brock et al. herd-type."
+
+# remove unknown herd type (although these are interesting in themselves)
+ggplot(healthy_lesion_rate_brock_herd_type %>% 
+         filter(herd_type_ml_description != "Unknown"), aes(x = year, y = lesion_rate_overall, color = herd_type_ml_description)) +
+  geom_line(linewidth = 2) +
+  labs(x = "Year", 
+       y = "Lesion prevalence", 
+       title = title_lesions_brock,
+       caption = paste0(all_lesions_vector, " \n",
+                        healthy_definition)) +
+  theme_jamie +
+  scale_colour_nejm(name = "Brock et al. herd type") +
+  scale_y_continuous(labels = scales::label_percent(scale = 100)) +
+  scale_x_continuous(breaks = nth_element(c(unique(healthy_lesion_rate_brock_herd_type$year)), 1, 2)) +
+  
+  #scale_color_simpsons(name = "Quartile type") +
+  # need this for bold headings
+  theme(title = element_text(size = 18, face = "bold"),
+        legend.text = element_markdown(size = 16),
+        plot.caption.position = "plot",
+        legend.title = element_text(size = 16, face = "bold"),
+        plot.caption = element_text(size = 9, color = "black", face = "italic"),
+        # remove legend so its zoomed in, then add legend seperately
+        #legend.position = "none"
+        #legend.position = c(0.2, 0.9))  
+  )
+
+
+# why isnt dairy higher than beef?
+# Eamonn - possible age effects here in dairy? Need to ask industry guys this
+```
+
+$~$ $~$
+
+------------------------------------------------------------------------
+
+$~$ $~$
+
+\newpage
+
+Monthly version:
+
+
+```{r}
+#| label: fig-brockhealtylesionunknownremovedmonth
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 8 
+#| fig.cap: "Overall lesion prevalence at routine slaughter by Brock et al. herd-type and month."
+
+healthy_lesion_rate_brock_herd_type_month <- healthy_lesion_rate_month %>% 
+  group_by(year_month, herd_type_ml_description) %>% 
+  summarise_at(vars(names_cont(healthy_lesion_rate, "no_")),
+               list(~sum(.))) %>% 
+  ungroup() %>% 
+  mutate(lesion_rate_overall = no_of_lab_only/no_of_moves_to_factory_not_skin_gif,
+         lesion_rate_chest = no_of_chest_lesions/no_of_moves_to_factory_not_skin_gif,
+         lesion_rate_head = no_of_head_lesions/no_of_moves_to_factory_not_skin_gif,
+         lesion_rate_other = no_of_other_lesions/no_of_moves_to_factory_not_skin_gif,
+         lesion_rate_multiple_lesions = no_of_multiple_lesions/no_of_moves_to_factory_not_skin_gif) %>% 
+  filter(!is.na(herd_type_ml_description)) %>% 
+  mutate(year = year(year_month),
+         year_f = as.character(year))  %>% 
+  filter(herd_type_ml_description != "Unknown") 
+
+# extract min/max dates for geom_react
+min_max_dates_df <- healthy_lesion_rate_brock_herd_type_month  %>% 
+  group_by(year) %>% 
+  summarise(min_date = min(year_month),
+            # add 1 year lubridate
+            max_date = min_date %m+% years(1),
+            # subtract 1 days
+            max_date = max_date %m-% days(1)) %>% 
+  ungroup() %>% 
+  mutate(year_f = as.character(year))
+
+
+# min/max prevalence for geom_react
+# min_prev <- min(healthy_lesion_rate_all_month_by_type$lesion_rate)
+# max_prev <- max(healthy_lesion_rate_all_month_by_type$lesion_rate)
+min_max_dates_df$min_prev <- min(healthy_lesion_rate_brock_herd_type_month$lesion_rate_overall)
+min_max_dates_df$max_prev <- max(healthy_lesion_rate_brock_herd_type_month$lesion_rate_overall)
+
+ggplot(healthy_lesion_rate_brock_herd_type_month %>% 
+         filter(herd_type_ml_description != "Unknown"), aes(x = year_month, y = lesion_rate_overall, color = herd_type_ml_description)) +
+  geom_line(linewidth = 1, alpha = 1) +
+  geom_rect(
+    data = min_max_dates_df, 
+    mapping = aes(
+      xmin = min_date,
+      xmax = max_date,
+      ymin = min_prev,
+      ymax = max_prev,
+      fill = year_f),
+    inherit.aes = FALSE,
+    #fill = df2$colour_me,
+    alpha = 0.2) +
+  scale_fill_manual(name = "Year", values = tableau_color_pal('Tableau 20')(n_distinct(healthy_lesion_rate_brock_herd_type_month$year))) +
+  labs(x = "Year", 
+       y = "Lesion prevalence", 
+       title = title_lesions_brock,
+       caption = paste0(all_lesions_vector, " \n",
+                        healthy_definition)) +
+  theme_jamie +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) + 
+  scale_colour_nejm(name = "Brock et al. herd type") +
+  scale_y_continuous(labels = scales::label_percent(scale = 100)) +
+  scale_x_continuous(breaks = nth_element(ymd(unique(healthy_lesion_rate_brock_herd_type_month$year), truncated = 2L), 1, 1)) +
+  
+  #scale_color_simpsons(name = "Quartile type") +
+  # need this for bold headings
+  theme(title = element_text(size = 18, face = "bold"),
+        legend.text = element_markdown(size = 16),
+        plot.caption.position = "plot",
+        legend.title = element_text(size = 16, face = "bold"),
+        plot.caption = element_text(size = 9, color = "black", face = "italic"),
+        # remove legend so its zoomed in, then add legend seperately
+        #legend.position = "none"
+        #legend.position = c(0.2, 0.9))  
+  )
+```
+
+
+
+$~$ $~$
+
+------------------------------------------------------------------------
+
+$~$ $~$
+
+\newpage
+
+
+### By lesion type
+
+```{r}
+#| label: fig-brockhealtylesionbytype
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 8 
+#| fig.cap: "Overall lesion prevalence at routine slaughter by Brock et al. herd-type and lesion location."
+
+# by lesion type
+healthy_lesion_rate_brock_herd_type_by_type <- healthy_lesion_rate_brock_herd_type %>%
+  select(year, herd_type_ml_description, contains("lesion_rate_")) %>%
+  select(-lesion_rate_overall) %>% 
+  #rename(c("wt name" = "wt", "drat name" = "drat")) %>%
+  #mutate(time = row_number()) %>%
+  pivot_longer(
+    cols = contains("lesion_rate_"),
+    names_to = "lesion_type",
+    values_to = "lesion_rate"
+  ) %>% 
+  mutate(lesion_type = case_when(lesion_type == "lesion_rate_chest" ~ "Chest",
+                                  lesion_type == "lesion_rate_head" ~ "Head",
+                                  lesion_type == "lesion_rate_other" ~ "Other",
+                                  lesion_type == "lesion_rate_multiple_lesions" ~ "Multiple lesions"))
+#healthy_lesion_rate_brock_herd_type_by_type
+
+
+
+ggplot(healthy_lesion_rate_brock_herd_type_by_type %>% 
+         filter(herd_type_ml_description != "Unknown"), aes(x = year, y = lesion_rate, color = lesion_type)) +
+  geom_line(linewidth = 2) +
+  labs(x = "Year", 
+       y = "Lesion prevalence", 
+       title = title_lesions,  #"Healthy lesion rate by Brock et al. herd-type",
+       caption = paste0(lesion_types_text_vector,
+                        healthy_definition)) +
+  facet_wrap(~herd_type_ml_description, dir = "h", ncol = 2) +
+  
+  theme_jamie +
+  scale_color_simpsons(name = "Lesion type") +
+  scale_y_continuous(labels = scales::label_percent(scale = 100)) +
+  scale_x_continuous(breaks = nth_element(c(unique(healthy_lesion_rate_brock_herd_type_by_type$year)), 1, 2)) +
+  
+  #scale_color_simpsons(name = "Quartile type") +
+  # need this for bold headings
+  theme(title = element_text(size = 18, face = "bold"),
+        legend.text = element_markdown(size = 16),
+        plot.caption.position = "plot",
+        legend.title = element_text(size = 16, face = "bold"),
+        plot.caption = element_text(size = 9, color = "black", face = "italic"),
+        # remove legend so its zoomed in, then add legend seperately
+        #legend.position = "none"
+        #legend.position = c(0.2, 0.9))  
+  ) 
+# why would lesions in head/chest be increasing?
+# Nicola - remembers a couple of contracts which were kosher (jewish) (and specific parts
+# of animal parts preferred) so inspections
+# were much more rigorous but she thinks these would be very low in numbers? 
+# interesting thoughts on it though - there may be industry types changes to
+# demand in meat etc
+# also, worth checking by factory -differences in factories?
+
+```
+
+
+$~$ $~$
+
+------------------------------------------------------------------------
+
+$~$ $~$
+
+\newpage
+
+Monthly version:
+
+
+```{r}
+#| label: fig-brockhealtylesionbytypemonth
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 8 
+#| fig.cap: "Overall lesion prevalence at routine slaughter by Brock et al. herd-type and lesion location by month."
+
+healthy_lesion_rate_brock_herd_type_by_type_month <- healthy_lesion_rate_brock_herd_type_month %>%
+  select(year_month, herd_type_ml_description, contains("lesion_rate_")) %>%
+  select(-lesion_rate_overall) %>% 
+  #rename(c("wt name" = "wt", "drat name" = "drat")) %>%
+  #mutate(time = row_number()) %>%
+  pivot_longer(
+    cols = contains("lesion_rate_"),
+    names_to = "lesion_type",
+    values_to = "lesion_rate"
+  ) %>% 
+  mutate(lesion_type = case_when(lesion_type == "lesion_rate_chest" ~ "Chest",
+                                 lesion_type == "lesion_rate_head" ~ "Head",
+                                 lesion_type == "lesion_rate_other" ~ "Other",
+                                 lesion_type == "lesion_rate_multiple_lesions" ~ "Multiple lesions")) %>% 
+  filter(!is.na(herd_type_ml_description)) %>% 
+  mutate(year = year(year_month),
+         year_f = as.character(year))  %>% 
+  filter(herd_type_ml_description != "Unknown") 
+#healthy_lesion_rate_brock_herd_type_by_type
+
+# extract min/max dates for geom_react
+min_max_dates_df <- healthy_lesion_rate_brock_herd_type_by_type_month  %>% 
+  group_by(year) %>% 
+  summarise(min_date = min(year_month),
+            # add 1 year lubridate
+            max_date = min_date %m+% years(1),
+            # subtract 1 days
+            max_date = max_date %m-% days(1)) %>% 
+  ungroup() %>% 
+  mutate(year_f = as.character(year))
+
+
+# min/max prevalence for geom_react
+# min_prev <- min(healthy_lesion_rate_all_month_by_type$lesion_rate)
+# max_prev <- max(healthy_lesion_rate_all_month_by_type$lesion_rate)
+min_max_dates_df$min_prev <- min(healthy_lesion_rate_brock_herd_type_by_type_month$lesion_rate)
+min_max_dates_df$max_prev <- max(healthy_lesion_rate_brock_herd_type_by_type_month$lesion_rate)
+
+ggplot(healthy_lesion_rate_brock_herd_type_by_type_month, aes(x = year_month, y = lesion_rate, color = lesion_type)) +
+  geom_line(linewidth = 1.5) +
+  geom_rect(
+    data = min_max_dates_df, 
+    mapping = aes(
+      xmin = min_date,
+      xmax = max_date,
+      ymin = min_prev,
+      ymax = max_prev,
+      fill = year_f),
+    inherit.aes = FALSE,
+    #fill = df2$colour_me,
+    alpha = 0.2) +
+  scale_fill_manual(name = "Year", values = tableau_color_pal('Tableau 20')(n_distinct(healthy_lesion_rate_ahcs_herd_type_by_type_month$year))) +
+  
+  labs(x = "Year", 
+       y = "Lesion prevalence", 
+       title = title_lesions,  #"Healthy lesion rate by Brock et al. herd-type",
+       caption = paste0(lesion_types_text_vector,
+                        healthy_definition)) +
+  facet_wrap(~herd_type_ml_description, dir = "h", ncol = 2) +
+  
+  theme_jamie +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) + 
+  scale_color_simpsons(name = "Lesion type") +
+  scale_y_continuous(labels = scales::label_percent(scale = 100)) +
+  scale_x_continuous(breaks = nth_element(ymd(unique(healthy_lesion_rate_brock_herd_type_month$year), truncated = 2L), 1, 1)) +
+  
+  #scale_color_simpsons(name = "Quartile type") +
+  # need this for bold headings
+  theme(title = element_text(size = 18, face = "bold"),
+        legend.text = element_markdown(size = 16),
+        plot.caption.position = "plot",
+        legend.title = element_text(size = 16, face = "bold"),
+        plot.caption = element_text(size = 9, color = "black", face = "italic"),
+        # remove legend so its zoomed in, then add legend seperately
+        #legend.position = "none"
+        #legend.position = c(0.2, 0.9))  
+  ) 
+```
+
+
+
+
+$~$ $~$
+
+------------------------------------------------------------------------
+
+$~$ $~$
+
+\newpage
+
+### Alternative plot:
+
+Same data used in previously plot but presented differently. Now grouped by lesion type which clearly shows the decrease in `mulitple lesions` group:
+
+```{r}
+#| label: fig-brockhealtylesionbytypealternative
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 8 
+#| fig.cap: "Overall lesion prevalence at routine slaughter by lesion location."
+
+# i think it would actually be more useful, the other way around
+# not more useful, but useful - need to include both
+ggplot(healthy_lesion_rate_brock_herd_type_by_type %>% 
+         filter(herd_type_ml_description != "Unknown"), aes(x = year, y = lesion_rate, color = herd_type_ml_description)) +
+  geom_line(linewidth = 2) +
+  labs(x = "Year", 
+       y = "Lesion prevalence", 
+       title = title_lesions, #"Healthy lesion rate by Brock et al. herd-type",
+       caption = paste0(lesion_types_text_vector,
+                        healthy_definition)) +
+  facet_wrap(~lesion_type, dir = "h", ncol = 2) +
+  
+  theme_jamie +
+  scale_colour_nejm(name = "Brock et al. herd type") +
+  scale_y_continuous(labels = scales::label_percent(scale = 100)) +
+  scale_x_continuous(breaks = nth_element(c(unique(healthy_lesion_rate_brock_herd_type_by_type$year)), 1, 2)) +
+  
+  #scale_color_simpsons(name = "Quartile type") +
+  # need this for bold headings
+  theme(title = element_text(size = 18, face = "bold"),
+        legend.text = element_markdown(size = 16),
+        plot.caption.position = "plot",
+        legend.title = element_text(size = 16, face = "bold"),
+        plot.caption = element_text(size = 9, color = "black", face = "italic"),
+        # remove legend so its zoomed in, then add legend seperately
+        #legend.position = "none"
+        #legend.position = c(0.2, 0.9))  
+  ) 
+
+```
+
+
+
+$~$ $~$
+
+------------------------------------------------------------------------
+
+$~$ $~$
+
+\newpage
+
+
+
+## Notes 
+
+Why would lesions in head/chest be increasing?
+- change in way recording is done?
+- differences between factories?
+- A very small minority might specialise in kosher meats and so may inspect animals differently but unlike to have an effect nationally
+
+We might expect dairy might have higher lesion rates than beef herds (intensification hypothesis of dairy herds) - why dont we see this?
+- possible age effects in dairy? Might need to stratify by age/sex
+
+Replicate above for bTB cases
+
+From DAFM: 
+
+What are the average lesion detection rates?
+- 30% of skin test reactors will have visible lesions at post-mortem inspection.
+- 15% of Gamma Interferon reactors will have visible lesions at post-mortem inspection. (This figure relates to cattle, in herds with high risk breakdowns, which are in the same groups as cattle that were skin test reactors).
+
+
+**Biology of lesion trends**
+
+- Healthy lesion rate seems to mirror reactor lesion rate (previous chapter) which suggests, these are not historic infections but relatively new?
+
+- Why were levels high in 2008? It seems to be the peak of that cycle at the time and then there was a serious effort to clean-up the whole system (concerted effort): there were focused investigations, hot-spots were priortised (e.g., Monaghan), fraud cases were investigated, the quality control programme was brought in, SICTT & PVP training was increased/introduced, there was much more awareness to look out for lesions due to the ongoing gamma trial at the time etc. `r gif_string` rates were up around 30% indicating that we were missing lots of infection at the time. This may also partly explain why chest prevalence was high back in 2008 - we were missing lots of infection and it had seeded in animals.
+
+- Difference in proportion of chest vs head lesions. Not seeing a difference in beef/sucklers but are in dairy - suggests this is real effect? The increase in chest compared to head in dairy is consistent with increased immunosuppression. bTB is a chest disease, if an animal is stressed it will stay in the lungs (before eventually spreading around the body when it has reached a more advanced stage). If an animal is immunosuppressed, they won't initially get multiple lesions - which seems counter intuitive. Their immune system is not competent enough to disseminate the disease around the body. More stress = more chest involvement. If you get more lung infection, you get more transmission.
+
+- Why is the "multiple lesions" group decreasing? This may be related to the improvement in detection since 2008 which may also mean earlier detection. Multiple lesions are a reflection of more advanced infection but we are generally detecting bTB at an early stage now with tighter testing quality (QA programme and `r gif_string` etc.).
+
+- What is ideal weather for mbovis? - probably warm, moist soil. Mild, damp rather than dry.
+
+- Re: the lesions, they could take six months to develop, so the later summer lesion profile could well reflect infection dynamics the previous March
+
+Policy:
+
+- I wonder would it be worth considering additionally testing for herds with a lot of chest detections (round of `r gif_string` testing)? Or even herds with animals with multiple lesions (more advanced infection)? I am checking the data on this
+
+
+**Questions/ideas to explore**
+
+- Whats interesting is that dairy seem to send animals primarily to slaughter at the start of the year (presumably during drying period?) but have the most lesions presented at slaughter in the 2nd half of the year. Perhaps these lesioned animals come from a subset of dairy herds who are not spring calving herds? 
+- why do we see a clean, consistent seasonal effect of an increase in lesion prevalence later in the year?
+- Does it suggests that there a cohort of riskier herds, that send their animals to slaughter later in the year (and perhaps, do not send animals earlier in the year and so we miss their infections)- I need to check this.
+- Change in sensitivity by time of year? Or is it related to previous point, that riskier herds are just not sending their animals at that time? Or, they are not riskier per se, but as they don't have a round test earlier in the year, earlier infections are not detected after winter housing and infection is allowed to seed in the animals and lesions form.
+- Is there a difference in BD size between a herd with more chest vs head vs multiple lesions? Hypothesis here is that herds with more multiple lesions/chest, may have more advanced disease and increased likelihood of having more/missed infection. I need to check this.
+- It would be really interesting to get the age profile of these – I will do these at some stage for my age work anyway but it will just take a bit of work. What we are seeing could be a certain aged animal that tends to get sent to slaughter later in the year.
+- Is there a reporting bias? Does inspection start at head? 
+- Redo to include Brock sub-classes: may help tease out which herds are sending animals at later time of year
+
+
+
+
+**Follow-up on lesion detection/inspection biases**
+
+
+- Usually two VIs in the factory who act in a supervisory role. Temporary VI (TVIs) do the inspections and there are usually 4 TVIs working at one time. TVIs are usually private vets who do this as additional work. You have to be a vet to do meat inspection in Ireland (although this might not be the rule in other countries?)
+- Process of inspection
+- The crucial piece of information is that (at least in this factory but should be similar in others) different body parts go to different people for inspection so one TVI will not inspect the whole body of one animal. 
+- Each animal is distributed into 4 separate process lines:
+  - Head
+  - Pluck (lung, chest)
+  - Belly (intestines etc?)
+  - inspection of the split carcass (carcass hoisted up)
+  
+  
+- TVIs will be stationed at one of these lines for the duration of their shifts but will probably rotate lines between shifts (e.g. so one TVI would not always be stationed on the head line)
+- In this particular factory head and pluck lines were close together so the TVIs could theoretically talk to each other but more than likely that the inspection is independent
+- Multiple lesions (MLs): need to clarify if this means multiple lesions within the one station (so a TVI spots multiple lesions in the head line) or does it mean lesions were spotted in multiple body part locations. Wasn't sure if ML is assigned by TVI on their line of at the end of all the stations. I suppose it could be a mixture of both?
+- In general, TVIs have moved away from diagnosing a lesion as mbovis (in healthy animals), any suspect lesion is generally just sent to the laboratory for testing
+
+
+**Reactor inspections (animals classified as bTB before entering factory via SICTT or GIF)**
+
+
+
+- In this factory, reactors were inspected at a different time to the healthy animals (e.g. altogether after lunch). TVIs were told that these were reactor animals. The lines were slowed down a little bit (compared to healthy animal) which naturally gave them a small bit more of a thorough inspection. In terms of detecting lesions, naturally, there may be some confirmation bias at play here already knowing that they were reactor animals?
+
+
+
+
+## Brock et al herd-types definitions
+
+
+**Dairy**
+
+- Residency in the herd is longer than 30 days for at least 50% of the herd.
+-	Proportion of animals in a herd that have ever calved by September, relative to herd size is greater than 25%.
+-	66% or more of the animals are of a dairy breed.
+
+**Beef**
+
+- (generally just suckler from AHCS I think)
+- Residency in the herd is longer than 30 days for at least 50% of the herd
+-	Proportion of animals in a herd that have ever calved by September, relative to herd size is greater than 25%.
+-	Less than 33% of the animals are of a dairy breed.
+
+**Mixed**
+
+- Residency in the herd is longer than 30 days for at least 50% of the herd.
+-	Proportion of animals in a herd that have ever calved by September, relative to herd size is greater than 25%.
+-	33% or more of the animals and less than 66% are of a dairy breed.
+
+
+**Store**
+
+- Residency in the herd is longer than 30 days for at least 50% of the herd.
+- Less than 25% of the animals in the herd have calved in the past
+- Less than 50% of the animals in the herd go directly to slaughter
+
+**Fattener**	
+
+- Residency in the herd is longer than 30 days for at least 50% of the herd.
+- Proportion of animals in a herd that have ever calved by September, relative to herd size is greater than 25%.
+-	50% or more of the animals in the herd go directly to slaughter.
+
+**Trader**
+
+- 50% or more of the animals spend less than 30 days in the herd.
+
+**Seasonal**
+
+- Animals are kept in the herd for only part of the year. (As of 2024, "seasonal" is no longer a category - they have been moved into "trader" and "fattener" categories respectively)
+
+**Unknown**
+- Self-explanatory.
+
+
+$~$ $~$
+
+------------------------------------------------------------------------
+
+$~$ $~$
+
+\newpage
+
+
+## bTB slaughter-house/lesion/seasonality papers:
+
+Clegg TA, Good M, More SJ. Risk factors for cattle presenting with a confirmed bTB lesion at slaughter, from herds with no evidence of within-herd transmission. Prev Vet Med. 2016 Apr 1;126:111-20. doi: 10.1016/j.prevetmed.2016.02.003. Epub 2016 Feb 9. PMID: 26895647. <https://pubmed.ncbi.nlm.nih.gov/26895647/>
+
+Willeberg PW, McAloon CG, Houtsma E, Higgins I, Clegg TA, More SJ. The Herd-Level  Sensitivity of Abattoir Surveillance for Bovine Tuberculosis: Simulating the Effects of Current and Potentially Modified Meat Inspection Procedures in Irish Cattle. Front Vet Sci. 2018 May 23;5:82. doi: 10.3389/fvets.2018.00082. PMID: 29876359; PMCID: PMC5974157. <https://pubmed.ncbi.nlm.nih.gov/29876359/>
+
+Gonçalves S, Cardoso MF, Vieira-Pinto M, Gomes-Neves E. Bovine Tuberculosis - Analysis of 10-year cases and impact of visual inspection in the surveillance at the slaughterhouse in Portugal. One Health. 2022 Oct 30;15:100451. doi: 10.1016/j.onehlt.2022.100451. PMID: 36532678; PMCID: PMC9754928. <https://pubmed.ncbi.nlm.nih.gov/36532678/>
+
+
+Byrne AW, Barrett D, Breslin P, Madden JM, O'Keeffe J, Ryan E. Post-mortem surveillance of bovine tuberculosis in Ireland: herd-level variation in the probability of herds disclosed with lesions at routine slaughter to have skin test reactors at follow-up test. Vet Res Commun. 2020 Nov;44(3-4):131-136. doi: 10.1007/s11259-020-09777-w. Epub 2020 Jun 24. PMID: 32583301; PMCID: PMC7312117. <https://pmc.ncbi.nlm.nih.gov/articles/PMC7312117/>
+
+
+Shittu A, Clifton-Hadley RS, Ely ER, Upton PU, Downs SH. Factors associated with bovine tuberculosis confirmation rates in suspect lesions found in cattle at routine slaughter in Great Britain, 2003-2008. Prev Vet Med. 2013 Jul 1;110(3-4):395-404. doi: 10.1016/j.prevetmed.2013.03.001. Epub 2013 Mar 26. PMID: 23540447. <https://pubmed.ncbi.nlm.nih.gov/23540447/>
+
+
+Olea-Popelka F, Freeman Z, White P, Costello E, O'Keeffe J, Frankena K, Martin W, More S. Relative effectiveness of irish factories in the surveillance of slaughtered cattle for visible lesions of tuberculosis, 2005-2007. Ir Vet J. 2012 Jan 30;65(1):2. doi: 10.1186/2046-0481-65-2. PMID: 22289139; PMCID: PMC3311595. <https://pubmed.ncbi.nlm.nih.gov/22289139/>
+
+
+Male Here RR, Ryan E, Breslin P, Frankena K, Byrne AW. Revisiting the relative effectiveness of slaughterhouses in Ireland to detect tuberculosis lesions in cattle (2014-2018). PLoS One. 2022 Oct 7;17(10):e0275259. doi: 10.1371/journal.pone.0275259. PMID: 36206240; PMCID: PMC9543943. <https://pubmed.ncbi.nlm.nih.gov/36206240/>
+
+
+Frankena K, White PW, O'Keeffe J, Costello E, Martin SW, van Grevenhof I, More SJ. Quantification of the relative efficiency of factory surveillance in the disclosure of tuberculosis lesions in attested Irish cattle. Vet Rec. 2007 Nov 17;161(20):679-84. doi: 10.1136/vr.161.20.679. PMID: 18024922. <https://pubmed.ncbi.nlm.nih.gov/18024922/>
+
+
+Pascual-Linaza AV, Gordon AW, Stringer LA, Menzies FD. Efficiency of slaughterhouse surveillance for the detection of bovine tuberculosis in cattle in Northern Ireland. Epidemiol Infect. 2017 Apr;145(5):995-1005. doi: 10.1017/S0950268816003095. Epub 2016 Dec 28. PMID: 28027717; PMCID: PMC9507821. <https://pubmed.ncbi.nlm.nih.gov/28027717/>
+
+
+
+A study of the distribution of lesions in cattle caused by Mycobacterium bovis MPI Technical Paper No: 2017/69 New Zealand 2017 <https://www.mpi.govt.nz/dmsdocument/29225-A-study-of-the-distribution-of-lesions-in-cattle-caused-by-Mycobacterium-bovis>
+
+Vaid S, Lee YY, Rawat S, Luthra A, Shah D, Ahuja AT. Tuberculosis in the head and neck--a forgotten differential diagnosis. Clin Radiol. 2010 Jan;65(1):73-81. doi: <https://pubmed.ncbi.nlm.nih.gov/20103425/>
+
+
+
+Wiseman J, Cassidy JP, Gormley E. The problem that residual Mycobacterium bovis infection poses for the eradication of bovine tuberculosis. Vet J. 2024 Dec;308:106266. doi: 10.1016/j.tvjl.2024.106266. Epub 2024 Nov 9. PMID: 39528077. <https://pubmed.ncbi.nlm.nih.gov/39528077/>
+
+
+**Seasonality**
+
+Abrupt events and population synchrony in the dynamics of Bovine Tuberculosis
+Moustakas A, Evans MR, Daliakopoulos IN, Markonis Y. Abrupt events and population synchrony in the dynamics of Bovine Tuberculosis. Nat Commun. 2018 Jul 19;9(1):2821. doi: 10.1038/s41467-018-04915-0. PMID: 30026483; PMCID: PMC6053421.<https://pubmed.ncbi.nlm.nih.gov/30026483/>
+
+Moustakas, A., Evans, M.R. Regional and temporal characteristics of bovine tuberculosis of cattle in Great Britain. Stoch Environ Res Risk Assess 30, 989–1003 (2016). https://doi.org/10.1007/s00477-015-1140-3 <https://link.springer.com/article/10.1007/s00477-015-1140-3#citeas>
+
+

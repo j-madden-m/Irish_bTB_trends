@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.40">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>6&nbsp; Exploration of herd-level bTB breakdowns (BDs) – DRAFT Temporal trends in bovine herds and bovine tuberculosis breakdowns in Ireland (2008-2023)</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./publications.html" rel="next">
+<link href="./lesion_prevalence_trends.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-d5d78c9e45e9a5253a6059031ce5ea1b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="site_libs/tabwid-1.1.3/tabwid.css" rel="stylesheet">
+
+<script src="site_libs/tabwid-1.1.3/tabwid.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./breakdown_page.html">Breakdowns (BDs)</a></li><li class="breadcrumb-item"><a href="./breakdown_page.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Exploration of herd-level bTB breakdowns (BDs)</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">DRAFT Temporal trends in bovine herds and bovine tuberculosis breakdowns in Ireland (2008-2023)</a> 
+        <div class="sidebar-tools-main">
+    <div id="quarto-search" class="quarto-navigation-tool px-1" title="Search"></div>
+</div>
+    </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Background</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Timeline</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./timeline_policy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Irsh bTB eradication programme timeline</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Demographics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./demographics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Demographics (herd-types, herd size, bovine population)</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">bTB cases</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./case_numbers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">bTB case numbers and herd-prevalence by different herd-types</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Lesion prevalence</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./reactor_lesion_skin_gif_seperately.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Prevalence of visible lesions seperately by SICTT and IFN-γ positive animals at slaughter</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lesion_prevalence_trends.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Prevalence of confirmed <em>M.bovis</em> lesions found in animals at routine slaughter</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Breakdowns (BDs)</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./breakdown_page.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Exploration of herd-level bTB breakdowns (BDs)</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Publications</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./publications.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">CVERA related bTB publications</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#breakdown-bd-definition" id="toc-breakdown-bd-definition" class="nav-link active" data-scroll-target="#breakdown-bd-definition"><span class="header-section-number">6.1</span> Breakdown (BD) definition</a></li>
+  <li><a href="#number-of-bds-per-year" id="toc-number-of-bds-per-year" class="nav-link" data-scroll-target="#number-of-bds-per-year"><span class="header-section-number">6.2</span> Number of BDs per year</a></li>
+  <li><a href="#bd-size" id="toc-bd-size" class="nav-link" data-scroll-target="#bd-size"><span class="header-section-number">6.3</span> BD size</a>
+  <ul class="collapse">
+  <li><a href="#ahcs-herd-type-by-bd-size" id="toc-ahcs-herd-type-by-bd-size" class="nav-link" data-scroll-target="#ahcs-herd-type-by-bd-size"><span class="header-section-number">6.3.1</span> AHCS herd-type by BD size</a></li>
+  <li><a href="#brock-et-al.-herd-type-by-bd-size" id="toc-brock-et-al.-herd-type-by-bd-size" class="nav-link" data-scroll-target="#brock-et-al.-herd-type-by-bd-size"><span class="header-section-number">6.3.2</span> Brock et al.&nbsp;herd-type by BD size</a></li>
+  <li><a href="#brock-et-al.-sub-class-herd-types-by-bd-size" id="toc-brock-et-al.-sub-class-herd-types-by-bd-size" class="nav-link" data-scroll-target="#brock-et-al.-sub-class-herd-types-by-bd-size"><span class="header-section-number">6.3.3</span> Brock et al.&nbsp;sub-class herd-types by BD size</a></li>
+  <li><a href="#bd-size-by-category-groups" id="toc-bd-size-by-category-groups" class="nav-link" data-scroll-target="#bd-size-by-category-groups"><span class="header-section-number">6.3.4</span> BD size by category groups</a></li>
+  </ul></li>
+  <li><a href="#bd-duration" id="toc-bd-duration" class="nav-link" data-scroll-target="#bd-duration"><span class="header-section-number">6.4</span> BD duration</a></li>
+  <li><a href="#repeat-bd-herds" id="toc-repeat-bd-herds" class="nav-link" data-scroll-target="#repeat-bd-herds"><span class="header-section-number">6.5</span> Repeat BD herds</a>
+  <ul class="collapse">
+  <li><a href="#boxplots-of-the-number-of-bds-per-herd" id="toc-boxplots-of-the-number-of-bds-per-herd" class="nav-link" data-scroll-target="#boxplots-of-the-number-of-bds-per-herd"><span class="header-section-number">6.5.1</span> Boxplots of the number of BDs per herd:</a></li>
+  </ul></li>
+  <li><a href="#additional-btb-cases-after-the-initial-detection" id="toc-additional-btb-cases-after-the-initial-detection" class="nav-link" data-scroll-target="#additional-btb-cases-after-the-initial-detection"><span class="header-section-number">6.6</span> Additional bTB cases after the initial detection</a>
+  <ul class="collapse">
+  <li><a href="#sictt-initiated-bds" id="toc-sictt-initiated-bds" class="nav-link" data-scroll-target="#sictt-initiated-bds"><span class="header-section-number">6.6.1</span> SICTT initiated BDs</a></li>
+  <li><a href="#slaughter-house-initiated-bds" id="toc-slaughter-house-initiated-bds" class="nav-link" data-scroll-target="#slaughter-house-initiated-bds"><span class="header-section-number">6.6.2</span> Slaughter-house initiated BDs</a></li>
+  </ul></li>
+  <li><a href="#tables" id="toc-tables" class="nav-link" data-scroll-target="#tables"><span class="header-section-number">6.7</span> Tables</a>
+  <ul class="collapse">
+  <li><a href="#overall-bd-statistics" id="toc-overall-bd-statistics" class="nav-link" data-scroll-target="#overall-bd-statistics"><span class="header-section-number">6.7.1</span> Overall BD statistics</a></li>
+  <li><a href="#bd-duration-1" id="toc-bd-duration-1" class="nav-link" data-scroll-target="#bd-duration-1"><span class="header-section-number">6.7.2</span> BD duration</a></li>
+  </ul></li>
+  <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes"><span class="header-section-number">6.8</span> Notes</a></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content column-page-right" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./breakdown_page.html">Breakdowns (BDs)</a></li><li class="breadcrumb-item"><a href="./breakdown_page.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Exploration of herd-level bTB breakdowns (BDs)</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="sec-breakdown" class="quarto-section-identifier"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Exploration of herd-level bTB breakdowns (BDs)</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta column-page-right">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<hr>
+<p><span class="math inline">\(~\)</span> <span class="math inline">\(~\)</span></p>
+<section id="breakdown-bd-definition" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="breakdown-bd-definition"><span class="header-section-number">6.1</span> Breakdown (BD) definition</h2>
+<p>For this study, we defined the start date of a BD in a herd as the date when an animal was disclosed as a bTB case, as determined by the SICTT, IFN-γ or by the detection of visible lesions at routine slaughter which are then laboratory confirmed with <em>M. bovis</em> infection (also known as ‘factory lesion cases’). In the situation when a BD started due to the detection of a visible lesion, we chose the start date as the date when the sample was sent to the lab and not the date in which it was identified as culture positive which could be a number of weeks later. Depending on the circumstances, the herds <code>trading_status</code> on AHCS will generally change from <code>free</code> to <code>withdrawn</code>/<code>suspended</code>. We defined the BD end date as the date of the next SICTT (whole herd) test where the <code>trading_status</code> was restored to <code>free</code>. Once a bTB case is detected, a herd will usually remain in a BD until it has had two consecutive, clear whole-herd SICTT tests (usually 60 days apart). There are certain exceptions to the above criteria e.g., singletons.</p>
+<p>There were rare instances when a herd was in a BD based on trading status but it did not have a bTB case (these could be for awhole host of reasons including fraud investigations (so a herd may be in <code>suspended</code> mode although no cases), error on system etc.). Of all BDs after 2007 (n = 74533), there were only 574 of these zero case BDs (0.77%). The initiating/index SICTT of these BDs is given below:</p>
+<p><span class="math inline">\(~\)</span> <span class="math inline">\(~\)</span></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stdout">
+<pre><code> bd_first_skin_test_type   n     percent
+                       1  54 0.094076655
+                     10A  16 0.027874564
+                       2   2 0.003484321
+                       4  25 0.043554007
+                      5A  15 0.026132404
+                      5B  14 0.024390244
+                      5C   8 0.013937282
+                      5E   5 0.008710801
+                      5F  57 0.099303136
+                      5G   6 0.010452962
+                      5H   4 0.006968641
+                       6  13 0.022648084
+                      7B  15 0.026132404
+                       8  10 0.017421603
+                      9A 330 0.574912892</code></pre>
+</div>
+</div>
+<p><span class="math inline">\(~\)</span> <span class="math inline">\(~\)</span></p>
+<p>For the purposes of this work, we have excluded these cases along with extremely short BD (&lt;60 days in length):</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># DROP short and zero cases ----</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>bd_df <span class="ot">&lt;-</span> bd_df <span class="sc">%&gt;%</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(all_cases <span class="sc">!=</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(bd_duration_days <span class="sc">&gt;=</span> <span class="dv">60</span>) <span class="co"># ask Miriam?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><span class="math inline">\(~\)</span> <span class="math inline">\(~\)</span></p>
+<hr>
+<p><span class="math inline">\(~\)</span> <span class="math inline">\(~\)</span></p>
+</section>
+<section id="number-of-bds-per-year" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="number-of-bds-per-year"><span class="header-section-number">6.2</span> Number of BDs per year</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-bdperyear" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bdperyear-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="breakdown_page_files/figure-html/fig-bdperyear-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1152">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bdperyear-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.1: Number of BDs per year.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><span class="math inline">\(~\)</span> <span class="math inline">\(~\)</span></p>
+<hr>
+<p><span class="math inline">\(~\)</span> <span class="math inline">\(~\)</span></p>
+</section>
+<section id="bd-size" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="bd-size"><span class="header-section-number">6.3</span> BD size</h2>
+<p>Here, we explore the number of bTB cases disclosed within herd BDs (i.e.&nbsp;BD size). This illustrates that BD size (e.g., median) is increasing particulaly within dairy herds. The variance in the number of cases within BDs is also increasing within dairy. Mixed herd-types are also increasing in size (these are herds that have a component of their herd as dairy). The fact that dairy herds have more bTB cases during a BD is not that surprising as dairy are also the herds with the largest number of animals (herd size **add link here) in their herd.</p>
+<p><span class="math inline">\(~\)</span> <span class="math inline">\(~\)</span></p>
+<section id="ahcs-herd-type-by-bd-size" class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1" class="anchored" data-anchor-id="ahcs-herd-type-by-bd-size"><span class="header-section-number">6.3.1</span> AHCS herd-type by BD size</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Raw scale zoomed in (max 20 cases per BD)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Raw scale</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Logged scale</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<p><span class="math inline">\(~\)</span></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-bdsizeahcszoom" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bdsizeahcszoom-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="breakdown_page_files/figure-html/fig-bdsizeahcszoom-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1152">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bdsizeahcszoom-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.2: Boxplots of the number of bTB cases in BDs that started in each year by Brock et al.&nbsp;herd-types (only including the 4 most common herd-types).
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p><span class="math inline">\(~\)</span></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-bdsizeahcsraw" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bdsizeahcsraw-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="breakdown_page_files/figure-html/fig-bdsizeahcsraw-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1152">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bdsizeahcsraw-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.3: Boxplots of the number of bTB cases in BDs that started in each year by AHCS herd-types (only including the 4 most common herd-types).
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<p><span class="math inline">\(~\)</span></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-bdsizeahcslogscale" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bdsizeahcslogscale-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="breakdown_page_files/figure-html/fig-bdsizeahcslogscale-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1152">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bdsizeahcslogscale-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.4: Boxplots of the number of bTB cases in BDs that started in each year by AHCS herd-types (only including the 4 most common herd-types).
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p><span class="math inline">\(~\)</span> <span class="math inline">\(~\)</span></p>
+</section>
+<section id="brock-et-al.-herd-type-by-bd-size" class="level3" data-number="6.3.2">
+<h3 data-number="6.3.2" class="anchored" data-anchor-id="brock-et-al.-herd-type-by-bd-size"><span class="header-section-number">6.3.2</span> Brock et al.&nbsp;herd-type by BD size</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Raw scale zoomed in (max 20 cases per BD)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Raw scale</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false">Logged scale</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<p><span class="math inline">\(~\)</span></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-bdsizebrockzoom" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bdsizebrockzoom-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="breakdown_page_files/figure-html/fig-bdsizebrockzoom-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1152">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bdsizebrockzoom-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.5: Boxplots of the number of bTB cases in BDs that started in each year by Brock et al.&nbsp;herd-types (only including the 4 most common herd-types).
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<p><span class="math inline">\(~\)</span></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-bdsizebrockraw" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bdsizebrockraw-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="breakdown_page_files/figure-html/fig-bdsizebrockraw-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1152">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bdsizebrockraw-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.6: Boxplots of the number of bTB cases in BDs that started in each year by Brock et al.&nbsp;herd-types (only including the 4 most common herd-types).
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
+<p><span class="math inline">\(~\)</span></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-bdsizebrocklogscale" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bdsizebrocklogscale-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="breakdown_page_files/figure-html/fig-bdsizebrocklogscale-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1152">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bdsizebrocklogscale-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.7: Boxplots of the number of bTB cases in BDs that started in each year by Brock et al.&nbsp;herd-types (only including the 4 most common herd-types).
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="brock-et-al.-sub-class-herd-types-by-bd-size" class="level3" data-number="6.3.3">
+<h3 data-number="6.3.3" class="anchored" data-anchor-id="brock-et-al.-sub-class-herd-types-by-bd-size"><span class="header-section-number">6.3.3</span> Brock et al.&nbsp;sub-class herd-types by BD size</h3>
+<p>Rather than plotting all sub-classes, here we focus on dairy sub-classes only as we have seen above that dairy tend to have the largest BDs in terms of the number of bTB cases disclosed.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Raw scale zoomed in (max 20 cases per BD)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Raw scale</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false">Logged scale</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<p><span class="math inline">\(~\)</span></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-bdsizebrocksubzoom" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bdsizebrocksubzoom-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="breakdown_page_files/figure-html/fig-bdsizebrocksubzoom-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1152">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bdsizebrocksubzoom-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.8: Boxplots of the number of bTB cases in BDs that started in each year by Brock et al.&nbsp;sub-classes by dairy herd-types only.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<p><span class="math inline">\(~\)</span></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-bdsizebrocksubraw" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bdsizebrocksubraw-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="breakdown_page_files/figure-html/fig-bdsizebrocksubraw-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1152">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bdsizebrocksubraw-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.9: Boxplots of the number of bTB cases in BDs that started in each year by Brock et al.&nbsp;sub-classes by dairy herd-types only.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
+<p><span class="math inline">\(~\)</span></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-bdsizebrocksublogscale" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bdsizebrocksublogscale-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="breakdown_page_files/figure-html/fig-bdsizebrocksublogscale-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1152">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bdsizebrocksublogscale-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.10: Boxplots of the number of bTB cases in BDs that started in each year by Brock et al.&nbsp;sub-classes by dairy herd-types only.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="bd-size-by-category-groups" class="level3" data-number="6.3.4">
+<h3 data-number="6.3.4" class="anchored" data-anchor-id="bd-size-by-category-groups"><span class="header-section-number">6.3.4</span> BD size by category groups</h3>
+<section id="all-herds-combined" class="level4" data-number="6.3.4.1">
+<h4 data-number="6.3.4.1" class="anchored" data-anchor-id="all-herds-combined"><span class="header-section-number">6.3.4.1</span> All herds combined</h4>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-bdsizecatall" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bdsizecatall-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="breakdown_page_files/figure-html/fig-bdsizecatall-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1152">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bdsizecatall-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.11: Proportion of BD size by category over time (all herds)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="ahcs" class="level4" data-number="6.3.4.2">
+<h4 data-number="6.3.4.2" class="anchored" data-anchor-id="ahcs"><span class="header-section-number">6.3.4.2</span> AHCS</h4>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-bdsizecatahcs" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bdsizecatahcs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="breakdown_page_files/figure-html/fig-bdsizecatahcs-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1152">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bdsizecatahcs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.12: Proportion of BD size by category over time
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="brock-et-al." class="level4" data-number="6.3.4.3">
+<h4 data-number="6.3.4.3" class="anchored" data-anchor-id="brock-et-al."><span class="header-section-number">6.3.4.3</span> Brock et al.</h4>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-bdsizecatbrock" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bdsizecatbrock-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="breakdown_page_files/figure-html/fig-bdsizecatbrock-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1152">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bdsizecatbrock-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.13: Proportion of BD size by category over time
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="bd-duration" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="bd-duration"><span class="header-section-number">6.4</span> BD duration</h2>
+<p><span class="math inline">\(~\)</span></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-bdduration" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bdduration-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="breakdown_page_files/figure-html/fig-bdduration-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1152">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bdduration-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.14: Boxplots of the number of BD durations (in years) by AHCS herd-types (zoomed into 2.5 year).
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="repeat-bd-herds" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="repeat-bd-herds"><span class="header-section-number">6.5</span> Repeat BD herds</h2>
+<p>Some herds will have more than one BD over time (i.e., they have a BD, become clear, and then have another BD). This is the proportion of herds with different number of BDs:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stdout">
+<pre><code> bd_no     n       percent
+     1 21644 0.49576251775
+     2 11608 0.26588483210
+     3  5416 0.12405515599
+     4  2484 0.05689678868
+     5  1235 0.02828805717
+     6   636 0.01456777681
+     7   325 0.00744422557
+     8   150 0.00343579642
+     9    81 0.00185533007
+    10    38 0.00087040176
+    11    19 0.00043520088
+    12    12 0.00027486371
+    13     2 0.00004581062
+    14     5 0.00011452655
+    15     3 0.00006871593</code></pre>
+</div>
+</div>
+<section id="boxplots-of-the-number-of-bds-per-herd" class="level3" data-number="6.5.1">
+<h3 data-number="6.5.1" class="anchored" data-anchor-id="boxplots-of-the-number-of-bds-per-herd"><span class="header-section-number">6.5.1</span> Boxplots of the number of BDs per herd:</h3>
+<section id="ahcs-1" class="level4" data-number="6.5.1.1">
+<h4 data-number="6.5.1.1" class="anchored" data-anchor-id="ahcs-1"><span class="header-section-number">6.5.1.1</span> AHCS:</h4>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-repeatbdahcs" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-repeatbdahcs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="breakdown_page_files/figure-html/fig-repeatbdahcs-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1152">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-repeatbdahcs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.15: Boxplots of the number of bTB BDs per herd in the dataset by AHCS herd-types.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="brock-et-al.-1" class="level4" data-number="6.5.1.2">
+<h4 data-number="6.5.1.2" class="anchored" data-anchor-id="brock-et-al.-1"><span class="header-section-number">6.5.1.2</span> Brock et al.:</h4>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-repeatbdbrock" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-repeatbdbrock-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="breakdown_page_files/figure-html/fig-repeatbdbrock-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1152">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-repeatbdbrock-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.16: Boxplots of the number of bTB BDs per herd in the dataset by Brock et al.&nbsp;herd-types (only including the 4 most common herd-types).
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="brock-et-al.-sub-classes" class="level4" data-number="6.5.1.3">
+<h4 data-number="6.5.1.3" class="anchored" data-anchor-id="brock-et-al.-sub-classes"><span class="header-section-number">6.5.1.3</span> Brock et al.&nbsp;sub-classes:</h4>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-repeatbdbrocksub" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-repeatbdbrocksub-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="breakdown_page_files/figure-html/fig-repeatbdbrocksub-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1152">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-repeatbdbrocksub-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.17: Boxplots of the number of bTB BDs per herd in the dataset by Brock et al.&nbsp;sub-class herd-types.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="additional-btb-cases-after-the-initial-detection" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="additional-btb-cases-after-the-initial-detection"><span class="header-section-number">6.6</span> Additional bTB cases after the initial detection</h2>
+<section id="sictt-initiated-bds" class="level3" data-number="6.6.1">
+<h3 data-number="6.6.1" class="anchored" data-anchor-id="sictt-initiated-bds"><span class="header-section-number">6.6.1</span> SICTT initiated BDs</h3>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-additionalcasesdetectedafterscitt" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-additionalcasesdetectedafterscitt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="breakdown_page_files/figure-html/fig-additionalcasesdetectedafterscitt-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1152">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-additionalcasesdetectedafterscitt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.18: The percentage of SICTT initiated BDs where additional cases will be disclosed during the BD (top 4 most common herd-types are selected).
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="slaughter-house-initiated-bds" class="level3" data-number="6.6.2">
+<h3 data-number="6.6.2" class="anchored" data-anchor-id="slaughter-house-initiated-bds"><span class="header-section-number">6.6.2</span> Slaughter-house initiated BDs</h3>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-additionalcasesdetectedafterslaughter" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-additionalcasesdetectedafterslaughter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="breakdown_page_files/figure-html/fig-additionalcasesdetectedafterslaughter-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1152">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-additionalcasesdetectedafterslaughter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.19: The percentage of slaughter-house initiated BDs where additional cases will be disclosed during the BD (top 4 most common herd-types are selected).
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="tables" class="level2" data-number="6.7">
+<h2 data-number="6.7" class="anchored" data-anchor-id="tables"><span class="header-section-number">6.7</span> Tables</h2>
+<section id="overall-bd-statistics" class="level3" data-number="6.7.1">
+<h3 data-number="6.7.1" class="anchored" data-anchor-id="overall-bd-statistics"><span class="header-section-number">6.7.1</span> Overall BD statistics</h3>
+<div class="cell" data-layout-align="center">
+<div id="tbl-bdstatstab" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-bdstatstab-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;6.1: bTB BD statistics
+</figcaption>
+<div aria-describedby="tbl-bdstatstab-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<div class="tabwid"><style>.cl-7aa18b6c{table-layout:auto;}.cl-7a8c1688{font-family:'Arial';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-7a8c169c{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-7a8c16a6{font-family:'Arial';font-size:10pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-7a96cde4{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-7a96cdee{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-7a97460c{background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7a974620{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7a974621{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7a97462a{background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7a97462b{background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7a97462c{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-7aa18b6c"><thead><tr style="overflow-wrap:break-word;"><th class="cl-7a97460c"><p class="cl-7a96cde4"><span class="cl-7a8c1688">Variable</span></p></th><th class="cl-7a97460c"><p class="cl-7a96cde4"><span class="cl-7a8c1688">level</span></p></th><th class="cl-7a97460c"><p class="cl-7a96cde4"><span class="cl-7a8c1688">2008</span></p></th><th class="cl-7a97460c"><p class="cl-7a96cde4"><span class="cl-7a8c1688">2009</span></p></th><th class="cl-7a97460c"><p class="cl-7a96cde4"><span class="cl-7a8c1688">2010</span></p></th><th class="cl-7a97460c"><p class="cl-7a96cde4"><span class="cl-7a8c1688">2011</span></p></th><th class="cl-7a97460c"><p class="cl-7a96cde4"><span class="cl-7a8c1688">2012</span></p></th><th class="cl-7a97460c"><p class="cl-7a96cde4"><span class="cl-7a8c1688">2013</span></p></th><th class="cl-7a97460c"><p class="cl-7a96cde4"><span class="cl-7a8c1688">2014</span></p></th><th class="cl-7a97460c"><p class="cl-7a96cde4"><span class="cl-7a8c1688">2015</span></p></th><th class="cl-7a97460c"><p class="cl-7a96cde4"><span class="cl-7a8c1688">2016</span></p></th><th class="cl-7a97460c"><p class="cl-7a96cde4"><span class="cl-7a8c1688">2017</span></p></th><th class="cl-7a97460c"><p class="cl-7a96cde4"><span class="cl-7a8c1688">2018</span></p></th><th class="cl-7a97460c"><p class="cl-7a96cde4"><span class="cl-7a8c1688">2019</span></p></th><th class="cl-7a97460c"><p class="cl-7a96cde4"><span class="cl-7a8c1688">2020</span></p></th><th class="cl-7a97460c"><p class="cl-7a96cde4"><span class="cl-7a8c1688">2021</span></p></th><th class="cl-7a97460c"><p class="cl-7a96cde4"><span class="cl-7a8c1688">2022</span></p></th><th class="cl-7a97460c"><p class="cl-7a96cde4"><span class="cl-7a8c1688">2023</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-7a974620"><p class="cl-7a96cdee"><span class="cl-7a8c1688">No. of unique herds with at least one case</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c1688"></span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">7479</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">6363</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">5764</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">5238</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">5218</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">4776</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">4449</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">4108</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">3949</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">4189</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">4209</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">4384</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">5202</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">5079</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">5034</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">5592</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7a974620"><p class="cl-7a96cdee"><span class="cl-7a8c1688">No. of BDs that started in year</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c1688"></span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">6735 (9.2)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">5793 (7.9)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">5217 (7.1)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">4752 (6.5)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">4780 (6.5)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">4381 (6)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">4039 (5.5)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">3803 (5.2)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">3617 (4.9)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">3850 (5.3)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">3848 (5.3)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">4039 (5.5)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">4748 (6.5)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">4707 (6.4)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">4569 (6.2)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">4230 (5.8)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7a974620"><p class="cl-7a96cdee"><span class="cl-7a8c1688">Median (IQR) no. of cases per BD</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c1688"></span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">2 (1-4)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">2 (1-4)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">1 (1-4)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">2 (1-4)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">1 (1-4)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">1 (1-3)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">1 (1-3)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">1 (1-3)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">1 (1-3)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">1 (1-3)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">1 (1-4)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">2 (1-4)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">2 (1-5)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">2 (1-4)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">2 (1-4)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">2 (1-5)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7a974620"><p class="cl-7a96cdee"><span class="cl-7a8c1688">Range of no. of cases in BDs that started in the year</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c1688"></span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">1-208</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">1-226</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">1-242</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">1-296</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">1-210</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">1-214</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">1-295</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">1-303</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">1-306</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">1-208</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">1-291</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">1-396</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">1-164</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">1-309</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">1-245</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">1-169</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7a974620"><p class="cl-7a96cdee"><span class="cl-7a8c1688">BDs by no. of bTB cases</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c1688">1</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">3180 (47.2)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">2869 (49.5)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">2639 (50.6)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">2373 (49.9)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">2418 (50.6)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">2330 (53.2)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">2154 (53.3)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">2045 (53.8)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">1887 (52.2)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">2028 (52.7)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">1942 (50.5)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">1987 (49.2)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">2143 (45.1)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">2227 (47.3)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">2142 (46.9)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">1807 (42.7)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7a974620"><p class="cl-7a96cdee"><span class="cl-7a8c1688"></span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c1688">2</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">970 (14.4)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">908 (15.7)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">817 (15.7)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">738 (15.5)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">788 (16.5)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">689 (15.7)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">615 (15.2)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">586 (15.4)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">585 (16.2)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">593 (15.4)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">616 (16)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">647 (16)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">699 (14.7)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">728 (15.5)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">679 (14.9)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">653 (15.4)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7a974620"><p class="cl-7a96cdee"><span class="cl-7a8c1688"></span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c1688">3</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">599 (8.9)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">475 (8.2)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">430 (8.2)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">411 (8.6)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">378 (7.9)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">358 (8.2)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">318 (7.9)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">299 (7.9)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">253 (7)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">295 (7.7)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">303 (7.9)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">314 (7.8)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">410 (8.6)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">402 (8.5)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">378 (8.3)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">370 (8.7)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7a974620"><p class="cl-7a96cdee"><span class="cl-7a8c1688"></span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c1688">4</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">366 (5.4)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">307 (5.3)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">304 (5.8)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">249 (5.2)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">250 (5.2)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">191 (4.4)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">211 (5.2)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">170 (4.5)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">134 (3.7)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">143 (3.7)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">174 (4.5)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">207 (5.1)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">299 (6.3)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">246 (5.2)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">237 (5.2)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">244 (5.8)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7a974620"><p class="cl-7a96cdee"><span class="cl-7a8c1688"></span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c1688">5</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">274 (4.1)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">210 (3.6)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">187 (3.6)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">181 (3.8)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">172 (3.6)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">153 (3.5)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">130 (3.2)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">93 (2.4)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">98 (2.7)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">82 (2.1)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">103 (2.7)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">127 (3.1)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">178 (3.7)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">157 (3.3)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">147 (3.2)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">182 (4.3)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7a974620"><p class="cl-7a96cdee"><span class="cl-7a8c1688"></span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c1688">6</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">230 (3.4)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">176 (3)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">141 (2.7)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">134 (2.8)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">143 (3)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">106 (2.4)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">98 (2.4)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">87 (2.3)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">71 (2)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">70 (1.8)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">72 (1.9)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">109 (2.7)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">132 (2.8)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">147 (3.1)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">113 (2.5)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">118 (2.8)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7a974620"><p class="cl-7a96cdee"><span class="cl-7a8c1688"></span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c1688">7</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">141 (2.1)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">103 (1.8)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">97 (1.9)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">97 (2)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">101 (2.1)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">77 (1.8)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">70 (1.7)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">65 (1.7)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">55 (1.5)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">60 (1.6)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">77 (2)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">72 (1.8)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">110 (2.3)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">84 (1.8)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">111 (2.4)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">96 (2.3)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7a974620"><p class="cl-7a96cdee"><span class="cl-7a8c1688"></span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c1688">8</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">120 (1.8)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">82 (1.4)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">83 (1.6)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">76 (1.6)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">72 (1.5)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">62 (1.4)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">45 (1.1)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">51 (1.3)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">59 (1.6)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">55 (1.4)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">61 (1.6)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">75 (1.9)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">77 (1.6)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">84 (1.8)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">75 (1.6)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">94 (2.2)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7a974620"><p class="cl-7a96cdee"><span class="cl-7a8c1688"></span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c1688">9</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">104 (1.5)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">65 (1.1)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">69 (1.3)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">67 (1.4)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">57 (1.2)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">50 (1.1)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">39 (1)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">47 (1.2)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">39 (1.1)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">31 (0.8)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">53 (1.4)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">52 (1.3)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">64 (1.3)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">60 (1.3)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">62 (1.4)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">58 (1.4)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7a974620"><p class="cl-7a96cdee"><span class="cl-7a8c1688"></span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c1688">10-14</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">302 (4.5)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">244 (4.2)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">194 (3.7)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">181 (3.8)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">169 (3.5)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">148 (3.4)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">140 (3.5)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">116 (3.1)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">141 (3.9)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">173 (4.5)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">155 (4)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">167 (4.1)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">245 (5.2)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">221 (4.7)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">201 (4.4)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">237 (5.6)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7a974620"><p class="cl-7a96cdee"><span class="cl-7a8c1688"></span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c1688">15-19</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">147 (2.2)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">115 (2)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">70 (1.3)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">83 (1.7)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">73 (1.5)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">73 (1.7)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">74 (1.8)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">69 (1.8)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">73 (2)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">93 (2.4)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">94 (2.4)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">92 (2.3)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">136 (2.9)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">109 (2.3)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">108 (2.4)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">122 (2.9)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7a974620"><p class="cl-7a96cdee"><span class="cl-7a8c1688"></span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c1688">20-24</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">103 (1.5)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">66 (1.1)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">62 (1.2)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">41 (0.9)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">44 (0.9)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">38 (0.9)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">34 (0.8)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">60 (1.6)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">66 (1.8)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">63 (1.6)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">56 (1.5)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">56 (1.4)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">81 (1.7)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">71 (1.5)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">94 (2.1)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">61 (1.4)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7a974620"><p class="cl-7a96cdee"><span class="cl-7a8c1688"></span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c1688">25-29</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">56 (0.8)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">38 (0.7)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">28 (0.5)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">34 (0.7)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">24 (0.5)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">22 (0.5)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">26 (0.6)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">30 (0.8)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">30 (0.8)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">46 (1.2)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">47 (1.2)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">43 (1.1)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">50 (1.1)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">53 (1.1)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">54 (1.2)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">53 (1.3)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7a974620"><p class="cl-7a96cdee"><span class="cl-7a8c1688"></span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c1688">30-34</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">31 (0.5)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">35 (0.6)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">23 (0.4)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">18 (0.4)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">20 (0.4)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">11 (0.3)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">11 (0.3)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">16 (0.4)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">30 (0.8)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">32 (0.8)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">28 (0.7)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">17 (0.4)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">37 (0.8)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">33 (0.7)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">32 (0.7)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">38 (0.9)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7a974620"><p class="cl-7a96cdee"><span class="cl-7a8c1688"></span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c1688">35-39</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">17 (0.3)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">22 (0.4)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">9 (0.2)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">14 (0.3)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">22 (0.5)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">18 (0.4)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">11 (0.3)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">13 (0.3)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">26 (0.7)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">20 (0.5)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">15 (0.4)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">20 (0.5)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">16 (0.3)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">25 (0.5)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">33 (0.7)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">28 (0.7)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7a974620"><p class="cl-7a96cdee"><span class="cl-7a8c1688"></span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c1688">40+</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">95 (1.4)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">78 (1.3)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">64 (1.2)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">55 (1.2)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">49 (1)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">55 (1.3)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">63 (1.6)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">56 (1.5)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">70 (1.9)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">66 (1.7)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">52 (1.4)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">54 (1.3)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">71 (1.5)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">60 (1.3)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">103 (2.3)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">69 (1.6)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7a974620"><p class="cl-7a96cdee"><span class="cl-7a8c1688">BD initiated by</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c1688">SICTT</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">4762 (70.7)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">3975 (68.6)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">3549 (68)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">3487 (73.4)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">3504 (73.3)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">3156 (72)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">2938 (72.7)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">2815 (74)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">2688 (74.3)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">2850 (74)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">2858 (74.3)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">3020 (74.8)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">3572 (75.2)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">3554 (75.5)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">3264 (71.4)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">3281 (77.6)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7a974620"><p class="cl-7a96cdee"><span class="cl-7a8c1688"></span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c1688">Slaughter (non permit animal)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">1973 (29.3)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">1818 (31.4)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">1668 (32)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">1265 (26.6)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">1276 (26.7)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">1225 (28)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">1101 (27.3)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">988 (26)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">929 (25.7)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">1000 (26)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">990 (25.7)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">1016 (25.2)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">1158 (24.4)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">1135 (24.1)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">1284 (28.1)</span></p></td><td class="cl-7a974621"><p class="cl-7a96cde4"><span class="cl-7a8c169c">940 (22.2)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7a97462a"><p class="cl-7a96cdee"><span class="cl-7a8c1688"></span></p></td><td class="cl-7a97462b"><p class="cl-7a96cde4"><span class="cl-7a8c1688">IFN-γ</span></p></td><td class="cl-7a97462b"><p class="cl-7a96cde4"><span class="cl-7a8c169c">-</span></p></td><td class="cl-7a97462b"><p class="cl-7a96cde4"><span class="cl-7a8c169c">-</span></p></td><td class="cl-7a97462b"><p class="cl-7a96cde4"><span class="cl-7a8c169c">-</span></p></td><td class="cl-7a97462b"><p class="cl-7a96cde4"><span class="cl-7a8c169c">-</span></p></td><td class="cl-7a97462b"><p class="cl-7a96cde4"><span class="cl-7a8c169c">-</span></p></td><td class="cl-7a97462b"><p class="cl-7a96cde4"><span class="cl-7a8c169c">-</span></p></td><td class="cl-7a97462b"><p class="cl-7a96cde4"><span class="cl-7a8c169c">-</span></p></td><td class="cl-7a97462b"><p class="cl-7a96cde4"><span class="cl-7a8c169c">-</span></p></td><td class="cl-7a97462b"><p class="cl-7a96cde4"><span class="cl-7a8c169c">-</span></p></td><td class="cl-7a97462b"><p class="cl-7a96cde4"><span class="cl-7a8c169c">-</span></p></td><td class="cl-7a97462b"><p class="cl-7a96cde4"><span class="cl-7a8c169c">-</span></p></td><td class="cl-7a97462b"><p class="cl-7a96cde4"><span class="cl-7a8c169c">3 (0.1)</span></p></td><td class="cl-7a97462b"><p class="cl-7a96cde4"><span class="cl-7a8c169c">18 (0.4)</span></p></td><td class="cl-7a97462b"><p class="cl-7a96cde4"><span class="cl-7a8c169c">18 (0.4)</span></p></td><td class="cl-7a97462b"><p class="cl-7a96cde4"><span class="cl-7a8c169c">21 (0.5)</span></p></td><td class="cl-7a97462b"><p class="cl-7a96cde4"><span class="cl-7a8c169c">9 (0.2)</span></p></td></tr></tbody><tfoot><tr style="overflow-wrap:break-word;"><td colspan="18" class="cl-7a97462c"><p class="cl-7a96cdee"><span class="cl-7a8c16a6">BD: herd-level bTB breakdown; SICTT: Single Intradermal Comparative Tuberculin Test; IFN-γ: interferon-gamma assay; AHCS: Animal Health Computer System </span><br><span class="cl-7a8c16a6">IFN-γ cases prior to May 2019 were recorded as SICTT (i.e., negative SICTT reinterpreted as a positive SICTT), after this date there was a facility to record them separately on AHCS </span><br><span class="cl-7a8c16a6">BD figures relate to BDs that started in a particular year (i.e., BDs can span over more than one year so when data was summarised, values relate to the year the BD began in)</span></p></td></tr></tfoot></table></div>
+</div>
+</div>
+</figure>
+</div>
+</div>
+</section>
+<section id="bd-duration-1" class="level3" data-number="6.7.2">
+<h3 data-number="6.7.2" class="anchored" data-anchor-id="bd-duration-1"><span class="header-section-number">6.7.2</span> BD duration</h3>
+<div class="cell" data-layout-align="center" data-tbl.cap="BD duration statistics (in years). More recent years will inevitable have shorter BDs (as they may only be in their infancy.">
+<div id="tbl-bdduration" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center" data-tbl.cap="BD duration statistics (in years). More recent years will inevitable have shorter BDs (as they may only be in their infancy.">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl quarto-uncaptioned" id="tbl-bdduration-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;6.2
+</figcaption>
+<div aria-describedby="tbl-bdduration-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<div class="tabwid"><style>.cl-7ad224c0{table-layout:auto;}.cl-7ac535d0{font-family:'Arial';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-7ac535da{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-7ac535db{font-family:'Arial';font-size:10pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-7ac9b98e{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-7ac9b98f{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-7ac9de3c{background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7ac9de46{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7ac9de47{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7ac9de50{background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7ac9de51{background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7ac9de5a{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-7ad224c0"><thead><tr style="overflow-wrap:break-word;"><th class="cl-7ac9de3c"><p class="cl-7ac9b98e"><span class="cl-7ac535d0">Year</span></p></th><th class="cl-7ac9de3c"><p class="cl-7ac9b98e"><span class="cl-7ac535d0">N</span></p></th><th class="cl-7ac9de3c"><p class="cl-7ac9b98e"><span class="cl-7ac535d0">mean</span></p></th><th class="cl-7ac9de3c"><p class="cl-7ac9b98e"><span class="cl-7ac535d0">sd</span></p></th><th class="cl-7ac9de3c"><p class="cl-7ac9b98e"><span class="cl-7ac535d0">median</span></p></th><th class="cl-7ac9de3c"><p class="cl-7ac9b98e"><span class="cl-7ac535d0">min</span></p></th><th class="cl-7ac9de3c"><p class="cl-7ac9b98e"><span class="cl-7ac535d0">max</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-7ac9de46"><p class="cl-7ac9b98f"><span class="cl-7ac535d0">2,008</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535d0">6,735</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.5629102</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.5692333</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.4</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.2</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">16.0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7ac9de46"><p class="cl-7ac9b98f"><span class="cl-7ac535d0">2,009</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535d0">5,793</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.5743311</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.7272081</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.4</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.2</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">15.0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7ac9de46"><p class="cl-7ac9b98f"><span class="cl-7ac535d0">2,010</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535d0">5,217</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.5768258</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.7201722</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.4</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.2</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">13.9</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7ac9de46"><p class="cl-7ac9b98f"><span class="cl-7ac535d0">2,011</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535d0">4,752</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.5349537</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.4928331</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.4</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.2</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">12.9</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7ac9de46"><p class="cl-7ac9b98f"><span class="cl-7ac535d0">2,012</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535d0">4,780</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.5273013</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.5012158</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.4</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.2</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">11.2</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7ac9de46"><p class="cl-7ac9b98f"><span class="cl-7ac535d0">2,013</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535d0">4,381</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.5236704</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.4924766</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.4</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.2</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">10.8</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7ac9de46"><p class="cl-7ac9b98f"><span class="cl-7ac535d0">2,014</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535d0">4,039</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.5418668</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.6328490</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.4</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.2</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">9.9</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7ac9de46"><p class="cl-7ac9b98f"><span class="cl-7ac535d0">2,015</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535d0">3,803</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.5697344</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.7850132</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.4</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.2</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">9.0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7ac9de46"><p class="cl-7ac9b98f"><span class="cl-7ac535d0">2,016</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535d0">3,617</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.5554050</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.6578190</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.4</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.2</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">8.0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7ac9de46"><p class="cl-7ac9b98f"><span class="cl-7ac535d0">2,017</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535d0">3,850</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.5449870</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.5114049</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.4</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.2</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">7.0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7ac9de46"><p class="cl-7ac9b98f"><span class="cl-7ac535d0">2,018</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535d0">3,848</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.5591216</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.5840350</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.4</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.2</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">6.0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7ac9de46"><p class="cl-7ac9b98f"><span class="cl-7ac535d0">2,019</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535d0">4,039</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.5359990</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.4205488</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.4</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.2</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">4.9</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7ac9de46"><p class="cl-7ac9b98f"><span class="cl-7ac535d0">2,020</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535d0">4,748</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.5340775</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.3942622</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.4</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.2</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">4.0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7ac9de46"><p class="cl-7ac9b98f"><span class="cl-7ac535d0">2,021</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535d0">4,707</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.5357340</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.3537696</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.4</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.2</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">3.0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7ac9de46"><p class="cl-7ac9b98f"><span class="cl-7ac535d0">2,022</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535d0">4,569</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.5232217</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.2764019</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.4</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.2</span></p></td><td class="cl-7ac9de47"><p class="cl-7ac9b98e"><span class="cl-7ac535da">2.0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7ac9de50"><p class="cl-7ac9b98f"><span class="cl-7ac535d0">2,023</span></p></td><td class="cl-7ac9de51"><p class="cl-7ac9b98e"><span class="cl-7ac535d0">4,230</span></p></td><td class="cl-7ac9de51"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.4140898</span></p></td><td class="cl-7ac9de51"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.1581851</span></p></td><td class="cl-7ac9de51"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.4</span></p></td><td class="cl-7ac9de51"><p class="cl-7ac9b98e"><span class="cl-7ac535da">0.2</span></p></td><td class="cl-7ac9de51"><p class="cl-7ac9b98e"><span class="cl-7ac535da">1.0</span></p></td></tr></tbody><tfoot><tr style="overflow-wrap:break-word;"><td colspan="7" class="cl-7ac9de5a"><p class="cl-7ac9b98f"><span class="cl-7ac535db">Year represents year the BD started in (it could overlap multiple years)</span></p></td></tr></tfoot></table></div>
+</div>
+</div>
+</figure>
+</div>
+</div>
+</section>
+</section>
+<section id="notes" class="level2" data-number="6.8">
+<h2 data-number="6.8" class="anchored" data-anchor-id="notes"><span class="header-section-number">6.8</span> Notes</h2>
+<ul>
+<li>Explore CFUs, perhaps I need to drop them or have them as a seperate group</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation column-page-right">
+  <div class="nav-page nav-page-previous">
+      <a href="./lesion_prevalence_trends.html" class="pagination-link" aria-label="Prevalence of confirmed *M.bovis* lesions found in animals at routine slaughter">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Prevalence of confirmed <em>M.bovis</em> lesions found in animals at routine slaughter</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./publications.html" class="pagination-link" aria-label="CVERA related bTB publications">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">CVERA related bTB publications</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
