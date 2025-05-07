@@ -1,4 +1,4 @@
-# Irsh bTB eradication programme timeline {#sec-timeline}
+# Irish bTB eradication programme timeline {#sec-timeline}
 
 ```{r}
 #| label: global-options
