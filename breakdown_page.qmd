@@ -79,6 +79,8 @@ bd_df <- bd_df %>%
 
 ```
 
+
+
 ## Breakdown (BD) definition
 
 For this study, we defined the start date of a BD in a herd as the date when an animal was disclosed as a bTB case, as determined by the SICTT, IFN-γ or by the detection of visible lesions at routine slaughter which are then laboratory confirmed with *M. bovis* infection (also known as ‘factory lesion cases’). In the situation when a BD started due to the detection of a visible lesion, we chose the start date as the date when the sample was sent to the lab and not the date in which it was identified as culture positive which could be a number of weeks later. Depending on the circumstances, the herds `trading_status` on AHCS will generally change from `free` to `withdrawn`/`suspended`. We defined the BD end date as the date of the next SICTT (whole herd) test where the `trading_status` was restored to `free`. Once a bTB case is detected, a herd will usually remain in a BD until it has had two consecutive, clear whole-herd SICTT tests (usually 60 days apart). There are certain exceptions to the above criteria e.g., singletons.
@@ -139,9 +141,9 @@ $~$ $~$
 
 $~$ $~$
 
-# Number of BDs over time
+## Number of BDs over time
 
-## Per year
+### Per year
 
 
 
@@ -204,7 +206,7 @@ $~$ $~$
 
 $~$ $~$
 
-## Per month
+### Per month
 
 ```{r}
 #| label: fig-bdpermonth
@@ -235,7 +237,7 @@ $~$ $~$
 
 $~$ $~$
 
-## Per month and by herd-type
+### Per month and by herd-type
 
 ```{r}
 #| label: fig-bdpermonthherdtype
