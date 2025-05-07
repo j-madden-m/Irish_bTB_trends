@@ -13,7 +13,7 @@ knitr::opts_chunk$set(fig.align = "center")
 ```{r}
 #| label: setup
 #| include: FALSE
-#| eval: TRUE # true or false depending if interactive or not
+#| eval: FALSE # true or false depending if interactive or not
 # setting working directory - only for interactive session
 # has to be called "setup" for this to work
 knitr::opts_knit$set(root.dir = "D:/Files/bTB_breakdown_trends_paper/")
@@ -58,8 +58,8 @@ badger_trial_plot_after_2005 <- image_read("D:/Files/bTB_breakdown_trends_paper/
 # readin in basic prevalence data 
 # from case_numbers.qmd
 # the 05 (from 2005 onwards) i added manually after removing "filter(year > 2007" at start of "case_numbers.qmd"
-herd_level_prevalance_data <- read_csv("data/edited_output/herd_level_prevalance_data_05.csv")
-case_count_year <- read_csv("data/edited_output/case_count_year_05.csv") %>% 
+herd_level_prevalance_data <- read_csv("data/edited_output/prev_df_05_to_current.csv")
+case_count_year <- read_csv("data/edited_output/case_count_year_05_to_current.csv") %>% 
   filter(best_estimate_gif_skin_lab_string == "All cases") %>% 
   select(year, btb_cases = cases)
 herd_level_prevalance_data <- herd_level_prevalance_data %>% 
@@ -132,7 +132,7 @@ policy_fixed_period_after_06 <- policy_fixed_period %>%
   #filter(start_date >= dmy("31-12-2006")) %>% 
   filter(start_date >= dmy("31-12-2003")) %>%  # this will get in ahcs
   # pick dates before 2025 for now
-  filter(start_date <= dmy("01-01-2025")) %>% 
+  filter(start_date <= dmy("01-02-2025")) %>% 
   # split string so "\n" is inserted after every second word
   mutate(event_new = map_chr(event, ~ insert_newlines(.x, 2))) %>% 
   #rowwise() %>% 
@@ -140,7 +140,7 @@ policy_fixed_period_after_06 <- policy_fixed_period %>%
   # timeline height 3 times size of prevalence plot
   # .007 is to being it up to 7%
   mutate(prevalence = seq(max_prevalence + 0.007, diff_in_prevalence*6.4, length.out = nrow(.))) %>% 
-  mutate(prevalence = seq(0.07, diff_in_prevalence*5.5, length.out = nrow(.))) %>% 
+  mutate(prevalence = seq(0.07, diff_in_prevalence*8, length.out = nrow(.))) %>% 
   
   # calculate midpoint of dates
   mutate(midpoint_date = start + (end - start) / 2)
@@ -151,7 +151,7 @@ policy_fixed_period_after_06 <- policy_fixed_period %>%
 
 ## Recent timeline plot
 
-Although the focus in the paper is on data from 2008-2023, here we go slightly further back to help understand important changes to the programme that happended in earlier years.
+Although the focus in the paper is on data from 2008-2024, here we go slightly further back to help understand important changes to the programme that happended in earlier years.
 
 $~$ $~$
 
@@ -194,7 +194,7 @@ jj <- ggplot(herd_level_prevalance_data, aes(x = start_date, y = prevalence)) +
     name = "",  # Left y-axis label
     sec.axis = sec_axis(~ . * scale_factor, 
                         name = NULL, #bTB cases
-                        breaks = seq(from = 15000, to = 30000, 5000)
+                        breaks = seq(from = 15000, to = 45000, 5000)
                         #, 0.04, 0.05, 0.06),
     )  # Right y-axis label
   ) +
@@ -223,7 +223,7 @@ jj <- ggplot(herd_level_prevalance_data, aes(x = start_date, y = prevalence)) +
   scale_fill_manual(values = c(
     #"#4E79A7",  
     "#FAD892", "#EE6A64" ,"#82BD4E"), name = "Type") +
-  geom_text(data = policy_fixed_period_after_06, aes(x = midpoint_date, y = prevalence + 0.0015, label = event), color = "white", fontface = "bold") +
+  geom_text(data = policy_fixed_period_after_06, aes(x = midpoint_date, y = prevalence + 0.0022, label = event), color = "white", fontface = "bold") +
   theme_45_x +
   # scale_y_continuous(labels = scales::percent,
   #                    breaks = c(0.03, 0.04, 0.05, 0.06)) +
@@ -253,7 +253,7 @@ jj <- ggplot(herd_level_prevalance_data, aes(x = start_date, y = prevalence)) +
                        # next_line,
                       #  "2004: AHCS established"
        ),
-       title = paste0("Timeline of major trials, diagnostic and policy changes during the Irish bTB eradication (2005 - 2023)"),
+       title = paste0("Timeline of major trials, diagnostic and policy changes during the Irish bTB eradication (2005 - 2025)"),
        subtitle = paste0(
                       "Hover over timeline for more details",
                       "\n",
@@ -390,6 +390,20 @@ $~$ $~$
 
 $~$ $~$
 
+## List of EU-Audit reports (Sante F reports) for Ireland 
+
+
+- Health and Food Audits and Analysis, Sante F reports database <https://ec.europa.eu/food/audits-analysis/audit-report/IE>
+
+Note, also search for "milk" to find reports for Milk and milk products as well because bTB did feature in these.
+
+
+$~$ $~$
+
+------------------------------------------------------------------------
+
+$~$ $~$
+
 ## Irish bTB eradication trends/timeline references
 
 -   Watchorn, R.C.(1965). Bovine Tuberculosis Eradication Scheme 1954-1965. Dublin: Department of Agriculture and Fisheries <https://catalog.hathitrust.org/Record/009378520>
@@ -413,3 +427,8 @@ $~$ $~$
 ### Northern Ireland
 
 Robinson PA. A history of bovine tuberculosis eradication policy in Northern Ireland. Epidemiol Infect. 2015 Nov;143(15):3182-95. doi: 10.1017/S0950268815000291. Epub 2015 Mar 17. PMID: 25778830; PMCID: PMC9150964. <https://pubmed.ncbi.nlm.nih.gov/25778830/>
+
+
+### EU Audits (Sante F reports)
+
+- Food Audits and Analysis | Food Safety: <https://ec.europa.eu/food/audits-analysis/audit-report>

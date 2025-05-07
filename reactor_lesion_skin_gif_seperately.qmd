@@ -1,11 +1,8 @@
-
 # Prevalence of visible lesions seperately by SICTT and IFN-γ positive animals at slaughter {#sec-btblesions}
 
----
+------------------------------------------------------------------------
 
 $~$ $~$
-
-
 
 ```{r}
 #| label: global-options
@@ -32,19 +29,18 @@ source("R_files/reactor_lesion_gif_skin_functions.R", echo = T, print.eval = TRU
 # reading in all_cases_collapsed version from here: gif_lesion.R (called this as the issue was trying to identify which skin cases were gif)
 # read in data (from case_lesion_rate / need to rename to reactor_lesion_rate)
 # permit <- readRDS("data/edited_output/reactor_lesion_rate.rds")
-all_cases_collapsed <- readRDS(paste0("data/edited_output/all_cases_collapsed.rds")) %>% 
-    filter(year > 2007) 
-
+# all_cases_collapsed <- readRDS(paste0("data/edited_output/all_cases_collapsed.rds")) %>% 
+#     filter(year > 2007) 
+all_cases_collapsed_file <- dir_info("data", type = "file", regexp = "(?i)all_cases_collapsed.*\\.rds$") %>% 
+  subset(subset = modification_time == max(modification_time), select = path, drop = T)
+all_cases_collapsed <- readRDS(all_cases_collapsed_file) %>% 
+     filter(year > 2007) %>% 
+    filter(year != 2025)
 
 # set as TRUE or FALSE
 include_co_op_chunks = TRUE
 
 ```
-
-
-
-
-
 
 \newpage
 
@@ -52,15 +48,15 @@ include_co_op_chunks = TRUE
 
 ## Introduction
 
-This document presents the prevalence of visible lesions at slaughter within bTB positive animals separately by those classified by the SICTT and `r gif_string`. There was no facility within AHCS prior to May 2019 to record `r gif_string` positive animals. Before this, if an animal had a positive `r gif_string` result, their SICTT results were reinterpreted as positive. As a result, we have had to use old raw `r gif_string` data to try and differentiate between which animals were positive on `r gif_string` or SICTT. The old data has some missing tag numbers etc. and so we cannot be certain that we have assigned all cases to either `r gif_string` or SICTT correctly. However, we believe, the vast majority of the data is correct.  **Note, currently, we seem to be missing some lesions for Dec 2023. (awaiting new data dump)** 
+This document presents the prevalence of visible lesions at slaughter within bTB positive animals separately by those classified by the SICTT and `r gif_string`. There was no facility within AHCS prior to May 2019 to record `r gif_string` positive animals. Before this, if an animal had a positive `r gif_string` result, their SICTT results were reinterpreted as positive. As a result, we have had to use old raw `r gif_string` data to try and differentiate between which animals were positive on `r gif_string` or SICTT. The old data has some missing tag numbers etc. and so we cannot be certain that we have assigned all cases to either `r gif_string` or SICTT correctly. However, we believe, the vast majority of the data is correct.
 
 This is the difference between overall lesion prevalence document and this one (i.e. we make an attempt to seperate SICTT and `r gif_string` positive trends).
 
 ## Definitions
 
-### Proportion of animals with lesions at routine slaughter 
+### Proportion of animals with lesions at routine slaughter
 
-If an animal is classified as bTB positive before entering an abattoir or a meatplant, it must have a permit to enter. Any animal with a permit will get a visual inspection for lesions. In rare instances, a bTB positive animal may be sent to a knackery instead of an abattoir or meatplant (e.g. if the animal dies before being sent to the factory). In these cases, a permit may not be issued and a visual inspection does not routinely take place in a knackery. For these reasons, only animals with a permit (and thus, a visual check completed) are considered for this document. 
+If an animal is classified as bTB positive before entering an abattoir or a meatplant, it must have a permit to enter. Any animal with a permit will get a visual inspection for lesions. In rare instances, a bTB positive animal may be sent to a knackery instead of an abattoir or meatplant (e.g. if the animal dies before being sent to the factory). In these cases, a permit may not be issued and a visual inspection does not routinely take place in a knackery. For these reasons, only animals with a permit (and thus, a visual check completed) are considered for this document.
 
 Of all SICTT and `r gif_string` positive animals, this is the breakdown of the number of animals with a permit:
 
@@ -79,7 +75,6 @@ all_cases_collapsed %>%
   tabyl(., per_type)
 ```
 
-
 Of importance here is that `ER26GIF` and `ER26SGIF` permits refer to `r gif_string` bTB positive animals. As mentioned above, these did not exist on AHCS prior to May 2019.
 
 $~$ $~$
@@ -90,11 +85,9 @@ $~$ $~$
 
 \newpage
 
-
 ## Overall lesion prevalence (seperately by SICTT or `r gif_string`)
 
 ### All animals combined:
-
 
 ```{r}
 #| label: fig-overall
@@ -110,7 +103,6 @@ lesion_rate_by_gif_or_skin_year <- lesion_rate_by_gif_or_skin(all_cases_collapse
 reactor_lesion_by_gif_or_skin_plot_fn(lesion_rate_by_gif_or_skin_year, "year", "lesion_rate")
 ```
 
-
 $~$ $~$
 
 ------------------------------------------------------------------------
@@ -119,16 +111,11 @@ $~$ $~$
 
 \newpage
 
-
 ### All animals combined monthly: {.tabset}
-
 
 $~$ $~$
 
-
-
 #### Interactive
-
 
 ```{r}
 #| label: fig-overallmonthly
@@ -146,12 +133,6 @@ min_max_dates_df <- min_max_geom_react(lesion_rate_by_gif_or_skin_month)
 reactor_lesion_by_gif_or_skin_plot_fn(lesion_rate_by_gif_or_skin_month, "year_month", "lesion_rate", month_interactive = TRUE)
 ```
 
-
-
-
-
-
-
 $~$ $~$
 
 ------------------------------------------------------------------------
@@ -160,13 +141,9 @@ $~$ $~$
 
 \newpage
 
-
-
 ### AHCS herd-type per year
 
-
 $~$ $~$
-
 
 ```{r}
 #| label: fig-overallahcsyear
@@ -183,9 +160,6 @@ lesion_rate_by_gif_or_skin_year_ahcs <- lesion_rate_by_gif_or_skin(all_cases_col
 reactor_lesion_by_gif_or_skin_plot_fn(lesion_rate_by_gif_or_skin_year_ahcs, "year", "lesion_rate", facet_var = herd_type)
 ```
 
-
-
-
 $~$ $~$
 
 ------------------------------------------------------------------------
@@ -194,18 +168,13 @@ $~$ $~$
 
 \newpage
 
-
 ### AHCS herd-type per month {.tabset}
 
-
 $~$ $~$
-
-
 
 #### Interactive
 
 $~$
-
 
 ```{r}
 #| label: fig-overallahcsmonth
@@ -224,11 +193,6 @@ min_max_dates_df <- min_max_geom_react(lesion_rate_by_gif_or_skin_month_ahcs)
 reactor_lesion_by_gif_or_skin_plot_fn(lesion_rate_by_gif_or_skin_month_ahcs, "year_month", "lesion_rate", month_interactive = TRUE, facet_var = herd_type)
 ```
 
-
-
-
-
-
 $~$ $~$
 
 ------------------------------------------------------------------------
@@ -237,17 +201,9 @@ $~$ $~$
 
 \newpage
 
-
-
-
-
-
 ### Brock et al. herd-types per year
 
-
-
 $~$ $~$
-
 
 ```{r}
 #| label: fig-overallbrockyear
@@ -262,7 +218,8 @@ $~$ $~$
 
 
 lesion_rate_by_gif_or_skin_year_brock <- lesion_rate_by_gif_or_skin(all_cases_collapsed, c(year, herd_type_ml_description))
-reactor_lesion_by_gif_or_skin_plot_fn(lesion_rate_by_gif_or_skin_year_brock, "year", "lesion_rate", facet_var = herd_type_ml_description)
+reactor_lesion_by_gif_or_skin_plot_fn(lesion_rate_by_gif_or_skin_year_brock %>% 
+                                        filter(herd_type_ml_description != "Store"), "year", "lesion_rate", facet_var = herd_type_ml_description)
 ```
 
 $~$ $~$
@@ -271,15 +228,73 @@ $~$ $~$
 
 $~$ $~$
 
-\newpage
 
-
-### Brock et al. herd-types per month {.tabset}
-
+#### Overall lesion rate in both combined
 
 $~$ $~$
 
+```{r}
+#| label: fig-overallbrockyearcombined
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 8 
+#| fig.cap: !expr paste0("Overall lesion prevalence within SICTT and ", gif_string, " positive animals at slaughter by Brock et al. herd-types per year.")
 
+
+lesion_rate_overall_cases_year = lesion_rate_by_gif_or_skin_year_brock %>% 
+  group_by(year, herd_type_ml_description) %>% 
+  summarise(count_of_lesions = sum(count_of_lesions),
+            total_gif_or_skin_cases = sum(total_gif_or_skin_cases),
+            year_f = first(year_f)) %>% 
+  ungroup() %>% 
+  mutate(lesion_rate = count_of_lesions/total_gif_or_skin_cases)
+
+lesion_rate_overall_cases_year <- lesion_rate_overall_cases_year %>% 
+  mutate(herd_type_ml_description = fct_relevel(herd_type_ml_description, c("Dairy", "Beef", "Store", "Fattener",
+                                                                            "Mixed", "Trader",
+                                                                            #"Seasonal", now removed
+                                                                            "Unknown")))
+#levels(lesion_rate_overall_cases_year$herd_type_ml_description)
+
+
+# remove unknown herd type (although these are interesting in themselves)
+lesion_rate_overall_cases_year_plot <- ggplot(lesion_rate_overall_cases_year %>% 
+                                                filter(herd_type_ml_description != "Unknown") %>% 
+                                                filter(herd_type_ml_description != "Trader") %>% 
+                                                droplevels(), aes(x = year, y = lesion_rate, color = herd_type_ml_description)) +
+  geom_line(linewidth = 2) +
+  labs(x = "Year", 
+       y = "Lesion prevalence", 
+       title = "Lesion prevalence within bTB positive animals classified by SICTT or IFN-γ",
+       caption = paste0(all_lesions_vector,
+                        "\n",
+                        "Unknown and Trader herds excluded due to low numbers")) +
+  theme_jamie +
+  scale_color_manual(name = "Brock et al. herd type", values = brock_cols) +
+  scale_y_continuous(labels = scales::label_percent(scale = 100)) +
+  scale_x_continuous(breaks = nth_element(c(unique(lesion_rate_overall_cases_year$year)), 1, 2)) +
+  theme(title = element_text(size = 18, face = "bold"),
+        legend.text = element_markdown(size = 16),
+        plot.caption.position = "plot",
+        plot.title.position = "plot",
+        
+        legend.title = element_text(size = 16, face = "bold"),
+        plot.caption = element_text(size = 9, color = "black", face = "italic"),
+  )
+lesion_rate_overall_cases_year_plot
+```
+
+
+
+\newpage
+
+### Brock et al. herd-types per month {.tabset}
+
+$~$ $~$
 
 #### Interactive
 
@@ -302,9 +317,6 @@ min_max_dates_df <- min_max_geom_react(lesion_rate_by_gif_or_skin_month_brock)
 reactor_lesion_by_gif_or_skin_plot_fn(lesion_rate_by_gif_or_skin_month_brock, "year_month", "lesion_rate", month_interactive = TRUE, facet_var = herd_type_ml_description)
 ```
 
-
-
-
 $~$ $~$
 
 ------------------------------------------------------------------------
@@ -317,11 +329,9 @@ $~$ $~$
 
 The following section estimates the prevalence of SICTT or `r gif_string` positive animals that have lesions at different locations in the body.
 
-
 ### All animals combined:
 
 Yearly:
-
 
 ```{r}
 #| label: fig-lesionlocationyear
@@ -339,8 +349,6 @@ permit_lesion_head_chest_type_by_gif_skin_year <- permit_lesion_head_chest_type_
 reactor_gif_or_skin_chest_fn(permit_lesion_head_chest_type_by_gif_skin_year, "year", "lesion_rate", facet_var = best_estimate_gif_skin_lab_string)
 ```
 
-
-
 $~$ $~$
 
 ------------------------------------------------------------------------
@@ -350,7 +358,6 @@ $~$ $~$
 \newpage
 
 Monthly version:
-
 
 ```{r}
 #| label: fig-lesionlocationmonth
@@ -368,10 +375,6 @@ min_max_dates_df <- min_max_geom_react(permit_lesion_head_chest_type_by_gif_skin
 reactor_gif_or_skin_chest_fn(permit_lesion_head_chest_type_by_gif_skin_month, "year_month", "lesion_rate", month_interactive = TRUE, facet_var = best_estimate_gif_skin_lab_string)
 ```
 
-
-
-
-
 $~$ $~$
 
 ------------------------------------------------------------------------
@@ -383,7 +386,6 @@ $~$ $~$
 ### Proportion breakdown by where the lesions are found:
 
 (of animals with lesions, what is the proportion breakdown of where they are located)
-
 
 SICTT:
 
@@ -425,7 +427,6 @@ proportion_skin_lesion_location_barchart <- ggplot(skin_proportion_df, aes(x = y
        #caption = "we only have data for Brock categorisation available for years 2015-2022")
 proportion_skin_lesion_location_barchart
 ```
-
 
 $~$ $~$
 
@@ -476,7 +477,6 @@ proportion_gif_lesion_location_barchart <- ggplot(gif_proportion_df, aes(x = yea
 proportion_gif_lesion_location_barchart
 ```
 
-
 $~$ $~$
 
 ------------------------------------------------------------------------
@@ -485,12 +485,9 @@ $~$ $~$
 
 \newpage
 
-
 ### AHCS herd-types per year
 
-
 $~$ $~$
-
 
 $~$
 
@@ -526,8 +523,6 @@ permit_lesion_head_chest_type_by_gif_skin_year_ahcs <- permit_lesion_head_chest_
 reactor_gif_or_skin_chest_fn(permit_lesion_head_chest_type_by_gif_skin_year_ahcs, "year", "lesion_rate", facet_grid_vars = herd_type)
 ```
 
-
-
 $~$ $~$
 
 ------------------------------------------------------------------------
@@ -536,20 +531,13 @@ $~$ $~$
 
 \newpage
 
-
-
-
 ### AHCS herd-types per month {.tabset}
 
-
 $~$ $~$
-
-
 
 #### Interactive
 
 $~$
-
 
 ```{r}
 #| label: fig-lesionlocationahcsmonth
@@ -567,10 +555,7 @@ min_max_dates_df <- min_max_geom_react(permit_lesion_head_chest_type_by_gif_skin
 reactor_gif_or_skin_chest_fn(permit_lesion_head_chest_type_by_gif_skin_month_ahcs, "year_month", "lesion_rate", month_interactive = TRUE, facet_grid_vars = herd_type)
 ```
 
-
-
 Same plot but zoomed in for clarity (outliers due to small numbers):
-
 
 ```{r}
 #| label: fig-lesionlocationahcsyearzoomed
@@ -589,10 +574,6 @@ reactor_gif_or_skin_chest_fn(permit_lesion_head_chest_type_by_gif_skin_month_ahc
                              y_zoom = 0.25) 
 ```
 
-
-
-
-
 $~$ $~$
 
 ------------------------------------------------------------------------
@@ -601,9 +582,7 @@ $~$ $~$
 
 \newpage
 
-
 ### Brock et al. herd-types per year
-
 
 ```{r}
 #| label: fig-lesionlocationbrockyear
@@ -620,19 +599,13 @@ permit_lesion_head_chest_type_by_gif_skin_year_brock <- permit_lesion_head_chest
 reactor_gif_or_skin_chest_fn(permit_lesion_head_chest_type_by_gif_skin_year_brock, "year", "lesion_rate", facet_grid_vars = herd_type_ml_description) 
 ```
 
-
 ### Brock et al. herd-types per month {.tabset}
 
-
 $~$ $~$
-
-
 
 #### Interactive
 
 $~$
-
-
 
 ```{r}
 #| label: fig-lesionlocationbrockmonth
@@ -650,10 +623,7 @@ min_max_dates_df <- min_max_geom_react(permit_lesion_head_chest_type_by_gif_skin
 reactor_gif_or_skin_chest_fn(permit_lesion_head_chest_type_by_gif_skin_month_brock, "year_month", "lesion_rate", month_interactive = TRUE, facet_grid_vars = herd_type_ml_description) 
 ```
 
-
 Same plot but zoomed in for clarity (outliers due to small numbers):
-
-
 
 ```{r}
 #| label: fig-lesionlocationbrockmonthzoom
@@ -671,36 +641,15 @@ min_max_dates_df <- min_max_geom_react(permit_lesion_head_chest_type_by_gif_skin
 reactor_gif_or_skin_chest_fn(permit_lesion_head_chest_type_by_gif_skin_month_brock, "year_month", "lesion_rate", month_interactive = TRUE, facet_grid_vars = herd_type_ml_description) 
 ```
 
-
-
-
 ## Additional things to add
 
-- Tables
-- Smooth trend plots
-
-
+-   Tables
+-   Smooth trend plots
 
 ## Questions
 
-- Why is there a peak in lesions in bTB positive animals at the start of the year (seems more pronounced in SICTT?)? Is this simply an administrative issue whereby there is a delay in sending animals to a factory?
+-   Why is there a peak in lesions in bTB positive animals at the start of the year (seems more pronounced in SICTT?)? Is this simply an administrative issue whereby there is a delay in sending animals to a factory?
 
-- Would it have anything to do with a slight increase in avian readings around Sept (this is seen in `r gif_string`, we presume the same in SICTT)? The animals have been exposed to the environment for longer at this stage?
+-   Would it have anything to do with a slight increase in avian readings around Sept (this is seen in `r gif_string`, we presume the same in SICTT)? The animals have been exposed to the environment for longer at this stage?
 
-- Avian is lower at the start of the year - is this because the majority of animals will be immunosurpressed (pregnant)(`r gif_string` is mainly testing dairy animals)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+-   Avian is lower at the start of the year - is this because the majority of animals will be immunosurpressed (pregnant)(`r gif_string` is mainly testing dairy animals)

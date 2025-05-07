@@ -1,7 +1,6 @@
 # bTB case numbers and herd-prevalence by different herd-types {#sec-casenumbers}
 
----
-
+------------------------------------------------------------------------
 
 ```{r}
 #| label: global-options
@@ -26,11 +25,24 @@ source("R_files/case_number_quarto_functions.R")
 # bd_df_labels <- as.list(sjlabelled::get_label(bd_df))
 # bd_df <- sjlabelled::remove_all_labels(bd_df)
 
-# master_tb
-master_tb <- readRDS("data/master_tb_14_Nov_2024.rds")
-#
-all_cases_collapsed <- readRDS(paste0("data/edited_output/all_cases_collapsed.rds")) %>% 
-    filter(year > 2007) 
+# master_tb <- readRDS("data/master_tb_14_Nov_2024.rds")
+master_file <- dir_info("data", type = "file", regexp = "(?i)master.*\\.rds$") %>% 
+  subset(subset = modification_time == max(modification_time), select = path, drop = T)
+master_tb <- readRDS(master_file) %>% 
+  filter(skin_fixed_test_date_year > 2007) %>% 
+  filter(skin_fixed_test_date_year != 2025)
+
+
+# this comes from "gif_lesion_prep"
+# no longer come from there, comes directly from year_2025
+# we need to run this twice - once without filtering (for policy plot)
+# and one with filtering by 2007 for the document itself
+# all_cases_collapsed <- readRDS(paste0("data/edited_output/all_cases_collapsed.rds")) %>%     filter(year > 2007) 
+all_cases_collapsed_file <- dir_info("data", type = "file", regexp = "(?i)all_cases_collapsed.*\\.rds$") %>% 
+  subset(subset = modification_time == max(modification_time), select = path, drop = T)
+all_cases_collapsed <- readRDS(all_cases_collapsed_file) %>% 
+     filter(year > 2007) %>% 
+    filter(year != 2025)
 
 # culture for lab
 
@@ -73,13 +85,7 @@ all_cases_collapsed <- all_cases_collapsed %>%
 
 ```
 
-
-
-
-
-
 $~$ $~$
-
 
 ## Cases over time
 
@@ -96,14 +102,27 @@ $~$ $~$
 #| fig.height: 8 
 #| fig.cap: "Number of bTB cases by year and diagnostic method."
 
+case_count_year_05 <- read_csv("data/edited_output/case_count_year_05.csv")
 case_count_year <- case_count_function(all_cases_collapsed, "year")
 #case_count_year
 # saving data for policy plot
 write_csv(case_count_year, "data/edited_output/case_count_year.csv")
 case_count_plot_fun(case_count_year, "year", "cases")
+
+
+# adding 2005-2007 data for policy plot
+case_count_year_05_to_current <- case_count_year_05 %>%
+  #mutate(herd_prevalence = as.character(herd_prevalence)) %>%
+  filter(year %in% c(2005:2007)) %>%
+  bind_rows(case_count_year)
+# saving data
+write_csv(case_count_year_05_to_current, "data/edited_output/case_count_year_05_to_current.csv")
+
+# *************************************************************************
+# save data for the paper
+saveRDS(case_count_year, paste0("data/edited_output/for_paper/case_count_year_for_paper.rds"))
+# *************************************************************************
 ```
-
-
 
 ### by month:
 
@@ -123,7 +142,6 @@ min_max_dates_df <- min_max_geom_react_with_var(case_count_month, cases)
 #case_count_plot_fun(case_count_month, "year_month", "cases")
 case_count_plot_fun(case_count_month, "year_month", "cases", month_interactive = TRUE)
 ```
-
 
 $~$ $~$
 
@@ -150,10 +168,7 @@ proportion_cases_function(all_cases_collapsed, herd_type, interactive = TRUE)
 
 ```
 
-
-
 ### Brock et al. herd-types
-
 
 ```{r}
 #| label: fig-proportionbrock
@@ -170,11 +185,7 @@ proportion_cases_function(all_cases_collapsed, herd_type_ml_description, interac
 
 ```
 
-
-
-
 ### Brock et al. herd-types (sub-groups)
-
 
 ```{r}
 #| label: fig-proportionbrocksub
@@ -191,8 +202,6 @@ proportion_cases_function(all_cases_collapsed, herd_type_ml_sub_class_descriptio
 
 ```
 
-
-
 $~$ $~$
 
 ------------------------------------------------------------------------
@@ -201,8 +210,7 @@ $~$ $~$
 
 ## Herd-level bTB prevalence
 
-### Overall prevalence 
-
+### Overall prevalence
 
 ```{r}
 #| label: fig-prevalenceplot
@@ -319,6 +327,15 @@ prev_df <- data.frame(cases = t(unique_cases_year)) %>%
 # saving data
 write_csv(prev_df, "data/edited_output/herd_level_prevalance_data.csv")
 
+# adding 2005-2007 data for policy plot
+prev_df_05 <- read_csv("data/edited_output/herd_level_prevalance_data_05.csv")
+prev_df_05_to_current <- prev_df_05 %>% 
+  mutate(herd_prevalence = as.character(herd_prevalence)) %>% 
+  filter(year %in% c(2005:2007)) %>% 
+  bind_rows(prev_df)
+# saving data
+write_csv(prev_df_05_to_current, "data/edited_output/prev_df_05_to_current.csv")
+
 prev_df_t <- prev_df %>% 
   select(year, count_herd_prevalence) %>% 
   rotate_df("place_holder") %>% 
@@ -330,12 +347,7 @@ prev_df_t <- prev_df %>%
 prev_plot_function(prev_df, "year", "prevalence")
 ```
 
-
-
 ### Brock et al. herd type prevalence
-
-
-
 
 ```{r}
 #| label: fig-brockprev
@@ -425,9 +437,6 @@ prev_brock_plot <- prev_brock_df %>%
 ggplotly(prev_brock_plot)
 ```
 
-
-
-
 ### Brock et al. herd type prevalence by county
 
 ```{r}
@@ -470,4 +479,4 @@ $~$ $~$
 
 $~$ $~$
 
----
+------------------------------------------------------------------------

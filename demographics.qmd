@@ -1,8 +1,6 @@
-
-
 # Demographics (herd-types, herd size, bovine population) {#sec-demographics}
 
----
+------------------------------------------------------------------------
 
 $~$ $~$
 
@@ -15,8 +13,6 @@ knitr::opts_chunk$set(fig.align = "center")
 # like this: #| fig-align: center
 ```
 
-
-
 ```{r}
 #| label: readin-data
 #| include: false
@@ -25,41 +21,49 @@ knitr::opts_chunk$set(fig.align = "center")
 #source(file.path("R_files", "read_in_quarto_trends.R"))
 
 source("R_files/read_in_quarto_trends.R")
-bd_df <- readRDS("data/bd_df_14_Nov_2024.rds")
+bd_df_file <- dir_info("data", type = "file", regexp = "(?i)bd_df.*\\.rds$") %>% 
+  subset(subset = modification_time == max(modification_time), select = path, drop = T)
+#bd_df <- readRDS("data/bd_df_14_Nov_2024.rds")
+bd_df <- readRDS(bd_df_file) %>% 
+  filter(bd_start_yr > 2007 & bd_start_yr < 2025)
 bd_df_labels <- as.list(sjlabelled::get_label(bd_df))
 bd_df <- sjlabelled::remove_all_labels(bd_df)
 
 # master_tb
-master_tb <- readRDS("data/master_tb_14_Nov_2024.rds")
-
+#master_tb <- readRDS("data/master_tb_14_Nov_2024.rds")
+master_file <- dir_info("data", type = "file", regexp = "(?i)master.*\\.rds$") %>% 
+  subset(subset = modification_time == max(modification_time), select = path, drop = T)
+master_tb <- readRDS(master_file) %>% 
+  filter(skin_fixed_test_date_year > 2007) %>% 
+  filter(skin_fixed_test_date_year != 2025)
 
 # we want dairy at the bottom so we can see how much its going
-order_herd_type <- levels(factor(master_tb$herd_type_ml_sub_class_description))
-order_herd_type
-better_order_herd_type <- c(str_subset(order_herd_type, "^Dairy"), 
-                            str_subset(order_herd_type, "^Beef"),
-                            str_subset(order_herd_type, "^Store"),
-                            "Fattener", "Mixed", "Trader", 
-                            #"Seasonal", #"Rearing dairy females", 
-                            "Unknown")
-better_order_herd_type
-
-master_tb <- master_tb %>% 
-  mutate(herd_type_ml_description = fct_relevel(herd_type_ml_description, c("Dairy", "Beef", "Store", "Fattener",
-                                                                            "Mixed", "Trader", 
-                                                                            #"Seasonal", now removed
-                                                                            "Unknown")),
-         herd_type_ml_sub_class_description = fct_relevel(herd_type_ml_sub_class_description, better_order_herd_type))
+# order_herd_type <- levels(factor(master_tb$herd_type_ml_sub_class_description))
+# order_herd_type
+# better_order_herd_type <- c(str_subset(order_herd_type, "^Dairy"), 
+#                             str_subset(order_herd_type, "^Beef"),
+#                             str_subset(order_herd_type, "^Store"),
+#                             "Fattener", "Mixed", "Trader", 
+#                             #"Seasonal", #"Rearing dairy females", 
+#                             "Unknown")
+# better_order_herd_type
+# 
+# master_tb <- master_tb %>% 
+#   mutate(herd_type_ml_description = fct_relevel(herd_type_ml_description, c("Dairy", "Beef", "Store", "Fattener",
+#                                                                             "Mixed", "Trader", 
+#                                                                             #"Seasonal", now removed
+#                                                                             "Unknown")),
+#          herd_type_ml_sub_class_description = fct_relevel(herd_type_ml_sub_class_description, better_order_herd_type))
 #levels(master_tb$herd_type_ml_description)
 #levels(master_tb$herd_type_ml_sub_class_description)
 #tabyl(master_tb, herd_type_ml_description)
 #tabyl(master_tb, herd_type_ml_sub_class_description)
 
 
+
 ```
 
-
-```{r} 
+```{r}
 #| label: dropyears
 #| include: false
 #| echo: FALSE
@@ -84,7 +88,7 @@ master_tb <- master_tb %>%
 
 ### Study period
 
-Data is available for 2005-2023 but we found many instances in the early years where a herd was in a BD (`trading_status == withdrawn`) but no bTB cases were reported (the BD may have begun before our earliest date) and so to make fair comparisons between years we have only included data from 2008 onwards.
+Data is available for 2005-2024 but we found many instances in the early years where a herd was in a BD (`trading_status == withdrawn`) but no bTB cases were reported (the BD may have begun before our earliest date) and so to make fair comparisons between years we have only included data from 2008 onwards.
 
 ### Herd type categorisations
 
@@ -112,54 +116,48 @@ We have access to three herd type categorisations:
     cat(paste("- ", levels(master_tb$herd_type_ml_sub_class_description)), sep = "\n")
     ```
 
-
 The following is a brief summary of the main Brock et al. herd-types:
-
 
 **Dairy**
 
-- Residency in the herd is longer than 30 days for at least 50% of the herd.
--	Proportion of animals in a herd that have ever calved by September, relative to herd size is greater than 25%.
--	66% or more of the animals are of a dairy breed.
+-   Residency in the herd is longer than 30 days for at least 50% of the herd.
+-   Proportion of animals in a herd that have ever calved by September, relative to herd size is greater than 25%.
+-   66% or more of the animals are of a dairy breed.
 
 **Beef**
 
-- (generally just suckler from AHCS I think)
-- Residency in the herd is longer than 30 days for at least 50% of the herd
--	Proportion of animals in a herd that have ever calved by September, relative to herd size is greater than 25%.
--	Less than 33% of the animals are of a dairy breed.
+-   (generally just suckler from AHCS I think)
+-   Residency in the herd is longer than 30 days for at least 50% of the herd
+-   Proportion of animals in a herd that have ever calved by September, relative to herd size is greater than 25%.
+-   Less than 33% of the animals are of a dairy breed.
 
 **Mixed**
 
-- Residency in the herd is longer than 30 days for at least 50% of the herd.
--	Proportion of animals in a herd that have ever calved by September, relative to herd size is greater than 25%.
--	33% or more of the animals and less than 66% are of a dairy breed.
-
+-   Residency in the herd is longer than 30 days for at least 50% of the herd.
+-   Proportion of animals in a herd that have ever calved by September, relative to herd size is greater than 25%.
+-   33% or more of the animals and less than 66% are of a dairy breed.
 
 **Store**
 
-- Residency in the herd is longer than 30 days for at least 50% of the herd.
-- Less than 25% of the animals in the herd have calved in the past
-- Less than 50% of the animals in the herd go directly to slaughter
+-   Residency in the herd is longer than 30 days for at least 50% of the herd.
+-   Less than 25% of the animals in the herd have calved in the past
+-   Less than 50% of the animals in the herd go directly to slaughter
 
-**Fattener**	
+**Fattener**
 
-- Residency in the herd is longer than 30 days for at least 50% of the herd.
-- Proportion of animals in a herd that have ever calved by September, relative to herd size is greater than 25%.
--	50% or more of the animals in the herd go directly to slaughter.
+-   Residency in the herd is longer than 30 days for at least 50% of the herd.
+-   Proportion of animals in a herd that have ever calved by September, relative to herd size is greater than 25%.
+-   50% or more of the animals in the herd go directly to slaughter.
 
 **Trader**
 
-- 50% or more of the animals spend less than 30 days in the herd.
+-   50% or more of the animals spend less than 30 days in the herd.
 
 **Seasonal**
 
-- Animals are kept in the herd for only part of the year. (As of 2024, "seasonal" is no longer a category - they have been moved into "trader" and "fattener" categories respectively)
+-   Animals are kept in the herd for only part of the year. (As of 2024, "seasonal" is no longer a category - they have been moved into "trader" and "fattener" categories respectively)
 
-**Unknown**
-- Self-explanatory.
-
-
+**Unknown** - Self-explanatory.
 
 ### Relationship of all herd-type categorisations (based on 2023 data)
 
@@ -171,7 +169,7 @@ The following is a brief summary of the main Brock et al. herd-types:
 #| warning: FALSE
 #| message: FALSE
 #| fig.width: 12
-#| fig.height: 8 
+#| fig.height: 10 
 #| fig.cap: "Relationship of all herd-type categorisations (based on 2023 data)."
 library(ggsankey)
 df_sankey <- master_tb %>% 
@@ -198,7 +196,6 @@ ggplot(df2_sankey, aes(x = x, next_x = next_x, node = node, next_node = next_nod
   ggtitle("Relationship between different herd-type classifications")
 ```
 
-
 ## Changes in herd-types over time
 
 $~$
@@ -217,11 +214,11 @@ $~$
 #| fig.cap: "Proportion of herd types for Ireland over time."
 
 herd_type_master_tb <- master_tb %>%
-  select(herd_no, skin_fixed_test_date, skin_fixed_test_date_year, matches("herd_type"), county) %>%
+  select(herd_no, skin_fixed_test_date, skin_fixed_test_date_year, matches("herd_type"), county) #%>%
   #mutate(skin_fixed_test_date_year = year(skin_fixed_test_date)) %>% 
   #dont want to drop 2023 earlier becuase we want master_tb to get all reactors
   #and this might drop some out (very very few but still)
-  filter(skin_fixed_test_date_year != 2024)
+  #filter(skin_fixed_test_date_year != 2024)
 herd_type_master_tb_dt <- data.table(herd_type_master_tb)
 herd_type_master_tb <- data.frame(herd_type_master_tb_dt[herd_type_master_tb_dt[, .I[1], by = list(herd_no, skin_fixed_test_date_year)]$V1])
 herd_type_t <- herd_type_master_tb %>% 
@@ -333,6 +330,24 @@ $~$
 #| fig.height: 12 
 #| fig.cap: "Proportion of Brock et al. herd types for Ireland over time."
 
+# *************************************************************************
+# this for the paper
+herd_type_jonas_percent_for_paper <- herd_type_master_tb %>% 
+  filter(!is.na(herd_type_ml_description)) %>% 
+  split(.$skin_fixed_test_date_year) %>%
+  map(~tabyl(.x, herd_type_ml_description)) %>% 
+  map(., ~mutate(.x, percent = round(percent, 2)) %>% select(-n)) %>% 
+  imap(~mutate(.x, year = .y)) %>% 
+  bind_rows() %>% 
+  mutate(percent_label_no_trader_or_unknown = percent*100,
+         percent_label_no_trader_or_unknown = ifelse(herd_type_ml_description %in% c("Trader", "Unknown"),
+                                                     "", 
+                                                     percent_label_no_trader_or_unknown))
+# save data
+saveRDS(herd_type_jonas_percent_for_paper, paste0("data/edited_output/for_paper/herd_type_jonas_percent_for_paper.rds"))
+# *************************************************************************
+
+
 herd_type_jonas_master_tb <- herd_type_master_tb %>% 
   group_by(skin_fixed_test_date_year, herd_type_ml_description) %>% 
   summarise(count_of_jonas_herd_types = n()) %>% 
@@ -353,19 +368,53 @@ herd_type_jonas_master_tb_t[] <- lapply(herd_type_jonas_master_tb_t, function(x)
 herd_type_jonas_master_tb <- herd_type_jonas_master_tb %>% 
   filter(!is.na(herd_type_ml_description))
 
-jonas_herd_type_short <- ggplot(herd_type_jonas_master_tb, aes(x = skin_fixed_test_date_year, y = count_of_jonas_herd_types, fill = herd_type_ml_description)) +
-  geom_stream(color = 1, lwd = 0.25, type = "proportional") +
-  scale_fill_manual(values = brock_cols) +
+# jonas_herd_type_short <- ggplot(herd_type_jonas_master_tb, aes(x = skin_fixed_test_date_year, y = count_of_jonas_herd_types, fill = herd_type_ml_description)) +
+#   geom_stream(color = 1, lwd = 0.25, type = "proportional") +
+#   scale_fill_manual(values = brock_cols) +
+#   theme_cowplot() +
+#   theme(axis.text = element_text(size = 12, face = "bold", colour = "black"),
+#         axis.title = element_text(size = 16, face = "bold", colour = "black"),
+#         #axis.text.x = element_blank(), #remove x axis title
+#         #axis.text.x = element_text(size = 12)
+#         #legend title only needed for first one as only extracting first
+#         legend.title = element_text(size = 10, face = "bold"), 
+#         legend.text = element_text(size = 10),
+#         plot.caption.position = "plot",
+#         plot.caption = element_text(hjust = 0),
+#         #grey background like here:
+#         #https://github.com/davidsjoberg/ggstream
+#         #plot.background = element_rect(fill = "grey88", color = NA),
+#         #make facet white rather than default grey
+#         #strip.background = element_rect(colour = "white", fill = "white")
+#   ) + 
+#   background_grid() +
+#   labs(x = "Year", y = "Proportion of herd type", fill = "Brock et al. herd type",
+#        title =
+#          paste0("Proportion of herd types by year (", min(herd_type_jonas_master_tb$skin_fixed_test_date_year), 
+#                 " - ", max(herd_type_jonas_master_tb$skin_fixed_test_date_year), ")"),
+#        caption = glue::glue(str_wrap(brock_ref, width = 8 * (3.5 * dev.size()[1]))))
+# jonas_herd_type_short
+jonas_herd_type_short_bar <- ggplot(herd_type_jonas_percent_for_paper, aes(x = year, y = percent, fill = herd_type_ml_description)) +
+  geom_bar(position = "fill", stat = "identity", color = 'black', width = 0.9) +
+  geom_text(
+    #data = percentage_year %>% 
+     #         filter(!herd_type_ml_description  %in% c("Trader", "Unknown")),
+            #aes(label = scales::percent(percent, accuracy = 0.1)), 
+    # lets remove % from label
+    aes(label = percent_label_no_trader_or_unknown),
+                position = position_fill(vjust = 0.5), 
+            size = 4) +
+  scale_fill_manual(name = "Brock et al. herd type", values = brock_cols) +
   theme_cowplot() +
+  theme_45_x +
   theme(axis.text = element_text(size = 12, face = "bold", colour = "black"),
         axis.title = element_text(size = 16, face = "bold", colour = "black"),
         #axis.text.x = element_blank(), #remove x axis title
         #axis.text.x = element_text(size = 12)
         #legend title only needed for first one as only extracting first
-        legend.title = element_text(size = 10, face = "bold"), 
-        legend.text = element_text(size = 10),
-        plot.caption.position = "plot",
-        plot.caption = element_text(hjust = 0),
+        legend.title = element_text(size = 16, face = "bold"), 
+        legend.text = element_text(size = 16),
+        plot.title.position = "plot"
         #grey background like here:
         #https://github.com/davidsjoberg/ggstream
         #plot.background = element_rect(fill = "grey88", color = NA),
@@ -373,12 +422,19 @@ jonas_herd_type_short <- ggplot(herd_type_jonas_master_tb, aes(x = skin_fixed_te
         #strip.background = element_rect(colour = "white", fill = "white")
   ) + 
   background_grid() +
-  labs(x = "Year", y = "Proportion of herd type", fill = "Brock et al. herd type",
+  scale_y_continuous(labels = scales::percent) +
+  labs(x = "Year", y = "Proportion of herd-type", fill = "Brock herd type",
        title =
-         paste0("Proportion of herd types by year (", min(herd_type_jonas_master_tb$skin_fixed_test_date_year), 
-                " - ", max(herd_type_jonas_master_tb$skin_fixed_test_date_year), ")"),
-       caption = glue::glue(str_wrap(brock_ref, width = 8 * (3.5 * dev.size()[1]))))
-jonas_herd_type_short
+         paste0("Proportion of all herds by herd-type"# and year"
+         #(", min(percentage_year$year), 
+          #      " - ", max(percentage_year$year), ")"
+         ),
+       caption = paste0("Numbers on the plot represent %'s",
+                        "\n Trader and unknown %'s removed for clarity")
+       #caption = "Newly established herds: herds that did not have a SICTT before 2015 (but had at least one after 2015)"
+       ) #+
+  #guides(fill = guide_legend(nrow = 1))
+jonas_herd_type_short_bar
 ```
 
 ### Brock et al. herd type by county
@@ -391,7 +447,7 @@ jonas_herd_type_short
 #| warning: FALSE
 #| message: FALSE
 #| fig.width: 12
-#| fig.height: 8 
+#| fig.height: 12 
 #| fig.cap: "Proportion of Brock et al. herd-types by county over time."
 
 ## Brock county ----
@@ -408,6 +464,7 @@ jonas_herd_type_short_county <- ggplot(herd_type_jonas_master_tb_county, aes(x =
                                                                              fill = herd_type_ml_description)) +
   geom_stream(color = 1, lwd = 0.25, type = "proportional") +
   scale_fill_manual(values = brock_cols) +
+  scale_y_continuous(labels = scales::percent) +
   scale_x_continuous(breaks = c(min(herd_type_jonas_master_tb_county$skin_fixed_test_date_year),
                                 2016,
                                 max(herd_type_jonas_master_tb_county$skin_fixed_test_date_year))) + 
@@ -484,7 +541,7 @@ herd_15 <- master_tb %>%
   mutate(skin_fixed_test_date_year = year(skin_fixed_test_date),
          new_herd_15 = ifelse(skin_fixed_test_date_year < 2015, 1, 0)) %>% 
   #DROP 2023
-  filter(skin_fixed_test_date_year != 2024) %>% 
+  #filter(skin_fixed_test_date_year != 2024) %>% 
   select(herd_no, skin_fixed_test_date, skin_fixed_test_date_year, new_herd_15, matches("herd_type"), county) %>% 
   group_by(herd_no) %>% 
   mutate(new_herd_15_tmp = as.numeric(any(new_herd_15 == 1))) %>% 
@@ -522,6 +579,7 @@ ahcs_herd_type_newly_est_plot <- ggplot(percentage_year, aes(x = year, y = perce
   geom_bar(position = "fill", stat = "identity", color = 'black', width = 0.9) +
   scale_fill_manual(name = "AHCS", values = ahcs_cols) +
   theme_cowplot() +
+  scale_y_continuous(labels = scales::percent) +
   theme(axis.text = element_text(size = 12, face = "bold", colour = "black"),
         axis.title = element_text(size = 16, face = "bold", colour = "black"),
         #axis.text.x = element_blank(), #remove x axis title
@@ -613,6 +671,7 @@ ahcs_county_newly_est_plot <- ggplot(percentage_year, aes(x = year, y = percent,
   geom_bar(position = "fill", stat = "identity", color = 'black', width = 0.9) +
   scale_fill_manual(name = "AHCS", values = ahcs_cols) +
   theme_cowplot() +
+  scale_y_continuous(labels = scales::percent) +
   theme(axis.text = element_text(size = 12, face = "bold", colour = "black"),
         axis.title = element_text(size = 16, face = "bold", colour = "black"),
         #axis.text.x = element_blank(), #remove x axis title
@@ -710,6 +769,7 @@ brock_herd_type_newly_est_plot <- ggplot(percentage_year, aes(x = year, y = perc
   geom_bar(position = "fill", stat = "identity", color = 'black', width = 0.9) +
   scale_fill_manual(name = "Brock et al. herd type", values = brock_cols) +
   theme_cowplot() +
+  scale_y_continuous(labels = scales::percent) +
   theme(axis.text = element_text(size = 12, face = "bold", colour = "black"),
         axis.title = element_text(size = 16, face = "bold", colour = "black"),
         #axis.text.x = element_blank(), #remove x axis title
@@ -826,6 +886,7 @@ brock_county_newly_est_plot <- ggplot(percentage_year, aes(x = year, y = percent
   geom_bar(position = "fill", stat = "identity", color = 'black', width = 0.9) +
   scale_fill_manual(name = "Brock et al. herd type", values = brock_cols) +
   theme_cowplot() +
+  scale_y_continuous(labels = scales::percent) +
   theme(axis.text = element_text(size = 12, face = "bold", colour = "black"),
         axis.title = element_text(size = 16, face = "bold", colour = "black"),
         axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
@@ -907,6 +968,10 @@ $~$ $~$
 #| fig.height: 10 
 #| fig.cap: "No. of animals by herd-type based on the number of animals residing in the herd on 1st May."
 
+# for paper:
+saveRDS(percentage_year_no_na_may, paste0("data/edited_output/for_paper/percentage_year_no_na_may.rds"))
+
+
 ggplotly(herd_pop_may_plot)
 ```
 
@@ -928,6 +993,73 @@ $~$ $~$
 ggplotly(herd_pop_sep_plot)
 ```
 
+$~$ $~$
+
+
+### Proportion of animals by herd-type
+
+$~$ $~$
+
+```{r}
+#| label: fig-herdpopmayproportionbar
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 10 
+#| fig.cap: "Proportion of all animals on 1st May by the herd-type they are residing in."
+
+percentage_year_no_na_may <- percentage_year_no_na_may %>% 
+  mutate(percent = round(percent, 0)) %>% 
+  mutate(percent_label_no_trader_or_unknown = percent,
+         percent_label_no_trader_or_unknown = ifelse(herd_type_ml_description %in% c("Trader", "Unknown"),
+                                                     "", 
+                                                     percent_label_no_trader_or_unknown))
+
+
+jonas_no_of_animals_herd_type_short_bar <- ggplot(percentage_year_no_na_may, aes(x = as.character(skin_fixed_test_date_year), y = percent, fill = herd_type_ml_description)) +
+  geom_bar(position = "fill", stat = "identity", color = 'black', width = 0.9) +
+  geom_text(#data = percentage_year_no_na %>% 
+              #filter(!herd_type_ml_description  %in% c("Trader", "Unknown")), aes(label = paste0(round(percent, 1), "%")), #scales::percent(percent, accuracy = 0.1)), 
+            aes(label = percent_label_no_trader_or_unknown),
+              position = position_fill(vjust = 0.5), 
+            size = 4) +
+  scale_fill_manual(name = "Brock et al. herd type", values = brock_cols) +
+  scale_y_continuous(labels = scales::percent) +
+  theme_cowplot() +
+  theme_45_x +
+  theme(axis.text = element_text(size = 12, face = "bold", colour = "black"),
+        axis.title = element_text(size = 16, face = "bold", colour = "black"),
+        #axis.text.x = element_blank(), #remove x axis title
+        #axis.text.x = element_text(size = 12)
+        #legend title only needed for first one as only extracting first
+        legend.title = element_text(size = 10, face = "bold"), 
+        legend.text = element_text(size = 10),
+        plot.title.position = "plot"
+        #grey background like here:
+        #https://github.com/davidsjoberg/ggstream
+        #plot.background = element_rect(fill = "grey88", color = NA),
+        #make facet white rather than default grey
+        #strip.background = element_rect(colour = "white", fill = "white")
+  ) + 
+  background_grid() +
+  #scale_y_continuous(labels = scales::percent) +
+  labs(x = "Year", y = "Proportion of animals by herd-type", fill = "Brock herd type",
+       title =
+         paste0("Proportion of all animals on 1st May by herd-type"
+                #(", min(percentage_year_no_na$skin_fixed_test_date_year), 
+                #" - ", max(percentage_year_no_na$skin_fixed_test_date_year), ")"
+                ),
+       caption = paste0("Numbers on the plot represent %'s",
+       "\n Trader and unknown %'s removed for clarity")
+       #Newly established herds: herds that did not have a SICTT before 2015 (but had at least one after 2015)"
+  )
+jonas_no_of_animals_herd_type_short_bar
+```
+
+
 $~$
 
 ### Brock et al. sub-classes
@@ -943,7 +1075,6 @@ $~$
 #knitr::read_chunk('R_files/herd_size_rmarkdown.R')
 source('R_files/herd_size_sub_class_quarto.R')
 ```
-
 
 ### January:
 
@@ -999,8 +1130,7 @@ ggplotly(herd_pop_sep_sub_class_plot)
 
 $~$
 
-
-## Median herd size 
+## Median herd size
 
 ### Brock et al. herd-types
 
@@ -1029,6 +1159,9 @@ $~$
 #| fig.width: 12
 #| fig.height: 10 
 #| fig.cap: "Median herd size by herd-type based on the number of animals residing in all herds on 1st May."
+
+# for paper:
+saveRDS(herd_size_median, paste0("data/edited_output/for_paper/herd_size_median.rds"))
 
 ggplotly(herd_size_median_line_brock_plot)
 ```
@@ -1059,9 +1192,6 @@ $~$ $~$
 \newpage
 
 <!---BLOCK_LANDSCAPE_START--->
-
-
-
 
 ## Tables
 
@@ -1098,11 +1228,11 @@ unique_herds_master_tb <- unique_herds_master_tb %>%
      mutate(across(-c(herd_type_ml_description, herd_type_ml_sub_class_description), ~ replace_na(., 0)))
 
 herd_type_master_tb <- master_tb %>%
-  select(herd_no, skin_fixed_test_date, skin_fixed_test_date_year, matches("herd_type"), county) %>%
+  select(herd_no, skin_fixed_test_date, skin_fixed_test_date_year, matches("herd_type"), county) #%>%
   #mutate(skin_fixed_test_date_year = year(skin_fixed_test_date)) %>% 
   #dont want to drop 2023 earlier becuase we want master_tb to get all reactors
   #and this might drop some out (very very few but still)
-  filter(skin_fixed_test_date_year != 2024)
+  #filter(skin_fixed_test_date_year != 2024)
 herd_type_master_tb_dt <- data.table(herd_type_master_tb)
 herd_type_master_tb <- data.frame(herd_type_master_tb_dt[herd_type_master_tb_dt[, .I[1], by = list(herd_no, skin_fixed_test_date_year)]$V1])
 herd_type_t <- herd_type_master_tb %>% 
@@ -1183,10 +1313,6 @@ herd_type_jonas_sub_master_tb_t[] <- lapply(herd_type_jonas_sub_master_tb_t, fun
 
 ```
 
-
-
-
-
 ```{r}
 #| label: tableprocessingmore
 #| include: FALSE
@@ -1250,9 +1376,6 @@ feedlot_prev <- data.frame(t(unique_herds_each_year)) %>%
 
 ```
 
-
-
-
 $~$ $~$
 
 \newpage
@@ -1279,7 +1402,7 @@ final_table_herd_demographics <- force_bind_year(  unique_herds_each_year_t,
                                  #percentage_year_jan, #population 1st jan
                                  #percentage_year_may, #population 1st 
                                  #percentage_year_sep, #population 1st jan
-                                 force_to_character = TRUE, drop_years = "2024") %>% 
+                                 force_to_character = TRUE, drop_years = "2025") %>% 
   select(Variable, everything()) #%>% 
   #feedlot_prev - change final cell of feedlot to "-" - we dont all 2022 feedlot data
 final_table_herd_demographics <- data.frame(final_table_herd_demographics)
@@ -1317,12 +1440,9 @@ ft <- flextable(final_table_herd_demographics) %>%
 ft
 ```
 
-
 \newpage
 
 ### Bovine population
-
-
 
 ```{r}
 #| label: tbl-tablebovinepop
@@ -1344,7 +1464,7 @@ final_table_bov_pop <- force_bind_year(
                                  percentage_year_jan_sub_class, #population 1st jan
                                  percentage_year_may_sub_class, #population 1st 
                                  percentage_year_sep_sub_class,
-                                 force_to_character = TRUE, drop_years = "2024") %>% 
+                                 force_to_character = TRUE, drop_years = "2025") %>% 
   select(Variable, everything()) #%>% 
   #feedlot_prev - change final cell of feedlot to "-" - we dont all 2022 feedlot data
 #final_table_bov_pop <- data.frame(final_table_bov_pop)
@@ -1382,5 +1502,3 @@ ft <- flextable(final_table_bov_pop) %>%
   set_table_properties(layout = "autofit")
 ft
 ```
-
-

@@ -1,10 +1,8 @@
-
 # Exploration of herd-level bTB breakdowns (BDs) {#sec-breakdown}
 
----
+------------------------------------------------------------------------
 
 $~$ $~$
-
 
 ```{r}
 #| label: global-options
@@ -23,7 +21,15 @@ knitr::opts_chunk$set(fig.align = "center")
 
 # read in kilkenny functions
 source("R_files/read_in_quarto_trends.R")
-bd_df <- readRDS("data/bd_df_14_Nov_2024.rds")
+source("R_files/bd_count_by_month_fun.R")
+# bd_df <- readRDS("data/bd_df_14_Nov_2024.rds")
+# bd_df_labels <- as.list(sjlabelled::get_label(bd_df))
+# bd_df <- sjlabelled::remove_all_labels(bd_df)
+bd_df_file <- dir_info("data", type = "file", regexp = "(?i)bd_df.*\\.rds$") %>% 
+  subset(subset = modification_time == max(modification_time), select = path, drop = T)
+#bd_df <- readRDS("data/bd_df_14_Nov_2024.rds")
+bd_df <- readRDS(bd_df_file) %>% 
+  filter(bd_start_yr > 2007 & bd_start_yr < 2025)
 bd_df_labels <- as.list(sjlabelled::get_label(bd_df))
 bd_df <- sjlabelled::remove_all_labels(bd_df)
 # drop years before 2008
@@ -42,8 +48,13 @@ bd_df <- bd_df %>%
                                include.lowest = FALSE,
                                right = FALSE)) 
 
-all_cases_collapsed <- readRDS(paste0("data/edited_output/all_cases_collapsed.rds")) %>% 
-    filter(year > 2007) 
+all_cases_collapsed_file <- dir_info("data", type = "file", regexp = "(?i)all_cases_collapsed.*\\.rds$") %>% 
+  subset(subset = modification_time == max(modification_time), select = path, drop = T)
+all_cases_collapsed <- readRDS(all_cases_collapsed_file) %>% 
+     filter(year > 2007) %>% 
+    filter(year != 2025)
+# all_cases_collapsed <- readRDS(paste0("data/edited_output/all_cases_collapsed.rds")) %>% 
+#     filter(year > 2007) 
 # see breakdown_page_testing.R and trends_bd.Rmd for code in this document
 
 
@@ -68,9 +79,6 @@ bd_df <- bd_df %>%
 
 ```
 
-
-
-
 ## Breakdown (BD) definition
 
 For this study, we defined the start date of a BD in a herd as the date when an animal was disclosed as a bTB case, as determined by the SICTT, IFN-γ or by the detection of visible lesions at routine slaughter which are then laboratory confirmed with *M. bovis* infection (also known as ‘factory lesion cases’). In the situation when a BD started due to the detection of a visible lesion, we chose the start date as the date when the sample was sent to the lab and not the date in which it was identified as culture positive which could be a number of weeks later. Depending on the circumstances, the herds `trading_status` on AHCS will generally change from `free` to `withdrawn`/`suspended`. We defined the BD end date as the date of the next SICTT (whole herd) test where the `trading_status` was restored to `free`. Once a bTB case is detected, a herd will usually remain in a BD until it has had two consecutive, clear whole-herd SICTT tests (usually 60 days apart). There are certain exceptions to the above criteria e.g., singletons.
@@ -84,11 +92,9 @@ no_of_zero_BDs <- tabyl(bd_df, all_cases) %>%
   filter(all_cases == 0)
 ```
 
-
 There were rare instances when a herd was in a BD based on trading status but it did not have a bTB case (these could be for awhole host of reasons including fraud investigations (so a herd may be in `suspended` mode although no cases), error on system etc.). Of all BDs after 2007 (n = `r nrow(bd_df)`), there were only `r no_of_zero_BDs$n` of these zero case BDs (`r round((no_of_zero_BDs$percent)*100, 2)`%). The initiating/index SICTT of these BDs is given below:
 
 $~$ $~$
-
 
 ```{r}
 #| label: zerocasesskintests
@@ -103,10 +109,7 @@ tabyl(bd_zero_cases, bd_first_skin_test_type)
 
 $~$ $~$
 
-
-For the purposes of this work, we have excluded these cases along with extremely short BD (<60 days in length):
-
-
+For the purposes of this work, we have excluded these cases along with extremely short BD (\<60 days in length):
 
 ```{r}
 #| label: dropzeroandshortcases
@@ -120,9 +123,6 @@ bd_df <- bd_df %>%
   filter(bd_duration_days >= 60) # ask Miriam?
 ```
 
-
-
-
 ```{r}
 #| label: extractminmaxyears
 #| echo: false
@@ -133,18 +133,15 @@ max_year <- max(bd_df$bd_start_yr)
 years_for_study <- c(min_year:max_year)
 ```
 
-
-
-
-
-
 $~$ $~$
 
 ---
 
 $~$ $~$
 
-## Number of BDs per year
+# Number of BDs over time
+
+## Per year
 
 
 
@@ -207,20 +204,85 @@ $~$ $~$
 
 $~$ $~$
 
+## Per month
 
-## BD size
+```{r}
+#| label: fig-bdpermonth
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 8 
+#| fig.cap: "Number of BDs per month."
+# overall
+bd_df_per_month <- bd_df %>% 
+  mutate(year_month = floor_date(bd_start , "month")) %>% 
+  #select(herd_no, bd_start, year_month) 
+  group_by(year_month) %>% 
+  summarise(no_of_breakdowns_starting_in_month = n()) %>% 
+  ungroup() %>% 
+  mutate(year = year(year_month))
 
-Here, we explore the number of bTB cases disclosed within herd BDs (i.e. BD size). This illustrates that BD size (e.g., median) is increasing particulaly within dairy herds. The variance in the number of cases within BDs is also increasing within dairy. Mixed herd-types are also increasing in size (these are herds that have a component of their herd as dairy). The fact that dairy herds have more bTB cases during a BD is not that surprising as dairy are also the herds with the largest number of animals (herd size **add link here) in their herd.
+min_max_dates_df <- min_max_geom_react_with_var(bd_df_per_month, no_of_breakdowns_starting_in_month)
+bd_count_month_plot_fun(bd_df_per_month, "year_month", "no_of_breakdowns_starting_in_month", month_interactive = FALSE)
+```
+
+$~$ $~$
+
+------------------------------------------------------------------------
+
+$~$ $~$
+
+## Per month and by herd-type
+
+```{r}
+#| label: fig-bdpermonthherdtype
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 8 
+#| fig.cap: "Number of BDs per month and herd-type."
+# by herd type
+bd_df_per_month_herd_type <- bd_df %>% 
+  mutate(year_month = floor_date(bd_start , "month")) %>% 
+  #select(herd_no, bd_start, year_month) 
+  group_by(year_month, herd_type_ml_description) %>% 
+  summarise(no_of_breakdowns_starting_in_month = n()) %>% 
+  ungroup() %>% 
+  mutate(year = year(year_month),
+         hover_text_point_in_df = paste0("Date: ", year_month,
+                                         "\n",
+                                         "Herd-type: ", herd_type_ml_description,
+                                         "\n",
+                                         "No. of BDs starting in month: ", no_of_breakdowns_starting_in_month),
+         hover_text_line = paste0("Herd-type: ", herd_type_ml_description))
+
+min_max_dates_df <- min_max_geom_react_with_var(bd_df_per_month_herd_type, no_of_breakdowns_starting_in_month)
+#bd_count_plot_fun(tmp, "year_month", "no_of_breakdowns_starting_in_month", color_var = "herd_type_ml_description", month_interactive = FALSE) 
+bd_count_month_plot_fun(bd_df_per_month_herd_type, "year_month", "no_of_breakdowns_starting_in_month", color_var = "herd_type_ml_description", month_interactive = TRUE) 
+```
 
 
 $~$ $~$
 
+------------------------------------------------------------------------
 
-### AHCS herd-type by BD size 
+$~$ $~$
 
-::: {.panel-tabset}
+## BD size
 
+Here, we explore the number of bTB cases disclosed within herd BDs (i.e. BD size). This illustrates that BD size (e.g., median) is increasing particulaly within dairy herds. The variance in the number of cases within BDs is also increasing within dairy. Mixed herd-types are also increasing in size (these are herds that have a component of their herd as dairy). The fact that dairy herds have more bTB cases during a BD is not that surprising as dairy are also the herds with the largest number of animals (herd size \*\*add link here) in their herd.
 
+$~$ $~$
+
+### AHCS herd-type by BD size
+
+::: panel-tabset
 $~$ $~$
 
 #### Raw scale zoomed in (max 20 cases per BD)
@@ -266,7 +328,6 @@ ggplot_boxplot_half_plot(bd_df %>%
  
 ```
 
-
 #### Logged scale
 
 $~$
@@ -288,22 +349,13 @@ ggplot_boxplot_half_plot(bd_df,
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) +
   scale_y_log10(labels = scales::comma) 
 ```
-
-
 :::
-
-
-
 
 $~$ $~$
 
+### Brock et al. herd-type by BD size
 
-
-### Brock et al. herd-type by BD size 
-
-::: {.panel-tabset}
-
-
+::: panel-tabset
 $~$ $~$
 
 #### Raw scale zoomed in (max 20 cases per BD)
@@ -350,7 +402,6 @@ ggplot_boxplot_half_plot(bd_df %>%
  
 ```
 
-
 #### Logged scale
 
 $~$
@@ -373,21 +424,13 @@ ggplot_boxplot_half_plot(bd_df %>%
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) +
   scale_y_log10(labels = scales::comma) 
 ```
-
-
 :::
 
-
-
-
-
-### Brock et al. sub-class herd-types by BD size 
+### Brock et al. sub-class herd-types by BD size
 
 Rather than plotting all sub-classes, here we focus on dairy sub-classes only as we have seen above that dairy tend to have the largest BDs in terms of the number of bTB cases disclosed.
 
-::: {.panel-tabset}
-
-
+::: panel-tabset
 $~$ $~$
 
 #### Raw scale zoomed in (max 20 cases per BD)
@@ -434,7 +477,6 @@ ggplot_boxplot_half_plot(bd_df %>%
  
 ```
 
-
 #### Logged scale
 
 $~$
@@ -457,13 +499,9 @@ ggplot_boxplot_half_plot(bd_df %>%
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) +
   scale_y_log10(labels = scales::comma) 
 ```
-
-
 :::
 
-
 ### BD size by category groups
-
 
 #### All herds combined
 
@@ -475,7 +513,7 @@ ggplot_boxplot_half_plot(bd_df %>%
 #| warning: FALSE
 #| message: FALSE
 #| fig.width: 12
-#| fig.height: 8
+#| fig.height: 10
 #| fig.cap: "Proportion of BD size by category over time (all herds)"
 all_case_5_df <- bd_df %>% 
   filter(!is.na(herd_type)) %>% 
@@ -490,7 +528,7 @@ all_case_5_df <- bd_df %>%
 #all_case_5_df <- data.frame(all_case_5_df)
 
 all_case_5_plot <- ggplot(all_case_5_df, aes(x = year, y = percent, fill = all_cases_cut_5)) +
-  geom_bar(position = "fill", stat = "identity", #color = 'black', 
+  geom_bar(position = position_fill(reverse = TRUE), stat = "identity", #color = 'black', 
            width = 0.9) +
   scale_fill_viridis_d(name = "BD size", direction = 1) +
   theme_cowplot() +
@@ -510,6 +548,8 @@ all_case_5_plot <- ggplot(all_case_5_df, aes(x = year, y = percent, fill = all_c
         axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1)
   ) + 
   background_grid() +
+  scale_y_continuous(#limits = c(0, 1),
+                     labels = scales::label_percent(scale = 100)) +
   labs(x = "Year", 
        y = "Proportion of different categories", 
        #fill = "AHCS herd type",
@@ -522,10 +562,7 @@ all_case_5_plot <- ggplot(all_case_5_df, aes(x = year, y = percent, fill = all_c
 all_case_5_plot
 ```
 
-
 #### AHCS
-
-
 
 ```{r}
 #| label: fig-bdsizecatahcs
@@ -549,7 +586,7 @@ all_case_5_df <- bd_df %>%
 #all_case_5_df
 
 all_case_5_plot <- ggplot(all_case_5_df, aes(x = year, y = percent, fill = all_cases_cut_5)) +
-  geom_bar(position = "fill", stat = "identity", color = 'black', width = 0.9) +
+  geom_bar(position = position_fill(reverse = TRUE), stat = "identity", color = 'black', width = 0.9) +
   #scale_fill_manual(name = "BD size", values = ahcs_cols) +
   scale_fill_viridis_d(name = "BD size", direction = 1) +
   theme_cowplot() +
@@ -569,6 +606,8 @@ all_case_5_plot <- ggplot(all_case_5_df, aes(x = year, y = percent, fill = all_c
         axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1)
   ) + 
   background_grid() +
+  scale_y_continuous(#limits = c(0, 1),
+                     labels = scales::label_percent(scale = 100)) +
   labs(x = "Year", 
        y = "Proportion of different categories", 
        #fill = "AHCS herd type",
@@ -581,11 +620,7 @@ all_case_5_plot <- ggplot(all_case_5_df, aes(x = year, y = percent, fill = all_c
 all_case_5_plot
 ```
 
-
-
-
 #### Brock et al.
-
 
 ```{r}
 #| label: fig-bdsizecatbrock
@@ -595,7 +630,7 @@ all_case_5_plot
 #| warning: FALSE
 #| message: FALSE
 #| fig.width: 12
-#| fig.height: 16
+#| fig.height: 18
 #| fig.cap: "Proportion of BD size by category over time"
 all_case_5_df_brock <- bd_df %>% 
   filter(!is.na(herd_type_ml_description)) %>% 
@@ -612,7 +647,7 @@ all_case_5_df_brock <- bd_df %>%
 
 
 all_case_5_brock_plot <- ggplot(all_case_5_df_brock, aes(x = year, y = percent, fill = all_cases_cut_5)) +
-  geom_bar(position = "fill", stat = "identity", #color = 'black', 
+  geom_bar(position = position_fill(reverse = TRUE), stat = "identity", #color = 'black', 
            width = 0.9) +
   #scale_fill_manual(name = "BD size", values = brock_cols) +
   scale_fill_viridis_d(name = "BD size",  direction = 1) +
@@ -632,6 +667,8 @@ all_case_5_brock_plot <- ggplot(all_case_5_df_brock, aes(x = year, y = percent, 
         #strip.background = element_rect(colour = "white", fill = "white")
         axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1)
   ) + 
+  scale_y_continuous(#limits = c(0, 1),
+                     labels = scales::label_percent(scale = 100)) +
   background_grid() +
   labs(x = "Year", 
        y = "Proportion of different categories", 
@@ -646,10 +683,7 @@ all_case_5_brock_plot <- ggplot(all_case_5_df_brock, aes(x = year, y = percent, 
 all_case_5_brock_plot
 ```
 
-
-
 ## BD duration
-
 
 $~$
 
@@ -671,15 +705,9 @@ ggplot_boxplot_half_plot(bd_df,
 
 ```
 
-
-
-
-
 ## Repeat BD herds
 
-
 Some herds will have more than one BD over time (i.e., they have a BD, become clear, and then have another BD). This is the proportion of herds with different number of BDs:
-
 
 ```{r}
 #| label: repeatbdsproportion
@@ -696,11 +724,9 @@ bd_herd_summary %>%
   tabyl(bd_no)
 ```
 
-
 ### Boxplots of the number of BDs per herd:
 
 #### AHCS:
-
 
 ```{r}
 #| label: fig-repeatbdahcs
@@ -721,7 +747,6 @@ ggplot_boxplot_half_plot(bd_herd_summary,
 
 #### Brock et al.:
 
-
 ```{r}
 #| label: fig-repeatbdbrock
 #| include: TRUE
@@ -740,11 +765,7 @@ ggplot_boxplot_half_plot(bd_herd_summary %>%
   labs(y = "No. of BDs")
 ```
 
-
-
-
 #### Brock et al. sub-classes:
-
 
 ```{r}
 #| label: fig-repeatbdbrocksub
@@ -764,7 +785,6 @@ ggplot_boxplot_half_plot(bd_herd_summary,
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) 
 
 ```
-
 
 ## Additional bTB cases after the initial detection
 
@@ -811,7 +831,7 @@ bd_df %>%
                         "\n",
                         "Definition of additional cases: all cases - no. of cases detected by index SICTT",
                         "\n",
-                        "The latest year will usually be lower than it is in reality as additional cases in  BDs starting towards the end of that year have not been detected yet (i.e., they will be in the next year")) +
+                        "The latest year will usually be lower than it is in reality as additional cases in  BDs starting towards the end of that year have not been detected yet (i.e., they will be in the next year)")) +
   scale_y_continuous(limits = c(0, 1),
                      labels = scales::label_percent(scale = 100)) +
   scale_x_continuous(breaks = years_for_study) +
@@ -828,9 +848,7 @@ bd_df %>%
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) 
 ```
 
-
 ### Slaughter-house initiated BDs
-
 
 ```{r}
 #| label: fig-additionalcasesdetectedafterslaughter
@@ -873,7 +891,7 @@ bd_df %>%
                         "\n",
                         "Definition of additional cases: all cases - no. of cases detected by index slaughter detection",
                         "\n",
-                        "The latest year will usually be lower than it is in reality as additional cases in  BDs starting towards the end of that year have not been detected yet (i.e., they will be in the next year")) +
+                        "The latest year will usually be lower than it is in reality as additional cases in  BDs starting towards the end of that year have not been detected yet (i.e., they will be in the next year)")) +
   scale_y_continuous(limits = c(0, 1),
                      labels = scales::label_percent(scale = 100)) +
   scale_x_continuous(breaks = years_for_study) +
@@ -889,11 +907,6 @@ bd_df %>%
   ) +
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) 
 ```
-
-
-
-
-
 
 ## Tables
 
@@ -972,7 +985,7 @@ final_table_bd_stats <- force_bind_year(  no_of_unique_herds_with_case,
                                           bd_median_t,
                                           bd_range_t,
                                           bd_by_cat, 
-                                          bd_initiated_year, force_to_character = TRUE, drop_years = "2024") %>% 
+                                          bd_initiated_year, force_to_character = TRUE, drop_years = "2025") %>% 
   select(Variable, everything()) %>% 
   #filter first column, remove bd_start_yr rows
   filter(.[[1]] != "bd_start_yr") %>% 
@@ -1004,8 +1017,6 @@ ft <- flextable(final_table_bd_stats) %>%
 ft
 
 ```
-
-
 
 ### BD duration
 
@@ -1046,9 +1057,4 @@ ft
 
 ## Notes
 
-- Explore CFUs, perhaps I need to drop them or have them as a seperate group
-
-
-
-
-
+-   Explore CFUs, perhaps I need to drop them or have them as a seperate group
