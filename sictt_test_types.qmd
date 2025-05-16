@@ -74,6 +74,8 @@ years_for_study <- unique(master_tb$skin_fixed_test_date_year)
 
 ```
 
+$~$ $~$
+
 ## All test-types (herd and animal-level SICTTs)
 
 ```{r}
