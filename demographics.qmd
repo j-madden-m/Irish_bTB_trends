@@ -919,7 +919,6 @@ $~$ $~$
 
 $~$ $~$
 
-\newpage
 
 ## Bovine population
 
@@ -1189,9 +1188,7 @@ $~$ $~$
 
 $~$ $~$
 
-\newpage
 
-<!---BLOCK_LANDSCAPE_START--->
 
 ## Tables
 
@@ -1378,7 +1375,6 @@ feedlot_prev <- data.frame(t(unique_herds_each_year)) %>%
 
 $~$ $~$
 
-\newpage
 
 ### Herd demographics
 
@@ -1440,7 +1436,7 @@ ft <- flextable(final_table_herd_demographics) %>%
 ft
 ```
 
-\newpage
+
 
 ### Bovine population
 
