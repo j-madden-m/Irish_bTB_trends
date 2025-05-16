@@ -25,6 +25,9 @@ book:
     - part: "Breakdowns (BDs)"
       chapters:
         - breakdown_page.qmd 
+    - part: "SICTT test-types"
+      chapters:
+        - sictt_test_types.qmd 
     - part: "Publications"
       chapters:
         - publications.qmd

@@ -1,0 +1,320 @@
+# SICTT test-types {#sec-testtypes}
+
+------------------------------------------------------------------------
+
+$~$ $~$
+
+```{r}
+#| label: global-options
+#| include: false
+
+# Center figures (alternative approach in Quarto)
+knitr::opts_chunk$set(fig.align = "center")
+# like this: #| fig-align: center
+```
+
+```{r}
+#| label: readin-data
+#| include: false
+#setwd(rprojroot::find_rstudio_root_file())
+# read_in_trends_short.R
+#source(file.path("R_files", "read_in_quarto_trends.R"))
+
+source("R_files/read_in_quarto_trends.R")
+bd_df_file <- dir_info("data", type = "file", regexp = "(?i)bd_df.*\\.rds$") %>% 
+  subset(subset = modification_time == max(modification_time), select = path, drop = T)
+#bd_df <- readRDS("data/bd_df_14_Nov_2024.rds")
+bd_df <- readRDS(bd_df_file) %>% 
+  filter(bd_start_yr > 2007 & bd_start_yr < 2025)
+bd_df_labels <- as.list(sjlabelled::get_label(bd_df))
+bd_df <- sjlabelled::remove_all_labels(bd_df)
+
+# master_tb
+#master_tb <- readRDS("data/master_tb_14_Nov_2024.rds")
+master_file <- dir_info("data", type = "file", regexp = "(?i)master.*\\.rds$") %>% 
+  subset(subset = modification_time == max(modification_time), select = path, drop = T)
+master_tb <- readRDS(master_file) %>% 
+  filter(skin_fixed_test_date_year > 2007) %>% 
+  filter(skin_fixed_test_date_year != 2025) %>% 
+    mutate(test_type_description_number = paste0(test_type, "; ", test_type_description),
+         #contig_test_type_binary = ifelse(test_type == "8", 1, 0),
+         #contig_test_type_character = ifelse(contig_test_type_binary == 0, "All other test types", "Contig test type")
+         ) %>% 
+  mutate(test_type_animal_or_herd = case_when(test_type  %in% c("1", "2", "9A", "10A", "8", "7B",
+                                                                "5A", "5F", "5C", "5E", "5B", 
+                                                                "4", "10B", "10C", "10D",
+                                                                "7A") ~ "Herd",
+                                              test_type  %in% c("3", "6", "5G", "5H", "5D") ~ "Animal"))
+
+
+
+years_for_study <- unique(master_tb$skin_fixed_test_date_year)
+# we want dairy at the bottom so we can see how much its going
+# order_herd_type <- levels(factor(master_tb$herd_type_ml_sub_class_description))
+# order_herd_type
+# better_order_herd_type <- c(str_subset(order_herd_type, "^Dairy"), 
+#                             str_subset(order_herd_type, "^Beef"),
+#                             str_subset(order_herd_type, "^Store"),
+#                             "Fattener", "Mixed", "Trader", 
+#                             #"Seasonal", #"Rearing dairy females", 
+#                             "Unknown")
+# better_order_herd_type
+# 
+# master_tb <- master_tb %>% 
+#   mutate(herd_type_ml_description = fct_relevel(herd_type_ml_description, c("Dairy", "Beef", "Store", "Fattener",
+#                                                                             "Mixed", "Trader", 
+#                                                                             #"Seasonal", now removed
+#                                                                             "Unknown")),
+#          herd_type_ml_sub_class_description = fct_relevel(herd_type_ml_sub_class_description, better_order_herd_type))
+#levels(master_tb$herd_type_ml_description)
+#levels(master_tb$herd_type_ml_sub_class_description)
+#tabyl(master_tb, herd_type_ml_description)
+#tabyl(master_tb, herd_type_ml_sub_class_description)
+
+
+```
+
+## All test-types (herd and animal-level SICTTs)
+
+```{r}
+#| label: fig-propsicttalltests
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 9
+#| fig.cap: "The proportion of all SICTTs by all test-types."
+
+
+
+## all test types ----
+all_test_types_df_year <- master_tb %>% 
+  # 5D; Factory return (Animal/herd) obsolete
+  filter(test_type != "5D") %>% 
+  split(list(.$skin_fixed_test_date_year)) %>%
+  map(~tabyl(.x, test_type_description_number)) %>% 
+  map(., ~mutate(.x, percent = round(percent, 2)) %>% select(-n)) %>% 
+  imap(~mutate(.x, year = .y)) %>% 
+  bind_rows() %>%
+  mutate(year = as.numeric(year))
+#all_test_types_df_year
+
+
+all_test_types_year_bar_plot <- ggplot(all_test_types_df_year, aes(x = year, y = percent, fill = test_type_description_number)) +
+  geom_bar(position = position_fill(reverse = TRUE), stat = "identity", #color = 'black', 
+           width = 0.9) +
+  scale_fill_tableau20(name = "SICTT test-type", direction = 1) +
+  #scale_fill_viridis_d(name = "SICTT test-type", direction = 1) +
+  theme_cowplot() +
+  theme(axis.text = element_text(size = 12, face = "bold", colour = "black"),
+        axis.title = element_text(size = 16, face = "bold", colour = "black"),
+        #axis.text.x = element_blank(), #remove x axis title
+        #axis.text.x = element_text(size = 12)
+        #legend title only needed for first one as only extracting first
+        legend.title = element_text(size = 10, face = "bold"), 
+        legend.text = element_text(size = 10),
+        #legend.position = "top",
+        #grey background like here:
+        #https://github.com/davidsjoberg/ggstream
+        #plot.background = element_rect(fill = "grey88", color = NA),
+        #make facet white rather than default grey
+        #strip.background = element_rect(colour = "white", fill = "white")
+        axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1)
+  ) + 
+  background_grid() +
+  labs(x = "Year", 
+       y = "Proportion of all SICTT ", 
+       #fill = "AHCS herd type",
+       title =
+         paste0("Proportion of all SICTT test-types by year"),
+       caption = "Test-type 5D; Factory return (Animal/herd) obsolete, removed") +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) +
+  scale_x_continuous(breaks = years_for_study) +
+  scale_y_continuous(labels = scales::label_percent(scale = 100)) 
+
+all_test_types_year_bar_plot
+```
+
+------------------------------------------------------------------------
+
+$~$ $~$
+
+### Herd vs animal level test-types
+
+Many SICTT are just animal-level tests and are not associated with a full herd test (e.g., a pre-movement test). We assigned each test-type to a herd or animal level test:
+
+```{r}
+#| label: tbl-tableherdanimaltesttypes
+#| tbl-cap: "SICTT by herd or animal-level test."
+#| include: TRUE
+#| echo: FALSE
+#| eval: true
+#| warning: FALSE
+#| message: FALSE
+test_type_by_animal_herd <- master_tb %>% 
+  select(test_type_description_number, test_type_animal_or_herd) %>% 
+  group_by(test_type_description_number) %>% 
+  summarise(test_type_animal_or_herd = first(test_type_animal_or_herd)) %>% 
+  ungroup() %>% 
+  arrange(str_rank(test_type_description_number, numeric = TRUE)) %>% 
+  group_by(test_type_animal_or_herd) %>%
+  mutate(row = row_number()) %>%
+  pivot_wider(
+    names_from = test_type_animal_or_herd,
+    values_from = test_type_description_number
+  ) %>%
+  select(row, Herd, Animal) %>%
+  arrange(row) %>% 
+  select(-row) 
+
+ft <- flextable(test_type_by_animal_herd) %>% 
+  align_text_col(align = "center") %>% 
+  align(i = NULL, j = 1, align = "left", part = "body") %>% 
+  bold(part = "header") %>% 
+  #flextable::set_header_labels(values = header_names) %>% # bold header (split up due to weird error)
+  #bold(j = c(1, 2)) %>% 
+  set_caption(paste0("SICTT by herd or animal-level test.")) %>% 
+  #bold(i = 1) %>%  # bold header
+  #add_footer_row(values = glue::glue("AHCS: Animal Health Computer System;\nNo. of herds: count of unique herd numbers that had at least one SICTT or IFN-γ \nControlled finishing units (CFUs): only have data up to 2023 \nAHCS herd type: herd type that is assigned to the herd administratively on AHCS \nPopulation figures are based on the number of animals which were in each herd type (Brock et al.) on 1st of January, May, September of each year using the Animal Identification and Movement System (AIM) \nProportion values represent the proportion of herds within each herd classifications within a given year (i.e., vertical) whereas in the case of CFUs, they represent the proportion in each year (i.e., horizontal)"),
+  #               colwidths = length(test_type_by_animal_herd)) %>% 
+  #width of column if too narrow (only visable in word, not )
+  width(width = 2) %>% 
+  fontsize(part = "footer", size = 10) %>% 
+  #title autonum = autonum numbering in word if needed
+  autofit() %>% 
+  set_table_properties(layout = "autofit")
+
+ft
+```
+
+$~$ $~$
+
+```{r}
+#| label: fig-propherdanimaltest
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 9
+#| fig.cap: "The proportion of all SICTTs by whether it was an animal or herd-level SICTT."
+
+
+test_type_animal_or_herd_df_year <- master_tb %>% 
+  # 5D; Factory return (Animal/herd) obsolete
+  #filter(test_type != "5D") %>% 
+  split(list(.$skin_fixed_test_date_year)) %>%
+  map(~tabyl(.x, test_type_animal_or_herd)) %>% 
+  map(., ~mutate(.x, percent = round(percent, 2)) %>% select(-n)) %>% 
+  imap(~mutate(.x, year = .y)) %>% 
+  bind_rows() %>%
+  mutate(year = as.numeric(year))
+#test_type_animal_or_herd_df_year
+
+
+test_type_animal_or_herd_year_bar_plot <- ggplot(test_type_animal_or_herd_df_year, aes(x = year, y = percent, fill = test_type_animal_or_herd)) +
+  geom_bar(position = position_fill(reverse = TRUE), stat = "identity", #color = 'black', 
+           width = 0.9) +
+  scale_fill_tableau20(name = "SICTT test-type", direction = 1) +
+  #scale_fill_viridis_d(name = "SICTT test-type", direction = 1) +
+  theme_cowplot() +
+  theme(axis.text = element_text(size = 12, face = "bold", colour = "black"),
+        axis.title = element_text(size = 16, face = "bold", colour = "black"),
+        #axis.text.x = element_blank(), #remove x axis title
+        #axis.text.x = element_text(size = 12)
+        #legend title only needed for first one as only extracting first
+        legend.title = element_text(size = 10, face = "bold"), 
+        legend.text = element_text(size = 10),
+        legend.position = "top",
+        #grey background like here:
+        #https://github.com/davidsjoberg/ggstream
+        #plot.background = element_rect(fill = "grey88", color = NA),
+        #make facet white rather than default grey
+        #strip.background = element_rect(colour = "white", fill = "white")
+        axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1)
+  ) + 
+  background_grid() +
+  labs(x = "Year", 
+       y = "Proportion of all SICTT ", 
+       #fill = "AHCS herd type",
+       title =
+         paste0("Proportion of all SICTT by whether herd or animal level test")) +
+       #caption = "Test-type 5D; Factory return (Animal/herd) obsolete, removed") +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) +
+  scale_x_continuous(breaks = years_for_study) +
+  scale_y_continuous(labels = scales::label_percent(scale = 100)) 
+
+test_type_animal_or_herd_year_bar_plot
+```
+
+------------------------------------------------------------------------
+
+$~$ $~$
+
+repeat above plots by herd-level only SICTTs (increase in animal level tests skewing true )
+
+### All test-types (herd-level SICTT only)
+
+```{r}
+#| label: fig-propsicttalltestsherdonly
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 11
+#| fig.cap: "The proportion of all SICTTs by all test-types."
+
+
+
+all_test_types_df_year <- master_tb %>% 
+  filter(test_type_animal_or_herd == "Herd") %>% 
+  # 5D; Factory return (Animal/herd) obsolete
+  filter(test_type != "5D") %>% 
+  split(list(.$skin_fixed_test_date_year)) %>%
+  map(~tabyl(.x, test_type_description_number)) %>% 
+  map(., ~mutate(.x, percent = round(percent, 2)) %>% select(-n)) %>% 
+  imap(~mutate(.x, year = .y)) %>% 
+  bind_rows() %>%
+  mutate(year = as.numeric(year))
+#all_test_types_df_year
+
+
+all_test_types_year_bar_plot <- ggplot(all_test_types_df_year, aes(x = year, y = percent, fill = test_type_description_number)) +
+  geom_bar(position = position_fill(reverse = TRUE), stat = "identity", #color = 'black', 
+           width = 0.9) +
+  scale_fill_tableau20(name = "SICTT test-type", direction = 1) +
+  #scale_fill_viridis_d(name = "SICTT test-type", direction = 1) +
+  theme_cowplot() +
+  theme(axis.text = element_text(size = 12, face = "bold", colour = "black"),
+        axis.title = element_text(size = 16, face = "bold", colour = "black"),
+        #axis.text.x = element_blank(), #remove x axis title
+        #axis.text.x = element_text(size = 12)
+        #legend title only needed for first one as only extracting first
+        legend.title = element_text(size = 10, face = "bold"), 
+        legend.text = element_text(size = 10),
+        #legend.position = "top",
+        #grey background like here:
+        #https://github.com/davidsjoberg/ggstream
+        #plot.background = element_rect(fill = "grey88", color = NA),
+        #make facet white rather than default grey
+        #strip.background = element_rect(colour = "white", fill = "white")
+        axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1)
+  ) + 
+  background_grid() +
+  labs(x = "Year", 
+       y = "Proportion of all SICTT ", 
+       #fill = "AHCS herd type",
+       title =
+         paste0("Proportion of all SICTT test-types by year"),
+       caption = "Test-type 5D; Factory return (Animal/herd) obsolete, removed") +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) +
+  scale_x_continuous(breaks = years_for_study) +
+  scale_y_continuous(labels = scales::label_percent(scale = 100)) 
+
+all_test_types_year_bar_plot
+```

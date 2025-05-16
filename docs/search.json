@@ -512,5 +512,27 @@
       "Breakdowns (BDs)",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Exploration of herd-level bTB breakdowns (BDs)</span>"
     ]
+  },
+  {
+    "objectID": "sictt_test_types.html",
+    "href": "sictt_test_types.html",
+    "title": "7  SICTT test-types",
+    "section": "",
+    "text": "7.1 All test-types (herd and animal-level SICTTs)\n\\(~\\) \\(~\\)\nFigure 7.1: The proportion of all SICTTs by all test-types.\n\\(~\\) \\(~\\)",
+    "crumbs": [
+      "SICTT test-types",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>SICTT test-types</span>"
+    ]
+  },
+  {
+    "objectID": "sictt_test_types.html#all-test-types-herd-and-animal-level-sictts",
+    "href": "sictt_test_types.html#all-test-types-herd-and-animal-level-sictts",
+    "title": "7  SICTT test-types",
+    "section": "",
+    "text": "7.1.1 Herd vs animal level test-types\nMany SICTT are just animal-level tests and are not associated with a full herd test (e.g., a pre-movement test). We assigned each test-type to a herd or animal level test:\n\n\n\n\nTable 7.1: SICTT by herd or animal-level test.\n\n\n\nHerdAnimal1; Round test3; Inconclusive reactor re-test2; New Herd Special Check Test (S.C.T.)5D; Factory return (Animal/herd) obsolete4; Reactor re-test5G; Forward trace S.C.T. (animal)5A; Classification related S.C.T.5H; Miscellaneous (animal) S.C.T.5B; Associated to a reactor herd S.C.T.6; Private test5C; High incidence Area/DED and Miscellaneous C.T. (herd)5E; OTF regain status S.C.T.5F; Backward trace S.C.T. (herd)7A; Post depopulation C.T.7B; Post de-restriction C.T.8; Contiguous herd test9A; Factory lesion test10A; Balance of herd test (factory lesion)10B; Balance of herd test (private test)10C; Balance of herd test (inc retest)10D; Balance of herd test (fwd trace S.C.T.)\n\n\n\n\n\n\\(~\\) \\(~\\)\n\n\n\n\n\n\n\n\nFigure 7.2: The proportion of all SICTTs by whether it was an animal or herd-level SICTT.\n\n\n\n\n\n\n\\(~\\) \\(~\\)\nrepeat above plots by herd-level only SICTTs (increase in animal level tests skewing true )\n\n\n7.1.2 All test-types (herd-level SICTT only)\n\n\n\n\n\n\n\n\nFigure 7.3: The proportion of all SICTTs by all test-types.",
+    "crumbs": [
+      "SICTT test-types",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>SICTT test-types</span>"
+    ]
   }
 ]
