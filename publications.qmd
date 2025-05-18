@@ -39,7 +39,7 @@ $~$ $~$
 #| eval: TRUE
 #| warning: FALSE
 #| message: FALSE
-# Create the DT Table
+
 library(DT)
 publications_df <- publications_df %>% 
   select(-check_date)
@@ -52,3 +52,14 @@ datatable(publications_df,
                        "Link (if available)" = "Link"),
           options = list(pageLength = 50))
 ```
+
+
+
+
+$~$ $~$
+
+------------------------------------------------------------------------
+
+$~$ $~$
+
+------------------------------------------------------------------------

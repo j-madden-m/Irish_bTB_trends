@@ -2,6 +2,7 @@
 
 ------------------------------------------------------------------------
 
+
 ```{r}
 #| label: global-options
 #| include: false
@@ -318,3 +319,27 @@ all_test_types_year_bar_plot <- ggplot(all_test_types_df_year, aes(x = year, y =
 
 all_test_types_year_bar_plot
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
