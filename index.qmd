@@ -28,7 +28,7 @@ The wesbite is divided into these parts:
 - [**bTB case numbers and herd-prevalence**](#sec-casenumbers): Examines bTB case numbers over time along with herd prevalence by different herd-types. 
 - **Lesion prevalence**: This includes both visible lesions in animals already classified as a [bTB case entering the factory](#sec-btblesions) and *M.bovis* confirmed [lesions found in animals at routine slaughter](#sec-healthlylesion) (healthy animals)
 - [**bTB breakdowns (BDs)**](#sec-breakdown): This explores changes to herd-level BDs over time.
-- [**Time-series and forecasting**](#@sec-timeseries): This includes time-series analysis and basic forecasting of the count of bTB cases.
+- [**Time-series and forecasting**](#sec-timeseries): This includes time-series analysis and basic forecasting of the count of bTB cases.
 - [**SICTT test-types**](#sec-testtypes): This explores the different skin test-types over time.
 - [**CVERA related bTB publications**](#sec-publications): Almost an exhaustive list of bTB related publications from CVERA (from 1990 to current day). This encompasses publications that may not be directly from CVERA (e.g., where CVERA member is only a co-author on the publication, the list also includes publications from the [Tuberculosis Diagnostics & Immunology Research Laboratory](https://www.ucd.ie/vetmed/research/researchthemes/veterinaryepidemiologyandnationaldiseasecontrol/){target="_blank"} in UCD). 
 
