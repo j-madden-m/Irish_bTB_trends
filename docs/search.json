@@ -1,0 +1,65 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "DRAFT Temporal trends in bovine herds and bovine tuberculosis breakdowns in Ireland (2008-2024)",
+    "section": "",
+    "text": "Background\nThis is an accompanying website to supplement a paper submitted to journal XXX. The purpose of this website is to have a near-real-time version of the output from the paper using more recent data as we obtain it. It also acts as a location to include excess output that didn’t make it into the main paper but which we think is still useful for readers. Additional analysis will be added over time.\nINCLUDE paper reference here\nThe paper highlights various trends from different components of the bovine tuberculosis (bTB) eradication programme in Ireland (from 2008 onwards). This includes cattle population demographics, herd enterprise types, bTB case numbers, herd-level bTB breakdowns, lesion detection at slaughter inspections both in bTB positive animals and routinely slaughtered animals. The data used has been obtained from the Irish national bTB eradication programme (Animal Health Computer System (AHCS) (Department of Agriculture, Food and the Marine (DAFM)), Animal Identification and Movement System (AIM), Laboratory Information Management System (LIMS)), which included results from herd-level skin tests, animal-level laboratory tests (from animals with suspect bTB lesions) and the animal-level IFN-γ blood tests. A bTB eradication timeline is also included which highlights some of the major trials and policy and diagnostic changes introduced during the programme.\nThe data has been processed by the Centre for Veterinary Epidemiology and Risk Analysis CVERA for research purposes and as a result, there may be minor discrepancies between DAFM and our output. For official documentation from the bTB eradication programme visit DAFM.",
+    "crumbs": [
+      "Background"
+    ]
+  },
+  {
+    "objectID": "index.html#whats-included",
+    "href": "index.html#whats-included",
+    "title": "DRAFT Temporal trends in bovine herds and bovine tuberculosis breakdowns in Ireland (2008-2024)",
+    "section": "What’s included?",
+    "text": "What’s included?\nThe wesbite is divided into these parts:\n\nInteractive timeline: Highlights major trials, diagnostic and policy changes during the Irish bTB eradication (2005 - 2023).\nDemographics: Changes to demographics over time (herd-types, bovine numbers etc.).\nbTB case numbers and herd-prevalence: Examines bTB case numbers over time along with herd prevalence by different herd-types.\nLesion prevalence: This includes both visible lesions in animals already classified as a bTB case entering the factory and M.bovis confirmed lesions found in animals at routine slaughter (healthy animals)\nbTB breakdowns (BDs): This explores changes to herd-level BDs over time.\nTime-series and forecasting: This includes time-series analysis and basic forecasting of the count of bTB cases.\nSICTT test-types: This explores the different skin test-types over time.\nCVERA related bTB publications: Almost an exhaustive list of bTB related publications from CVERA (from 1990 to current day). This encompasses publications that may not be directly from CVERA (e.g., where CVERA member is only a co-author on the publication, the list also includes publications from the Tuberculosis Diagnostics & Immunology Research Laboratory in UCD).",
+    "crumbs": [
+      "Background"
+    ]
+  },
+  {
+    "objectID": "index.html#whats-not-included-yet",
+    "href": "index.html#whats-not-included-yet",
+    "title": "DRAFT Temporal trends in bovine herds and bovine tuberculosis breakdowns in Ireland (2008-2024)",
+    "section": "What’s not included (yet)?",
+    "text": "What’s not included (yet)?\nThe focus is primarily at a national level although some county level output is included. We acknowledge there is a strong spatio-temporal distribution of bTB in Ireland but exploring spatial trends is not the focus of this particular work. For a recent spatial analysis of bTB trends in Ireland, see Madden et al. and for a more current spatial exploration of bTB, see here. There is also no analysis included on age-specific bTB trends - that is a separate piece of work that is ongoing (but may be added here over time).",
+    "crumbs": [
+      "Background"
+    ]
+  },
+  {
+    "objectID": "sictt_test_types.html",
+    "href": "sictt_test_types.html",
+    "title": "8  SICTT test-types",
+    "section": "",
+    "text": "8.1 All test-types (herd and animal-level SICTTs)\n\\(~\\) \\(~\\)\nFigure 8.1: The proportion of all SICTTs by all test-types.\n\\(~\\) \\(~\\)",
+    "crumbs": [
+      "SICTT test-types",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>SICTT test-types</span>"
+    ]
+  },
+  {
+    "objectID": "sictt_test_types.html#all-test-types-herd-and-animal-level-sictts",
+    "href": "sictt_test_types.html#all-test-types-herd-and-animal-level-sictts",
+    "title": "8  SICTT test-types",
+    "section": "",
+    "text": "8.1.1 Herd vs animal level test-types\nMany SICTT are just animal-level tests and are not associated with a full herd test (e.g., a pre-movement test). We assigned each test-type to a herd or animal level test:\n\n\n\n\nTable 8.1: SICTT by herd or animal-level test.\n\n\n\nHerdAnimal1; Round test3; Inconclusive reactor re-test2; New Herd Special Check Test (S.C.T.)5D; Factory return (Animal/herd) obsolete4; Reactor re-test5G; Forward trace S.C.T. (animal)5A; Classification related S.C.T.5H; Miscellaneous (animal) S.C.T.5B; Associated to a reactor herd S.C.T.6; Private test5C; High incidence Area/DED and Miscellaneous C.T. (herd)5E; OTF regain status S.C.T.5F; Backward trace S.C.T. (herd)7A; Post depopulation C.T.7B; Post de-restriction C.T.8; Contiguous herd test9A; Factory lesion test10A; Balance of herd test (factory lesion)10B; Balance of herd test (private test)10C; Balance of herd test (inc retest)10D; Balance of herd test (fwd trace S.C.T.)\n\n\n\n\n\n\\(~\\) \\(~\\)\n\n\n\n\n\n\n\n\nFigure 8.2: The proportion of all SICTTs by whether it was an animal or herd-level SICTT.\n\n\n\n\n\n\n\\(~\\) \\(~\\)\nrepeat above plots by herd-level only SICTTs (increase in animal level tests skewing true )\n\n\n8.1.2 All test-types (herd-level SICTT only)\n\n\n\n\n\n\n\n\nFigure 8.3: The proportion of all SICTTs by all test-types.",
+    "crumbs": [
+      "SICTT test-types",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>SICTT test-types</span>"
+    ]
+  },
+  {
+    "objectID": "sictt_test_types.html#timing-of-round-test-type",
+    "href": "sictt_test_types.html#timing-of-round-test-type",
+    "title": "8  SICTT test-types",
+    "section": "8.2 Timing of round test-type",
+    "text": "8.2 Timing of round test-type\nIs there more annual round test during certain months of the year (e.g., summer/autumn) which might reflect more cases being detected?\n\n8.2.1 All herds\n\n\n\n\n\n\n\n\nFigure 8.4: The proportion of all round tests by month\n\n\n\n\n\n\n\n8.2.2 by herd-type\n\n\n\n\n\n\n\n\nFigure 8.5: The proportion of all round tests by month and herd-type",
+    "crumbs": [
+      "SICTT test-types",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>SICTT test-types</span>"
+    ]
+  }
+]
