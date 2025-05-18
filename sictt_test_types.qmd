@@ -350,7 +350,7 @@ round_tests <- master_tb %>%
   imap(~mutate(.x, year = .y)) %>% 
   bind_rows() %>%
   mutate(year = as.numeric(year))
-round_tests
+#round_tests
 
 
 round_tests_month_year_plot <- ggplot(round_tests, aes(x = year, y = percent, fill = skin_month)) +
@@ -423,7 +423,7 @@ round_tests_herd_type_month <- master_tb %>%
   bind_rows() %>%
   mutate(herd_type_ml_description = str_extract(year, "[[:alpha:]]+"),
          year = as.numeric(str_extract(year, "\\d+")))
-round_tests_herd_type_month
+#round_tests_herd_type_month
 
 
 
