@@ -1,0 +1,281 @@
+# Time-series analysis and case forecasting {#sec-timeseries}
+
+---
+
+$~$ $~$
+
+
+```{r}
+#| label: global-options
+#| include: false
+
+# Center figures (alternative approach in Quarto)
+knitr::opts_chunk$set(fig.align = "center")
+# like this: #| fig-align: center
+```
+
+```{r}
+#| label: readin-data
+#| include: false
+#setwd(rprojroot::find_rstudio_root_file())
+# read_in_trends_short.R
+#source(file.path("R_files", "read_in_quarto_trends.R"))
+
+source("R_files/read_in_quarto_trends.R")
+source("R_files/case_number_quarto_functions.R")
+library(fpp3)
+
+master_file <- dir_info("data", type = "file", regexp = "(?i)master.*\\.rds$") %>% 
+  subset(subset = modification_time == max(modification_time), select = path, drop = T)
+master_tb <- readRDS(master_file) %>% 
+  filter(skin_fixed_test_date_year > 2007) %>% 
+  filter(skin_fixed_test_date_year != 2025)
+
+
+all_cases_collapsed_file <- dir_info("data", type = "file", regexp = "(?i)all_cases_collapsed.*\\.rds$") %>% 
+  subset(subset = modification_time == max(modification_time), select = path, drop = T)
+all_cases_collapsed <- readRDS(all_cases_collapsed_file) %>% 
+     filter(year > 2007) %>% 
+    filter(year != 2025)
+
+
+
+
+min_year <- min(all_cases_collapsed$year)
+max_year <- max(all_cases_collapsed$year)
+years_for_study <- c(min_year:max_year)
+
+case_count_month <- case_count_function(all_cases_collapsed, "year_month")
+case_count_month <- case_count_month %>% 
+  rename(year_month_date = year_month) %>% 
+  mutate(year_month = yearmonth(year_month_character))
+
+# just look at all cases for now
+all_case_case_month <- case_count_month %>% 
+  filter(best_estimate_gif_skin_lab_string == "All cases")
+
+# set as tsibble:
+all_case_case_month <- as_tsibble(all_case_case_month, 
+                                  #key = best_estimate_gif_skin_lab_string, 
+                                  index = year_month)
+
+# read in decomp plot function:
+source("R_files/time_series_decomp_plot_fun.R")
+
+```
+
+
+## bTB case count
+
+
+
+### Seasonality
+
+
+```{r}
+#| label: fig-seasonplot
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 8 
+#| fig.cap: "Seasonality of bTB cases by month."
+seasonality_plot_btb_cases <- all_case_case_month %>%
+  gg_subseries(cases) +
+  labs(x = "Year",
+       y = "No. of bTB cases",
+       title =  paste0("Seasonality of bTB cases by month (", min_year, " - ", max_year, ")"),
+       caption = paste0("The blue line indicates the average number of cases in each month", 
+                        "\n", 
+                        "bTB cases: any bTB case detected by any diagnostic method (SICTT, IFN-γ, culture positive)",
+                        "\n",
+                        "SICTT: Single Intradermal Comparative Tuberculin Test",
+                        "\n",
+                        "IFN-γ: interferon-gamma assay")) +
+  theme_jamie +
+  background_grid() +
+  theme_90_x +
+  scale_colour_nejm(name = "bTB cases") +
+  scale_y_continuous(labels = scales::label_comma()) +
+  #scale_x_type +
+  #scale_x_continuous(breaks = nth_element(c(unique(df[[x_var]])), 1, 2)) +
+  #scale_color_simpsons(name = "Quartile type") +
+  # need this for bold headings
+  theme(title = element_text(size = 18, face = "bold"),
+        legend.text = element_markdown(size = 16),
+        plot.caption.position = "plot",
+        legend.title = element_text(size = 16, face = "bold"),
+        plot.caption = element_text(size = 9, color = "black", face = "italic"),
+        plot.title.position = "plot",
+        # remove legend so its zoomed in, then add legend seperately
+        legend.position = "top"
+        #legend.position = c(0.2, 0.9))  
+  ) 
+
+seasonality_plot_btb_cases 
+```
+
+
+---
+
+
+$~$ $~$
+
+### STL decomposition
+
+As an initial, exploratory step, we applied a seasonal-trend decomposition procedure based on loess (locally estimated scatterplot smoothing, a type of locally-weighted polynomial regression), abbreviated to STL [9]. The purpose of the decomposition of a time series is to “deconstruct” it into a number of component series which, when combined, will reproduce the original time series. Using STL, the specific aim is to split a seasonal time series into three additive components: the underlying trend, seasonality and the remainder (noise). 
+
+
+```{r}
+#| label: fig-stlplot
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 14
+#| fig.cap: "STL decomposition of bTB cases by month."
+stl_data <- all_case_case_month %>% 
+  filter(year_month_date < as.Date("2025-01-01")) %>% 
+  #     STL_model = STL(rate ~ trend() + season(window = "periodic"), weights = denominator)
+  model(stl = STL(cases),
+        #STL_model = STL(log(cases) ~ season(window = Inf))
+  ) 
+
+decomp_df <- components(stl_data) %>% 
+  mutate(year = year(year_month),
+         year_month_date = ymd(paste(year_month, "1"))) %>% 
+  # messes up min_max_geom_react_with_var_STL and everything if you leave as tsibble
+  as_tibble()
+
+# essentially need to pivot this into long form
+decomp_df_long <- decomp_df %>% 
+  select(-.model) %>% 
+  pivot_longer(
+    cols = c(cases, trend, season_year, remainder, season_adjust),
+    names_to = "component",
+    #values_to = "Value"
+  ) %>% 
+  mutate(component = case_when(component == "cases" ~ "Cases",
+                               component == "trend" ~ "Trend (loess smoother)",
+                               component == "remainder" ~ "Remainder",
+                               component == "season_year" ~ "Seasonal component",
+                               component == "season_adjust" ~ "Seasonally adjusted"), 
+         # If the seasonal component is removed from the original data, the resulting
+         # values are the “seasonally adjusted” data.
+         component = fct_relevel(component, c("Cases", 
+                                              "Trend (loess smoother)",
+                                              "Seasonal component",
+                                              "Remainder",
+                                              "Seasonally adjusted"))) %>% 
+  filter(component != "Seasonally adjusted") %>% 
+  # for now drop levels we dont need
+  droplevels()
+
+
+min_max_dates_df <- min_max_geom_react_with_var_STL(decomp_df, cases)
+cases_decomp_plot <- time_series_month_plot_fun(decomp_df_long, "year_month_date", "value", month_interactive = FALSE, facet_var = component)
+cases_decomp_plot
+```
+
+
+---
+
+
+$~$ $~$
+
+### Forecasting cases
+
+
+```{r}
+#| label: fig-forecastingcases
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 9
+#| fig.cap: "Forecasting predicitions of monthly bTB cases for 2025."
+train <- all_case_case_month %>% 
+  filter(year_month_date < as.Date("2025-01-01"))
+
+fit_models <- train %>% 
+  model(
+    arima = ARIMA(cases))
+
+# edited forecast plot
+min_max_geom_react_with_var <- function(df, variable) {
+  
+  warning("df has to be data.frame/tibble, not tsibble")
+  
+  df_new <- df %>% 
+    mutate(min_value = min({{variable}}, na.rm = TRUE),
+           max_value = max({{variable}}, na.rm = TRUE)) %>% 
+    group_by(year) %>% 
+    summarise(min_date = min(year_month_date),
+              # add 1 year lubridate
+              max_date = min_date %m+% years(1),
+              # subtract 1 days
+              max_date = max_date %m-% days(1),
+              min_value = first(min_value),
+              max_value = first(max_value)) %>% 
+    ungroup() %>% 
+    mutate(year_f = as.character(year))
+  
+}
+min_max_dates_df <- min_max_geom_react_with_var(data.frame(all_case_case_month), cases) %>% 
+  bind_rows(df <- data.frame(year = c(2025),
+                             min_date = as.Date("2025-01-01"),
+                             max_date = as.Date("2025-12-31"),
+                             min_value = c(881),
+                             max_value = c(5557),
+                             year_f = as.character(2025)))
+# do this first separately so that we can modify geom_layer
+forecasts_df <- fit_models %>% 
+  select(arima) %>% 
+  forecast(h = 12) 
+forecast_2025_plot <- forecasts_df %>% 
+  autoplot(train) +
+  geom_line(aes(year_month, y = .mean), alpha = 0.3, linewidth = 1.7, data = forecasts_df) +
+  geom_line(aes(year_month, cases), linewidth = 1.2) +
+  theme_jamie +
+  scale_y_continuous(labels = scales::label_comma()) +
+  scale_x_yearmonth(date_breaks = "1 year", date_labels = "%Y-%m-%d") +
+  theme_45_x +
+  geom_rect(
+    data = min_max_dates_df, 
+    mapping = aes(
+      xmin = min_date,
+      xmax = max_date,
+      ymin = -Inf, # min_value
+      ymax = Inf, # max_value,
+      # ymin = min_value,
+      # ymax = max_value,
+      fill = year_f),
+    inherit.aes = FALSE,
+    #fill = df2$colour_me,
+    alpha = 0.3) + 
+  scale_fill_tableau20(name = "Year",
+                       # turn off legend
+                       guide = "none") +
+  theme(plot.caption.position = "plot",
+        plot.title.position = "plot") +
+  labs(x = "Year",
+       y = "bTB cases",
+       title = "Monthly bTB cases and forecast predictions for 2025",
+       caption = paste0("Predictions based of seasonal ARIMA time-series model (form ARIMA(0,1,1)(1,1,1)[12])",
+                        "\n",
+                        "bTB cases: any bTB case detected by any diagnostic method (SICTT, IFN-γ, culture positive)",
+                        "\n",
+                        "SICTT: Single Intradermal Comparative Tuberculin Test",
+                        "\n",
+                        "IFN-γ: interferon-gamma assay"),
+       level = "Prediction\ninterval") +
+  coord_cartesian(xlim = c(as.Date("2016-01-01"), as.Date("2026-01-01"))) 
+forecast_2025_plot
+```
+
