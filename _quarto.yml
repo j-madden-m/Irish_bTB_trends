@@ -31,7 +31,6 @@ book:
     - part: "Publications"
       chapters:
         - publications.qmd
-    #- references.qmd
   page-navigation: true  # navigate option at bottom of page to next or previous page
 
   search:

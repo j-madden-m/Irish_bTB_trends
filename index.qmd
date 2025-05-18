@@ -34,7 +34,7 @@ The wesbite is divided into these parts:
 
 ## What's not included (yet)? {-}
 
-The focus is primarily at a national level although some county level output is included. We acknowledge there is a strong spatio-temporal distribution of bTB in Ireland but exploring spatial trends is not the focus of this particular work. For a recent spatial analysis of bTB trends in Ireland, see [Madden et al.](https://www.sciencedirect.com/science/article/pii/S187758452100040X){target="_blank"} and for a more current spatial exploration of bTB, see [here](https://www.arcgis.com/apps/dashboards/9306f7eb60b1401a8b18f76f61f20aea){target="_blank"}. There is also no analysis included on age-specific bTB trends - that is a separate piece of work that is ongoing (but may be added here over time). Time-series analysis will be included in future work.
+The focus is primarily at a national level although some county level output is included. We acknowledge there is a strong spatio-temporal distribution of bTB in Ireland but exploring spatial trends is not the focus of this particular work. For a recent spatial analysis of bTB trends in Ireland, see [Madden et al.](https://www.sciencedirect.com/science/article/pii/S187758452100040X){target="_blank"} and for a more current spatial exploration of bTB, see [here](https://www.arcgis.com/apps/dashboards/9306f7eb60b1401a8b18f76f61f20aea){target="_blank"}. There is also no analysis included on age-specific bTB trends - that is a separate piece of work that is ongoing (but may be added here over time). 
 
 
 
