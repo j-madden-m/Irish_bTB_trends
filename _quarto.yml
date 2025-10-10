@@ -4,14 +4,19 @@ project:
 
 
 book:
-  title: "DRAFT Temporal trends in bovine herds and bovine tuberculosis breakdowns in Ireland (2008-2024)"
-  author: "Jamie Madden (CVERA)"
+  title: "Temporal trends in bovine herds and bovine tuberculosis breakdowns in Ireland (2008-current)"
+  author: 
+  - name: Jamie Madden (CVERA)
+    email: jamie.madden@ucd.ie
   date: today
   chapters:
     - index.qmd
     - part: "Timeline"
       chapters: 
         - timeline_policy.qmd
+    - part: "Brief summary overview"
+      chapters: 
+        - summary_page.qmd
     - part: "Demographics"
       chapters: 
         - demographics.qmd
@@ -28,35 +33,52 @@ book:
     - part: "Time series analysis"
       chapters: 
        - time_series.qmd
+    - part: "Aggregated case count model"
+      chapters: 
+       - agg_cases_poisson_NB_model.qmd
     - part: "SICTT test-types"
       chapters:
         - sictt_test_types.qmd 
     - part: "Publications"
       chapters:
         - publications.qmd
-  page-navigation: true  # navigate option at bottom of page to next or previous page
-
   search:
-    #location: navbar # i dont think navbar works in book (only website)
+    location: sidebar # i dont think navbar works in book (only website)
     type: overlay
+  page-navigation: true  # navigate option at bottom of page to next or previous page
+  repo-url: https://github.com/j-madden-m/Irish_bTB_trends
+  site-url: https://github.com/j-madden-m/Irish_bTB_trends
+  #sharing: [twitter, linkedin]
+  #reader-mode: true
+  sidebar:
+    background: "#4E5D6C"   
+    foreground: "#FFFFFF"  
+    logo: figures/logo_plot.png
+    collapse-level: 1
+
 
 bibliography: references.bib
 
 format:
   html:
-    #grid:
-      #body-width: 900px # default 800px, i think page-layout full takes care of this
+    grid:
+      margin-width: 125px
     theme: flatly
     css: style.css
-
+    highlight-style:  monokai 
     number-sections: true #you need this for cross referencing
     top-level-division: chapter
     page-layout: full
     toc: true
-    toc-location: left  # Equivalent to `toc_float: true`
+    #toc-location: left  # Equivalent to `toc_float: true`
     code-fold: false      # Equivalent to `code_folding: show`
-  pdf:
-    documentclass: scrreprt
+    #cover-image: cover_plot.png
+
+
+  # need to update ERROR: Your TexLive version is not updated enough to connect 
+  # to the remote repository and download packages. Please update your installation of TexLive or TinyTex
+  #pdf:
+  #  documentclass: scrreprt
 
 editor: visual
 

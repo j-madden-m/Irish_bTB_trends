@@ -22,7 +22,7 @@ $~$ $~$
 
 ## List of publications
 
-Below is a list of bTB related publications from [CVERA](https://www.ucd.ie/cvera/) (from 1990 to `r (publications_df$check_date)[1]` (date the database was last accessed)). This also encompasses publications that may not be directly from CVERA (e.g., where a CVERA member is only a co-author on the publication, the list also includes publications from the [Tuberculosis Diagnostics & Immunology Research Laboratory](https://www.ucd.ie/vetmed/research/researchthemes/veterinaryepidemiologyandnationaldiseasecontrol/) in UCD).
+Below is a list of bTB related publications from [CVERA](https://www.ucd.ie/cvera/) (from 1990 to <span style="color:#FF746C; font-weight: bold;">`r (publications_df$check_date)[1]`</span> (date the database was last accessed)). This also encompasses publications that may not be directly from CVERA (e.g., where a CVERA member is only a co-author on the publication, the list also includes publications from the [Tuberculosis Diagnostics & Immunology Research Laboratory](https://www.ucd.ie/vetmed/research/researchthemes/veterinaryepidemiologyandnationaldiseasecontrol/) in UCD).
 
 Thanks to Dan Collins for maintaining the list.
 

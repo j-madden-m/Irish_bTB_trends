@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>8&nbsp; SICTT test-types – DRAFT Temporal trends in bovine herds and bovine tuberculosis breakdowns in Ireland (2008-2024)</title>
+<title>10&nbsp; SICTT test-types – Temporal trends in bovine herds and bovine tuberculosis breakdowns in Ireland (2008-current)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,17 +31,17 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./publications.html" rel="next">
-<link href="./time_series.html" rel="prev">
+<link href="./agg_cases_poisson_NB_model.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e4fbaa5b9575d7f6de7c906568c40117.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-c27fdc8e5b00b532d2d5a75ada188648.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-14b8e91e05a193bb86c35cc060ad2dd3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -115,7 +115,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./sictt_test_types.html">SICTT test-types</a></li><li class="breadcrumb-item"><a href="./sictt_test_types.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">SICTT test-types</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./sictt_test_types.html">SICTT test-types</a></li><li class="breadcrumb-item"><a href="./sictt_test_types.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">SICTT test-types</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -128,10 +128,14 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./figures/logo_plot.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">DRAFT Temporal trends in bovine herds and bovine tuberculosis breakdowns in Ireland (2008-2024)</a> 
+      <a href="./">Temporal trends in bovine herds and bovine tuberculosis breakdowns in Ireland (2008-current)</a> 
         <div class="sidebar-tools-main">
+    <a href="https://github.com/j-madden-m/Irish_bTB_trends" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <div id="quarto-search" class="quarto-navigation-tool px-1" title="Search"></div>
 </div>
     </div>
@@ -146,13 +150,13 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
  <span class="menu-text">Timeline</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./timeline_policy.html" class="sidebar-item-text sidebar-link">
@@ -163,163 +167,201 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Demographics</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Brief summary overview</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./summary_page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Summary of main findings</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Demographics</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./demographics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Demographics (herd-types, herd size, bovine population)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Demographics (herd-types, herd size, bovine population)</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
  <span class="menu-text">bTB cases</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./case_numbers.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">bTB case numbers and herd-prevalence by different herd-types</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">bTB case numbers and herd-prevalence by different herd-types</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
  <span class="menu-text">Lesion prevalence</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./reactor_lesion_skin_gif_seperately.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Prevalence of visible lesions seperately by SICTT and IFN-γ positive animals at slaughter</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Prevalence of visible lesions seperately by SICTT and IFN-γ positive animals at slaughter</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lesion_prevalence_trends.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Prevalence of confirmed <em>M.bovis</em> lesions found in animals at routine slaughter</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Prevalence of confirmed <em>M.bovis</em> lesions found in animals at routine slaughter</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
  <span class="menu-text">Breakdowns (BDs)</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./breakdown_page.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Exploration of herd-level bTB breakdowns (BDs)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Exploration of herd-level bTB breakdowns (BDs)</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
  <span class="menu-text">Time series analysis</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./time_series.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Time-series analysis and case forecasting</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Time-series analysis and case forecasting</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
- <span class="menu-text">SICTT test-types</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+ <span class="menu-text">Aggregated case count model</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./agg_cases_poisson_NB_model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">bTB case numbers, aggregated Poisson/negative binomial models</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true">
+ <span class="menu-text">SICTT test-types</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./sictt_test_types.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">SICTT test-types</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">SICTT test-types</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false">
  <span class="menu-text">Publications</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./publications.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">CVERA related bTB publications</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">CVERA related bTB publications</span></span></a>
   </div>
 </li>
       </ul>
   </li>
     </ul>
     </div>
-    <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#all-test-types-herd-and-animal-level-sictts" id="toc-all-test-types-herd-and-animal-level-sictts" class="nav-link active" data-scroll-target="#all-test-types-herd-and-animal-level-sictts"><span class="header-section-number">8.1</span> All test-types (herd and animal-level SICTTs)</a>
-  <ul class="collapse">
-  <li><a href="#herd-vs-animal-level-test-types" id="toc-herd-vs-animal-level-test-types" class="nav-link" data-scroll-target="#herd-vs-animal-level-test-types"><span class="header-section-number">8.1.1</span> Herd vs animal level test-types</a></li>
-  <li><a href="#all-test-types-herd-level-sictt-only" id="toc-all-test-types-herd-level-sictt-only" class="nav-link" data-scroll-target="#all-test-types-herd-level-sictt-only"><span class="header-section-number">8.1.2</span> All test-types (herd-level SICTT only)</a></li>
-  </ul></li>
-  <li><a href="#timing-of-round-test-type" id="toc-timing-of-round-test-type" class="nav-link" data-scroll-target="#timing-of-round-test-type"><span class="header-section-number">8.2</span> Timing of round test-type</a>
-  <ul class="collapse">
-  <li><a href="#all-herds" id="toc-all-herds" class="nav-link" data-scroll-target="#all-herds"><span class="header-section-number">8.2.1</span> All herds</a></li>
-  <li><a href="#by-herd-type" id="toc-by-herd-type" class="nav-link" data-scroll-target="#by-herd-type"><span class="header-section-number">8.2.2</span> by herd-type</a></li>
-  </ul></li>
-  </ul>
-</nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#all-test-types-herd-and-animal-level-sictts" id="toc-all-test-types-herd-and-animal-level-sictts" class="nav-link active" data-scroll-target="#all-test-types-herd-and-animal-level-sictts"><span class="header-section-number">10.1</span> All test-types (herd and animal-level SICTTs)</a>
+  <ul class="collapse">
+  <li><a href="#herd-vs-animal-level-test-types" id="toc-herd-vs-animal-level-test-types" class="nav-link" data-scroll-target="#herd-vs-animal-level-test-types"><span class="header-section-number">10.1.1</span> Herd vs animal level test-types</a></li>
+  <li><a href="#all-test-types-herd-level-sictt-only" id="toc-all-test-types-herd-level-sictt-only" class="nav-link" data-scroll-target="#all-test-types-herd-level-sictt-only"><span class="header-section-number">10.1.2</span> All test-types (herd-level SICTT only)</a></li>
+  </ul></li>
+  <li><a href="#timing-of-round-test-type" id="toc-timing-of-round-test-type" class="nav-link" data-scroll-target="#timing-of-round-test-type"><span class="header-section-number">10.2</span> Timing of round test-type</a>
+  <ul class="collapse">
+  <li><a href="#all-herds" id="toc-all-herds" class="nav-link" data-scroll-target="#all-herds"><span class="header-section-number">10.2.1</span> All herds</a></li>
+  <li><a href="#by-herd-type" id="toc-by-herd-type" class="nav-link" data-scroll-target="#by-herd-type"><span class="header-section-number">10.2.2</span> by herd-type</a></li>
+  </ul></li>
+  <li><a href="#apt-animals-reactor-per-thousand-animal-tests" id="toc-apt-animals-reactor-per-thousand-animal-tests" class="nav-link" data-scroll-target="#apt-animals-reactor-per-thousand-animal-tests"><span class="header-section-number">10.3</span> APT (Animals Reactor per Thousand Animal Tests)</a>
+  <ul class="collapse">
+  <li><a href="#apt-by-herd" id="toc-apt-by-herd" class="nav-link" data-scroll-target="#apt-by-herd"><span class="header-section-number">10.3.1</span> APT by herd</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content column-page-right" id="quarto-document-content">
+<main class="content column-body" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./sictt_test_types.html">SICTT test-types</a></li><li class="breadcrumb-item"><a href="./sictt_test_types.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">SICTT test-types</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./sictt_test_types.html">SICTT test-types</a></li><li class="breadcrumb-item"><a href="./sictt_test_types.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">SICTT test-types</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-testtypes" class="quarto-section-identifier"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">SICTT test-types</span></span></h1>
+<h1 class="title"><span id="sec-testtypes" class="quarto-section-identifier"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">SICTT test-types</span></span></h1>
 </div>
 
 
 
-<div class="quarto-title-meta column-page-right">
+<div class="quarto-title-meta column-body">
 
     
   
@@ -333,8 +375,8 @@ window.Quarto = {
 
 <hr>
 <p><span class="math inline">\(~\)</span> <span class="math inline">\(~\)</span></p>
-<section id="all-test-types-herd-and-animal-level-sictts" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="all-test-types-herd-and-animal-level-sictts"><span class="header-section-number">8.1</span> All test-types (herd and animal-level SICTTs)</h2>
+<section id="all-test-types-herd-and-animal-level-sictts" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="all-test-types-herd-and-animal-level-sictts"><span class="header-section-number">10.1</span> All test-types (herd and animal-level SICTTs)</h2>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-propsicttalltests" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -343,7 +385,7 @@ window.Quarto = {
 <img src="sictt_test_types_files/figure-html/fig-propsicttalltests-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1152">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-propsicttalltests-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;8.1: The proportion of all SICTTs by all test-types.
+Figure&nbsp;10.1: The proportion of all SICTTs by all test-types.
 </figcaption>
 </figure>
 </div>
@@ -351,18 +393,18 @@ Figure&nbsp;8.1: The proportion of all SICTTs by all test-types.
 </div>
 <hr>
 <p><span class="math inline">\(~\)</span> <span class="math inline">\(~\)</span></p>
-<section id="herd-vs-animal-level-test-types" class="level3" data-number="8.1.1">
-<h3 data-number="8.1.1" class="anchored" data-anchor-id="herd-vs-animal-level-test-types"><span class="header-section-number">8.1.1</span> Herd vs animal level test-types</h3>
+<section id="herd-vs-animal-level-test-types" class="level3" data-number="10.1.1">
+<h3 data-number="10.1.1" class="anchored" data-anchor-id="herd-vs-animal-level-test-types"><span class="header-section-number">10.1.1</span> Herd vs animal level test-types</h3>
 <p>Many SICTT are just animal-level tests and are not associated with a full herd test (e.g., a pre-movement test). We assigned each test-type to a herd or animal level test:</p>
 <div class="cell" data-layout-align="center">
 <div id="tbl-tableherdanimaltesttypes" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-tableherdanimaltesttypes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;8.1: SICTT by herd or animal-level test.
+Table&nbsp;10.1: SICTT by herd or animal-level test.
 </figcaption>
 <div aria-describedby="tbl-tableherdanimaltesttypes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div class="tabwid"><style>.cl-77dd89f6{table-layout:auto;}.cl-77c7ebb4{font-family:'Arial';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-77c7ebbe{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-77cd9bfe{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-77cd9c08{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-77cddc5e{background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-77cddc68{background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-77cddc72{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-77cddc7c{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-77cddc7d{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-77cddc7e{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-77cddc86{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-77cddc87{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-77cddc88{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-77cddc90{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-77cddc91{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-77cddc9a{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-77cddcc2{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-77cddccc{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-77cddcd6{background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-77cddcd7{background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-77dd89f6"><thead><tr style="overflow-wrap:break-word;"><th class="cl-77cddc5e"><p class="cl-77cd9bfe"><span class="cl-77c7ebb4">Herd</span></p></th><th class="cl-77cddc68"><p class="cl-77cd9bfe"><span class="cl-77c7ebb4">Animal</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-77cddc72"><p class="cl-77cd9c08"><span class="cl-77c7ebbe">1; Round test</span></p></td><td class="cl-77cddc7c"><p class="cl-77cd9bfe"><span class="cl-77c7ebbe">3; Inconclusive reactor re-test</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-77cddc7d"><p class="cl-77cd9c08"><span class="cl-77c7ebbe">2; New Herd Special Check Test (S.C.T.)</span></p></td><td class="cl-77cddc7e"><p class="cl-77cd9bfe"><span class="cl-77c7ebbe">5D; Factory return (Animal/herd) obsolete</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-77cddc7d"><p class="cl-77cd9c08"><span class="cl-77c7ebbe">4; Reactor re-test</span></p></td><td class="cl-77cddc7e"><p class="cl-77cd9bfe"><span class="cl-77c7ebbe">5G; Forward trace S.C.T. (animal)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-77cddc7d"><p class="cl-77cd9c08"><span class="cl-77c7ebbe">5A; Classification related S.C.T.</span></p></td><td class="cl-77cddc7e"><p class="cl-77cd9bfe"><span class="cl-77c7ebbe">5H; Miscellaneous (animal) S.C.T.</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-77cddc86"><p class="cl-77cd9c08"><span class="cl-77c7ebbe">5B; Associated to a reactor herd S.C.T.</span></p></td><td class="cl-77cddc87"><p class="cl-77cd9bfe"><span class="cl-77c7ebbe">6; Private test</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-77cddc7d"><p class="cl-77cd9c08"><span class="cl-77c7ebbe">5C; High incidence Area/DED and Miscellaneous C.T. (herd)</span></p></td><td class="cl-77cddc7e"><p class="cl-77cd9bfe"><span class="cl-77c7ebbe"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-77cddc88"><p class="cl-77cd9c08"><span class="cl-77c7ebbe">5E; OTF regain status S.C.T.</span></p></td><td class="cl-77cddc90"><p class="cl-77cd9bfe"><span class="cl-77c7ebbe"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-77cddc7d"><p class="cl-77cd9c08"><span class="cl-77c7ebbe">5F; Backward trace S.C.T. (herd)</span></p></td><td class="cl-77cddc7e"><p class="cl-77cd9bfe"><span class="cl-77c7ebbe"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-77cddc91"><p class="cl-77cd9c08"><span class="cl-77c7ebbe">7A; Post depopulation C.T.</span></p></td><td class="cl-77cddc9a"><p class="cl-77cd9bfe"><span class="cl-77c7ebbe"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-77cddc86"><p class="cl-77cd9c08"><span class="cl-77c7ebbe">7B; Post de-restriction C.T.</span></p></td><td class="cl-77cddc87"><p class="cl-77cd9bfe"><span class="cl-77c7ebbe"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-77cddc7d"><p class="cl-77cd9c08"><span class="cl-77c7ebbe">8; Contiguous herd test</span></p></td><td class="cl-77cddc7e"><p class="cl-77cd9bfe"><span class="cl-77c7ebbe"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-77cddcc2"><p class="cl-77cd9c08"><span class="cl-77c7ebbe">9A; Factory lesion test</span></p></td><td class="cl-77cddccc"><p class="cl-77cd9bfe"><span class="cl-77c7ebbe"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-77cddc7d"><p class="cl-77cd9c08"><span class="cl-77c7ebbe">10A; Balance of herd test (factory lesion)</span></p></td><td class="cl-77cddc7e"><p class="cl-77cd9bfe"><span class="cl-77c7ebbe"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-77cddc7d"><p class="cl-77cd9c08"><span class="cl-77c7ebbe">10B; Balance of herd test (private test)</span></p></td><td class="cl-77cddc7e"><p class="cl-77cd9bfe"><span class="cl-77c7ebbe"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-77cddc7d"><p class="cl-77cd9c08"><span class="cl-77c7ebbe">10C; Balance of herd test (inc retest)</span></p></td><td class="cl-77cddc7e"><p class="cl-77cd9bfe"><span class="cl-77c7ebbe"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-77cddcd6"><p class="cl-77cd9c08"><span class="cl-77c7ebbe">10D; Balance of herd test (fwd trace S.C.T.)</span></p></td><td class="cl-77cddcd7"><p class="cl-77cd9bfe"><span class="cl-77c7ebbe"></span></p></td></tr></tbody></table></div>
+<div class="tabwid"><style>.cl-8938f554{table-layout:auto;}.cl-892c081c{font-family:'Arial';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-892c0830{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-89312428{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-89312432{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-89316104{background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-89316105{background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-89316106{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8931610e{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8931610f{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-89316118{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-89316122{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-89316123{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-89316124{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-89316125{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8931612c{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-89316136{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-89316137{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-89316138{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-89316140{background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-89316141{background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-8938f554"><thead><tr style="overflow-wrap:break-word;"><th class="cl-89316104"><p class="cl-89312428"><span class="cl-892c081c">Herd</span></p></th><th class="cl-89316105"><p class="cl-89312428"><span class="cl-892c081c">Animal</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-89316106"><p class="cl-89312432"><span class="cl-892c0830">1; Round test</span></p></td><td class="cl-8931610e"><p class="cl-89312428"><span class="cl-892c0830">3; Inconclusive reactor re-test</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8931610f"><p class="cl-89312432"><span class="cl-892c0830">2; New Herd Special Check Test (S.C.T.)</span></p></td><td class="cl-89316118"><p class="cl-89312428"><span class="cl-892c0830">5D; Factory return (Animal/herd) obsolete</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8931610f"><p class="cl-89312432"><span class="cl-892c0830">4; Reactor re-test</span></p></td><td class="cl-89316118"><p class="cl-89312428"><span class="cl-892c0830">5G; Forward trace S.C.T. (animal)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8931610f"><p class="cl-89312432"><span class="cl-892c0830">5A; Classification related S.C.T.</span></p></td><td class="cl-89316118"><p class="cl-89312428"><span class="cl-892c0830">5H; Miscellaneous (animal) S.C.T.</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-89316122"><p class="cl-89312432"><span class="cl-892c0830">5B; Associated to a reactor herd S.C.T.</span></p></td><td class="cl-89316123"><p class="cl-89312428"><span class="cl-892c0830">6; Private test</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8931610f"><p class="cl-89312432"><span class="cl-892c0830">5C; High incidence Area/DED and Miscellaneous C.T. (herd)</span></p></td><td class="cl-89316118"><p class="cl-89312428"><span class="cl-892c0830"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-89316124"><p class="cl-89312432"><span class="cl-892c0830">5E; OTF regain status S.C.T.</span></p></td><td class="cl-89316125"><p class="cl-89312428"><span class="cl-892c0830"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8931610f"><p class="cl-89312432"><span class="cl-892c0830">5F; Backward trace S.C.T. (herd)</span></p></td><td class="cl-89316118"><p class="cl-89312428"><span class="cl-892c0830"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8931612c"><p class="cl-89312432"><span class="cl-892c0830">7A; Post depopulation C.T.</span></p></td><td class="cl-89316136"><p class="cl-89312428"><span class="cl-892c0830"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-89316122"><p class="cl-89312432"><span class="cl-892c0830">7B; Post de-restriction C.T.</span></p></td><td class="cl-89316123"><p class="cl-89312428"><span class="cl-892c0830"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8931610f"><p class="cl-89312432"><span class="cl-892c0830">8; Contiguous herd test</span></p></td><td class="cl-89316118"><p class="cl-89312428"><span class="cl-892c0830"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-89316137"><p class="cl-89312432"><span class="cl-892c0830">9A; Factory lesion test</span></p></td><td class="cl-89316138"><p class="cl-89312428"><span class="cl-892c0830"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8931610f"><p class="cl-89312432"><span class="cl-892c0830">10A; Balance of herd test (factory lesion)</span></p></td><td class="cl-89316118"><p class="cl-89312428"><span class="cl-892c0830"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8931610f"><p class="cl-89312432"><span class="cl-892c0830">10B; Balance of herd test (private test)</span></p></td><td class="cl-89316118"><p class="cl-89312428"><span class="cl-892c0830"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8931610f"><p class="cl-89312432"><span class="cl-892c0830">10C; Balance of herd test (inc retest)</span></p></td><td class="cl-89316118"><p class="cl-89312428"><span class="cl-892c0830"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-89316140"><p class="cl-89312432"><span class="cl-892c0830">10D; Balance of herd test (fwd trace S.C.T.)</span></p></td><td class="cl-89316141"><p class="cl-89312428"><span class="cl-892c0830"></span></p></td></tr></tbody></table></div>
 </div>
 </div>
 </figure>
@@ -377,7 +419,7 @@ Table&nbsp;8.1: SICTT by herd or animal-level test.
 <img src="sictt_test_types_files/figure-html/fig-propherdanimaltest-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1152">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-propherdanimaltest-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;8.2: The proportion of all SICTTs by whether it was an animal or herd-level SICTT.
+Figure&nbsp;10.2: The proportion of all SICTTs by whether it was an animal or herd-level SICTT.
 </figcaption>
 </figure>
 </div>
@@ -387,8 +429,8 @@ Figure&nbsp;8.2: The proportion of all SICTTs by whether it was an animal or her
 <p><span class="math inline">\(~\)</span> <span class="math inline">\(~\)</span></p>
 <p>repeat above plots by herd-level only SICTTs (increase in animal level tests skewing true )</p>
 </section>
-<section id="all-test-types-herd-level-sictt-only" class="level3" data-number="8.1.2">
-<h3 data-number="8.1.2" class="anchored" data-anchor-id="all-test-types-herd-level-sictt-only"><span class="header-section-number">8.1.2</span> All test-types (herd-level SICTT only)</h3>
+<section id="all-test-types-herd-level-sictt-only" class="level3" data-number="10.1.2">
+<h3 data-number="10.1.2" class="anchored" data-anchor-id="all-test-types-herd-level-sictt-only"><span class="header-section-number">10.1.2</span> All test-types (herd-level SICTT only)</h3>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-propsicttalltestsherdonly" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -397,19 +439,34 @@ Figure&nbsp;8.2: The proportion of all SICTTs by whether it was an animal or her
 <img src="sictt_test_types_files/figure-html/fig-propsicttalltestsherdonly-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1152">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-propsicttalltestsherdonly-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;8.3: The proportion of all SICTTs by all test-types.
+Figure&nbsp;10.3: The proportion of all SICTTs by all test-types.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
+<p>And table format:</p>
+<div class="cell" data-layout-align="center">
+<div id="tbl-tableherdlevelsictt" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-tableherdlevelsictt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;10.2: Proportion of herd-level SICTTs by all herd-level test-types (presented as %)
+</figcaption>
+<div aria-describedby="tbl-tableherdlevelsictt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<div class="tabwid"><style>.cl-96681a20{table-layout:auto;}.cl-965abd26{font-family:'Arial';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-965abd30{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-965f7942{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-965f794c{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-965f794d{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-965faa66{background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-965faa7a{background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-965faa7b{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-965faa84{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-965faa85{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-965faa8e{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-965faa8f{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-965faa90{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-965faa98{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-965faa99{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-965faaa2{background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-965faaac{background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-96681a20"><thead><tr style="overflow-wrap:break-word;"><th class="cl-965faa66"><p class="cl-965f7942"><span class="cl-965abd26">Test type</span></p></th><th class="cl-965faa7a"><p class="cl-965f794c"><span class="cl-965abd26">2008</span></p></th><th class="cl-965faa7a"><p class="cl-965f794c"><span class="cl-965abd26">2009</span></p></th><th class="cl-965faa7a"><p class="cl-965f794c"><span class="cl-965abd26">2010</span></p></th><th class="cl-965faa7a"><p class="cl-965f794c"><span class="cl-965abd26">2011</span></p></th><th class="cl-965faa7a"><p class="cl-965f794c"><span class="cl-965abd26">2012</span></p></th><th class="cl-965faa7a"><p class="cl-965f794c"><span class="cl-965abd26">2013</span></p></th><th class="cl-965faa7a"><p class="cl-965f794c"><span class="cl-965abd26">2014</span></p></th><th class="cl-965faa7a"><p class="cl-965f794c"><span class="cl-965abd26">2015</span></p></th><th class="cl-965faa7a"><p class="cl-965f794c"><span class="cl-965abd26">2016</span></p></th><th class="cl-965faa7a"><p class="cl-965f794c"><span class="cl-965abd26">2017</span></p></th><th class="cl-965faa7a"><p class="cl-965f794c"><span class="cl-965abd26">2018</span></p></th><th class="cl-965faa7a"><p class="cl-965f794c"><span class="cl-965abd26">2019</span></p></th><th class="cl-965faa7a"><p class="cl-965f794c"><span class="cl-965abd26">2020</span></p></th><th class="cl-965faa7a"><p class="cl-965f794c"><span class="cl-965abd26">2021</span></p></th><th class="cl-965faa7a"><p class="cl-965f794c"><span class="cl-965abd26">2022</span></p></th><th class="cl-965faa7a"><p class="cl-965f794c"><span class="cl-965abd26">2023</span></p></th><th class="cl-965faa7a"><p class="cl-965f794c"><span class="cl-965abd26">2024</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-965faa7b"><p class="cl-965f794d"><span class="cl-965abd26">10A; Balance of herd test (factory lesion)</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.1</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.1</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.1</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.1</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.1</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.1</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.1</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.1</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.1</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.1</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-965faa7b"><p class="cl-965f794d"><span class="cl-965abd26">10B; Balance of herd test (private test)</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-965faa7b"><p class="cl-965f794d"><span class="cl-965abd26">10C; Balance of herd test (inc retest)</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.1</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.1</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.1</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.1</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.1</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.1</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.1</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-965faa7b"><p class="cl-965f794d"><span class="cl-965abd26">10D; Balance of herd test (fwd trace S.C.T.)</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-965faa85"><p class="cl-965f794d"><span class="cl-965abd26">1; Round test</span></p></td><td class="cl-965faa8e"><p class="cl-965f794c"><span class="cl-965abd30">64.6</span></p></td><td class="cl-965faa8e"><p class="cl-965f794c"><span class="cl-965abd30">67.7</span></p></td><td class="cl-965faa8e"><p class="cl-965f794c"><span class="cl-965abd30">70.8</span></p></td><td class="cl-965faa8e"><p class="cl-965f794c"><span class="cl-965abd30">72.9</span></p></td><td class="cl-965faa8e"><p class="cl-965f794c"><span class="cl-965abd30">73.1</span></p></td><td class="cl-965faa8e"><p class="cl-965f794c"><span class="cl-965abd30">75.3</span></p></td><td class="cl-965faa8e"><p class="cl-965f794c"><span class="cl-965abd30">75.4</span></p></td><td class="cl-965faa8e"><p class="cl-965f794c"><span class="cl-965abd30">76.3</span></p></td><td class="cl-965faa8e"><p class="cl-965f794c"><span class="cl-965abd30">77.2</span></p></td><td class="cl-965faa8e"><p class="cl-965f794c"><span class="cl-965abd30">76.5</span></p></td><td class="cl-965faa8e"><p class="cl-965f794c"><span class="cl-965abd30">74.8</span></p></td><td class="cl-965faa8e"><p class="cl-965f794c"><span class="cl-965abd30">73.6</span></p></td><td class="cl-965faa8e"><p class="cl-965f794c"><span class="cl-965abd30">71.3</span></p></td><td class="cl-965faa8e"><p class="cl-965f794c"><span class="cl-965abd30">69.6</span></p></td><td class="cl-965faa8e"><p class="cl-965f794c"><span class="cl-965abd30">71.9</span></p></td><td class="cl-965faa8e"><p class="cl-965f794c"><span class="cl-965abd30">70.3</span></p></td><td class="cl-965faa8e"><p class="cl-965f794c"><span class="cl-965abd30">67.6</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-965faa7b"><p class="cl-965f794d"><span class="cl-965abd26">2; New Herd Special Check Test (S.C.T.)</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.9</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">1.1</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">1.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">1.3</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">1.6</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">1.4</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">1.2</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">2.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">1.5</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">1.3</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">1.1</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.9</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">1.2</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">1.5</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">1.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">1.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.8</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-965faa85"><p class="cl-965f794d"><span class="cl-965abd26">4; Reactor re-test</span></p></td><td class="cl-965faa8e"><p class="cl-965f794c"><span class="cl-965abd30">10.2</span></p></td><td class="cl-965faa8e"><p class="cl-965f794c"><span class="cl-965abd30">9.1</span></p></td><td class="cl-965faa8e"><p class="cl-965f794c"><span class="cl-965abd30">8.2</span></p></td><td class="cl-965faa8e"><p class="cl-965f794c"><span class="cl-965abd30">7.4</span></p></td><td class="cl-965faa8e"><p class="cl-965f794c"><span class="cl-965abd30">7.2</span></p></td><td class="cl-965faa8e"><p class="cl-965f794c"><span class="cl-965abd30">6.7</span></p></td><td class="cl-965faa8e"><p class="cl-965f794c"><span class="cl-965abd30">6.6</span></p></td><td class="cl-965faa8e"><p class="cl-965f794c"><span class="cl-965abd30">5.9</span></p></td><td class="cl-965faa8e"><p class="cl-965f794c"><span class="cl-965abd30">5.7</span></p></td><td class="cl-965faa8e"><p class="cl-965f794c"><span class="cl-965abd30">5.8</span></p></td><td class="cl-965faa8e"><p class="cl-965f794c"><span class="cl-965abd30">6.0</span></p></td><td class="cl-965faa8e"><p class="cl-965f794c"><span class="cl-965abd30">6.2</span></p></td><td class="cl-965faa8e"><p class="cl-965f794c"><span class="cl-965abd30">7.2</span></p></td><td class="cl-965faa8e"><p class="cl-965f794c"><span class="cl-965abd30">7.3</span></p></td><td class="cl-965faa8e"><p class="cl-965f794c"><span class="cl-965abd30">7.3</span></p></td><td class="cl-965faa8e"><p class="cl-965f794c"><span class="cl-965abd30">8.0</span></p></td><td class="cl-965faa8e"><p class="cl-965f794c"><span class="cl-965abd30">9.5</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-965faa8f"><p class="cl-965f794d"><span class="cl-965abd26">5A; Classification related S.C.T.</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">3.2</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">3.3</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">3.7</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">3.5</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">3.1</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">2.9</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">2.7</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">2.7</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">2.4</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">2.2</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">1.9</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">2.2</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">2.0</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">2.3</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">2.7</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">2.4</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">2.6</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-965faa8f"><p class="cl-965f794d"><span class="cl-965abd26">5B; Associated to a reactor herd S.C.T.</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">0.1</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-965faa7b"><p class="cl-965f794d"><span class="cl-965abd26">5C; High incidence Area/DED and Miscellaneous C.T. (herd)</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">3.6</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">3.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">1.8</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">1.2</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">1.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.8</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.9</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">1.1</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">1.3</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.9</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">1.6</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">3.4</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">3.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">4.3</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">3.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">3.1</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">3.3</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-965faa7b"><p class="cl-965f794d"><span class="cl-965abd26">5E; OTF regain status S.C.T.</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.3</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.3</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.3</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.3</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.3</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.4</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.4</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.3</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.3</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.3</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.3</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.3</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.4</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.4</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.5</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.6</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.8</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-965faa7b"><p class="cl-965f794d"><span class="cl-965abd26">5F; Backward trace S.C.T. (herd)</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.2</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.8</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.9</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.9</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.8</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.8</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.7</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.7</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.6</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.7</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.7</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.6</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.8</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">0.9</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">1.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">1.2</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">1.3</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-965faa98"><p class="cl-965f794d"><span class="cl-965abd26">7A; Post depopulation C.T.</span></p></td><td class="cl-965faa99"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa99"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa99"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa99"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa99"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa99"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa99"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa99"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa99"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa99"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa99"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa99"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa99"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa99"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa99"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa99"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td><td class="cl-965faa99"><p class="cl-965f794c"><span class="cl-965abd30">0.0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-965faa8f"><p class="cl-965f794d"><span class="cl-965abd26">7B; Post de-restriction C.T.</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">4.3</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">4.3</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">3.7</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">3.5</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">3.1</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">3.1</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">2.9</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">2.8</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">2.6</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">2.0</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">2.1</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">2.2</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">2.3</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">2.7</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">2.7</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">2.5</span></p></td><td class="cl-965faa90"><p class="cl-965f794c"><span class="cl-965abd30">2.8</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-965faa7b"><p class="cl-965f794d"><span class="cl-965abd26">8; Contiguous herd test</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">10.9</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">8.9</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">8.1</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">7.8</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">8.5</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">7.4</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">8.0</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">7.1</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">7.4</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">9.1</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">10.3</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">9.5</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">10.6</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">9.9</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">8.7</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">9.5</span></p></td><td class="cl-965faa84"><p class="cl-965f794c"><span class="cl-965abd30">10.0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-965faaa2"><p class="cl-965f794d"><span class="cl-965abd26">9A; Factory lesion test</span></p></td><td class="cl-965faaac"><p class="cl-965f794c"><span class="cl-965abd30">1.5</span></p></td><td class="cl-965faaac"><p class="cl-965f794c"><span class="cl-965abd30">1.3</span></p></td><td class="cl-965faaac"><p class="cl-965f794c"><span class="cl-965abd30">1.3</span></p></td><td class="cl-965faaac"><p class="cl-965f794c"><span class="cl-965abd30">1.1</span></p></td><td class="cl-965faaac"><p class="cl-965f794c"><span class="cl-965abd30">1.0</span></p></td><td class="cl-965faaac"><p class="cl-965f794c"><span class="cl-965abd30">1.0</span></p></td><td class="cl-965faaac"><p class="cl-965f794c"><span class="cl-965abd30">0.9</span></p></td><td class="cl-965faaac"><p class="cl-965f794c"><span class="cl-965abd30">0.8</span></p></td><td class="cl-965faaac"><p class="cl-965f794c"><span class="cl-965abd30">0.8</span></p></td><td class="cl-965faaac"><p class="cl-965f794c"><span class="cl-965abd30">0.8</span></p></td><td class="cl-965faaac"><p class="cl-965f794c"><span class="cl-965abd30">0.9</span></p></td><td class="cl-965faaac"><p class="cl-965f794c"><span class="cl-965abd30">0.8</span></p></td><td class="cl-965faaac"><p class="cl-965f794c"><span class="cl-965abd30">1.0</span></p></td><td class="cl-965faaac"><p class="cl-965f794c"><span class="cl-965abd30">1.0</span></p></td><td class="cl-965faaac"><p class="cl-965f794c"><span class="cl-965abd30">1.1</span></p></td><td class="cl-965faaac"><p class="cl-965f794c"><span class="cl-965abd30">1.2</span></p></td><td class="cl-965faaac"><p class="cl-965f794c"><span class="cl-965abd30">1.2</span></p></td></tr></tbody></table></div>
+</div>
+</div>
+</figure>
+</div>
+</div>
 </section>
 </section>
-<section id="timing-of-round-test-type" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="timing-of-round-test-type"><span class="header-section-number">8.2</span> Timing of round test-type</h2>
+<section id="timing-of-round-test-type" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="timing-of-round-test-type"><span class="header-section-number">10.2</span> Timing of round test-type</h2>
 <p>Is there more annual round test during certain months of the year (e.g., summer/autumn) which might reflect more cases being detected?</p>
-<section id="all-herds" class="level3" data-number="8.2.1">
-<h3 data-number="8.2.1" class="anchored" data-anchor-id="all-herds"><span class="header-section-number">8.2.1</span> All herds</h3>
+<section id="all-herds" class="level3" data-number="10.2.1">
+<h3 data-number="10.2.1" class="anchored" data-anchor-id="all-herds"><span class="header-section-number">10.2.1</span> All herds</h3>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-propsicttroundtest" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -418,15 +475,15 @@ Figure&nbsp;8.3: The proportion of all SICTTs by all test-types.
 <img src="sictt_test_types_files/figure-html/fig-propsicttroundtest-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1152">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-propsicttroundtest-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;8.4: The proportion of all round tests by month
+Figure&nbsp;10.4: The proportion of all round tests by month
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="by-herd-type" class="level3" data-number="8.2.2">
-<h3 data-number="8.2.2" class="anchored" data-anchor-id="by-herd-type"><span class="header-section-number">8.2.2</span> by herd-type</h3>
+<section id="by-herd-type" class="level3" data-number="10.2.2">
+<h3 data-number="10.2.2" class="anchored" data-anchor-id="by-herd-type"><span class="header-section-number">10.2.2</span> by herd-type</h3>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-propsicttroundtestherdtype" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -435,7 +492,43 @@ Figure&nbsp;8.4: The proportion of all round tests by month
 <img src="sictt_test_types_files/figure-html/fig-propsicttroundtestherdtype-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1152">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-propsicttroundtestherdtype-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;8.5: The proportion of all round tests by month and herd-type
+Figure&nbsp;10.5: The proportion of all round tests by month and herd-type
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="apt-animals-reactor-per-thousand-animal-tests" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="apt-animals-reactor-per-thousand-animal-tests"><span class="header-section-number">10.3</span> APT (Animals Reactor per Thousand Animal Tests)</h2>
+<p>SICTT positive animals per thousand tested</p>
+<p>APT is used by DAFM as an administrative metric (which just looks at SICTT)</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-aptskin" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-aptskin-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="sictt_test_types_files/figure-html/fig-aptskin-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1152">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-aptskin-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.6: APT
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<section id="apt-by-herd" class="level3" data-number="10.3.1">
+<h3 data-number="10.3.1" class="anchored" data-anchor-id="apt-by-herd"><span class="header-section-number">10.3.1</span> APT by herd</h3>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-aptskinherd" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-aptskinherd-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="sictt_test_types_files/figure-html/fig-aptskinherd-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1152">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-aptskinherd-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.7: APT by herd-type
 </figcaption>
 </figure>
 </div>
@@ -519,7 +612,7 @@ Figure&nbsp;8.5: The proportion of all round tests by month and herd-type
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/github\.com\/j-madden-m\/Irish_bTB_trends");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -846,15 +939,15 @@ Figure&nbsp;8.5: The proportion of all round tests by month and herd-type
     }
   });
   </script>
-<nav class="page-navigation column-page-right">
+<nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
-      <a href="./time_series.html" class="pagination-link" aria-label="Time-series analysis and case forecasting">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Time-series analysis and case forecasting</span></span>
+      <a href="./agg_cases_poisson_NB_model.html" class="pagination-link" aria-label="bTB case numbers, aggregated Poisson/negative binomial models">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">bTB case numbers, aggregated Poisson/negative binomial models</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./publications.html" class="pagination-link" aria-label="CVERA related bTB publications">
-        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">CVERA related bTB publications</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">CVERA related bTB publications</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -64,6 +64,7 @@ source("R_files/time_series_decomp_plot_fun.R")
 
 ```
 
+This section is ongoing and will form the basis of a separate time-series/forecasting paper.
 
 ## bTB case count
 

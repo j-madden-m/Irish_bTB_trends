@@ -1,0 +1,137 @@
+# Summary of main findings {#sec-summary}
+
+------------------------------------------------------------------------
+
+$~$ $~$
+
+```{r}
+#| label: global-options
+#| include: false
+
+# Center figures (alternative approach in Quarto)
+knitr::opts_chunk$set(fig.align = "center")
+# like this: #| fig-align: center
+```
+
+```{r}
+#| label: readin-data
+#| include: false
+library(magick)
+
+# demographics summary
+demographics_summary <- image_read("figures/merged_plot_02_Apr_2025.png",
+                                  density = 300) %>% 
+  image_ggplot(interpolate = TRUE)
+
+# cases summary
+cases_summary <- image_read("figures/merged_plot_cases_prevalance_02_Apr_2025.png") %>% 
+  image_ggplot(interpolate = TRUE)
+
+# case distribution summary
+bd_dist_summary <- image_read("figures/merged_plot_bd_size_cats_10_Sep_2025.png") %>% 
+  image_ggplot(interpolate = TRUE)
+
+# lesion summary
+lesion_summary <- image_read("figures/lesion_plot_07_May_2025.png") %>% 
+  image_ggplot(interpolate = TRUE)
+
+# aggregated case count
+nb_model_summary <- image_read("figures/negative_binomial_model_01_Oct_2025.png") %>% 
+  image_ggplot(interpolate = TRUE)
+
+```
+
+
+
+The website contains a lot of output and so for the purposes of a quick summary, we have extracted a couple of plots from the whole website that summarise some of the main findings - these are some of the plots included in the journal submission. 
+
+
+
+# Demographics overview
+
+```{r}
+#| label: fig-demographics
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 8 
+#| fig.cap: "Three main demographic characteristics from cattle in Ireland: (a) proportion of herd-types, (b) proportion of the bovine population by herd-types and (c) the median herd size by herd-type, for each year 2008-2024."
+
+demographics_summary
+```
+
+
+# bTB burden overview
+
+```{r}
+#| label: fig-cases
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 8 
+#| fig.cap: "Three plots illustrating the burden of bTB over time and the variation between different herd-types: (a) total bTB cases by diagnostic method, (b) proportion of all bTB cases by herd-type and (c) herd-level prevalence of herd types by year."
+
+cases_summary
+```
+
+
+
+
+# bTB case distribution in herd-level BDs
+
+
+```{r}
+#| label: fig-casedistribution
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 8 
+#| fig.cap: "The distribution of the total number of bTB cases (via all diagnostic methods) in herd-level BDs in (a) continous form and (b) by categorizing them by different groupings of cases (1, 2-3,  4-5, 5+)."
+
+bd_dist_summary
+```
+
+
+# Lesion overview
+
+
+```{r}
+#| label: fig-lesion
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 8 
+#| fig.cap: "Lesion prevalence among bTB cases (classified by SICTT or IFN-γ) and healthy animals sent to slaughter."
+
+lesion_summary
+```
+
+# Aggregated case count model
+
+```{r}
+#| label: fig-aggcases
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 8 
+#| fig.cap: "Aggregated negative binomial regression model results exploring the association between year and herd-type on total count of bTB cases."
+
+nb_model_summary
+```
+
+

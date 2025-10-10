@@ -107,7 +107,8 @@ case_count_year <- case_count_function(all_cases_collapsed, "year")
 #case_count_year
 # saving data for policy plot
 write_csv(case_count_year, "data/edited_output/case_count_year.csv")
-case_count_plot_fun(case_count_year, "year", "cases")
+#case_count_plot_fun(case_count_year, "year", "cases")
+case_count_plot_fun(case_count_year, "year", "cases", month_interactive = TRUE)
 
 
 # adding 2005-2007 data for policy plot

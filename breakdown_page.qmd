@@ -35,7 +35,8 @@ bd_df <- sjlabelled::remove_all_labels(bd_df)
 # drop years before 2008
 bd_df <- bd_df %>% 
   filter(bd_start_yr > 2007) %>% 
-  mutate(bd_start_yr_f = as.character(bd_start_yr)) %>% 
+  mutate(bd_start_yr_f = as.character(bd_start_yr),
+         bd_end_yr_f = as.character(bd_end_yr)) %>% 
   mutate(all_cases_cut = cut(all_cases, 
                              breaks = c(1:9, seq(10, 40, by = 5), Inf), 
                              labels = c(1:9, paste(2:7 * 5, 2:7 * 5 + 4, sep = '-'),
@@ -83,7 +84,7 @@ bd_df <- bd_df %>%
 
 ## Breakdown (BD) definition
 
-For this study, we defined the start date of a BD in a herd as the date when an animal was disclosed as a bTB case, as determined by the SICTT, IFN-γ or by the detection of visible lesions at routine slaughter which are then laboratory confirmed with *M. bovis* infection (also known as ‘factory lesion cases’). In the situation when a BD started due to the detection of a visible lesion, we chose the start date as the date when the sample was sent to the lab and not the date in which it was identified as culture positive which could be a number of weeks later. Depending on the circumstances, the herds `trading_status` on AHCS will generally change from `free` to `withdrawn`/`suspended`. We defined the BD end date as the date of the next SICTT (whole herd) test where the `trading_status` was restored to `free`. Once a bTB case is detected, a herd will usually remain in a BD until it has had two consecutive, clear whole-herd SICTT tests (usually 60 days apart). There are certain exceptions to the above criteria e.g., singletons.
+Here, we defined the start date of a BD in a herd as the date when an animal was disclosed as a bTB case, as determined by the SICTT, IFN-γ or by the detection of visible lesions at routine slaughter which are then laboratory confirmed with *M. bovis* infection (also known as ‘factory lesion cases’). In the situation when a BD started due to the detection of a visible lesion, we chose the start date as the date when the sample was sent to the lab and not the date in which it was identified as culture positive which could be a number of weeks later. Depending on the circumstances, the herds `trading_status` on AHCS will generally change from `free` to `withdrawn`/`suspended`. We defined the BD end date as the date of the next SICTT (whole herd) test where the `trading_status` was restored to `free`. Once a bTB case is detected, a herd will usually remain in a BD until it has had two consecutive, clear whole-herd SICTT tests (usually 60 days apart). There are certain exceptions to the above criteria e.g., singletons.
 
 ```{r}
 #| label: zerocasestab
@@ -890,7 +891,7 @@ bd_df %>%
   #scale_fill_brewer(palette = "Dark2") +
   scale_fill_manual(values = brock_cols, name = "Brock et al. herd-type") +
   theme_jamie +
-  labs_jamie(named_vars) +
+  #labs_jamie(named_vars) +
   labs(title = "Percentage of SICTT initiated BDs that will disclose more bTB cases after the initial detection",
        y = "Percentage",
        caption = paste0("Year corresponds to the year that the BD started.",
@@ -950,7 +951,7 @@ bd_df %>%
   #scale_fill_brewer(palette = "Dark2") +
   scale_fill_manual(values = brock_cols, name = "Brock et al. herd-type") +
   theme_jamie +
-  labs_jamie(named_vars) +
+  #labs_jamie(named_vars) +
   labs(title = "Percentage of slaughter-house initiated BDs that will disclose more bTB cases after the initial detection",
        y = "Percentage",
        caption = paste0("Year corresponds to the year that the BD started.",
@@ -973,6 +974,104 @@ bd_df %>%
   ) +
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) 
 ```
+
+
+## Count of no. BDs by detection method
+
+### SICTT initiated BDs
+
+```{r}
+#| label: fig-countofBDsictt
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 8 
+#| fig.cap: "The count of the number of BDs initiated by SICTT, by herd-type."
+bd_df %>% 
+  filter(bd_initiated == "SICTT") %>% 
+  filter(herd_type_ml_description  %in% c("Dairy", "Beef", "Fattener", "Mixed", "Store", "Trader")) %>% 
+  group_by(bd_start_yr_f, herd_type_ml_description) %>% 
+  summarise(no_of_bds_started = n()) %>% 
+  ungroup() %>% 
+  ggplot(aes(x = bd_start_yr_f, y = no_of_bds_started, fill = herd_type_ml_description)) +
+  # Implement a grouped bar chart
+  geom_col(position = position_dodge2(preserve = "single", padding = 0.1)) +
+  labs(x = "Year",
+       y = "No. of BDs initiated",
+       title = paste0("No. of BDs initiated by SICTT, by herd-type"),
+       caption = paste0()) +
+  theme_jamie +
+  theme_45_x +
+  scale_fill_manual(name = "Herd-type", values = brock_cols) +
+  # scale_y_continuous(labels = scales::label_percent(scale = 100)) +
+  # scale_x_type +
+  #scale_x_continuous(breaks = nth_element(c(unique(df[[x_var]])), 1, 2)) +
+  #scale_color_simpsons(name = "Quartile type") +
+  # need this for bold headings
+  theme(title = element_text(size = 18, face = "bold"),
+        legend.text = element_markdown(size = 16),
+        plot.caption.position = "plot",
+        legend.title = element_text(size = 16, face = "bold"),
+        plot.caption = element_text(size = 9, color = "black", face = "italic"),
+        plot.title.position = "plot",
+        # remove legend so its zoomed in, then add legend seperately
+        legend.position = "top"
+        #legend.position = c(0.2, 0.9))  
+  ) +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) 
+```
+
+
+### Slaughter-house initiated BDs
+
+```{r}
+#| label: fig-countofBDslaughter
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 8 
+#| fig.cap: "The count of the number of BDs initiated by a slaughter-house case, by herd-type."
+bd_df %>% 
+  filter(bd_initiated == "Slaughter (non permit animal)") %>% 
+  filter(herd_type_ml_description  %in% c("Dairy", "Beef", "Fattener", "Mixed", "Store", "Trader")) %>% 
+  group_by(bd_start_yr_f, herd_type_ml_description) %>% 
+  summarise(no_of_bds_started = n()) %>% 
+  ungroup() %>% 
+  ggplot(aes(x = bd_start_yr_f, y = no_of_bds_started, fill = herd_type_ml_description)) +
+  # Implement a grouped bar chart
+  geom_col(position = position_dodge2(preserve = "single", padding = 0.1)) +
+  labs(x = "Year",
+       y = "No. of BDs initiated",
+       title = paste0("No. of BDs initiated by slaughter-house case, by herd-type"),
+       caption = paste0()) +
+  theme_jamie +
+  theme_45_x +
+  scale_fill_manual(name = "Herd-type", values = brock_cols) +
+  # scale_y_continuous(labels = scales::label_percent(scale = 100)) +
+  # scale_x_type +
+  #scale_x_continuous(breaks = nth_element(c(unique(df[[x_var]])), 1, 2)) +
+  #scale_color_simpsons(name = "Quartile type") +
+  # need this for bold headings
+  theme(title = element_text(size = 18, face = "bold"),
+        legend.text = element_markdown(size = 16),
+        plot.caption.position = "plot",
+        legend.title = element_text(size = 16, face = "bold"),
+        plot.caption = element_text(size = 9, color = "black", face = "italic"),
+        plot.title.position = "plot",
+        # remove legend so its zoomed in, then add legend seperately
+        legend.position = "top"
+        #legend.position = c(0.2, 0.9))  
+  ) +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) 
+```
+
+
 
 ## Tables
 

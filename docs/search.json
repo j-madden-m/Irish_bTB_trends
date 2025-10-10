@@ -2,9 +2,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "DRAFT Temporal trends in bovine herds and bovine tuberculosis breakdowns in Ireland (2008-2024)",
+    "title": "Temporal trends in bovine herds and bovine tuberculosis breakdowns in Ireland (2008-current)",
     "section": "",
-    "text": "Background\nThis is an accompanying website to supplement a paper submitted to journal XXX. The purpose of this website is to have a near-real-time version of the output from the paper using more recent data as we obtain it. It also acts as a location to include excess output that didn’t make it into the main paper but which we think is still useful for readers. Additional analysis will be added over time.\nINCLUDE paper reference here\nThe paper highlights various trends from different components of the bovine tuberculosis (bTB) eradication programme in Ireland (from 2008 onwards). This includes cattle population demographics, herd enterprise types, bTB case numbers, herd-level bTB breakdowns, lesion detection at slaughter inspections both in bTB positive animals and routinely slaughtered animals. The data used has been obtained from the Irish national bTB eradication programme (Animal Health Computer System (AHCS) (Department of Agriculture, Food and the Marine (DAFM)), Animal Identification and Movement System (AIM), Laboratory Information Management System (LIMS)), which included results from herd-level skin tests, animal-level laboratory tests (from animals with suspect bTB lesions) and the animal-level IFN-γ blood tests. A bTB eradication timeline is also included which highlights some of the major trials and policy and diagnostic changes introduced during the programme.\nThe data has been processed by the Centre for Veterinary Epidemiology and Risk Analysis CVERA for research purposes and as a result, there may be minor discrepancies between DAFM and our output. For official documentation from the bTB eradication programme visit DAFM.",
+    "text": "Background\nThis is an accompanying website to supplement a paper submitted for publication. The purpose of this website is to have a near-real-time version of the output from the paper using more recent data as we obtain it. It also acts as a location to include excess output that didn’t make it into the main paper but which we think is still useful for readers. Additional analysis will be added over time.\nThe paper highlights various trends from different components of the bovine tuberculosis (bTB) eradication programme in Ireland (from 2008 onwards). This includes cattle population demographics, herd enterprise types, bTB case numbers, herd-level bTB breakdowns, lesion detection at slaughter inspections both in bTB positive animals and routinely slaughtered animals. The data used has been obtained from the Irish national bTB eradication programme (Animal Health Computer System (AHCS) (Department of Agriculture, Food and the Marine (DAFM)), Animal Identification and Movement System (AIM), Laboratory Information Management System (LIMS)), which included results from herd-level skin tests, animal-level laboratory tests (from animals with suspect bTB lesions) and the animal-level IFN-γ blood tests. A bTB eradication timeline is also included which highlights some of the major trials and policy and diagnostic changes introduced during the programme.\nThe data has been processed by the Centre for Veterinary Epidemiology and Risk Analysis CVERA for research purposes and as a result, there may be minor discrepancies between DAFM and our output. For official documentation from the bTB eradication programme visit DAFM.",
     "crumbs": [
       "Background"
     ]
@@ -12,9 +12,9 @@
   {
     "objectID": "index.html#whats-included",
     "href": "index.html#whats-included",
-    "title": "DRAFT Temporal trends in bovine herds and bovine tuberculosis breakdowns in Ireland (2008-2024)",
+    "title": "Temporal trends in bovine herds and bovine tuberculosis breakdowns in Ireland (2008-current)",
     "section": "What’s included?",
-    "text": "What’s included?\nThe wesbite is divided into these parts:\n\nInteractive timeline: Highlights major trials, diagnostic and policy changes during the Irish bTB eradication (2005 - 2023).\nDemographics: Changes to demographics over time (herd-types, bovine numbers etc.).\nbTB case numbers and herd-prevalence: Examines bTB case numbers over time along with herd prevalence by different herd-types.\nLesion prevalence: This includes both visible lesions in animals already classified as a bTB case entering the factory and M.bovis confirmed lesions found in animals at routine slaughter (healthy animals)\nbTB breakdowns (BDs): This explores changes to herd-level BDs over time.\nTime-series and forecasting: This includes time-series analysis and basic forecasting of the count of bTB cases.\nSICTT test-types: This explores the different skin test-types over time.\nCVERA related bTB publications: Almost an exhaustive list of bTB related publications from CVERA (from 1990 to current day). This encompasses publications that may not be directly from CVERA (e.g., where CVERA member is only a co-author on the publication, the list also includes publications from the Tuberculosis Diagnostics & Immunology Research Laboratory in UCD).",
+    "text": "What’s included?\nThe website is divided into these parts:\n\nInteractive timeline: Highlights major trials, diagnostic and policy changes during the Irish bTB eradication (2005 - current).\nBrief summary overview: The website contains a lot of output and so for the purposes of a quick summary, we have extracted a couple of plots from the whole website that summarise some of the main findings - these are some of the plots included in the journal submission.\nDemographics: Changes to demographics over time (herd-types, bovine numbers etc.).\nbTB case numbers and herd-prevalence: Examines bTB case numbers over time along with herd prevalence by different herd-types.\nLesion prevalence: This includes both visible lesions in animals already classified as a bTB case entering the factory and M.bovis confirmed lesions found in animals at routine slaughter (healthy animals)\nbTB breakdowns (BDs): This explores changes to herd-level BDs over time.\nTime-series and forecasting: This includes time-series analysis and basic forecasting of the count of bTB cases.\nSICTT test-types: This explores the different skin test-types over time.\nCVERA related bTB publications: Almost an exhaustive list of bTB related publications from CVERA (from 1990 to current day). This encompasses publications that may not be directly from CVERA (e.g., where CVERA member is only a co-author on the publication, the list also includes publications from the Tuberculosis Diagnostics & Immunology Research Laboratory in UCD).",
     "crumbs": [
       "Background"
     ]
@@ -22,44 +22,670 @@
   {
     "objectID": "index.html#whats-not-included-yet",
     "href": "index.html#whats-not-included-yet",
-    "title": "DRAFT Temporal trends in bovine herds and bovine tuberculosis breakdowns in Ireland (2008-2024)",
+    "title": "Temporal trends in bovine herds and bovine tuberculosis breakdowns in Ireland (2008-current)",
     "section": "What’s not included (yet)?",
-    "text": "What’s not included (yet)?\nThe focus is primarily at a national level although some county level output is included. We acknowledge there is a strong spatio-temporal distribution of bTB in Ireland but exploring spatial trends is not the focus of this particular work. For a recent spatial analysis of bTB trends in Ireland, see Madden et al. and for a more current spatial exploration of bTB, see here. There is also no analysis included on age-specific bTB trends - that is a separate piece of work that is ongoing (but may be added here over time).",
+    "text": "What’s not included (yet)?\nThe focus is primarily at a national level although some county level output is included. We acknowledge there is a strong spatio-temporal distribution of bTB in Ireland but exploring spatial trends is not the focus of this particular work. In time, trends at a DVO level will be added. For a recent spatial analysis of bTB trends in Ireland, see Madden et al. and for a more current spatial exploration of bTB, see here. There is also no analysis included on age-specific bTB trends - that is a separate piece of work that is ongoing (but may be added here over time).",
     "crumbs": [
       "Background"
     ]
   },
   {
+    "objectID": "index.html#citing",
+    "href": "index.html#citing",
+    "title": "Temporal trends in bovine herds and bovine tuberculosis breakdowns in Ireland (2008-current)",
+    "section": "Citing",
+    "text": "Citing\nOnce the papers relating to this work have been published, their references will be added here.\nIf you would like to specifically cite the website, you can use the following:\nMadden, J.M. (2025) Temporal trends in bovine herds and bovine tuberculosis breakdowns in Ireland (2008-current), https://j-madden-m.github.io/Irish_bTB_trends/, accessed on YYYY/MM/DD.\n\n\nThe website image represents the count of bTB cases over time.",
+    "crumbs": [
+      "Background"
+    ]
+  },
+  {
+    "objectID": "timeline_policy.html",
+    "href": "timeline_policy.html",
+    "title": "1  Irish bTB eradication programme timeline",
+    "section": "",
+    "text": "1.1 Recent timeline plot\nAlthough the focus in the paper is on data from 2008-2024, here we go slightly further back to help understand important changes to the programme that happended in earlier years.\n\\(~\\) \\(~\\)\nFigure 1.1: Timeline of major events during the eradication programme.\n\\(~\\) \\(~\\)\n\\(~\\) \\(~\\)",
+    "crumbs": [
+      "Timeline",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Irish bTB eradication programme timeline</span>"
+    ]
+  },
+  {
+    "objectID": "timeline_policy.html#historic-timeline-plot-1988-2005",
+    "href": "timeline_policy.html#historic-timeline-plot-1988-2005",
+    "title": "1  Irish bTB eradication programme timeline",
+    "section": "1.2 Historic timeline plot (1988-2005)",
+    "text": "1.2 Historic timeline plot (1988-2005)\nThe following image has been extracted from More SJ & Good M 2006 with permission.\n\n\n\n\n\n\n\n\nFigure 1.2: A timeline highlighting advances, in Ireland since 1988, in scientific knowledge of the epidemiology of bovine tuberculosis and policy relating to bovine control and eradication (ref)\n\n\n\n\n\n\\(~\\) \\(~\\)\n\n\\(~\\) \\(~\\)",
+    "crumbs": [
+      "Timeline",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Irish bTB eradication programme timeline</span>"
+    ]
+  },
+  {
+    "objectID": "timeline_policy.html#spatial-location-and-timeline-of-badger-trials-after-2005",
+    "href": "timeline_policy.html#spatial-location-and-timeline-of-badger-trials-after-2005",
+    "title": "1  Irish bTB eradication programme timeline",
+    "section": "1.3 Spatial location and timeline of badger trials (after 2005)",
+    "text": "1.3 Spatial location and timeline of badger trials (after 2005)\nThe plot below does not include two badger trials that occured much earlier:\n\nEast Offaly project (1988–1995)\n\nÓ Máirtín D, Williams DH, Griffin JM, Dolan L, Eves JA. The effect of a badger removal programme on the incidence of tuberculosis in an Irish cattle population. Preventive Veterinary Medicine. 1998;34:47–56. doi: 10.1016/s0167-5877(97)00067-6 The effect of a badger removal programme on the incidence of tuberculosis in an Irish cattle population https://www.sciencedirect.com/science/article/pii/S0167587797000676 1998\nEves JA. Impact of badger removal on bovine tuberculosis in east County Offaly. Irish Veterinary Journal. 1999;52:199–203\n\nFour area badger culling trial (1997 - 2002) (also known as reference area trial)\n\nThe impact of badger removal on the control of tuberculosis in cattle herds in Ireland. Griffin, J.M.,illiams,.H., Kelly, G.E.,legg,T.., O’Boyle, I.,ollins, J.. and More,.J. (2005). Preventive Veterinary Medicine 67: 237-266 https://pubmed.ncbi.nlm.nih.gov/15748755/\nTuberculosis in cattle: the results of the four-area project Griffin et al. 2005 https://pmc.ncbi.nlm.nih.gov/articles/PMC3113914/pdf/2046-0481-58-11-629.pdf\n\n\n\n\n\n\n\n\nFigure 1.3: A timeline and location of badger studies within Ireland (after 2005)\n\n\n\n\n\n\\(~\\) \\(~\\)\n\n\\(~\\) \\(~\\)",
+    "crumbs": [
+      "Timeline",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Irish bTB eradication programme timeline</span>"
+    ]
+  },
+  {
+    "objectID": "timeline_policy.html#list-of-eu-audit-reports-sante-f-reports-for-ireland",
+    "href": "timeline_policy.html#list-of-eu-audit-reports-sante-f-reports-for-ireland",
+    "title": "1  Irish bTB eradication programme timeline",
+    "section": "1.4 List of EU-Audit reports (Sante F reports) for Ireland",
+    "text": "1.4 List of EU-Audit reports (Sante F reports) for Ireland\n\nHealth and Food Audits and Analysis, Sante F reports database https://ec.europa.eu/food/audits-analysis/audit-report/IE\n\nNote, also search for “milk” to find reports for Milk and milk products as well because bTB did feature in these.\n\\(~\\) \\(~\\)\n\n\\(~\\) \\(~\\)",
+    "crumbs": [
+      "Timeline",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Irish bTB eradication programme timeline</span>"
+    ]
+  },
+  {
+    "objectID": "timeline_policy.html#irish-btb-eradication-trendstimeline-references",
+    "href": "timeline_policy.html#irish-btb-eradication-trendstimeline-references",
+    "title": "1  Irish bTB eradication programme timeline",
+    "section": "1.5 Irish bTB eradication trends/timeline references",
+    "text": "1.5 Irish bTB eradication trends/timeline references\n\nWatchorn, R.C.(1965). Bovine Tuberculosis Eradication Scheme 1954-1965. Dublin: Department of Agriculture and Fisheries https://catalog.hathitrust.org/Record/009378520\nSheehy, S.J., Christiansen, K.H., 1992. A cost/benefit analysis of future options for bovine tuberculosis control. Dublin: University College Dublin. https://researchrepository.ucd.ie/server/api/core/bitstreams/4c2b9eee-71b7-4d68-b718-f1cddf7e1f24/content\nGood M. Bovine Tuberculosis Eradication in Ireland. 2006. Irish Veterinary Journal. 59(3):March 2006 https://www.bovinetb.info/docs/bovine-tuberculosis-eradication-in-ireland.pdf\nMore SJ, Good M. The tuberculosis eradication programme in Ireland: a review of scientific and policy advances since 1988. Vet Microbiol. 2006 Feb 25;112(2-4):239-51. doi: 10.1016/j.vetmic.2005.11.022. Epub 2005 Dec 6. PMID: 16337345. https://www.sciencedirect.com/science/article/pii/S0378113505003986?via%3Dihub\nSheridan M. Progress in tuberculosis eradication in Ireland. Vet Microbiol. 2011 Jul 5;151(1-2):160-9. doi: 10.1016/j.vetmic.2011.02.040. Epub 2011 Mar 8. PMID: 21482040. https://pubmed.ncbi.nlm.nih.gov/21482040/\nDuignan A, Good M, More SJ. Quality control in the national bovine tuberculosis eradication programme in Ireland. Rev Sci Tech. 2012;31(3):845–60 https://doi.org/10.20506/rst.31.3.2166. PMID: 23520738\nSheridan, M., Good, M., More, S.J. and Gormley, E., 2014. The impact of an integrated wildlife and bovine tuberculosis eradication program in Ireland. Zoonotic Tuberculosis: Mycobacterium bovis and Other Pathogenic Mycobacteria, Third Edition, pp.323-340.https://onlinelibrary.wiley.com/doi/10.1002/9781118474310.ch28\nMore SJ, Houtsma E, Doyle L, McGrath G, Clegg TA, de la Rua-Domenech R, Duignan A, Blissitt MJ, Dunlop M, Schroeder PG, Pike R, Upton P. Further description of bovine tuberculosis trends in the United Kingdom and the Republic of Ireland, 2003-2015. Vet Rec. 2018 Dec 15;183(23):717. doi: 10.1136/vr.104718. Epub 2018 Nov 28. PMID: 30487295; PMCID: PMC6312888. https://pubmed.ncbi.nlm.nih.gov/30487295/\nDAFM bTB eradication programme (New Bovine TB Testing Requirements for animal movements etc) http://www.bovinetb.ie/\n\n\n1.5.1 Northern Ireland\nRobinson PA. A history of bovine tuberculosis eradication policy in Northern Ireland. Epidemiol Infect. 2015 Nov;143(15):3182-95. doi: 10.1017/S0950268815000291. Epub 2015 Mar 17. PMID: 25778830; PMCID: PMC9150964. https://pubmed.ncbi.nlm.nih.gov/25778830/",
+    "crumbs": [
+      "Timeline",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Irish bTB eradication programme timeline</span>"
+    ]
+  },
+  {
+    "objectID": "summary_page.html",
+    "href": "summary_page.html",
+    "title": "2  Summary of main findings",
+    "section": "",
+    "text": "\\(~\\) \\(~\\)\nThe website contains a lot of output and so for the purposes of a quick summary, we have extracted a couple of plots from the whole website that summarise some of the main findings - these are some of the plots included in the journal submission.\n\n3 Demographics overview\n\n\n\n\n\n\n\n\nFigure 3.1: Three main demographic characteristics from cattle in Ireland: (a) proportion of herd-types, (b) proportion of the bovine population by herd-types and (c) the median herd size by herd-type, for each year 2008-2024.\n\n\n\n\n\n\n\n4 bTB burden overview\n\n\n\n\n\n\n\n\nFigure 4.1: Three plots illustrating the burden of bTB over time and the variation between different herd-types: (a) total bTB cases by diagnostic method, (b) proportion of all bTB cases by herd-type and (c) herd-level prevalence of herd types by year.\n\n\n\n\n\n\n\n5 bTB case distribution in herd-level BDs\n\n\n\n\n\n\n\n\nFigure 5.1: The distribution of the total number of bTB cases (via all diagnostic methods) in herd-level BDs in (a) continous form and (b) by categorizing them by different groupings of cases (1, 2-3, 4-5, 5+).\n\n\n\n\n\n\n\n6 Lesion overview\n\n\n\n\n\n\n\n\nFigure 6.1: Lesion prevalence among bTB cases (classified by SICTT or IFN-γ) and healthy animals sent to slaughter.\n\n\n\n\n\n\n\n7 Aggregated case count model\n\n\n\n\n\n\n\n\nFigure 7.1: Aggregated negative binomial regression model results exploring the association between year and herd-type on total count of bTB cases.",
+    "crumbs": [
+      "Brief summary overview",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Summary of main findings</span>"
+    ]
+  },
+  {
+    "objectID": "demographics.html",
+    "href": "demographics.html",
+    "title": "3  Demographics (herd-types, herd size, bovine population)",
+    "section": "",
+    "text": "3.1 Data and definitions\n\\(~\\) \\(~\\)",
+    "crumbs": [
+      "Demographics",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Demographics (herd-types, herd size, bovine population)</span>"
+    ]
+  },
+  {
+    "objectID": "demographics.html#data-and-definitions",
+    "href": "demographics.html#data-and-definitions",
+    "title": "3  Demographics (herd-types, herd size, bovine population)",
+    "section": "",
+    "text": "3.1.1 Study period\nData is available for 2005-current but we found many instances in the early years where a herd was in a BD (trading_status == withdrawn) but no bTB cases were reported (the BD may have begun before our earliest date) and so to make fair comparisons between years we have only included data from 2008 onwards.\n\n\n3.1.2 Herd type categorisations\nWe have access to three herd type categorisations:\n\none assigned to a herd on AHCS:\n\n\nDairy\nBeef\nSuckler\nOther\n\n\nBrock et al. (2021) created two model based herd categorisation. Brock et al. (2022) used these to explore enterprises from 2015 to 2019, here we expand on this work and additionally explore more years of data. The original categorisation included Seasonal herd-types but these are now no longer included. They have moved into Traders or Fatteners respectively, based on their profiles. The algorithm used in the original study has since been slightly modified (see updated decision tree below). The Brock classifications for this study used this revised algorithm.\nThe main Brock et al. herd types are:\n\n\nDairy\nBeef\nStore\nFattener\nMixed\nTrader\nUnknown\n\n\n\\(~\\)\nand the Brock et al. sub-classes are:\n\n\nDairy\nDairy no rearing - contract\nDairy non rearing - no contract\nDairy rearing females\nDairy rearing male calves\nBeef pedigree\nBeef suckling to beef\nBeef suckling to weanlings\nBeef suckling to youngstock\nBeef suckling to youngstock - no rearing\nStore beef females\nStore beef males\nStore beef mixed\nStore dairy males\nFattener\nMixed\nTrader\nUnknown\n\n\n\nThe following is the revised decision tree for Brock et al.:\n\n\n\n\n\n\n\n\nFigure 3.1: Revised decision tree/algorithm of Brock et al. used for classifying herds\n\n\n\n\n\nThe following is a brief summary of the main Brock et al. herd-types:\nDairy\n\nResidency in the herd is longer than 30 days for at least 50% of the herd.\nProportion of animals in a herd that have ever calved by September, relative to herd size is greater than 25%.\n66% or more of the animals are of a dairy breed.\n\nBeef\n\n(generally just suckler from AHCS I think)\nResidency in the herd is longer than 30 days for at least 50% of the herd\nProportion of animals in a herd that have ever calved by September, relative to herd size is greater than 25%.\nLess than 33% of the animals are of a dairy breed.\n\nMixed\n\nResidency in the herd is longer than 30 days for at least 50% of the herd.\nProportion of animals in a herd that have ever calved by September, relative to herd size is greater than 25%.\n33% or more of the animals and less than 66% are of a dairy breed.\n\nStore\n\nResidency in the herd is longer than 30 days for at least 50% of the herd.\nLess than 25% of the animals in the herd have calved in the past\nLess than 50% of the animals in the herd go directly to slaughter\n\nFattener\n\nResidency in the herd is longer than 30 days for at least 50% of the herd.\nProportion of animals in a herd that have ever calved by September, relative to herd size is greater than 25%.\n50% or more of the animals in the herd go directly to slaughter.\n\nTrader\n\n50% or more of the animals spend less than 30 days in the herd.\n\nSeasonal\n\nAnimals are kept in the herd for only part of the year. (As of 2024, “seasonal” is no longer a category - they have been moved into “trader” and “fattener” categories respectively)\n\nUnknown - Self-explanatory.\n\n\n3.1.3 Relationship of all herd-type categorisations (based on 2023 data)\n\n\n\n\n\n\n\n\nFigure 3.2: Relationship of all herd-type categorisations (based on 2023 data).",
+    "crumbs": [
+      "Demographics",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Demographics (herd-types, herd size, bovine population)</span>"
+    ]
+  },
+  {
+    "objectID": "demographics.html#changes-in-herd-types-over-time",
+    "href": "demographics.html#changes-in-herd-types-over-time",
+    "title": "3  Demographics (herd-types, herd size, bovine population)",
+    "section": "3.2 Changes in herd-types over time",
+    "text": "3.2 Changes in herd-types over time\n\\(~\\)\n\n3.2.1 AHCS herd type\n\n\n\n\n\n\n\n\nFigure 3.3: Proportion of herd types for Ireland over time.\n\n\n\n\n\n\\(~\\)\n\n\n3.2.2 AHCS herd type by county\n\n\n\n\n\n\n\n\nFigure 3.4: Proportion of herd types by county over time.\n\n\n\n\n\n\\(~\\)\n\n\n3.2.3 Brock et al. herd type\n\n\n\n\n\n\n\n\nFigure 3.5: Proportion of Brock et al. herd types for Ireland over time.\n\n\n\n\n\n\n\n3.2.4 Brock et al. herd type by county\n\n\n\n\n\n\n\n\nFigure 3.6: Proportion of Brock et al. herd-types by county over time.\n\n\n\n\n\n\\(~\\)\n\\(~\\)\n\n\n3.2.5 Newly established herds - AHCS herd types\nTo explore any potential impact of the removal of milk quotas (2015), the distibution of newly established herds were plotted (particularly to see if there was an increase in dairy herds). Here, newly established herds were herds that did not have a SICTT before 2015 (but had at least one after 2015). This may be slightly different to an official list provided by DAFM but it should be a very close approximation (I think!).\n\n\n\n\n\n\n\n\nFigure 3.7: Proportion of newly established herds by AHCS herd type over time\n\n\n\n\n\n\n\n3.2.6 Newly established herds - AHCS herd types by county\n\n\n\n\n\n\n\n\nFigure 3.8: Proportion of newly established herds by AHCS herd type over time.\n\n\n\n\n\n\n\n3.2.7 Newly established herds - Brock et al. herd types\n\n\n\n\n\n\n\n\nFigure 3.9: Proportion of newly established herds by Brock et al. herd type over time.\n\n\n\n\n\n\n\n3.2.8 Newly established herds - Brock et al. herd types by county\n\n\n\n\n\n\n\n\nFigure 3.10: Proportion of newly established herds by type and over time.\n\n\n\n\n\n\\(~\\) \\(~\\)\n\n\\(~\\) \\(~\\)",
+    "crumbs": [
+      "Demographics",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Demographics (herd-types, herd size, bovine population)</span>"
+    ]
+  },
+  {
+    "objectID": "demographics.html#bovine-population",
+    "href": "demographics.html#bovine-population",
+    "title": "3  Demographics (herd-types, herd size, bovine population)",
+    "section": "3.3 Bovine population",
+    "text": "3.3 Bovine population\n\n3.3.1 Brock et al.\n\n\n3.3.2 January:\n\n\n\n\n\n\n\n\nFigure 3.11: No. of animals by herd-type based on the number of animals residing in the herd on 1st Jan.\n\n\n\n\n\\(~\\) \\(~\\)\n\n\n3.3.3 May:\n\n\n\n\n\n\n\n\nFigure 3.12: No. of animals by herd-type based on the number of animals residing in the herd on 1st May.\n\n\n\n\n\\(~\\) \\(~\\)\n\n\n3.3.4 September:\n\n\n\n\n\n\n\n\nFigure 3.13: No. of animals by herd-type based on the number of animals residing in the herd on 1st Sep.\n\n\n\n\n\\(~\\) \\(~\\)\n\n\n3.3.5 Proportion of animals by herd-type\n\\(~\\) \\(~\\)\n\n\n\n\n\n\n\n\nFigure 3.14: Proportion of all animals on 1st May by the herd-type they are residing in.\n\n\n\n\n\n\\(~\\)\n\n\n3.3.6 Brock et al. sub-classes\n\n\n3.3.7 January:\n\n\n\n\n\n\n\n\nFigure 3.15: No. of animals by herd-type based on the number of animals residing in the herd on 1st Jan.\n\n\n\n\n\\(~\\) \\(~\\)\n\n\n3.3.8 May:\n\n\n\n\n\n\n\n\nFigure 3.16: No. of animals by herd-type based on the number of animals residing in the herd on 1st May.\n\n\n\n\n\\(~\\) \\(~\\)\n\n\n3.3.9 September:\n\n\n\n\n\n\n\n\nFigure 3.17: No. of animals by herd-type based on the number of animals residing in the herd on 1st Sep.\n\n\n\n\n\\(~\\)",
+    "crumbs": [
+      "Demographics",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Demographics (herd-types, herd size, bovine population)</span>"
+    ]
+  },
+  {
+    "objectID": "demographics.html#median-herd-size",
+    "href": "demographics.html#median-herd-size",
+    "title": "3  Demographics (herd-types, herd size, bovine population)",
+    "section": "3.4 Median herd size",
+    "text": "3.4 Median herd size\n\n3.4.1 Brock et al. herd-types\n\\(~\\)\n\n\n\n\n\n\n\n\nFigure 3.18: Median herd size by herd-type based on the number of animals residing in all herds on 1st May.\n\n\n\n\n\n\n3.4.2 Brock et al. sub-class herd-types\n\\(~\\)\n\n\n\n\n\n\n\n\nFigure 3.19: Median herd size by herd-type based on the number of animals residing in all herds on 1st May.\n\n\n\n\n\\(~\\) \\(~\\)\n\n\\(~\\) \\(~\\)",
+    "crumbs": [
+      "Demographics",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Demographics (herd-types, herd size, bovine population)</span>"
+    ]
+  },
+  {
+    "objectID": "demographics.html#tables",
+    "href": "demographics.html#tables",
+    "title": "3  Demographics (herd-types, herd size, bovine population)",
+    "section": "3.5 Tables",
+    "text": "3.5 Tables\n\\(~\\) \\(~\\)\n\n3.5.1 Herd demographics\n\\(~\\)\n\n\n\n\nTable 3.1: Bovine herd-demographics\n\n\n\nVariablelevel20082009201020112012201320142015201620172018201920202021202220232024No. of herds116850115850114583114809114573114364113250113633112973112400110828109509108574108076106377104894103692Controlled finishing units92 (0.08)124 (0.11)151 (0.13)181 (0.16)197 (0.17)197 (0.17)223 (0.20)255 (0.22)289 (0.26)256 (0.23)261 (0.24)260 (0.24)230 (0.21)211 (0.20)145 (0.14)27 (0.03)-AHCS herd typeDairy17083 (14.6)17110 (14.8)17069 (14.9)17194 (15)17230 (15)17261 (15.1)17286 (15.3)17327 (15.2)17299 (15.3)17285 (15.4)17198 (15.5)17165 (15.7)17061 (15.7)17013 (15.7)16968 (16)16839 (16.1)16758 (16.2)Beef25251 (21.6)25313 (21.9)25338 (22.1)25775 (22.5)26376 (23)26705 (23.4)26674 (23.6)27614 (24.3)27824 (24.6)28078 (25)27804 (25.1)27530 (25.1)27515 (25.3)27877 (25.8)27571 (25.9)27384 (26.1)27410 (26.4)Suckler65050 (55.7)64193 (55.4)63085 (55.1)62854 (54.8)62151 (54.3)61645 (53.9)60714 (53.6)60243 (53)59572 (52.7)58854 (52.4)57872 (52.2)57049 (52.1)56374 (51.9)55758 (51.6)54593 (51.3)53633 (51.1)52618 (50.7)Other9454 (8.1)9228 (8)9066 (7.9)8972 (7.8)8798 (7.7)8739 (7.6)8565 (7.6)8444 (7.4)8272 (7.3)8168 (7.3)7942 (7.2)7757 (7.1)7607 (7)7409 (6.9)7225 (6.8)7015 (6.7)6905 (6.7)Brock et al. herd typeDairy11159 (9.6)11720 (10.1)12202 (10.7)13201 (11.5)13679 (12)13675 (12)13639 (12.1)13434 (11.8)13391 (11.9)12934 (11.5)12410 (11.2)12381 (11.3)12191 (11.2)12452 (11.5)12517 (11.8)12049 (11.5)12013 (11.7)Beef65071 (55.9)63746 (55.1)61816 (54)60399 (52.7)59729 (52.2)59485 (52.1)57905 (51.2)56573 (49.9)55636 (49.3)54466 (48.6)53571 (48.4)52029 (47.5)51008 (47)49281 (45.7)47787 (45)45807 (43.7)45540 (44.3)Store10365 (8.9)11291 (9.8)10792 (9.4)12101 (10.6)14374 (12.6)14254 (12.5)14969 (13.2)16189 (14.3)16079 (14.3)16335 (14.6)16041 (14.5)16794 (15.3)16754 (15.4)18952 (17.6)18962 (17.8)19942 (19)19648 (19.1)Fattener16977 (14.6)16960 (14.7)17367 (15.2)16491 (14.4)15049 (13.2)15574 (13.6)16545 (14.6)15702 (13.8)16353 (14.5)16867 (15)16918 (15.3)17121 (15.6)17142 (15.8)16882 (15.6)17497 (16.5)17024 (16.2)16731 (16.3)Mixed7379 (6.3)6540 (5.7)5723 (5)5182 (4.5)5180 (4.5)5129 (4.5)5049 (4.5)5247 (4.6)5302 (4.7)5279 (4.7)5362 (4.8)5101 (4.7)5265 (4.9)4965 (4.6)4637 (4.4)4719 (4.5)4699 (4.6)Trader719 (0.6)792 (0.7)812 (0.7)979 (0.9)1056 (0.9)1077 (0.9)981 (0.9)1021 (0.9)965 (0.9)920 (0.8)869 (0.8)839 (0.8)869 (0.8)813 (0.8)825 (0.8)835 (0.8)820 (0.8)Unknown4673 (4)4575 (4)5698 (5)6313 (5.5)5290 (4.6)5001 (4.4)4054 (3.6)5290 (4.7)5091 (4.5)5343 (4.8)5490 (5)5156 (4.7)5230 (4.8)4592 (4.3)4081 (3.8)4435 (4.2)3353 (3.3)Brock et al. herd type (subclass)Dairy6218 (5.3)6335 (5.5)6885 (6)8313 (7.2)8485 (7.4)7564 (6.6)7790 (6.9)8146 (7.2)7962 (7.1)7770 (6.9)7287 (6.6)7411 (6.8)7290 (6.7)7674 (7.1)7838 (7.4)7577 (7.2)7564 (7.4)Dairy no rearing - contract255 (0.2)327 (0.3)405 (0.4)544 (0.5)654 (0.6)716 (0.6)833 (0.7)913 (0.8)930 (0.8)924 (0.8)928 (0.8)1053 (1)1079 (1)1099 (1)1226 (1.2)1230 (1.2)1231 (1.2)Dairy non rearing - no contract577 (0.5)561 (0.5)520 (0.5)533 (0.5)547 (0.5)497 (0.4)545 (0.5)672 (0.6)757 (0.7)799 (0.7)892 (0.8)941 (0.9)977 (0.9)991 (0.9)860 (0.8)903 (0.9)892 (0.9)Dairy rearing females63 (0.1)89 (0.1)106 (0.1)176 (0.2)259 (0.2)290 (0.3)361 (0.3)414 (0.4)413 (0.4)439 (0.4)412 (0.4)515 (0.5)562 (0.5)559 (0.5)625 (0.6)628 (0.6)617 (0.6)Dairy rearing male calves4109 (3.5)4497 (3.9)4392 (3.8)3811 (3.3)3993 (3.5)4898 (4.3)4471 (4)3703 (3.3)3742 (3.3)3441 (3.1)3303 (3)2976 (2.7)2845 (2.6)2688 (2.5)2593 (2.4)2339 (2.2)2326 (2.3)Beef pedigree3147 (2.7)2700 (2.3)2564 (2.2)2443 (2.1)2269 (2)2185 (1.9)2194 (1.9)2186 (1.9)2148 (1.9)2128 (1.9)2171 (2)2217 (2)2181 (2)2196 (2)2241 (2.1)2240 (2.1)2220 (2.2)Beef suckling to beef9896 (8.5)9322 (8.1)8401 (7.3)7287 (6.4)6863 (6)7185 (6.3)7027 (6.2)6372 (5.6)6515 (5.8)6131 (5.5)6368 (5.8)6194 (5.7)5963 (5.5)5063 (4.7)5041 (4.7)4692 (4.5)4657 (4.5)Beef suckling to weanlings28629 (24.6)27857 (24.1)27918 (24.4)31641 (27.6)32909 (28.8)28932 (25.3)28102 (24.8)30354 (26.8)29258 (25.9)29099 (25.9)28018 (25.3)27357 (25)25969 (23.9)26440 (24.5)27815 (26.2)24376 (23.3)24271 (23.6)Beef suckling to youngstock18280 (15.7)18834 (16.3)18154 (15.9)14866 (13)13727 (12)16934 (14.8)16285 (14.4)13750 (12.1)14076 (12.5)13595 (12.1)13702 (12.4)13018 (11.9)13619 (12.6)12487 (11.6)8008 (7.5)11663 (11.1)11574 (11.3)Beef suckling to youngstock - no rearing5119 (4.4)5033 (4.4)4779 (4.2)4162 (3.6)3961 (3.5)4249 (3.7)4297 (3.8)3911 (3.4)3639 (3.2)3513 (3.1)3312 (3)3243 (3)3276 (3)3095 (2.9)4682 (4.4)2836 (2.7)2818 (2.7)Store beef females2456 (2.1)2527 (2.2)2750 (2.4)3323 (2.9)3642 (3.2)3427 (3)3805 (3.4)4135 (3.6)3969 (3.5)4148 (3.7)4255 (3.8)4632 (4.2)4432 (4.1)4837 (4.5)4722 (4.4)5142 (4.9)5037 (4.9)Store beef males4651 (4)5186 (4.5)4462 (3.9)4688 (4.1)5329 (4.7)5178 (4.5)5374 (4.7)5718 (5)5500 (4.9)5629 (5)5705 (5.2)5991 (5.5)5724 (5.3)6432 (6)6444 (6.1)6763 (6.5)6653 (6.5)Store beef mixed2373 (2)2475 (2.1)2383 (2.1)2355 (2.1)2390 (2.1)2533 (2.2)2766 (2.4)3112 (2.7)3166 (2.8)3378 (3)3391 (3.1)3417 (3.1)3713 (3.4)4312 (4)4333 (4.1)4865 (4.6)4809 (4.7)Store dairy males822 (0.7)1014 (0.9)1091 (1)1559 (1.4)2754 (2.4)2826 (2.5)2663 (2.4)2810 (2.5)3031 (2.7)2741 (2.4)2278 (2.1)2239 (2)2323 (2.1)2812 (2.6)2838 (2.7)2544 (2.4)2532 (2.5)Fattener16977 (14.6)16960 (14.7)17367 (15.2)16491 (14.4)15049 (13.2)15574 (13.6)16545 (14.6)15702 (13.8)16353 (14.5)16867 (15)16918 (15.3)17121 (15.6)17142 (15.8)16882 (15.6)17497 (16.5)17024 (16.2)16731 (16.3)Mixed7379 (6.3)6540 (5.7)5723 (5)5182 (4.5)5180 (4.5)5129 (4.5)5049 (4.5)5247 (4.6)5302 (4.7)5279 (4.7)5362 (4.8)5101 (4.7)5265 (4.9)4965 (4.6)4637 (4.4)4719 (4.5)4699 (4.6)Trader719 (0.6)792 (0.7)812 (0.7)979 (0.9)1056 (0.9)1077 (0.9)981 (0.9)1021 (0.9)965 (0.9)920 (0.8)869 (0.8)839 (0.8)869 (0.8)813 (0.8)825 (0.8)835 (0.8)820 (0.8)Unknown4673 (4)4575 (4)5698 (5)6313 (5.5)5290 (4.6)5001 (4.4)4054 (3.6)5290 (4.7)5091 (4.5)5343 (4.8)5490 (5)5156 (4.7)5230 (4.8)4592 (4.3)4081 (3.8)4435 (4.2)3353 (3.3)AHCS: Animal Health Computer System; No. of herds: count of unique herd numbers that had at least one SICTT or IFN-γ Controlled finishing units (CFUs): only have data up to 2023 AHCS herd type: herd type that is assigned to the herd administratively on AHCS Population figures are based on the number of animals which were in each herd type (Brock et al.) on 1st of January, May, September of each year using the Animal Identification and Movement System (AIM) Proportion values represent the proportion of herds within each herd classifications within a given year (i.e., vertical) whereas in the case of CFUs, they represent the proportion in each year (i.e., horizontal)\n\n\n\n\n\n\n\n3.5.2 Bovine population\n\n\n\n\nTable 3.2: Bovine herd population\n\n\n\nVariablelevel20082009201020112012201320142015201620172018201920202021202220232024Population on 1st JanDairy1367575150282416155241734439180916319060081942466193358319985922033358202807420570932072500213404722117722186337-Beef2850078287613427246242504730243824725775672472821237484024067072419156238925123085792242210211795420765092004385-Store246749274562264020263069318953343447350114378437396162427575415643422699423982512453534469559616-Fattener716438728852729614681909660596711900793466769290811058873596913456927463877312866848946427933507-Mixed856976755092658400561711550856566130576914604287632685662757716953676115713379670477651837699595-Trader36988278582592029095288993480132039287342730726210255172574426046306623523330415-Unknown23260204602426925909235722147823261290082911829632292732314123443230372956929846-Population on 1st MayDairy1552217169963017990971974683210188622045672227429224270123582832366354235867623785982429228251275926131612552003-Beef3178424311114028970182724076275126628250772665987261505826552322646529260331824751922467570232623222608612187283-Store287932318303291958321806406544400702415919478905499878530599508581516868545990672379656333694123-Fattener75244077316774881773294872739274448982203782472586380396981997588899059492664096889510304041032631-Mixed966737847470721909630940636982639160650229696242737973767838824543776298830615785857759374819212-Trader50851418544009842814450575614148464469764841849573486644559342032545905811664744-Unknown915393509575119178884772710422110531129012976884679128642113371064412983-Population on 1st SepDairy1463466159644316798181853398198045320451782064129209297921898762200278215599921907962205312229934223872672312585-Beef3194641311797028615572752436280110127987802687627265083326888902651033260051525083852442139234767622731242197480-Store287845309555280841319231404356400660409165473959492719505614498396507516540984643460635503683255-Fattener701416705259687908666451673188706870737401755400803087874367879160877406856198902305927645898193-Mixed923914808121682149608312614151607974617479663807701795729383773476733158773738736898714177763261-Trader43155382463448637230426544835040276400224313538842384553690841418412205088543435-Unknown26528235262891129074311052769218585339522545723831216581943027252222232129624035-Population on 1st Jan (sub-classes)Dairy683355731608829025102082210336149493351023027109208011248271153217114415811716001202493127708513202221324413-Dairy no rearing - contract42785562497146795704121360132138153014178317180238190124196582233863245702257760288896297947-Dairy non rearing - no contract30462279602631824682232982305324102365264235249429590166430473756753296589183833-Dairy rearing females2971473347447527110551173814203166721881319735202792372527808279653415333954-Dairy rearing male calves610973687007688714593231630891801482742323626660651175640588628318587326550549523873536763480144-Beef pedigree102929908558545779343728667611778858774057810179153818338504585202845968539484415-Beef suckling to beef674897654019582892497006468810508405519887472093508541489223516108502495446287368149380902369953-Beef suckling to weanlings8496968522108427249582771001437889235817888904727900496930573875834862227808410833089889192760025-Beef suckling to youngstock104213811032511049623831121762070956297908281781643795853798924805049749653794173727056487282689269-Beef suckling to youngstock - no rearing180418175799163928138983133064147513147907138972123716121283110427109159108138105064233739100723-Store beef females43372426484499452670552065394959188635546432369563706327361971832830437966187640-Store beef males8540496641850767728992129946049294299006981281015601009609844097316114667119154126008-Store beef mixed85957927848715176544784228284590713102627109719127704131442130783135365164385173350200607-Store dairy males29045377564205549039821411003119306896578105179109013923309613291661122393128151111407-Fattener716438728852729614681909660596711900793466769290811058873596913456927463877312866848946427933507-Mixed856976755092658400561711550856566130576914604287632685662757716953676115713379670477651837699595-Trader36988278582592029095288993480132039287342730726210255172574426046306623523330415-Unknown23260204602426925909235722147823261290082911829632292732314123443230372956929846-Population on 1st May (sub-classes)Dairy7716188227039232171161737119463510902561166030125963913173761331531132097913483771408228149499615453011537155-Dairy no rearing - contract499326570581020111067144521158937180365213744221677227313238680275554294341311468354721355642-Dairy non rearing - no contract34464319453125029867302552859530235442815191958204682477679785375896817639396994-Dairy rearing females39466284640210277145951471017160214002161824561232333153536048373904395244385-Dairy rearing male calves696203779277763610672012732475926779850799725037767311749306730770677870641284616614636746562212-Beef pedigree109626949778836782488776448073281718807328197782624859338758989340878808774086204-Beef suckling to beef713059686537599164517938503366534804536834498653533879525720547052525803466360391164409574396552-Beef suckling to weanlings98292393922191218010644091156307990949904132101745410138601028783967539934129909236930642968198835916-Beef suckling to youngstock1170869120142111239299084488629751059366986900865905889534876524882845811514884400800386536120759430-Beef suckling to youngstock - no rearing201947188984173378150793150974159226156403152314135982132878119949116157118234116160259229109181-Store beef females4951748867498346141766632616396928479253760498239781935871448551110165793114105603-Store beef males1034781153049595597097117725108871113001124621121698130518126176126447128559153485148369159174-Store beef mixed9563010344290579870879220392284101846126383133370152025154996152738166258207666205833246315-Store dairy males35361444064918865928115389123198114628127248147143141098122241119004129614172181165065138646-Fattener75244077316774881773294872739274448982203782472586380396981997588899059492664096889510304041032631-Mixed966737847470721909630940636982639160650229696242737973767838824543776298830615785857759374819212-Trader50851418544009842814450575614148464469764841849573486644559342032545905811664744-Unknown915393509575119178884772710422110531129012976884679128642113371064412983-Population on 1st Sep (sub-classes)Dairy7315867768248683771094668112866910169481086556118599112322611245053121645712555061291420138618914310081408447-Dairy no rearing - contract45024578847265897689129083138031156538187479194252200427204966235933249846268011302152304036-Dairy non rearing - no contract29659273012546225186257252454125808375414508949687586136550971682741996540780622-Dairy rearing females45187301732911376164491709821503255632547028294282363973943583448725223152479-Dairy rearing male calves657197734434713321635855696976865658795227681968718274705111675963633848592364570943588700519480-Beef pedigree109069933988601081907785727931981206810618224182414848088921587950878968731786624-Beef suckling to beef704472672140581212506106500490527215517940487497523928507230526056507950450708384156396275372933-Beef suckling to weanlings102269297283093407611110531206466100556994732110659121059239106354010010409828429308089672851006066872221-Beef suckling to youngstock1155430118805010891909006798630721028551982902861681884318864699867902809499855254790993531368754500-Beef suckling to youngstock - no rearing202978191552171069152691152501158126158258154682139164133150120709118879117419117346252098111202-Store beef females5139049440492196279368464640297090881399773838177384515893828869310114994221107537-Store beef males1044321128359294395658116133110297112728124029120549121676125555124378124303145582144523157325-Store beef mixed92648980578510484902904589032297308121965129177143714146243143442161918193022193038233714-Store dairy males34857419224624664502112852118914106718121003140140130157113847110575122487158835151490132200-Fattener701416705259687908666451673188706870737401755400803087874367879160877406856198902305927645898193-Mixed923914808121682149608312614151607974617479663807701795729383773476733158773738736898714177763261-Trader43155382463448637230426544835040276400224313538842384553690841418412205088543435-Unknown26528235262891129074311052769218585339522545723831216581943027252222232129624035-Brock et al. herd types currently only available for certain years (ref: Brock J, Lange M, Tratalos JA, More SJ, Graham DA, Guelbenzu-Gonzalo M, et al. Combining expert knowledge and machine-learning to classify herd types in livestock systems. Sci Rep. 2021;11(1):2989.) Population figures are based on the number of animals which were in each herd type (Brock et al.) on 1st of January, May, September of each year using the Animal Identification and Movement System (AIM) Proportion values represent the proportion of all animals within each herd classifications within a given year (i.e., vertical)",
+    "crumbs": [
+      "Demographics",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Demographics (herd-types, herd size, bovine population)</span>"
+    ]
+  },
+  {
+    "objectID": "case_numbers.html",
+    "href": "case_numbers.html",
+    "title": "4  bTB case numbers and herd-prevalence by different herd-types",
+    "section": "",
+    "text": "4.1 Cases over time\n\\(~\\) \\(~\\)",
+    "crumbs": [
+      "bTB cases",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>bTB case numbers and herd-prevalence by different herd-types</span>"
+    ]
+  },
+  {
+    "objectID": "case_numbers.html#cases-over-time",
+    "href": "case_numbers.html#cases-over-time",
+    "title": "4  bTB case numbers and herd-prevalence by different herd-types",
+    "section": "",
+    "text": "4.1.1 by year:\n\n\n\n\n\n\n\n\nFigure 4.1: Number of bTB cases by year and diagnostic method.\n\n\n\n\n\n\n4.1.2 by month:\n\n\n\n\n\n\n\n\nFigure 4.2: Number of bTB cases by month and diagnostic method.\n\n\n\n\n\\(~\\) \\(~\\)\n\n\\(~\\) \\(~\\)",
+    "crumbs": [
+      "bTB cases",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>bTB case numbers and herd-prevalence by different herd-types</span>"
+    ]
+  },
+  {
+    "objectID": "case_numbers.html#proportion-of-cases-by-herd-type",
+    "href": "case_numbers.html#proportion-of-cases-by-herd-type",
+    "title": "4  bTB case numbers and herd-prevalence by different herd-types",
+    "section": "4.2 Proportion of cases by herd-type",
+    "text": "4.2 Proportion of cases by herd-type\n\n4.2.1 AHCS\n\n\n\n\n\n\n\n\nFigure 4.3: Proportion of cases by AHCS herd-type.\n\n\n\n\n\n\n4.2.2 Brock et al. herd-types\n\n\n\n\n\n\n\n\nFigure 4.4: Proportion of cases by Brock et al. herd-types.\n\n\n\n\n\n\n4.2.3 Brock et al. herd-types (sub-groups)\n\n\n\n\n\n\n\n\nFigure 4.5: Proportion of cases by Brock et al. herd-type sub-classes.\n\n\n\n\n\\(~\\) \\(~\\)\n\n\\(~\\) \\(~\\)",
+    "crumbs": [
+      "bTB cases",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>bTB case numbers and herd-prevalence by different herd-types</span>"
+    ]
+  },
+  {
+    "objectID": "case_numbers.html#herd-level-btb-prevalence",
+    "href": "case_numbers.html#herd-level-btb-prevalence",
+    "title": "4  bTB case numbers and herd-prevalence by different herd-types",
+    "section": "4.3 Herd-level bTB prevalence",
+    "text": "4.3 Herd-level bTB prevalence\n\n4.3.1 Overall prevalence\n\n\n\n\n\n\n\n\nFigure 4.6: Herd prevalence\n\n\n\n\n\n\n\n4.3.2 Brock et al. herd type prevalence\n\n\n\n\n\n\n\n\nFigure 4.7: Herd-level prevalence by Brock et al. herd-types\n\n\n\n\n\n\n4.3.3 Brock et al. herd type prevalence by county\n\n\n\n\n\n\n\n\nFigure 4.8: Herd-level prevalence for counties by Brock et al. herd types.\n\n\n\n\n\n\n4.3.4 Brock et al. herd type sub-classes prevalence\n\n\n\n\n\n\n\n\nFigure 4.9: Herd-level prevalence for counties by Brock et al. herd type sub-classes.\n\n\n\n\n\\(~\\) \\(~\\)\n\n\\(~\\) \\(~\\)",
+    "crumbs": [
+      "bTB cases",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>bTB case numbers and herd-prevalence by different herd-types</span>"
+    ]
+  },
+  {
+    "objectID": "reactor_lesion_skin_gif_seperately.html",
+    "href": "reactor_lesion_skin_gif_seperately.html",
+    "title": "5  Prevalence of visible lesions seperately by SICTT and IFN-γ positive animals at slaughter",
+    "section": "",
+    "text": "5.1 Introduction\n\\(~\\) \\(~\\)\nThis page presents the prevalence of visible lesions at slaughter within bTB positive animals separately by those classified by the SICTT and IFN-γ. There was no facility within AHCS prior to May 2019 to record IFN-γ positive animals. Before this, if an animal had a positive IFN-γ result, their SICTT results were reinterpreted as positive. As a result, we have had to use old raw IFN-γ data to try and differentiate between which animals were positive on IFN-γ or SICTT. The old data has some missing tag numbers etc. and so we cannot be certain that we have assigned all cases to either IFN-γ or SICTT correctly. However, we believe, the vast majority of the data is correct.\nThis is the difference between overall lesion prevalence page and this one (i.e. we make an attempt to seperate SICTT and IFN-γ positive trends).",
+    "crumbs": [
+      "Lesion prevalence",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Prevalence of visible lesions seperately by SICTT and IFN-γ positive animals at slaughter</span>"
+    ]
+  },
+  {
+    "objectID": "reactor_lesion_skin_gif_seperately.html#definitions",
+    "href": "reactor_lesion_skin_gif_seperately.html#definitions",
+    "title": "5  Prevalence of visible lesions seperately by SICTT and IFN-γ positive animals at slaughter",
+    "section": "5.2 Definitions",
+    "text": "5.2 Definitions\n\n5.2.1 Proportion of animals with lesions at routine slaughter\nIf an animal is classified as bTB positive before entering an abattoir or a meatplant, it must have a permit to enter. Any animal with a permit will get a visual inspection for lesions. In rare instances, a bTB positive animal may be sent to a knackery instead of an abattoir or meatplant (e.g. if the animal dies before being sent to the factory). In these cases, a permit may not be issued and a visual inspection does not routinely take place in a knackery. For these reasons, only animals with a permit (and thus, a visual check completed) are considered for this document.\nOf all SICTT and IFN-γ positive animals, this is the breakdown of the number of animals with a permit:\n\n\n per_type      n      percent valid_percent\n     ER26 304995 0.8371738743  0.8546604981\n    ER26A   2293 0.0062940038  0.0064254710\n    ER26B    285 0.0007822901  0.0007986303\n    ER26D    195 0.0005352511  0.0005464312\n  ER26GIF  38032 0.1043931762  0.1065737080\n    ER26R    281 0.0007713105  0.0007874214\n    ER26S  10002 0.0274542635  0.0280277195\n ER26SGIF    778 0.0021355146  0.0021801206\n     &lt;NA&gt;   7454 0.0204603159            NA\n\n\nOf importance here is that ER26GIF and ER26SGIF permits refer to IFN-γ bTB positive animals. As mentioned above, these did not exist on AHCS prior to May 2019.\n\\(~\\) \\(~\\)\n\n\\(~\\) \\(~\\)",
+    "crumbs": [
+      "Lesion prevalence",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Prevalence of visible lesions seperately by SICTT and IFN-γ positive animals at slaughter</span>"
+    ]
+  },
+  {
+    "objectID": "reactor_lesion_skin_gif_seperately.html#lesion-counts",
+    "href": "reactor_lesion_skin_gif_seperately.html#lesion-counts",
+    "title": "5  Prevalence of visible lesions seperately by SICTT and IFN-γ positive animals at slaughter",
+    "section": "5.3 Lesion counts",
+    "text": "5.3 Lesion counts\nBefore looking at lesion prevalence, the count of lesions by detection method is plotted below as a method to look at absolute numbers which can be telling a different story.\n\n\n\n\n\n\n\n\nFigure 5.1: Overall lesion counts within SICTT and IFN-γ positive animals at slaughter.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 5.2: Overall lesion counts within SICTT and IFN-γ positive animals at slaughter.",
+    "crumbs": [
+      "Lesion prevalence",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Prevalence of visible lesions seperately by SICTT and IFN-γ positive animals at slaughter</span>"
+    ]
+  },
+  {
+    "objectID": "reactor_lesion_skin_gif_seperately.html#overall-lesion-prevalence-seperately-by-sictt-or-ifn-γ",
+    "href": "reactor_lesion_skin_gif_seperately.html#overall-lesion-prevalence-seperately-by-sictt-or-ifn-γ",
+    "title": "5  Prevalence of visible lesions seperately by SICTT and IFN-γ positive animals at slaughter",
+    "section": "5.4 Overall lesion prevalence (seperately by SICTT or IFN-γ)",
+    "text": "5.4 Overall lesion prevalence (seperately by SICTT or IFN-γ)\n\n5.4.1 All animals combined:\n\n\n\n\n\n\n\n\nFigure 5.3: Overall lesion prevalence within SICTT and IFN-γ positive animals at slaughter.\n\n\n\n\n\n\\(~\\) \\(~\\)\n\n\\(~\\) \\(~\\)\n\n\n\n5.4.2 All animals combined monthly:\n\\(~\\) \\(~\\)\n\n5.4.2.1 Interactive\n\n\n\n\n\n\n\n\nFigure 5.4: Overall lesion prevalence within SICTT and IFN-γ positive animals at slaughter.\n\n\n\n\n\\(~\\) \\(~\\)\n\n\\(~\\) \\(~\\)\n\n\n\n\n5.4.3 AHCS herd-type per year\n\\(~\\) \\(~\\)\n\n\n\n\n\n\n\n\nFigure 5.5: Overall lesion prevalence within SICTT and IFN-γ positive animals at slaughter by year.\n\n\n\n\n\n\\(~\\) \\(~\\)\n\n\\(~\\) \\(~\\)\n\n\n\n5.4.4 AHCS herd-type per month\n\\(~\\) \\(~\\)\n\n5.4.4.1 Interactive\n\\(~\\)\n\n\n\n\n\n\n\n\nFigure 5.6: Overall lesion prevalence within SICTT and IFN-γ positive animals at slaughter by month and AHCS herd-type.\n\n\n\n\n\\(~\\) \\(~\\)\n\n\\(~\\) \\(~\\)\n\n\n\n\n5.4.5 Brock et al. herd-types per year\n\\(~\\) \\(~\\)\n\n\n\n\n\n\n\n\nFigure 5.7: Overall lesion prevalence within SICTT and IFN-γ positive animals at slaughter by Brock et al. herd-types per year.\n\n\n\n\n\n\\(~\\) \\(~\\)\n\n\\(~\\) \\(~\\)\n\n5.4.5.1 Overall lesion rate in both combined\n\\(~\\) \\(~\\)\n\n\n\n\n\n\n\n\nFigure 5.8: Overall lesion prevalence within SICTT and IFN-γ positive animals at slaughter by Brock et al. herd-types per year.\n\n\n\n\n\n\n\n\n\n5.4.6 Brock et al. herd-types per month\n\\(~\\) \\(~\\)\n\n5.4.6.1 Interactive\n\\(~\\)\n\n\n\n\n\n\n\n\nFigure 5.9: Overall lesion prevalence within SICTT and IFN-γ positive animals at slaughter by Brock et al. herd-types per month.\n\n\n\n\n\\(~\\) \\(~\\)\n\n\\(~\\) \\(~\\)",
+    "crumbs": [
+      "Lesion prevalence",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Prevalence of visible lesions seperately by SICTT and IFN-γ positive animals at slaughter</span>"
+    ]
+  },
+  {
+    "objectID": "reactor_lesion_skin_gif_seperately.html#lesion-prevalence-by-location",
+    "href": "reactor_lesion_skin_gif_seperately.html#lesion-prevalence-by-location",
+    "title": "5  Prevalence of visible lesions seperately by SICTT and IFN-γ positive animals at slaughter",
+    "section": "5.5 Lesion prevalence by location",
+    "text": "5.5 Lesion prevalence by location\nThe following section estimates the prevalence of SICTT or IFN-γ positive animals that have lesions at different locations in the body.\n\n5.5.1 All animals combined:\nYearly:\n\n\n\n\n\n\n\n\nFigure 5.10: Overall lesion prevalence within SICTT and IFN-γ positive animals at slaughter by lesion location per year.\n\n\n\n\n\n\\(~\\) \\(~\\)\n\n\\(~\\) \\(~\\)\n\nMonthly version:\n\n\n\n\n\n\n\n\nFigure 5.11: Overall lesion prevalence within SICTT and IFN-γ positive animals at slaughter by lesion location per month.\n\n\n\n\n\\(~\\) \\(~\\)\n\n\\(~\\) \\(~\\)\n\n\n\n5.5.2 Proportion breakdown by where the lesions are found:\n(of animals with lesions, what is the proportion breakdown of where they are located)\nSICTT:\n\n\n\n\n\n\n\n\nFigure 5.12: Proportion of lesions by location for SICTT postive animals by year\n\n\n\n\n\n\\(~\\) \\(~\\)\n\n\\(~\\) \\(~\\)\n\nIFN-γ:\n\n\n\n\n\n\n\n\nFigure 5.13: Proportion of lesions by location for IFN-γ postive animals by year\n\n\n\n\n\n\\(~\\) \\(~\\)\n\n\\(~\\) \\(~\\)\n\n\n\n5.5.3 AHCS herd-types per year\n\\(~\\) \\(~\\)\n\\(~\\)\n\n\n\n\n\n\n\n\nFigure 5.14: Overall lesion prevalence within SICTT and IFN-γ positive animals at slaughter by lesion location and AHCS herd-types per year.\n\n\n\n\n\n\\(~\\) \\(~\\)\n\n\\(~\\) \\(~\\)\n\n\n\n5.5.4 AHCS herd-types per month\n\\(~\\) \\(~\\)\n\n5.5.4.1 Interactive\n\\(~\\)\n\n\n\n\n\n\n\n\nFigure 5.15: Overall lesion prevalence within SICTT and IFN-γ positive animals at slaughter by lesion location and AHCS herd-types per month.\n\n\n\n\nSame plot but zoomed in for clarity (outliers due to small numbers):\n\n\n\n\n\n\n\n\nFigure 5.16: Overall lesion prevalence within SICTT and IFN-γ positive animals at slaughter by lesion location and AHCS herd-types per month.\n\n\n\n\n\\(~\\) \\(~\\)\n\n\\(~\\) \\(~\\)\n\n\n\n\n5.5.5 Brock et al. herd-types per year\n\n\n\n\n\n\n\n\nFigure 5.17: Overall lesion prevalence within SICTT and IFN-γ positive animals at slaughter by lesion location and Brock et al. herd-types per year.\n\n\n\n\n\n\n\n5.5.6 Brock et al. herd-types per month\n\\(~\\) \\(~\\)\n\n5.5.6.1 Interactive\n\\(~\\)\n\n\n\n\n\n\n\n\nFigure 5.18: Overall lesion prevalence within SICTT and IFN-γ positive animals at slaughter by lesion location and Brock et al. herd-types per month.\n\n\n\n\nSame plot but zoomed in for clarity (outliers due to small numbers):\n\n\n\n\n\n\n\n\nFigure 5.19: Overall lesion prevalence within SICTT and IFN-γ positive animals at slaughter by lesion location and Brock et al. herd-types per month.",
+    "crumbs": [
+      "Lesion prevalence",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Prevalence of visible lesions seperately by SICTT and IFN-γ positive animals at slaughter</span>"
+    ]
+  },
+  {
+    "objectID": "reactor_lesion_skin_gif_seperately.html#additional-things-to-add",
+    "href": "reactor_lesion_skin_gif_seperately.html#additional-things-to-add",
+    "title": "5  Prevalence of visible lesions seperately by SICTT and IFN-γ positive animals at slaughter",
+    "section": "5.6 Additional things to add",
+    "text": "5.6 Additional things to add\n\nTables\nSmooth trend plots",
+    "crumbs": [
+      "Lesion prevalence",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Prevalence of visible lesions seperately by SICTT and IFN-γ positive animals at slaughter</span>"
+    ]
+  },
+  {
+    "objectID": "reactor_lesion_skin_gif_seperately.html#questions",
+    "href": "reactor_lesion_skin_gif_seperately.html#questions",
+    "title": "5  Prevalence of visible lesions seperately by SICTT and IFN-γ positive animals at slaughter",
+    "section": "5.7 Questions",
+    "text": "5.7 Questions\n\nWhy is there a peak in lesions in bTB positive animals at the start of the year (seems more pronounced in SICTT?)? Is this simply an administrative issue whereby there is a delay in sending animals to a factory?\nWould it have anything to do with a slight increase in avian readings around Sept (this is seen in IFN-γ, we presume the same in SICTT)? The animals have been exposed to the environment for longer at this stage?\nAvian is lower at the start of the year - is this because the majority of animals will be immunosurpressed (pregnant)(IFN-γ is mainly testing dairy animals)",
+    "crumbs": [
+      "Lesion prevalence",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Prevalence of visible lesions seperately by SICTT and IFN-γ positive animals at slaughter</span>"
+    ]
+  },
+  {
+    "objectID": "lesion_prevalence_trends.html",
+    "href": "lesion_prevalence_trends.html",
+    "title": "6  Prevalence of confirmed M.bovis lesions found in animals at routine slaughter",
+    "section": "",
+    "text": "6.1 Introduction\n\\(~\\) \\(~\\)\nThis page presents the prevalence of animals with confirmed m.bovis lesions found at routine slaughter (also known as ‘factory lesion cases’).\nNOTE: This section relies heavily on data from AIM on there is usually quite a lag on when this is received.",
+    "crumbs": [
+      "Lesion prevalence",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Prevalence of confirmed *M.bovis* lesions found in animals at routine slaughter</span>"
+    ]
+  },
+  {
+    "objectID": "lesion_prevalence_trends.html#definitions",
+    "href": "lesion_prevalence_trends.html#definitions",
+    "title": "6  Prevalence of confirmed M.bovis lesions found in animals at routine slaughter",
+    "section": "6.2 Definitions",
+    "text": "6.2 Definitions\n\n6.2.1 Proportion of animals with lesions at routine slaughter\nLab file:\n\n# $description\n#                       .     n       percent\n#            INCONCLUSIVE  3715 0.03394554094\n#           OTHER REACTOR   873 0.00797697368\n#                RESEARCH     2 0.00001827485\n#               SINGLETON  7463 0.06819261696\n#         SLAUGHTER CHECK 87406 0.79866593567\n#  SLAUGHTER CHECK (ER36)  1246 0.01138523392\n#   SPECIAL INVESTIGATION  7039 0.06431834795\n#             STRAIN TYPE  1696 0.01549707602\n\nAIM database:\n\n#   data_type no_by_type\n#   &lt;chr&gt;          &lt;int&gt;\n# 1 ABAT         1695012\n# 2 DoF          4992685\n# 3 EXP          4467609\n# 4 F_to_F      20715340\n# 5 FACT        31456498\n# 6 IMP           237290\n# 7 Mart        29832107\n# 8 OLD          1218543\n\nNumerator:\n\nExtracted SLAUGHTER CHECK and SLAUGHTER CHECK (ER36) (negative animal came from a herd that is in a bTB breakdown)\ndropped any that had a positive SICTT or positive IFN-γ result\npositive lab result (even if lesion = \"NVL\"? must have been positive on macroscopic, hist, culture or PCR?)\n\nDenominator:\n\nFrom AIM database, extracted data_type  %in%  c(\"FACT\", \"ABAT\") (excluding DoF as it is not routine to do inspections in knackeries, which we think includes young reactor calves - are these killed on farm first?) - John - You are not legally allowed bring a live animal to a knackery\nsummarised by move_from_final\nmerged in herd-type from AHCS/Brock et al.\n\nsubtracted count of animals already classified as a bTB case via SICTT or IFN-γ\n\n\n\n6.2.2 Lesions\nWe classified lesions into head or chest:\n\nlesion_types\n\nSome animals have NVL but a positive result in the lab file even though they are SLAUGHTER CHECK or SLAUGHTER CHECK (ER36):\n\n#        head_or_chest     n     percent valid_percent\n#                Chest 12742 0.385863969    0.39113485\n#                 Head 10285 0.311459027    0.31571354\n#     Multiple lesions  6940 0.210162922    0.21303374\n#  Non-visible lesions  2464 0.074616922    0.07563619\n#                Other   146 0.004421295    0.00448169\n#                 &lt;NA&gt;   445 0.013475865            NA\n\nIn my overall lesion prevalence calculations, I have included these NVL cases which we came to conclude is correct as they had an overall lab positive result.\n\\(~\\) \\(~\\)\n\n\\(~\\) \\(~\\)",
+    "crumbs": [
+      "Lesion prevalence",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Prevalence of confirmed *M.bovis* lesions found in animals at routine slaughter</span>"
+    ]
+  },
+  {
+    "objectID": "lesion_prevalence_trends.html#number-of-animals-sent-to-slaughter",
+    "href": "lesion_prevalence_trends.html#number-of-animals-sent-to-slaughter",
+    "title": "6  Prevalence of confirmed M.bovis lesions found in animals at routine slaughter",
+    "section": "6.3 Number of animals sent to slaughter",
+    "text": "6.3 Number of animals sent to slaughter\n\n6.3.1 Overall\n\n\n\n\n\n\n\n\nFigure 6.1: Overall number of animals sent to slaughter.\n\n\n\n\n\n\\(~\\) \\(~\\)\n\n\\(~\\) \\(~\\)\n\nMonthly:\n\n\n\n\n\n\n\n\nFigure 6.2: Overall number of animals sent to slaughter by month.\n\n\n\n\n\n\\(~\\) \\(~\\)\n\n\\(~\\) \\(~\\)\n\n\n\n6.3.2 By AHCS herd-type\n\n\n\n\n\n\n\n\nFigure 6.3: Overall number of animals sent to slaughter by AHCS herd-type.\n\n\n\n\n\n\\(~\\) \\(~\\)\n\n\\(~\\) \\(~\\)\n\nMonthly:\n\n\n\n\n\n\n\n\nFigure 6.4: Overall number of animals sent to slaughter by AHCS herd-type by month.\n\n\n\n\n\n\n\n6.3.3 By Brock et al. herd-type\n\n\n\n\n\n\n\n\nFigure 6.5: Overall number of animals sent to slaughter by Brock et al.\n\n\n\n\n\n\\(~\\) \\(~\\)\n\n\\(~\\) \\(~\\)\n\nMonthly:\n\n\n\n\n\n\n\n\nFigure 6.6: Overall number of animals sent to slaughter by Brock et al. and month\n\n\n\n\n\n\nInteresting that beef (which are primarly suckler herds) seem to be sending less animals to slaughter and are less erratic in terms of sending pattern in a year (in recent years).\nPossible reasons:\n\nThe number of beef herds are going down in general\nThey are sending their animals to fatteners/traders\n\nDairy send most animals to slaughter around drying off period (60 days prior to calving)\n\\(~\\) \\(~\\)\n\n\\(~\\) \\(~\\)",
+    "crumbs": [
+      "Lesion prevalence",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Prevalence of confirmed *M.bovis* lesions found in animals at routine slaughter</span>"
+    ]
+  },
+  {
+    "objectID": "lesion_prevalence_trends.html#overall-lesion-prevalence-at-routine-slaughter-animals",
+    "href": "lesion_prevalence_trends.html#overall-lesion-prevalence-at-routine-slaughter-animals",
+    "title": "6  Prevalence of confirmed M.bovis lesions found in animals at routine slaughter",
+    "section": "6.4 Overall lesion prevalence at routine slaughter animals",
+    "text": "6.4 Overall lesion prevalence at routine slaughter animals\n\n6.4.1 All\n\n\n\n\n\n\n\n\nFigure 6.7: Overall lesion prevalence at routine slaughter.\n\n\n\n\n\n\\(~\\) \\(~\\)\n\n\\(~\\) \\(~\\)\n\nMonthly version:\n\n\n\n\n\n\n\n\nFigure 6.8: Overall lesion prevalence at routine slaughter by month.\n\n\n\n\n\\(~\\) \\(~\\)\n\n\\(~\\) \\(~\\)\n\n\n\n\n6.4.2 All by lesion type\n\n\n\n\n\n\n\n\nFigure 6.9: Overall lesion prevalence at routine slaughter by lesion location.\n\n\n\n\n\n\\(~\\) \\(~\\)\n\n\\(~\\) \\(~\\)\n\nMonthly version:\n\n\n\n\n\n\n\n\nFigure 6.10: Overall lesion prevalence at routine slaughter by lesion location by month.\n\n\n\n\n\n\\(~\\) \\(~\\)\n\n\\(~\\) \\(~\\)",
+    "crumbs": [
+      "Lesion prevalence",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Prevalence of confirmed *M.bovis* lesions found in animals at routine slaughter</span>"
+    ]
+  },
+  {
+    "objectID": "lesion_prevalence_trends.html#ahcs-herd-type",
+    "href": "lesion_prevalence_trends.html#ahcs-herd-type",
+    "title": "6  Prevalence of confirmed M.bovis lesions found in animals at routine slaughter",
+    "section": "6.5 AHCS herd-type",
+    "text": "6.5 AHCS herd-type\nFor reference, this is the proportion of different herd-types:\n\n\n\n\nTable 6.1\n\n\n\nHerd-type2008200920102011201220132014201520162017201820192020202120222023Dairy14527 (20.1)14453 (20.4)14293 (20.4)14040 (21.6)13830 (22.7)14056 (22.0)13851 (21.4)13324 (21.9)12979 (22.1)13015 (22.2)13065 (22.7)12536 (22.7)12963 (22.8)12557 (24.1)12144 (24.8)12022 (25.4)Beef15017 (20.8)14995 (21.1)15051 (21.5)14043 (21.6)13272 (21.7)14111 (22.1)14596 (22.6)13970 (23.0)13899 (23.7)14149 (24.1)14098 (24.5)13705 (24.8)13968 (24.6)13088 (25.1)12417 (25.4)11952 (25.2)Suckler36481 (50.5)35565 (50.1)34878 (49.7)31605 (48.5)28974 (47.5)30551 (47.9)31119 (48.1)28727 (47.3)27307 (46.6)27218 (46.4)26254 (45.6)25067 (45.4)25963 (45.6)23014 (44.1)21028 (42.9)20255 (42.8)Other6242 (8.6)5989 (8.4)5921 (8.4)5427 (8.3)4983 (8.2)5078 (8.0)5079 (7.9)4728 (7.8)4418 (7.5)4282 (7.3)4146 (7.2)3929 (7.1)4002 (7.0)3539 (6.8)3379 (6.9)3142 (6.6)AHCS: Animal Health Computer System\n\n\n\n\n\n\n6.5.1 Lesion prevalence\n\n\n\n\n\n\n\n\nFigure 6.11: Overall lesion prevalence at routine slaughter by AHCS herd-type.\n\n\n\n\n\nWhy is suckler/beef higher than dairy (if we think of dairy as being the primary problem in terms of transmission e.g. dairy intensification etc)?\nPossible explanations:\n\nPossibly a consequence of testing\nDairy vs suckler/beef testing is completely different\nSuckler herds are wilder and harder to test, dairy are usually much easier to test\nPossibly more incentive in a large dairy herd to quickly get rid of the problem before it goes through the herd (sucklers will be more out in the open and possibly less chance of spreading quickly)\nInfection is probably caught earlier in dairy herds (as they are easier to test and more IFN-γ testing is also done which should get earlier infection)\n\n\\(~\\) \\(~\\)\n\n\\(~\\) \\(~\\)\n\nMonthly version:\n\n\n\n\n\n\n\n\nFigure 6.12: Overall lesion prevalence at routine slaughter by AHCS herd-type and month.\n\n\n\n\n\n\\(~\\) \\(~\\)\n\n\\(~\\) \\(~\\)\n\n\n\n6.5.2 By lesion type\n\n\n\n\n\n\n\n\nFigure 6.13: Overall lesion prevalence at routine slaughter by AHCS herd-type and lesion location.\n\n\n\n\n\n\\(~\\) \\(~\\)\n\n\\(~\\) \\(~\\)\nMonthly version:\n\n\n\n\n\n\n\n\nFigure 6.14: Overall lesion prevalence at routine slaughter by AHCS herd-type and lesion location by month.\n\n\n\n\n\n\\(~\\) \\(~\\)\n\n\\(~\\) \\(~\\)",
+    "crumbs": [
+      "Lesion prevalence",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Prevalence of confirmed *M.bovis* lesions found in animals at routine slaughter</span>"
+    ]
+  },
+  {
+    "objectID": "lesion_prevalence_trends.html#brock-et-al.-herd-type",
+    "href": "lesion_prevalence_trends.html#brock-et-al.-herd-type",
+    "title": "6  Prevalence of confirmed M.bovis lesions found in animals at routine slaughter",
+    "section": "6.6 Brock et al. herd-type",
+    "text": "6.6 Brock et al. herd-type\nFor reference, this is the proportion of different herd-types:\n\n\n\n\nTable 6.2\n\n\n\nHerd-type2008200920102011201220132014201520162017201820192020202120222023Beef37345 (51.7)36028 (50.7)34826 (49.7)31088 (47.7)28263 (46.3)30125 (47.2)29691 (45.9)27070 (44.6)25195 (43.0)24856 (42.4)23834 (41.4)22110 (40.0)22761 (40.0)19528 (37.4)17294 (35.3)16271 (34.3)Dairy9181 (12.7)9701 (13.7)10059 (14.3)10641 (16.3)10820 (17.7)11042 (17.3)10846 (16.8)10224 (16.8)9984 (17.0)9758 (16.6)9452 (16.4)9079 (16.4)9303 (16.4)9248 (17.7)9201 (18.8)8864 (18.7)Fattener15579 (21.6)15796 (22.2)16176 (23.1)14870 (22.8)13660 (22.4)14182 (22.2)15382 (23.8)14663 (24.1)15080 (25.7)15556 (26.5)15817 (27.5)16159 (29.3)16092 (28.3)15281 (29.3)15078 (30.8)14768 (31.2)Mixed6125 (8.5)5356 (7.5)4696 (6.7)4103 (6.3)3952 (6.5)3911 (6.1)3849 (6.0)3872 (6.4)3878 (6.6)3880 (6.6)4068 (7.1)3750 (6.8)4063 (7.1)3647 (7.0)3324 (6.8)3393 (7.2)Store3195 (4.4)3296 (4.6)3469 (4.9)3442 (5.3)3473 (5.7)3610 (5.7)3991 (6.2)4048 (6.7)3646 (6.2)3830 (6.5)3678 (6.4)3480 (6.3)3938 (6.9)3816 (7.3)3369 (6.9)3398 (7.2)Trader475 (0.7)525 (0.7)530 (0.8)611 (0.9)621 (1.0)671 (1.1)609 (0.9)581 (1.0)549 (0.9)524 (0.9)490 (0.9)459 (0.8)500 (0.9)475 (0.9)509 (1.0)520 (1.1)Unknown367 (0.5)300 (0.4)387 (0.6)360 (0.6)270 (0.4)255 (0.4)277 (0.4)291 (0.5)271 (0.5)260 (0.4)224 (0.4)200 (0.4)239 (0.4)203 (0.4)193 (0.4)157 (0.3)AHCS: Animal Health Computer System\n\n\n\n\n\n\n6.6.1 Lesion prevalence\n\n\n\n\n\n\n\n\nFigure 6.15: Overall lesion prevalence at routine slaughter by Brock et al. herd-type.\n\n\n\n\n\n\\(~\\) \\(~\\)\n\n\\(~\\) \\(~\\)\n\nRedone excluding Unknown category:\n\n\n\n\n\n\n\n\nFigure 6.16: Overall lesion prevalence at routine slaughter by Brock et al. herd-type.\n\n\n\n\n\n\\(~\\) \\(~\\)\n\n\\(~\\) \\(~\\)\n\nMonthly version:\n\n\n\n\n\n\n\n\nFigure 6.17: Overall lesion prevalence at routine slaughter by Brock et al. herd-type and month.\n\n\n\n\n\n\\(~\\) \\(~\\)\n\n\\(~\\) \\(~\\)\n\n\n\n6.6.2 By lesion type\n\n\n\n\n\n\n\n\nFigure 6.18: Overall lesion prevalence at routine slaughter by Brock et al. herd-type and lesion location.\n\n\n\n\n\n\\(~\\) \\(~\\)\n\n\\(~\\) \\(~\\)\n\nMonthly version:\n\n\n\n\n\n\n\n\nFigure 6.19: Overall lesion prevalence at routine slaughter by Brock et al. herd-type and lesion location by month.\n\n\n\n\n\n\\(~\\) \\(~\\)\n\n\\(~\\) \\(~\\)\n\n\n\n6.6.3 Alternative plot:\nSame data used in previously plot but presented differently. Now grouped by lesion type which clearly shows the decrease in mulitple lesions group:\n\n\n\n\n\n\n\n\nFigure 6.20: Overall lesion prevalence at routine slaughter by lesion location.\n\n\n\n\n\n\\(~\\) \\(~\\)\n\n\\(~\\) \\(~\\)",
+    "crumbs": [
+      "Lesion prevalence",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Prevalence of confirmed *M.bovis* lesions found in animals at routine slaughter</span>"
+    ]
+  },
+  {
+    "objectID": "lesion_prevalence_trends.html#notes",
+    "href": "lesion_prevalence_trends.html#notes",
+    "title": "6  Prevalence of confirmed M.bovis lesions found in animals at routine slaughter",
+    "section": "6.7 Notes",
+    "text": "6.7 Notes\nWhy would lesions in head/chest be increasing? - change in way recording is done? - differences between factories? - A very small minority might specialise in kosher meats and so may inspect animals differently but unlike to have an effect nationally\nFrom DAFM document https://teagasc.ie/wp-content/uploads/2025/05/How-is-bovine-TB-detected-at-slaughter.pdf:\nWhat are the average lesion detection rates?\n\n30% of skin test reactors will have visible lesions at post-mortem inspection.\n15% of Gamma Interferon reactors will have visible lesions at post-mortem inspection. (This figure relates to cattle, in herds with high risk breakdowns, which are in the same groups as cattle that were skin test reactors).\n\nBiology of lesion trends\n\nHealthy lesion rate seems to mirror reactor lesion rate (previous chapter) which suggests, these are not historic infections but relatively new?\nWhy were levels high in 2008? It seems to be the peak of that cycle at the time and then there was a serious effort to clean-up the whole system (concerted effort): there were focused investigations, hot-spots were priortised (e.g., Monaghan), fraud cases were investigated, the quality control programme was brought in, SICTT & PVP training was increased/introduced, there was much more awareness to look out for lesions due to the ongoing gamma trial at the time etc. IFN-γ rates were up around 30% indicating that we were missing lots of infection at the time. This may also partly explain why chest prevalence was high back in 2008 - we were missing lots of infection and it had seeded in animals.\nDifference in proportion of chest vs head lesions. Not seeing a difference in beef/sucklers but are in dairy - suggests this is real effect? The increase in chest compared to head in dairy is consistent with increased immunosuppression. bTB is a chest disease, if an animal is stressed it will stay in the lungs (before eventually spreading around the body when it has reached a more advanced stage). If an animal is immunosuppressed, they won’t initially get multiple lesions - which seems counter intuitive. Their immune system is not competent enough to disseminate the disease around the body. More stress = more chest involvement. If you get more lung infection, you get more transmission.\nWhy is the “multiple lesions” group decreasing? This may be related to the improvement in detection since 2008 which may also mean earlier detection. Multiple lesions are a reflection of more advanced infection but we are generally detecting bTB at an early stage now with tighter testing quality (QA programme and IFN-γ etc.).\nWhat is ideal weather for mbovis? - probably warm, moist soil. Mild, damp rather than dry.\nRe: the lesions, they could take six months to develop, so the later summer lesion profile could well reflect infection dynamics the previous March\n\nPolicy:\n\nIs it worth considering additionally testing for herds with a lot of chest detections (round of IFN-γ testing)? Or even herds with animals with multiple lesions (more advanced infection)? Investigate this further.\n\nQuestions/ideas to explore\n\nWhats interesting is that dairy seem to send animals primarily to slaughter at the start of the year (presumably during drying period?) but have the most lesions presented at slaughter in the 2nd half of the year. Perhaps these lesioned animals come from a subset of dairy herds who are not spring calving herds?\nwhy do we see a clean, consistent seasonal effect of an increase in lesion prevalence later in the year?\nDoes it suggests that there a cohort of riskier herds, that send their animals to slaughter later in the year (and perhaps, do not send animals earlier in the year and so we miss their infections)- Investigate this further.\nChange in sensitivity by time of year? Or is it related to previous point, that riskier herds are just not sending their animals at that time? Or, they are not riskier per se, but as they don’t have a round test earlier in the year, earlier infections are not detected after winter housing and infection is allowed to seed in the animals and lesions form.\nIs there a difference in BD size between a herd with more chest vs head vs multiple lesions? Hypothesis here is that herds with more multiple lesions/chest, may have more advanced disease and increased likelihood of having more/missed infection. I need to check this.\nIt would be really interesting to get the age profile of these – to do. What we are seeing could be a certain aged animal that tends to get sent to slaughter later in the year.\nIs there a reporting bias? Does inspection start at head?\nRedo to include Brock sub-classes: may help tease out which herds are sending animals at later time of year\n\nFollow-up on lesion detection/inspection biases\n\nUsually two VIs in the factory who act in a supervisory role. Temporary VI (TVIs) do the inspections and there are usually 4 TVIs working at one time. TVIs are usually private vets who do this as additional work. You have to be a vet to do meat inspection in Ireland (although this might not be the rule in other countries?)\nProcess of inspection\nThe crucial piece of information is that (at least in this factory but should be similar in others) different body parts go to different people for inspection so one TVI will not inspect the whole body of one animal.\nEach animal is distributed into 4 separate process lines:\n\nHead\nPluck (lung, chest)\nBelly (intestines etc?)\ninspection of the split carcass (carcass hoisted up)\n\nTVIs will be stationed at one of these lines for the duration of their shifts but will probably rotate lines between shifts (e.g. so one TVI would not always be stationed on the head line)\nIn this particular factory head and pluck lines were close together so the TVIs could theoretically talk to each other but more than likely that the inspection is independent\nMultiple lesions (MLs): need to clarify if this means multiple lesions within the one station (so a TVI spots multiple lesions in the head line) or does it mean lesions were spotted in multiple body part locations. Wasn’t sure if ML is assigned by TVI on their line of at the end of all the stations. I suppose it could be a mixture of both?\nIn general, TVIs have moved away from diagnosing a lesion as mbovis (in healthy animals), any suspect lesion is generally just sent to the laboratory for testing\n\nReactor inspections (animals classified as bTB before entering factory via SICTT or GIF)\n\nIn this factory, reactors were inspected at a different time to the healthy animals (e.g. altogether after lunch). TVIs were told that these were reactor animals. The lines were slowed down a little bit (compared to healthy animal) which naturally gave them a small bit more of a thorough inspection. In terms of detecting lesions, naturally, there may be some confirmation bias at play here already knowing that they were reactor animals?",
+    "crumbs": [
+      "Lesion prevalence",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Prevalence of confirmed *M.bovis* lesions found in animals at routine slaughter</span>"
+    ]
+  },
+  {
+    "objectID": "lesion_prevalence_trends.html#brock-et-al-herd-types-definitions",
+    "href": "lesion_prevalence_trends.html#brock-et-al-herd-types-definitions",
+    "title": "6  Prevalence of confirmed M.bovis lesions found in animals at routine slaughter",
+    "section": "6.8 Brock et al herd-types definitions",
+    "text": "6.8 Brock et al herd-types definitions\nDairy\n\nResidency in the herd is longer than 30 days for at least 50% of the herd.\nProportion of animals in a herd that have ever calved by September, relative to herd size is greater than 25%.\n66% or more of the animals are of a dairy breed.\n\nBeef\n\n(generally just suckler from AHCS I think)\nResidency in the herd is longer than 30 days for at least 50% of the herd\nProportion of animals in a herd that have ever calved by September, relative to herd size is greater than 25%.\nLess than 33% of the animals are of a dairy breed.\n\nMixed\n\nResidency in the herd is longer than 30 days for at least 50% of the herd.\nProportion of animals in a herd that have ever calved by September, relative to herd size is greater than 25%.\n33% or more of the animals and less than 66% are of a dairy breed.\n\nStore\n\nResidency in the herd is longer than 30 days for at least 50% of the herd.\nLess than 25% of the animals in the herd have calved in the past\nLess than 50% of the animals in the herd go directly to slaughter\n\nFattener\n\nResidency in the herd is longer than 30 days for at least 50% of the herd.\nProportion of animals in a herd that have ever calved by September, relative to herd size is greater than 25%.\n50% or more of the animals in the herd go directly to slaughter.\n\nTrader\n\n50% or more of the animals spend less than 30 days in the herd.\n\nSeasonal\n\nAnimals are kept in the herd for only part of the year. (As of 2024, “seasonal” is no longer a category - they have been moved into “trader” and “fattener” categories respectively)\n\nUnknown - Self-explanatory.\n\\(~\\) \\(~\\)\n\n\\(~\\) \\(~\\)",
+    "crumbs": [
+      "Lesion prevalence",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Prevalence of confirmed *M.bovis* lesions found in animals at routine slaughter</span>"
+    ]
+  },
+  {
+    "objectID": "lesion_prevalence_trends.html#btb-slaughter-houselesionseasonality-papers",
+    "href": "lesion_prevalence_trends.html#btb-slaughter-houselesionseasonality-papers",
+    "title": "6  Prevalence of confirmed M.bovis lesions found in animals at routine slaughter",
+    "section": "6.9 bTB slaughter-house/lesion/seasonality papers:",
+    "text": "6.9 bTB slaughter-house/lesion/seasonality papers:\nClegg TA, Good M, More SJ. Risk factors for cattle presenting with a confirmed bTB lesion at slaughter, from herds with no evidence of within-herd transmission. Prev Vet Med. 2016 Apr 1;126:111-20. doi: 10.1016/j.prevetmed.2016.02.003. Epub 2016 Feb 9. PMID: 26895647. https://pubmed.ncbi.nlm.nih.gov/26895647/\nWilleberg PW, McAloon CG, Houtsma E, Higgins I, Clegg TA, More SJ. The Herd-Level Sensitivity of Abattoir Surveillance for Bovine Tuberculosis: Simulating the Effects of Current and Potentially Modified Meat Inspection Procedures in Irish Cattle. Front Vet Sci. 2018 May 23;5:82. doi: 10.3389/fvets.2018.00082. PMID: 29876359; PMCID: PMC5974157. https://pubmed.ncbi.nlm.nih.gov/29876359/\nGonçalves S, Cardoso MF, Vieira-Pinto M, Gomes-Neves E. Bovine Tuberculosis - Analysis of 10-year cases and impact of visual inspection in the surveillance at the slaughterhouse in Portugal. One Health. 2022 Oct 30;15:100451. doi: 10.1016/j.onehlt.2022.100451. PMID: 36532678; PMCID: PMC9754928. https://pubmed.ncbi.nlm.nih.gov/36532678/\nByrne AW, Barrett D, Breslin P, Madden JM, O’Keeffe J, Ryan E. Post-mortem surveillance of bovine tuberculosis in Ireland: herd-level variation in the probability of herds disclosed with lesions at routine slaughter to have skin test reactors at follow-up test. Vet Res Commun. 2020 Nov;44(3-4):131-136. doi: 10.1007/s11259-020-09777-w. Epub 2020 Jun 24. PMID: 32583301; PMCID: PMC7312117. https://pmc.ncbi.nlm.nih.gov/articles/PMC7312117/\nShittu A, Clifton-Hadley RS, Ely ER, Upton PU, Downs SH. Factors associated with bovine tuberculosis confirmation rates in suspect lesions found in cattle at routine slaughter in Great Britain, 2003-2008. Prev Vet Med. 2013 Jul 1;110(3-4):395-404. doi: 10.1016/j.prevetmed.2013.03.001. Epub 2013 Mar 26. PMID: 23540447. https://pubmed.ncbi.nlm.nih.gov/23540447/\nOlea-Popelka F, Freeman Z, White P, Costello E, O’Keeffe J, Frankena K, Martin W, More S. Relative effectiveness of irish factories in the surveillance of slaughtered cattle for visible lesions of tuberculosis, 2005-2007. Ir Vet J. 2012 Jan 30;65(1):2. doi: 10.1186/2046-0481-65-2. PMID: 22289139; PMCID: PMC3311595. https://pubmed.ncbi.nlm.nih.gov/22289139/\nMale Here RR, Ryan E, Breslin P, Frankena K, Byrne AW. Revisiting the relative effectiveness of slaughterhouses in Ireland to detect tuberculosis lesions in cattle (2014-2018). PLoS One. 2022 Oct 7;17(10):e0275259. doi: 10.1371/journal.pone.0275259. PMID: 36206240; PMCID: PMC9543943. https://pubmed.ncbi.nlm.nih.gov/36206240/\nFrankena K, White PW, O’Keeffe J, Costello E, Martin SW, van Grevenhof I, More SJ. Quantification of the relative efficiency of factory surveillance in the disclosure of tuberculosis lesions in attested Irish cattle. Vet Rec. 2007 Nov 17;161(20):679-84. doi: 10.1136/vr.161.20.679. PMID: 18024922. https://pubmed.ncbi.nlm.nih.gov/18024922/\nPascual-Linaza AV, Gordon AW, Stringer LA, Menzies FD. Efficiency of slaughterhouse surveillance for the detection of bovine tuberculosis in cattle in Northern Ireland. Epidemiol Infect. 2017 Apr;145(5):995-1005. doi: 10.1017/S0950268816003095. Epub 2016 Dec 28. PMID: 28027717; PMCID: PMC9507821. https://pubmed.ncbi.nlm.nih.gov/28027717/\nA study of the distribution of lesions in cattle caused by Mycobacterium bovis MPI Technical Paper No: 2017/69 New Zealand 2017 https://www.mpi.govt.nz/dmsdocument/29225-A-study-of-the-distribution-of-lesions-in-cattle-caused-by-Mycobacterium-bovis\nVaid S, Lee YY, Rawat S, Luthra A, Shah D, Ahuja AT. Tuberculosis in the head and neck–a forgotten differential diagnosis. Clin Radiol. 2010 Jan;65(1):73-81. doi: https://pubmed.ncbi.nlm.nih.gov/20103425/\nWiseman J, Cassidy JP, Gormley E. The problem that residual Mycobacterium bovis infection poses for the eradication of bovine tuberculosis. Vet J. 2024 Dec;308:106266. doi: 10.1016/j.tvjl.2024.106266. Epub 2024 Nov 9. PMID: 39528077. https://pubmed.ncbi.nlm.nih.gov/39528077/\nSeasonality\nAbrupt events and population synchrony in the dynamics of Bovine Tuberculosis Moustakas A, Evans MR, Daliakopoulos IN, Markonis Y. Abrupt events and population synchrony in the dynamics of Bovine Tuberculosis. Nat Commun. 2018 Jul 19;9(1):2821. doi: 10.1038/s41467-018-04915-0. PMID: 30026483; PMCID: PMC6053421.https://pubmed.ncbi.nlm.nih.gov/30026483/\nMoustakas, A., Evans, M.R. Regional and temporal characteristics of bovine tuberculosis of cattle in Great Britain. Stoch Environ Res Risk Assess 30, 989–1003 (2016). https://doi.org/10.1007/s00477-015-1140-3 https://link.springer.com/article/10.1007/s00477-015-1140-3#citeas",
+    "crumbs": [
+      "Lesion prevalence",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Prevalence of confirmed *M.bovis* lesions found in animals at routine slaughter</span>"
+    ]
+  },
+  {
+    "objectID": "breakdown_page.html",
+    "href": "breakdown_page.html",
+    "title": "7  Exploration of herd-level bTB breakdowns (BDs)",
+    "section": "",
+    "text": "7.1 Breakdown (BD) definition\n\\(~\\) \\(~\\)\nHere, we defined the start date of a BD in a herd as the date when an animal was disclosed as a bTB case, as determined by the SICTT, IFN-γ or by the detection of visible lesions at routine slaughter which are then laboratory confirmed with M. bovis infection (also known as ‘factory lesion cases’). In the situation when a BD started due to the detection of a visible lesion, we chose the start date as the date when the sample was sent to the lab and not the date in which it was identified as culture positive which could be a number of weeks later. Depending on the circumstances, the herds trading_status on AHCS will generally change from free to withdrawn/suspended. We defined the BD end date as the date of the next SICTT (whole herd) test where the trading_status was restored to free. Once a bTB case is detected, a herd will usually remain in a BD until it has had two consecutive, clear whole-herd SICTT tests (usually 60 days apart). There are certain exceptions to the above criteria e.g., singletons.\nThere were rare instances when a herd was in a BD based on trading status but it did not have a bTB case (these could be for awhole host of reasons including fraud investigations (so a herd may be in suspended mode although no cases), error on system etc.). Of all BDs after 2007 (n = 81168), there were only 601 of these zero case BDs (0.74%). The initiating/index SICTT of these BDs is given below:\n\\(~\\) \\(~\\)\nbd_first_skin_test_type   n     percent\n                       1  55 0.091514143\n                     10A  16 0.026622296\n                       2   2 0.003327787\n                       4  24 0.039933444\n                      5A  18 0.029950083\n                      5B  14 0.023294509\n                      5C   8 0.013311148\n                      5E   5 0.008319468\n                      5F  65 0.108153078\n                      5G   5 0.008319468\n                      5H   6 0.009983361\n                       6  14 0.023294509\n                      7B  15 0.024958403\n                       8  12 0.019966722\n                      9A 342 0.569051581\n\\(~\\) \\(~\\)\nFor the purposes of this work, we have excluded these cases along with extremely short BD (&lt;60 days in length):\n# DROP short and zero cases ----\nbd_df &lt;- bd_df %&gt;%\n  filter(all_cases != 0) %&gt;% \n  filter(bd_duration_days &gt;= 60) # ask Miriam?\n\\(~\\) \\(~\\)\n\\(~\\) \\(~\\)",
+    "crumbs": [
+      "Breakdowns (BDs)",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Exploration of herd-level bTB breakdowns (BDs)</span>"
+    ]
+  },
+  {
+    "objectID": "breakdown_page.html#number-of-bds-over-time",
+    "href": "breakdown_page.html#number-of-bds-over-time",
+    "title": "7  Exploration of herd-level bTB breakdowns (BDs)",
+    "section": "7.2 Number of BDs over time",
+    "text": "7.2 Number of BDs over time\n\n7.2.1 Per year\n\n\n\n\n\n\n\n\nFigure 7.1: Number of BDs per year.\n\n\n\n\n\n\\(~\\) \\(~\\)\n\n\\(~\\) \\(~\\)\n\n\n7.2.2 Per month\n\n\n\n\n\n\n\n\nFigure 7.2: Number of BDs per month.\n\n\n\n\n\n\\(~\\) \\(~\\)\n\n\\(~\\) \\(~\\)\n\n\n7.2.3 Per month and by herd-type\n\n\n\n\n\n\n\n\nFigure 7.3: Number of BDs per month and herd-type.\n\n\n\n\n\\(~\\) \\(~\\)\n\n\\(~\\) \\(~\\)",
+    "crumbs": [
+      "Breakdowns (BDs)",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Exploration of herd-level bTB breakdowns (BDs)</span>"
+    ]
+  },
+  {
+    "objectID": "breakdown_page.html#bd-by-herd-type",
+    "href": "breakdown_page.html#bd-by-herd-type",
+    "title": "7  Exploration of herd-level bTB breakdowns (BDs)",
+    "section": "7.3 BD by herd-type",
+    "text": "7.3 BD by herd-type\n\n\n\n\n\n\n\n\nFigure 7.4: Proportion of BDs ending per year by herd-type.\n\n\n\n\n\n\n\\(~\\) \\(~\\)",
+    "crumbs": [
+      "Breakdowns (BDs)",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Exploration of herd-level bTB breakdowns (BDs)</span>"
+    ]
+  },
+  {
+    "objectID": "breakdown_page.html#bd-size",
+    "href": "breakdown_page.html#bd-size",
+    "title": "7  Exploration of herd-level bTB breakdowns (BDs)",
+    "section": "7.4 BD size",
+    "text": "7.4 BD size\nHere, we explore the number of bTB cases disclosed within herd BDs (i.e. BD size). This illustrates that BD size (e.g., median) is increasing particulaly within dairy herds. The variance in the number of cases within BDs is also increasing within dairy. Mixed herd-types are also increasing in size (these are herds that have a component of their herd as dairy). The fact that dairy herds have more bTB cases during a BD is not that surprising as dairy are also the herds with the largest number of animals (herd size **add link here) in their herd.\n\\(~\\) \\(~\\)\n\n7.4.1 AHCS herd-type by BD size\n\nRaw scale zoomed in (max 20 cases per BD)Raw scaleLogged scale\n\n\n\\(~\\)\n\n\n\n\n\n\n\n\nFigure 7.5: Boxplots of the number of bTB cases in BDs that started in each year by Brock et al. herd-types (only including the 4 most common herd-types).\n\n\n\n\n\n\n\n\\(~\\)\n\n\n\n\n\n\n\n\nFigure 7.6: Boxplots of the number of bTB cases in BDs that started in each year by AHCS herd-types (only including the 4 most common herd-types).\n\n\n\n\n\n\n\n\\(~\\)\n\n\n\n\n\n\n\n\nFigure 7.7: Boxplots of the number of bTB cases in BDs that started in each year by AHCS herd-types (only including the 4 most common herd-types).\n\n\n\n\n\n\n\n\n\\(~\\) \\(~\\)\n\n\n7.4.2 Brock et al. herd-type by BD size\n\nRaw scale zoomed in (max 20 cases per BD)Raw scaleLogged scale\n\n\n\\(~\\)\n\n\n\n\n\n\n\n\nFigure 7.8: Boxplots of the number of bTB cases in BDs that started in each year by Brock et al. herd-types (only including the 4 most common herd-types).\n\n\n\n\n\n\n\n\\(~\\)\n\n\n\n\n\n\n\n\nFigure 7.9: Boxplots of the number of bTB cases in BDs that started in each year by Brock et al. herd-types (only including the 4 most common herd-types).\n\n\n\n\n\n\n\n\\(~\\)\n\n\n\n\n\n\n\n\nFigure 7.10: Boxplots of the number of bTB cases in BDs that started in each year by Brock et al. herd-types (only including the 4 most common herd-types).\n\n\n\n\n\n\n\n\n\n\n7.4.3 Brock et al. sub-class herd-types by BD size\nRather than plotting all sub-classes, here we focus on dairy sub-classes only as we have seen above that dairy tend to have the largest BDs in terms of the number of bTB cases disclosed.\n\nRaw scale zoomed in (max 20 cases per BD)Raw scaleLogged scale\n\n\n\\(~\\)\n\n\n\n\n\n\n\n\nFigure 7.11: Boxplots of the number of bTB cases in BDs that started in each year by Brock et al. sub-classes by dairy herd-types only.\n\n\n\n\n\n\n\n\\(~\\)\n\n\n\n\n\n\n\n\nFigure 7.12: Boxplots of the number of bTB cases in BDs that started in each year by Brock et al. sub-classes by dairy herd-types only.\n\n\n\n\n\n\n\n\\(~\\)\n\n\n\n\n\n\n\n\nFigure 7.13: Boxplots of the number of bTB cases in BDs that started in each year by Brock et al. sub-classes by dairy herd-types only.\n\n\n\n\n\n\n\n\n\n\n7.4.4 BD size by category groups\n\n7.4.4.1 All herds combined\n\n\n\n\n\n\n\n\nFigure 7.14: Proportion of BD size by category over time (all herds)\n\n\n\n\n\n\n\n7.4.4.2 AHCS\n\n\n\n\n\n\n\n\nFigure 7.15: Proportion of BD size by category over time\n\n\n\n\n\n\n\n7.4.4.3 Brock et al.\n\n\n\n\n\n\n\n\nFigure 7.16: Proportion of BD size by category over time",
+    "crumbs": [
+      "Breakdowns (BDs)",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Exploration of herd-level bTB breakdowns (BDs)</span>"
+    ]
+  },
+  {
+    "objectID": "breakdown_page.html#bd-duration",
+    "href": "breakdown_page.html#bd-duration",
+    "title": "7  Exploration of herd-level bTB breakdowns (BDs)",
+    "section": "7.5 BD duration",
+    "text": "7.5 BD duration\n\\(~\\)\n\n\n\n\n\n\n\n\nFigure 7.17: Boxplots of the number of BD durations (in years) by AHCS herd-types (zoomed into 2.5 year).",
+    "crumbs": [
+      "Breakdowns (BDs)",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Exploration of herd-level bTB breakdowns (BDs)</span>"
+    ]
+  },
+  {
+    "objectID": "breakdown_page.html#repeat-bd-herds",
+    "href": "breakdown_page.html#repeat-bd-herds",
+    "title": "7  Exploration of herd-level bTB breakdowns (BDs)",
+    "section": "7.6 Repeat BD herds",
+    "text": "7.6 Repeat BD herds\nSome herds will have more than one BD over time (i.e., they have a BD, become clear, and then have another BD). This is the proportion of herds with different number of BDs:\n\n\n bd_no     n       percent\n     1 22323 0.48337014421\n     2 12200 0.26417218830\n     3  5859 0.12686761076\n     4  2825 0.06117101901\n     5  1410 0.03053137586\n     6   767 0.01660820233\n     7   383 0.00829327444\n     8   205 0.00443895890\n     9   102 0.00220865272\n    10    48 0.00103936599\n    11    26 0.00056298991\n    12    18 0.00038976225\n    13     6 0.00012992075\n    14     2 0.00004330692\n    15     6 0.00012992075\n    16     2 0.00004330692\n\n\n\n7.6.1 Boxplots of the number of BDs per herd:\n\n7.6.1.1 AHCS:\n\n\n\n\n\n\n\n\nFigure 7.18: Boxplots of the number of bTB BDs per herd in the dataset by AHCS herd-types.\n\n\n\n\n\n\n\n7.6.1.2 Brock et al.:\n\n\n\n\n\n\n\n\nFigure 7.19: Boxplots of the number of bTB BDs per herd in the dataset by Brock et al. herd-types (only including the 4 most common herd-types).\n\n\n\n\n\n\n\n7.6.1.3 Brock et al. sub-classes:\n\n\n\n\n\n\n\n\nFigure 7.20: Boxplots of the number of bTB BDs per herd in the dataset by Brock et al. sub-class herd-types.",
+    "crumbs": [
+      "Breakdowns (BDs)",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Exploration of herd-level bTB breakdowns (BDs)</span>"
+    ]
+  },
+  {
+    "objectID": "breakdown_page.html#additional-btb-cases-after-the-initial-detection",
+    "href": "breakdown_page.html#additional-btb-cases-after-the-initial-detection",
+    "title": "7  Exploration of herd-level bTB breakdowns (BDs)",
+    "section": "7.7 Additional bTB cases after the initial detection",
+    "text": "7.7 Additional bTB cases after the initial detection\n\n7.7.1 SICTT initiated BDs\n\n\n\n\n\n\n\n\nFigure 7.21: The percentage of SICTT initiated BDs where additional cases will be disclosed during the BD (top 4 most common herd-types are selected).\n\n\n\n\n\n\n\n7.7.2 Slaughter-house initiated BDs\n\n\n\n\n\n\n\n\nFigure 7.22: The percentage of slaughter-house initiated BDs where additional cases will be disclosed during the BD (top 4 most common herd-types are selected).",
+    "crumbs": [
+      "Breakdowns (BDs)",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Exploration of herd-level bTB breakdowns (BDs)</span>"
+    ]
+  },
+  {
+    "objectID": "breakdown_page.html#count-of-no.-bds-by-detection-method",
+    "href": "breakdown_page.html#count-of-no.-bds-by-detection-method",
+    "title": "7  Exploration of herd-level bTB breakdowns (BDs)",
+    "section": "7.8 Count of no. BDs by detection method",
+    "text": "7.8 Count of no. BDs by detection method\n\n7.8.1 SICTT initiated BDs\n\n\n\n\n\n\n\n\nFigure 7.23: The count of the number of BDs initiated by SICTT, by herd-type.\n\n\n\n\n\n\n\n7.8.2 Slaughter-house initiated BDs\n\n\n\n\n\n\n\n\nFigure 7.24: The count of the number of BDs initiated by a slaughter-house case, by herd-type.",
+    "crumbs": [
+      "Breakdowns (BDs)",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Exploration of herd-level bTB breakdowns (BDs)</span>"
+    ]
+  },
+  {
+    "objectID": "breakdown_page.html#tables",
+    "href": "breakdown_page.html#tables",
+    "title": "7  Exploration of herd-level bTB breakdowns (BDs)",
+    "section": "7.9 Tables",
+    "text": "7.9 Tables\n\n7.9.1 Overall BD statistics\n\n\n\n\nTable 7.1: bTB BD statistics\n\n\n\nVariablelevel20082009201020112012201320142015201620172018201920202021202220232024No. of unique herds with at least one case74796363576452385218477644494108394941894209438452025079503456966899No. of BDs that started in year6736 (8.4)5793 (7.2)5218 (6.5)4753 (5.9)4782 (6)4382 (5.5)4040 (5)3804 (4.7)3619 (4.5)3853 (4.8)3849 (4.8)4040 (5)4750 (5.9)4709 (5.9)4578 (5.7)5192 (6.5)6140 (7.7)Median (IQR) no. of cases per BD2 (1-4)2 (1-4)1 (1-4)2 (1-4)1 (1-4)1 (1-3)1 (1-3)1 (1-3)1 (1-3)1 (1-3)1 (1-4)2 (1-4)2 (1-5)2 (1-4)2 (1-5)2 (1-5)2 (1-6)Range of no. of cases in BDs that started in the year1-2081-2261-2421-2961-2101-2141-2951-3031-3061-2081-2911-3961-1641-4301-2451-2251-374BDs by no. of bTB cases13183 (47.3)2869 (49.5)2640 (50.6)2375 (50)2420 (50.6)2332 (53.2)2155 (53.3)2045 (53.8)1889 (52.2)2030 (52.7)1941 (50.4)1988 (49.2)2144 (45.1)2232 (47.4)2160 (47.2)2169 (41.8)2381 (38.8)2968 (14.4)908 (15.7)818 (15.7)738 (15.5)788 (16.5)688 (15.7)615 (15.2)584 (15.4)585 (16.2)594 (15.4)615 (16)645 (16)695 (14.6)721 (15.3)666 (14.5)790 (15.2)960 (15.6)3599 (8.9)475 (8.2)430 (8.2)411 (8.6)378 (7.9)358 (8.2)317 (7.8)298 (7.8)253 (7)294 (7.6)304 (7.9)315 (7.8)411 (8.7)393 (8.3)372 (8.1)442 (8.5)542 (8.8)4366 (5.4)307 (5.3)303 (5.8)249 (5.2)250 (5.2)191 (4.4)212 (5.2)171 (4.5)134 (3.7)143 (3.7)174 (4.5)208 (5.1)298 (6.3)248 (5.3)229 (5)313 (6)391 (6.4)5274 (4.1)210 (3.6)187 (3.6)181 (3.8)172 (3.6)153 (3.5)129 (3.2)94 (2.5)97 (2.7)82 (2.1)101 (2.6)126 (3.1)179 (3.8)161 (3.4)148 (3.2)207 (4)241 (3.9)6230 (3.4)176 (3)141 (2.7)134 (2.8)143 (3)106 (2.4)98 (2.4)88 (2.3)71 (2)71 (1.8)73 (1.9)108 (2.7)133 (2.8)148 (3.1)120 (2.6)148 (2.9)196 (3.2)7141 (2.1)103 (1.8)97 (1.9)97 (2)101 (2.1)77 (1.8)70 (1.7)64 (1.7)55 (1.5)60 (1.6)76 (2)72 (1.8)108 (2.3)82 (1.7)110 (2.4)118 (2.3)148 (2.4)8120 (1.8)82 (1.4)83 (1.6)76 (1.6)72 (1.5)62 (1.4)45 (1.1)52 (1.4)58 (1.6)54 (1.4)59 (1.5)75 (1.9)77 (1.6)84 (1.8)74 (1.6)111 (2.1)134 (2.2)9104 (1.5)65 (1.1)69 (1.3)67 (1.4)57 (1.2)50 (1.1)40 (1)47 (1.2)39 (1.1)30 (0.8)51 (1.3)53 (1.3)64 (1.3)62 (1.3)64 (1.4)71 (1.4)93 (1.5)10-14302 (4.5)244 (4.2)194 (3.7)181 (3.8)169 (3.5)147 (3.4)140 (3.5)116 (3)142 (3.9)175 (4.5)159 (4.1)168 (4.2)247 (5.2)222 (4.7)204 (4.5)279 (5.4)339 (5.5)15-19147 (2.2)115 (2)70 (1.3)82 (1.7)73 (1.5)74 (1.7)73 (1.8)70 (1.8)70 (1.9)92 (2.4)97 (2.5)89 (2.2)137 (2.9)109 (2.3)109 (2.4)162 (3.1)199 (3.2)20-24103 (1.5)66 (1.1)62 (1.2)41 (0.9)44 (0.9)38 (0.9)34 (0.8)60 (1.6)70 (1.9)62 (1.6)54 (1.4)59 (1.5)82 (1.7)73 (1.6)94 (2.1)91 (1.8)135 (2.2)25-2956 (0.8)38 (0.7)28 (0.5)34 (0.7)24 (0.5)21 (0.5)27 (0.7)27 (0.7)28 (0.8)46 (1.2)46 (1.2)43 (1.1)49 (1)55 (1.2)55 (1.2)57 (1.1)99 (1.6)30-3431 (0.5)35 (0.6)22 (0.4)18 (0.4)20 (0.4)12 (0.3)11 (0.3)16 (0.4)31 (0.9)34 (0.9)29 (0.8)17 (0.4)36 (0.8)32 (0.7)32 (0.7)62 (1.2)73 (1.2)35-3916 (0.2)22 (0.4)10 (0.2)14 (0.3)22 (0.5)18 (0.4)11 (0.3)13 (0.3)27 (0.7)20 (0.5)17 (0.4)20 (0.5)18 (0.4)25 (0.5)31 (0.7)41 (0.8)42 (0.7)40+96 (1.4)78 (1.3)64 (1.2)55 (1.2)49 (1)55 (1.3)63 (1.6)59 (1.6)70 (1.9)66 (1.7)53 (1.4)54 (1.3)72 (1.5)62 (1.3)110 (2.4)131 (2.5)167 (2.7)BD initiated bySICTT4763 (70.7)3975 (68.6)3550 (68)3488 (73.4)3506 (73.3)3157 (72)2939 (72.7)2816 (74)2690 (74.3)2853 (74)2859 (74.3)3021 (74.8)3574 (75.2)3556 (75.5)3270 (71.4)3924 (75.6)4734 (77.1)Slaughter (non permit animal)1973 (29.3)1818 (31.4)1668 (32)1265 (26.6)1276 (26.7)1225 (28)1101 (27.3)988 (26)929 (25.7)1000 (26)990 (25.7)1016 (25.1)1158 (24.4)1135 (24.1)1287 (28.1)1258 (24.2)1397 (22.8)IFN-γ-----------3 (0.1)18 (0.4)18 (0.4)21 (0.5)10 (0.2)9 (0.1)BD: herd-level bTB breakdown; SICTT: Single Intradermal Comparative Tuberculin Test; IFN-γ: interferon-gamma assay; AHCS: Animal Health Computer System IFN-γ cases prior to May 2019 were recorded as SICTT (i.e., negative SICTT reinterpreted as a positive SICTT), after this date there was a facility to record them separately on AHCS BD figures relate to BDs that started in a particular year (i.e., BDs can span over more than one year so when data was summarised, values relate to the year the BD began in)\n\n\n\n\n\n\n\n7.9.2 BD duration\n\n\n\n\nTable 7.2\n\n\n\nYearNmeansdmedianminmax2,0086,7360.56340560.58417510.40.217.22,0095,7930.57541860.74883190.40.216.22,0105,2180.57815250.74617280.40.215.12,0114,7530.53538820.50571810.40.214.12,0124,7820.52821000.52356410.40.212.42,0134,3820.52489730.51958970.40.212.12,0144,0400.54732670.69442860.40.211.12,0153,8040.57802310.87152380.40.210.22,0163,6190.56150870.72754920.40.29.22,0173,8530.55066180.57215380.40.28.22,0183,8490.57014810.68124180.40.27.22,0194,0400.54378710.48905930.40.26.12,0204,7500.54355790.47135640.40.25.22,0214,7090.55081760.45193090.40.24.22,0224,5780.55657490.40831080.40.23.22,0235,1920.55514250.32597750.40.22.22,0246,1400.45446250.16758280.40.21.2Year represents year the BD started in (it could overlap multiple years)",
+    "crumbs": [
+      "Breakdowns (BDs)",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Exploration of herd-level bTB breakdowns (BDs)</span>"
+    ]
+  },
+  {
+    "objectID": "breakdown_page.html#notes",
+    "href": "breakdown_page.html#notes",
+    "title": "7  Exploration of herd-level bTB breakdowns (BDs)",
+    "section": "7.10 Notes",
+    "text": "7.10 Notes\n\nExplore CFUs, perhaps I need to drop them or have them as a seperate group",
+    "crumbs": [
+      "Breakdowns (BDs)",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Exploration of herd-level bTB breakdowns (BDs)</span>"
+    ]
+  },
+  {
+    "objectID": "time_series.html",
+    "href": "time_series.html",
+    "title": "8  Time-series analysis and case forecasting",
+    "section": "",
+    "text": "8.1 bTB case count\n\\(~\\) \\(~\\)\nThis section is ongoing and will form the basis of a separate time-series/forecasting paper.",
+    "crumbs": [
+      "Time series analysis",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Time-series analysis and case forecasting</span>"
+    ]
+  },
+  {
+    "objectID": "time_series.html#btb-case-count",
+    "href": "time_series.html#btb-case-count",
+    "title": "8  Time-series analysis and case forecasting",
+    "section": "",
+    "text": "8.1.1 Seasonality\n\n\n\n\n\n\n\n\nFigure 8.1: Seasonality of bTB cases by month.\n\n\n\n\n\n\n\\(~\\) \\(~\\)\n\n\n8.1.2 STL decomposition\nAs an initial, exploratory step, we applied a seasonal-trend decomposition procedure based on loess (locally estimated scatterplot smoothing, a type of locally-weighted polynomial regression), abbreviated to STL [9]. The purpose of the decomposition of a time series is to “deconstruct” it into a number of component series which, when combined, will reproduce the original time series. Using STL, the specific aim is to split a seasonal time series into three additive components: the underlying trend, seasonality and the remainder (noise).\n\n\n\n\n\n\n\n\nFigure 8.2: STL decomposition of bTB cases by month.\n\n\n\n\n\n\n\\(~\\) \\(~\\)\n\n\n8.1.3 Forecasting cases\n\n\n\n\n\n\n\n\nFigure 8.3: Forecasting predicitions of monthly bTB cases for 2025.",
+    "crumbs": [
+      "Time series analysis",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Time-series analysis and case forecasting</span>"
+    ]
+  },
+  {
+    "objectID": "agg_cases_poisson_NB_model.html",
+    "href": "agg_cases_poisson_NB_model.html",
+    "title": "9  bTB case numbers, aggregated Poisson/negative binomial models",
+    "section": "",
+    "text": "10 Introduction\nHere, we are exploring an aggregated Poisson model of bTB cases per year. Its a crude but useful approach to explore incidence risk ratios over time.\nAs reminder of cases and population (based on AIM data on 1st May), below are some plots. Naturally, population is problematic for trader herds as the population is fluctuating a lot more than for the other herd types as animals are constantly coming and going.",
+    "crumbs": [
+      "Aggregated case count model",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>bTB case numbers, aggregated Poisson/negative binomial models</span>"
+    ]
+  },
+  {
+    "objectID": "agg_cases_poisson_NB_model.html#cases-over-time",
+    "href": "agg_cases_poisson_NB_model.html#cases-over-time",
+    "title": "9  bTB case numbers, aggregated Poisson/negative binomial models",
+    "section": "10.1 Cases over time",
+    "text": "10.1 Cases over time\n\n\n\n\n\n\n\n\nFigure 10.1: Number of bTB cases by year.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 10.2: Number of bTB cases by year.",
+    "crumbs": [
+      "Aggregated case count model",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>bTB case numbers, aggregated Poisson/negative binomial models</span>"
+    ]
+  },
+  {
+    "objectID": "agg_cases_poisson_NB_model.html#population",
+    "href": "agg_cases_poisson_NB_model.html#population",
+    "title": "9  bTB case numbers, aggregated Poisson/negative binomial models",
+    "section": "10.2 Population:",
+    "text": "10.2 Population:\n\n\n\n\n\n\n\n\nFigure 10.3: Number of animals by year and herd-type.",
+    "crumbs": [
+      "Aggregated case count model",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>bTB case numbers, aggregated Poisson/negative binomial models</span>"
+    ]
+  },
+  {
+    "objectID": "agg_cases_poisson_NB_model.html#combined-offset",
+    "href": "agg_cases_poisson_NB_model.html#combined-offset",
+    "title": "9  bTB case numbers, aggregated Poisson/negative binomial models",
+    "section": "11.1 Combined offset",
+    "text": "11.1 Combined offset\nAbove we included population as an offset. However, for curiosity, we included a double offset below, not only accounting for population but also the number of tests (at animal level) conducted in the year (based solely on SICTT):\n\n\n\n\n\n\n\n\nFigure 11.3: Basic Poisson model with just year and herd-type.\n\n\n\n\n\nThe results are perhaps strange at first (the massive IRR estimate for trader) but I think they make sense. The large effect on trader herds is saying that when you account for testing effort and the population, we see a strong effect of trader herds. Trader herds have a high IRR in the first model but its attentuated when the number of tests are brought in. In essence, its saying that we we see a lot of bTB cases considering the population size and number of tests conducted on trader herds. The per head, per test value is high. Trader herds will not have as many SICTT tests as other herd types (I would imagine a lot of the time if bTB is detected, they send their animals to slaughter so the amount of tests (at animal level) conducted during follow-up will be lower etc).\nThis is a bit nuance and admittedly strange to have two offsets (but it is permitted in a model).\nFor now, we am leaving out this combined offset and from here on, we will just include population as the offset which is a more standard approach.",
+    "crumbs": [
+      "Aggregated case count model",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>bTB case numbers, aggregated Poisson/negative binomial models</span>"
+    ]
+  },
+  {
+    "objectID": "agg_cases_poisson_NB_model.html#model-without-trader-herds",
+    "href": "agg_cases_poisson_NB_model.html#model-without-trader-herds",
+    "title": "9  bTB case numbers, aggregated Poisson/negative binomial models",
+    "section": "11.2 Model without trader herds",
+    "text": "11.2 Model without trader herds\nTrader herds are problematic here because we are taking a snapshot of their population (which is changing a lot). We still believe that this approach is ok - the small numbers for the count of cases within traders is not really an issue, we see similar numbers in store herds. Repeating this by month would be a really useful exercise and one we should (we dont have a count of animals in every herd for the 1st of each month, just 1st Jan/May/Sept. It would involve a bit of work to estimate these but something we want to do at some stage). We would end up with very few cases in some months though.\nSo with that in mind, we have repeated the model without trader herds:\n\n\n\n\n\n\n\n\n\n\n11.2.1 Dispersion test\n\n\n# Overdispersion test\n\n       dispersion ratio =  114.772\n  Pearson's Chi-Squared = 7345.429\n                p-value =  &lt; 0.001\n\n\nOver dispersion present, repeat using negative binomial.",
+    "crumbs": [
+      "Aggregated case count model",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>bTB case numbers, aggregated Poisson/negative binomial models</span>"
+    ]
+  },
+  {
+    "objectID": "agg_cases_poisson_NB_model.html#all-herds",
+    "href": "agg_cases_poisson_NB_model.html#all-herds",
+    "title": "9  bTB case numbers, aggregated Poisson/negative binomial models",
+    "section": "12.1 All herds",
+    "text": "12.1 All herds",
+    "crumbs": [
+      "Aggregated case count model",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>bTB case numbers, aggregated Poisson/negative binomial models</span>"
+    ]
+  },
+  {
+    "objectID": "agg_cases_poisson_NB_model.html#trader-herds-removed",
+    "href": "agg_cases_poisson_NB_model.html#trader-herds-removed",
+    "title": "9  bTB case numbers, aggregated Poisson/negative binomial models",
+    "section": "12.2 Trader herds removed",
+    "text": "12.2 Trader herds removed",
+    "crumbs": [
+      "Aggregated case count model",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>bTB case numbers, aggregated Poisson/negative binomial models</span>"
+    ]
+  },
+  {
+    "objectID": "agg_cases_poisson_NB_model.html#estimated-rates-per-1000",
+    "href": "agg_cases_poisson_NB_model.html#estimated-rates-per-1000",
+    "title": "9  bTB case numbers, aggregated Poisson/negative binomial models",
+    "section": "12.3 Estimated rates (per 1000)",
+    "text": "12.3 Estimated rates (per 1000)\nHere, I’ve estimated marginal means and plots of these.\n\n\n herd_type_ml_description year response     SE  df asymp.LCL asymp.UCL\n Beef                     2015    2.231 0.1560 Inf     1.945     2.560\n Dairy                    2015    3.028 0.2120 Inf     2.639     3.474\n Store                    2015    0.643 0.0459 Inf     0.559     0.740\n Fattener                 2015    3.033 0.2130 Inf     2.643     3.481\n Mixed                    2015    2.502 0.1760 Inf     2.180     2.872\n Beef                     2008    4.315 0.3010 Inf     3.763     4.948\n Dairy                    2008    5.855 0.4090 Inf     5.106     6.714\n Store                    2008    1.244 0.0883 Inf     1.083     1.430\n Fattener                 2008    5.866 0.4100 Inf     5.115     6.727\n Mixed                    2008    4.839 0.3380 Inf     4.219     5.550\n Beef                     2009    3.473 0.2430 Inf     3.028     3.983\n Dairy                    2009    4.712 0.3300 Inf     4.108     5.405\n Store                    2009    1.001 0.0712 Inf     0.871     1.151\n Fattener                 2009    4.721 0.3310 Inf     4.116     5.416\n Mixed                    2009    3.895 0.2730 Inf     3.395     4.468\n Beef                     2010    3.227 0.2260 Inf     2.813     3.702\n Dairy                    2010    4.379 0.3070 Inf     3.817     5.024\n Store                    2010    0.930 0.0664 Inf     0.809     1.070\n Fattener                 2010    4.387 0.3080 Inf     3.823     5.034\n Mixed                    2010    3.619 0.2540 Inf     3.154     4.153\n Beef                     2011    2.691 0.1890 Inf     2.345     3.089\n Dairy                    2011    3.652 0.2560 Inf     3.182     4.191\n Store                    2011    0.776 0.0555 Inf     0.675     0.893\n Fattener                 2011    3.659 0.2570 Inf     3.188     4.200\n Mixed                    2011    3.018 0.2120 Inf     2.629     3.465\n Beef                     2012    2.694 0.1890 Inf     2.348     3.090\n Dairy                    2012    3.655 0.2560 Inf     3.186     4.193\n Store                    2012    0.777 0.0553 Inf     0.676     0.893\n Fattener                 2012    3.662 0.2570 Inf     3.192     4.202\n Mixed                    2012    3.021 0.2120 Inf     2.633     3.467\n Beef                     2013    2.374 0.1670 Inf     2.069     2.725\n Dairy                    2013    3.222 0.2260 Inf     2.808     3.697\n Store                    2013    0.685 0.0489 Inf     0.595     0.787\n Fattener                 2013    3.228 0.2270 Inf     2.812     3.705\n Mixed                    2013    2.663 0.1870 Inf     2.320     3.056\n Beef                     2014    2.399 0.1680 Inf     2.091     2.753\n Dairy                    2014    3.256 0.2280 Inf     2.837     3.735\n Store                    2014    0.692 0.0494 Inf     0.602     0.796\n Fattener                 2014    3.262 0.2290 Inf     2.842     3.743\n Mixed                    2014    2.691 0.1890 Inf     2.344     3.088\n Beef                     2016    2.189 0.1530 Inf     1.908     2.512\n Dairy                    2016    2.970 0.2080 Inf     2.589     3.408\n Store                    2016    0.631 0.0450 Inf     0.549     0.726\n Fattener                 2016    2.976 0.2090 Inf     2.594     3.415\n Mixed                    2016    2.455 0.1720 Inf     2.139     2.817\n Beef                     2017    2.243 0.1570 Inf     1.956     2.573\n Dairy                    2017    3.044 0.2130 Inf     2.654     3.492\n Store                    2017    0.647 0.0460 Inf     0.563     0.744\n Fattener                 2017    3.050 0.2140 Inf     2.658     3.499\n Mixed                    2017    2.516 0.1770 Inf     2.193     2.887\n Beef                     2018    2.366 0.1660 Inf     2.062     2.714\n Dairy                    2018    3.210 0.2250 Inf     2.799     3.682\n Store                    2018    0.682 0.0485 Inf     0.593     0.784\n Fattener                 2018    3.216 0.2250 Inf     2.803     3.689\n Mixed                    2018    2.653 0.1860 Inf     2.312     3.044\n Beef                     2019    2.275 0.1590 Inf     1.983     2.610\n Dairy                    2019    3.087 0.2160 Inf     2.691     3.541\n Store                    2019    0.656 0.0467 Inf     0.571     0.754\n Fattener                 2019    3.093 0.2170 Inf     2.696     3.548\n Mixed                    2019    2.552 0.1790 Inf     2.224     2.928\n Beef                     2020    3.004 0.2100 Inf     2.620     3.444\n Dairy                    2020    4.076 0.2840 Inf     3.555     4.673\n Store                    2020    0.866 0.0613 Inf     0.754     0.995\n Fattener                 2020    4.084 0.2850 Inf     3.561     4.683\n Mixed                    2020    3.369 0.2350 Inf     2.938     3.863\n Beef                     2021    2.712 0.1890 Inf     2.365     3.109\n Dairy                    2021    3.680 0.2570 Inf     3.209     4.219\n Store                    2021    0.782 0.0553 Inf     0.681     0.898\n Fattener                 2021    3.687 0.2570 Inf     3.215     4.227\n Mixed                    2021    3.041 0.2130 Inf     2.652     3.488\n Beef                     2022    3.028 0.2110 Inf     2.641     3.471\n Dairy                    2022    4.108 0.2860 Inf     3.584     4.709\n Store                    2022    0.873 0.0617 Inf     0.760     1.003\n Fattener                 2022    4.116 0.2870 Inf     3.590     4.719\n Mixed                    2022    3.395 0.2370 Inf     2.961     3.893\n Beef                     2023    3.575 0.2490 Inf     3.119     4.097\n Dairy                    2023    4.851 0.3370 Inf     4.233     5.559\n Store                    2023    1.031 0.0726 Inf     0.898     1.183\n Fattener                 2023    4.860 0.3380 Inf     4.240     5.571\n Mixed                    2023    4.009 0.2790 Inf     3.498     4.596\n Beef                     2024    5.515 0.3830 Inf     4.813     6.318\n Dairy                    2024    7.483 0.5190 Inf     6.531     8.573\n Store                    2024    1.590 0.1120 Inf     1.386     1.825\n Fattener                 2024    7.497 0.5210 Inf     6.543     8.590\n Mixed                    2024    6.185 0.4300 Inf     5.397     7.087\n\nConfidence level used: 0.95 \nIntervals are back-transformed from the log scale",
+    "crumbs": [
+      "Aggregated case count model",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>bTB case numbers, aggregated Poisson/negative binomial models</span>"
+    ]
+  },
+  {
+    "objectID": "agg_cases_poisson_NB_model.html#dispersion-test-1",
+    "href": "agg_cases_poisson_NB_model.html#dispersion-test-1",
+    "title": "9  bTB case numbers, aggregated Poisson/negative binomial models",
+    "section": "12.4 Dispersion test",
+    "text": "12.4 Dispersion test\n\n\n# Overdispersion test\n\n dispersion ratio = 1.300\n          p-value = 0.224",
+    "crumbs": [
+      "Aggregated case count model",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>bTB case numbers, aggregated Poisson/negative binomial models</span>"
+    ]
+  },
+  {
+    "objectID": "agg_cases_poisson_NB_model.html#trader-population---add-in",
+    "href": "agg_cases_poisson_NB_model.html#trader-population---add-in",
+    "title": "9  bTB case numbers, aggregated Poisson/negative binomial models",
+    "section": "12.5 Trader population - ADD IN",
+    "text": "12.5 Trader population - ADD IN",
+    "crumbs": [
+      "Aggregated case count model",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>bTB case numbers, aggregated Poisson/negative binomial models</span>"
+    ]
+  },
+  {
     "objectID": "sictt_test_types.html",
     "href": "sictt_test_types.html",
-    "title": "8  SICTT test-types",
+    "title": "10  SICTT test-types",
     "section": "",
-    "text": "8.1 All test-types (herd and animal-level SICTTs)\n\\(~\\) \\(~\\)\nFigure 8.1: The proportion of all SICTTs by all test-types.\n\\(~\\) \\(~\\)",
+    "text": "10.1 All test-types (herd and animal-level SICTTs)\n\\(~\\) \\(~\\)\nFigure 10.1: The proportion of all SICTTs by all test-types.\n\\(~\\) \\(~\\)",
     "crumbs": [
       "SICTT test-types",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>SICTT test-types</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>SICTT test-types</span>"
     ]
   },
   {
     "objectID": "sictt_test_types.html#all-test-types-herd-and-animal-level-sictts",
     "href": "sictt_test_types.html#all-test-types-herd-and-animal-level-sictts",
-    "title": "8  SICTT test-types",
+    "title": "10  SICTT test-types",
     "section": "",
-    "text": "8.1.1 Herd vs animal level test-types\nMany SICTT are just animal-level tests and are not associated with a full herd test (e.g., a pre-movement test). We assigned each test-type to a herd or animal level test:\n\n\n\n\nTable 8.1: SICTT by herd or animal-level test.\n\n\n\nHerdAnimal1; Round test3; Inconclusive reactor re-test2; New Herd Special Check Test (S.C.T.)5D; Factory return (Animal/herd) obsolete4; Reactor re-test5G; Forward trace S.C.T. (animal)5A; Classification related S.C.T.5H; Miscellaneous (animal) S.C.T.5B; Associated to a reactor herd S.C.T.6; Private test5C; High incidence Area/DED and Miscellaneous C.T. (herd)5E; OTF regain status S.C.T.5F; Backward trace S.C.T. (herd)7A; Post depopulation C.T.7B; Post de-restriction C.T.8; Contiguous herd test9A; Factory lesion test10A; Balance of herd test (factory lesion)10B; Balance of herd test (private test)10C; Balance of herd test (inc retest)10D; Balance of herd test (fwd trace S.C.T.)\n\n\n\n\n\n\\(~\\) \\(~\\)\n\n\n\n\n\n\n\n\nFigure 8.2: The proportion of all SICTTs by whether it was an animal or herd-level SICTT.\n\n\n\n\n\n\n\\(~\\) \\(~\\)\nrepeat above plots by herd-level only SICTTs (increase in animal level tests skewing true )\n\n\n8.1.2 All test-types (herd-level SICTT only)\n\n\n\n\n\n\n\n\nFigure 8.3: The proportion of all SICTTs by all test-types.",
+    "text": "10.1.1 Herd vs animal level test-types\nMany SICTT are just animal-level tests and are not associated with a full herd test (e.g., a pre-movement test). We assigned each test-type to a herd or animal level test:\n\n\n\n\nTable 10.1: SICTT by herd or animal-level test.\n\n\n\nHerdAnimal1; Round test3; Inconclusive reactor re-test2; New Herd Special Check Test (S.C.T.)5D; Factory return (Animal/herd) obsolete4; Reactor re-test5G; Forward trace S.C.T. (animal)5A; Classification related S.C.T.5H; Miscellaneous (animal) S.C.T.5B; Associated to a reactor herd S.C.T.6; Private test5C; High incidence Area/DED and Miscellaneous C.T. (herd)5E; OTF regain status S.C.T.5F; Backward trace S.C.T. (herd)7A; Post depopulation C.T.7B; Post de-restriction C.T.8; Contiguous herd test9A; Factory lesion test10A; Balance of herd test (factory lesion)10B; Balance of herd test (private test)10C; Balance of herd test (inc retest)10D; Balance of herd test (fwd trace S.C.T.)\n\n\n\n\n\n\\(~\\) \\(~\\)\n\n\n\n\n\n\n\n\nFigure 10.2: The proportion of all SICTTs by whether it was an animal or herd-level SICTT.\n\n\n\n\n\n\n\\(~\\) \\(~\\)\nrepeat above plots by herd-level only SICTTs (increase in animal level tests skewing true )\n\n\n10.1.2 All test-types (herd-level SICTT only)\n\n\n\n\n\n\n\n\nFigure 10.3: The proportion of all SICTTs by all test-types.\n\n\n\n\n\nAnd table format:\n\n\n\n\nTable 10.2: Proportion of herd-level SICTTs by all herd-level test-types (presented as %)\n\n\n\nTest type2008200920102011201220132014201520162017201820192020202120222023202410A; Balance of herd test (factory lesion)0.00.00.00.00.00.00.10.10.10.10.10.10.10.10.10.10.010B; Balance of herd test (private test)0.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.010C; Balance of herd test (inc retest)0.10.10.10.10.00.00.00.10.10.00.00.10.00.00.00.00.010D; Balance of herd test (fwd trace S.C.T.)0.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.01; Round test64.667.770.872.973.175.375.476.377.276.574.873.671.369.671.970.367.62; New Herd Special Check Test (S.C.T.)0.91.11.01.31.61.41.22.01.51.31.10.91.21.51.01.00.84; Reactor re-test10.29.18.27.47.26.76.65.95.75.86.06.27.27.37.38.09.55A; Classification related S.C.T.3.23.33.73.53.12.92.72.72.42.21.92.22.02.32.72.42.65B; Associated to a reactor herd S.C.T.0.10.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.05C; High incidence Area/DED and Miscellaneous C.T. (herd)3.63.01.81.21.00.80.91.11.30.91.63.43.04.33.03.13.35E; OTF regain status S.C.T.0.30.30.30.30.30.40.40.30.30.30.30.30.40.40.50.60.85F; Backward trace S.C.T. (herd)0.20.80.90.90.80.80.70.70.60.70.70.60.80.91.01.21.37A; Post depopulation C.T.0.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.07B; Post de-restriction C.T.4.34.33.73.53.13.12.92.82.62.02.12.22.32.72.72.52.88; Contiguous herd test10.98.98.17.88.57.48.07.17.49.110.39.510.69.98.79.510.09A; Factory lesion test1.51.31.31.11.01.00.90.80.80.80.90.81.01.01.11.21.2",
     "crumbs": [
       "SICTT test-types",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>SICTT test-types</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>SICTT test-types</span>"
     ]
   },
   {
     "objectID": "sictt_test_types.html#timing-of-round-test-type",
     "href": "sictt_test_types.html#timing-of-round-test-type",
-    "title": "8  SICTT test-types",
-    "section": "8.2 Timing of round test-type",
-    "text": "8.2 Timing of round test-type\nIs there more annual round test during certain months of the year (e.g., summer/autumn) which might reflect more cases being detected?\n\n8.2.1 All herds\n\n\n\n\n\n\n\n\nFigure 8.4: The proportion of all round tests by month\n\n\n\n\n\n\n\n8.2.2 by herd-type\n\n\n\n\n\n\n\n\nFigure 8.5: The proportion of all round tests by month and herd-type",
+    "title": "10  SICTT test-types",
+    "section": "10.2 Timing of round test-type",
+    "text": "10.2 Timing of round test-type\nIs there more annual round test during certain months of the year (e.g., summer/autumn) which might reflect more cases being detected?\n\n10.2.1 All herds\n\n\n\n\n\n\n\n\nFigure 10.4: The proportion of all round tests by month\n\n\n\n\n\n\n\n10.2.2 by herd-type\n\n\n\n\n\n\n\n\nFigure 10.5: The proportion of all round tests by month and herd-type",
     "crumbs": [
       "SICTT test-types",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>SICTT test-types</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>SICTT test-types</span>"
+    ]
+  },
+  {
+    "objectID": "sictt_test_types.html#apt-animals-reactor-per-thousand-animal-tests",
+    "href": "sictt_test_types.html#apt-animals-reactor-per-thousand-animal-tests",
+    "title": "10  SICTT test-types",
+    "section": "10.3 APT (Animals Reactor per Thousand Animal Tests)",
+    "text": "10.3 APT (Animals Reactor per Thousand Animal Tests)\nSICTT positive animals per thousand tested\nAPT is used by DAFM as an administrative metric (which just looks at SICTT)\n\n\n\n\n\n\n\n\nFigure 10.6: APT\n\n\n\n\n\n\n10.3.1 APT by herd\n\n\n\n\n\n\n\n\nFigure 10.7: APT by herd-type",
+    "crumbs": [
+      "SICTT test-types",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>SICTT test-types</span>"
+    ]
+  },
+  {
+    "objectID": "publications.html",
+    "href": "publications.html",
+    "title": "11  CVERA related bTB publications",
+    "section": "",
+    "text": "11.1 List of publications\n\\(~\\) \\(~\\)\nBelow is a list of bTB related publications from CVERA (from 1990 to 07-May-2025 (date the database was last accessed)). This also encompasses publications that may not be directly from CVERA (e.g., where a CVERA member is only a co-author on the publication, the list also includes publications from the Tuberculosis Diagnostics & Immunology Research Laboratory in UCD).\nThanks to Dan Collins for maintaining the list.\nUse the search bar in the table heading to search by any word.\n\\(~\\) \\(~\\)\nTable 11.1: bTB related CVERA publications\n\\(~\\) \\(~\\)\n\\(~\\) \\(~\\)",
+    "crumbs": [
+      "Publications",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>CVERA related bTB publications</span>"
     ]
   }
 ]

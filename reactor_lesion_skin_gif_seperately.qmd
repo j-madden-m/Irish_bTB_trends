@@ -48,9 +48,9 @@ include_co_op_chunks = TRUE
 
 ## Introduction
 
-This document presents the prevalence of visible lesions at slaughter within bTB positive animals separately by those classified by the SICTT and `r gif_string`. There was no facility within AHCS prior to May 2019 to record `r gif_string` positive animals. Before this, if an animal had a positive `r gif_string` result, their SICTT results were reinterpreted as positive. As a result, we have had to use old raw `r gif_string` data to try and differentiate between which animals were positive on `r gif_string` or SICTT. The old data has some missing tag numbers etc. and so we cannot be certain that we have assigned all cases to either `r gif_string` or SICTT correctly. However, we believe, the vast majority of the data is correct.
+This page presents the prevalence of visible lesions at slaughter within bTB positive animals separately by those classified by the SICTT and `r gif_string`. There was no facility within AHCS prior to May 2019 to record `r gif_string` positive animals. Before this, if an animal had a positive `r gif_string` result, their SICTT results were reinterpreted as positive. As a result, we have had to use old raw `r gif_string` data to try and differentiate between which animals were positive on `r gif_string` or SICTT. The old data has some missing tag numbers etc. and so we cannot be certain that we have assigned all cases to either `r gif_string` or SICTT correctly. However, we believe, the vast majority of the data is correct.
 
-This is the difference between overall lesion prevalence document and this one (i.e. we make an attempt to seperate SICTT and `r gif_string` positive trends).
+This is the difference between overall lesion prevalence page and this one (i.e. we make an attempt to seperate SICTT and `r gif_string` positive trends).
 
 ## Definitions
 
@@ -84,6 +84,122 @@ $~$ $~$
 $~$ $~$
 
 \newpage
+
+## Lesion counts
+
+Before looking at lesion prevalence, the count of lesions by detection method is plotted below as a method to look at absolute numbers which can be telling a different story.
+
+
+```{r}
+#| label: fig-lesioncount
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 8 
+#| fig.cap: !expr paste0("Overall lesion counts within SICTT and ", gif_string, " positive animals at slaughter.")
+#| 
+lesion_count_per_year <- all_cases_collapsed %>% 
+  filter(best_estimate_gif_skin_lab  %in% c("skin", "gif")) %>% 
+  group_by(year, best_estimate_gif_skin_lab_string) %>% 
+  summarise(count_of_lesions = sum(permit_lesions_yes_no, na.rm = TRUE)) %>% 
+  ungroup()
+
+#lesion_count_per_year
+
+ggplot(lesion_count_per_year, aes(x = factor(year), y = count_of_lesions, fill = best_estimate_gif_skin_lab_string)) + #color = best_estimate_gif_skin_lab_string)) +
+  geom_col() +
+  labs(x = "Year",
+       y = "Lesion count",
+       title = paste0("Lesion count amoung SICTT and ", gif_string, " positive animals"),
+       caption = paste0("Definition: ", 
+                        "Animals that were classified as bTB positive using ", 
+                        "SICTT or IFN-γ and had visible lesions at slaughter")) +
+  theme_jamie +
+  theme_45_x +
+  scale_fill_nejm(name = "Detection type") +
+  # scale_y_continuous(labels = scales::label_percent(scale = 100)) +
+  # scale_x_type +
+  #scale_x_continuous(breaks = nth_element(c(unique(df[[x_var]])), 1, 2)) +
+  #scale_color_simpsons(name = "Quartile type") +
+  # need this for bold headings
+  theme(title = element_text(size = 18, face = "bold"),
+        legend.text = element_markdown(size = 16),
+        plot.caption.position = "plot",
+        legend.title = element_text(size = 16, face = "bold"),
+        plot.caption = element_text(size = 9, color = "black", face = "italic"),
+        plot.title.position = "plot",
+        # remove legend so its zoomed in, then add legend seperately
+        legend.position = "top"
+        #legend.position = c(0.2, 0.9))  
+  ) +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) 
+```
+
+
+
+
+
+
+```{r}
+#| label: fig-lesioncountherdtype
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 8 
+#| fig.cap: !expr paste0("Overall lesion counts within SICTT and ", gif_string, " positive animals at slaughter.")
+#| 
+brock_cols_named <- c("Dairy" = "#FFB400",
+                      "Beef"  = "#3AAFC7",
+                      "Store" = "#C20008",
+                      "Fattener" = "#009B95",
+                      "Mixed"  =  "#25AA82",
+                      "Trader" =  "#4BB970",
+                      "Unknown" = "#70C85D")
+lesion_count_per_year_herd_type <- all_cases_collapsed %>% 
+  filter(best_estimate_gif_skin_lab  %in% c("skin", "gif")) %>% 
+  group_by(year, herd_type_ml_description) %>% 
+  summarise(count_of_lesions = sum(permit_lesions_yes_no, na.rm = TRUE)) %>% 
+  ungroup() %>% 
+  filter(!herd_type_ml_description  %in% c("Trader", "Unknown")) %>% 
+  droplevels() %>% 
+  filter(!is.na(herd_type_ml_description))
+
+
+ggplot(lesion_count_per_year_herd_type, aes(x = factor(year), y = count_of_lesions, fill = herd_type_ml_description)) + #color = best_estimate_gif_skin_lab_string)) +
+  geom_col(position = position_dodge2(preserve = "single", padding = 0.1)) +
+  labs(x = "Year",
+       y = "Lesion count",
+       title = paste0("Lesion count amoung SICTT and ", gif_string, " positive animals"),
+       caption = paste0("Definition: ", 
+                        "Animals that were classified as bTB positive using ", 
+                        "SICTT or IFN-γ and had visible lesions at slaughter")) +
+  theme_jamie +
+  theme_45_x +
+  scale_fill_manual(name = "Herd-type", values = brock_cols_named) +
+  # scale_y_continuous(labels = scales::label_percent(scale = 100)) +
+  # scale_x_type +
+  #scale_x_continuous(breaks = nth_element(c(unique(df[[x_var]])), 1, 2)) +
+  #scale_color_simpsons(name = "Quartile type") +
+  # need this for bold headings
+  theme(title = element_text(size = 18, face = "bold"),
+        legend.text = element_markdown(size = 16),
+        plot.caption.position = "plot",
+        legend.title = element_text(size = 16, face = "bold"),
+        plot.caption = element_text(size = 9, color = "black", face = "italic"),
+        plot.title.position = "plot",
+        # remove legend so its zoomed in, then add legend seperately
+        legend.position = "top"
+        #legend.position = c(0.2, 0.9))  
+  ) +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) 
+```
+
 
 ## Overall lesion prevalence (seperately by SICTT or `r gif_string`)
 

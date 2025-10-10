@@ -1,0 +1,395 @@
+# bTB case numbers, aggregated Poisson/negative binomial models {#sec-aggpoisnbmodel}
+
+------------------------------------------------------------------------
+
+```{r}
+#| label: global-options
+#| include: false
+
+# Center figures (alternative approach in Quarto)
+knitr::opts_chunk$set(fig.align = "center")
+# like this: #| fig-align: center
+```
+
+
+
+```{r}
+#| label: readin-data
+#| include: false
+#setwd(rprojroot::find_rstudio_root_file())
+# read_in_trends_short.R
+#source(file.path("R_files", "read_in_quarto_trends.R"))
+
+source("R_files/read_in_quarto_trends.R")
+source("R_files/case_number_quarto_functions.R")
+
+# read from "poisson_ratios_offset.R"
+library(ggstats)
+library(broom)
+library(interactions)
+library(sjPlot)
+library(ggeffects)
+library(emmeans)
+library(performance)
+
+poisson_df_file <- dir_info("data/edited_output/", type = "file", regexp = "(?i)final_poiss_df.*\\.rds$") %>%   
+  subset(subset = modification_time == max(modification_time), select = path, drop = T)
+final_poiss_df <- readRDS(poisson_df_file)
+brock_cols_named <- c("Dairy" = "#FFB400",
+                      "Beef"  = "#3AAFC7",
+                      "Store" = "#C20008",
+                      "Fattener" = "#009B95",
+                      "Mixed"  =  "#25AA82",
+                      "Trader" =  "#4BB970",
+                      "Unknown" = "#70C85D")
+```
+
+
+
+
+# Introduction
+
+Here, we are exploring an aggregated Poisson model of bTB cases per year. Its a crude but useful approach to explore incidence risk ratios over time.
+
+
+As reminder of cases and population (based on AIM data on 1st May), below are some plots. Naturally, population is problematic for trader herds as the population is fluctuating a lot more than for the other herd types as animals are constantly coming and going. 
+
+
+## Cases over time
+
+```{r}
+#| label: fig-casesovertime
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 10
+#| fig.height: 8 
+#| fig.cap: "Number of bTB cases by year."
+
+# basic plots
+ggplot(final_poiss_df, aes(x = factor(year), y = cases)) +
+  geom_bar(stat = "identity", fill = "steelblue") +
+  facet_wrap(~ herd_type_ml_description) +
+  labs(x = "Year", y = "Total Cases", title = "Cases by year and herd-type") +
+  theme_jamie +
+  theme_45_x
+```
+
+
+
+
+
+
+```{r}
+#| label: fig-casesovertime2
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 10
+#| fig.height: 8 
+#| fig.cap: "Number of bTB cases by year."
+ggplot(final_poiss_df, aes(x = herd_type_ml_description, y = cases, fill = herd_type_ml_description)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  scale_fill_manual(values = brock_cols_named, name = "Brock et al. herd-type") +
+  facet_wrap(~ year) +
+  labs(x = "Year", y = "Total Cases", title = "Cases by year and herd-type") +
+  theme_jamie +
+  theme_45_x
+```
+
+
+
+## Population:
+
+```{r}
+#| label: fig-popovertime
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 10
+#| fig.height: 8 
+#| fig.cap: "Number of animals by year and herd-type."
+ggplot(final_poiss_df, aes(x = herd_type_ml_description, y = pop, fill = herd_type_ml_description)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  scale_fill_manual(values = brock_cols_named, name = "Brock et al. herd-type") +
+  facet_wrap(~ year) +
+  labs(x = "Year", y = "Total population", title = "Population by year and herd-type",
+       caption = "Population based off total number of animals in herd 1st May") +
+  theme_jamie +
+  theme_45_x
+```
+
+
+
+
+# Poisson models
+
+In this first model, I include herd type and year as covariates.
+
+```{r}
+#| label: fig-mod1_plotbare
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 10
+#| fig.height: 8 
+#| fig.cap: "Basic Poisson model with just year and herd-type."
+# Fit Poisson 
+m1 <- glm(cases ~ year + herd_type_ml_description,
+          family = "poisson", data = final_poiss_df)
+#summary(m1)
+#exp(0.2254150  )
+model_var_labels = c(year = "Year",
+                     herd_type_ml_description = "Herd-type")
+#pp <- ggcoef_table_my(m1, exponentiate = TRUE)
+pp <- ggcoef_table_my(m1, model_var_labels, exp = TRUE, 
+                      my_plot_title = "Aggregated negative binomial model for the total count of bTB cases", 
+                      xlabs = "exp(coef)")
+                      #my_caption = "jkjkj")
+# pp <- ggcoef_table(m1, exponentiate = TRUE)
+# pp[[1]] <- pp[[1]] +
+#   labs(x = "exp(coef)")
+pp
+```
+
+
+
+
+Next, to adjust for counts of events over time, we included an offset term based on population to focus on rates (instead of counts).
+
+```{r}
+#| label: fig-mod1_plot
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 10
+#| fig.height: 8 
+#| fig.cap: "Basic Poisson model with just year and herd-type, and offset of population."
+# Fit Poisson 
+m1 <- glm(cases ~ year + herd_type_ml_description + offset(log_pop),
+          family = "poisson", data = final_poiss_df)
+#summary(m1)
+#exp(0.2254150  )
+ggcoef_table_my(m1, model_var_labels, exp = TRUE, 
+                    my_plot_title = "Aggregated Poisson model for the total count of bTB cases", 
+                      xlabs = "Incidence rate ratio (IRR)")
+```
+
+
+Its now really interesting that trader herds are positively significant with a large effect size. It suggests that there are a lot of bTB cases in trader herds considering their population.
+
+## Combined offset
+
+Above we included population as an offset. However, for curiosity, we included a double offset below, not only accounting for population but also the number of tests (at animal level) conducted in the year (based solely on SICTT):
+
+```{r}
+#| label: fig-mod_combined_offset
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 10
+#| fig.height: 8 
+#| fig.cap: "Basic Poisson model with just year and herd-type."
+# Fit Poisson 
+m1 <- glm(cases ~ year + herd_type_ml_description + offset(combined_offset),
+          family = "poisson", data = final_poiss_df)
+#summary(m1)
+#exp(0.2254150  )
+ggcoef_table_my(m1, model_var_labels, exp = TRUE, 
+                    my_plot_title = "Aggregated Poisson model for the total count of bTB cases", 
+                      xlabs = "Incidence rate ratio (IRR)")
+```
+
+
+The results are perhaps strange at first (the massive IRR estimate for trader) but I think they make sense. The large effect on trader herds is saying that when you account for testing effort and the population, we see a strong effect of trader herds. Trader herds have a high IRR in the first model but its attentuated when the number of tests are brought in. In essence, its saying that we we see a lot of bTB cases considering the population size and number of tests conducted on trader herds. The per head, per test value is high. Trader herds will not have as many SICTT tests as other herd types (I would imagine a lot of the time if bTB is detected, they send their animals to slaughter so the amount of tests (at animal level) conducted during follow-up will be lower etc).
+
+
+This is a bit nuance and admittedly strange to have two offsets (but it is permitted in a model). 
+
+For now, we am leaving out this combined offset and from here on, we will just include population as the offset which is a more standard approach.
+
+
+
+## Model without trader herds
+
+Trader herds are problematic here because we are taking a snapshot of their population (which is changing a lot). We still believe that this approach is ok - the small numbers for the count of cases within traders is not really an issue, we see similar numbers in store herds. Repeating this by month would be a really useful exercise and one we should (we dont have a count of animals in every herd for the 1st of each month, just 1st Jan/May/Sept. It would involve a bit of work to estimate these but something we want to do at some stage). We would end up with very few cases in some months though.  
+
+So with that in mind, we have repeated the model without trader herds:
+
+```{r}
+#| label: mod_no_trader
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 10
+#| fig.height: 8 
+# Fit Poisson 
+# interaction model
+final_poiss_df_no_trader <- final_poiss_df %>% 
+  filter(herd_type_ml_description != "Trader")
+m1 <- glm(cases ~ year + herd_type_ml_description + offset(log(pop)),
+          family = "poisson", data = final_poiss_df_no_trader)
+ggcoef_table_my(m1, model_var_labels, exp = TRUE, 
+                    my_plot_title = "Aggregated Poisson model for the total count of bTB cases", 
+                      xlabs = "Incidence rate ratio (IRR)")
+```
+
+
+### Dispersion test
+
+```{r}
+#| label: model_checks
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 10
+#| fig.height: 8
+check_overdispersion(m1)
+```
+
+
+
+Over dispersion present, repeat using negative binomial.
+
+
+
+
+# Negative binomial models
+
+## All herds
+
+```{r}
+#| label: nbmodel
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 10
+#| fig.height: 8
+library(MASS)
+m1 <- glm.nb(cases ~ year + herd_type_ml_description + offset(log(pop)),
+             data = final_poiss_df)
+ggcoef_table_my(m1, model_var_labels, exp = TRUE, 
+                    my_plot_title = "Aggregated negative binomial model for the total count of bTB cases", 
+                      xlabs = "Incidence rate ratio (IRR)")
+```
+
+
+## Trader herds removed
+
+```{r}
+#| label: nbmodelnotrader
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 10
+#| fig.height: 8
+library(MASS)
+m1 <- glm.nb(cases ~ year + herd_type_ml_description + offset(log(pop)),
+             data = final_poiss_df_no_trader)
+ggcoef_table_my(m1, model_var_labels, exp = TRUE, 
+                    my_plot_title = "Aggregated negative binomial model for the total count of bTB cases", 
+                      xlabs = "Incidence rate ratio (IRR)")
+```
+
+
+## Estimated rates (per 1000)
+
+Here, I've estimated marginal means and plots of these.
+
+```{r}
+#| label: estimated_ratesnb
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 10
+#| fig.height: 8
+emm <- emmeans(m1, c("herd_type_ml_description", "year"), type = "response", offset = log(1000))
+emm
+```
+
+
+
+## Dispersion test
+
+```{r}
+#| label: model_checksnb
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 10
+#| fig.height: 8
+check_overdispersion(m1)
+```
+
+## Trader population - ADD IN
+
+```{r}
+#| label: model_checksnb1
+#| include: TRUE
+#| echo: FALSE
+#| eval: FALSE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 10
+#| fig.height: 8
+check_overdispersion(m1)
+
+detach("package:MASS", unload = TRUE)
+
+# does trader herd pop vary that much over Jan/May/Sept
+pop_per_year_trader <- master_tb %>% 
+  fgroup_by(skin_fixed_test_date_year, herd_no) %>% 
+  ffirst(., na.rm = FALSE) %>% 
+  fungroup() %>% 
+  group_by(year = skin_fixed_test_date_year, herd_type_ml_description) %>% 
+  summarise(pop_may = sum(herd_size_may, na.rm = TRUE),
+            pop_jan = sum(herd_size_jan, na.rm = TRUE),
+            pop_sep = sum(herd_size_sep, na.rm = TRUE)) %>% 
+  ungroup() %>% 
+  filter(!is.na(herd_type_ml_description)) %>% 
+  filter(herd_type_ml_description == "Trader") 
+
+
+pop_per_year_trader_long <- pop_per_year_trader %>% 
+  select(-herd_type_ml_description) %>% 
+  filter(year != 2024) %>% 
+  pivot_longer(!year, names_to = "month", values_to = "count")
+#pop_per_year_trader_long
+
+ggplot(pop_per_year_trader_long, aes(x = year, y = count, colour = month)) + 
+  geom_line(linewidth = 2) +
+  scale_color_tableau() +
+  theme_jamie +
+  labs(y = "Population", title = "Trader population")
+```
+
+# Notes/ideas
+
+- We think the trader results are really interesting and would be of interest for policymakers but we do have to keep in mind the issues with this approach. Worth doing a separate analysis on trader herds specifically, even just highlighting the fact that their prevalence/numbers are going up. The fact that they are going up isnt all that surprising but coupled with the small numbers, its interesting that they are getting "caught" at all. This is primarily driven by slaughter surveillance. So in essence there are probably two cohorts of herds within trader herds. Those that just trade (and so dont send animals to slaughter) and those that do a bit of everything (looking for a quick sale etc).
+- in the double offset model, i just looked at count of SICTTs, could expand on that to include count of animals tested at slaughter plant.
+- Update from AIM data: From the 2023 movement data, approximately a third of trader sales were to slaughterhouses (32.7 %), 39 % exports, 23% farm to farm, and 5 % via marts.
+

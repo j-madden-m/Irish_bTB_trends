@@ -429,6 +429,3 @@ $~$ $~$
 Robinson PA. A history of bovine tuberculosis eradication policy in Northern Ireland. Epidemiol Infect. 2015 Nov;143(15):3182-95. doi: 10.1017/S0950268815000291. Epub 2015 Mar 17. PMID: 25778830; PMCID: PMC9150964. <https://pubmed.ncbi.nlm.nih.gov/25778830/>
 
 
-### EU Audits (Sante F reports)
-
-- Food Audits and Analysis | Food Safety: <https://ec.europa.eu/food/audits-analysis/audit-report>

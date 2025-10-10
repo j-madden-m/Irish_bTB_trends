@@ -5,15 +5,25 @@
 ::: {.callout-warning}
 ## Note {.unnumbered}
 
-**This is a live, working document - it will be updated periodically as we obtain more data. The most current date in the data may vary between output type as we do not receive all the relevant data at once e.g., we do not receive movement data from the AIM system for last year until the later half of the current year and as a result there may be a delay in producing some of the output such as estimating the *M.bovis* lesion rate within healthly slaughtered animals (which relies on knowing the number of animals sent to slaughter from AIM). This also means that we don't have last years herd-type or herd-size AIM related metrics. In the case of herd-type which is pivotal to much of the analysis, we carry the latest estimate forward until the new data comes in.**
+**This is a live, working document - it will be updated periodically as we obtain more data. The most current date in the data may vary between output type as we do not receive all the relevant data at once e.g., we do not receive movement data from the AIM system for last year until the later half of the current year and as a result there may be a delay in producing some of the output such as estimating the *M.bovis* lesion rate within healthy slaughtered animals (which relies on knowing the number of animals sent to slaughter from AIM). This also means that we don't have last years herd-type or herd-size AIM related metrics. In the case of herd-type which is pivotal to much of the analysis, we carry the latest estimate forward until the new data comes in.**
 :::
 
+:::{.callout-important}
+# Official DAFM figures
+
+**Due to the way CVERA obtain the data, there may be very minor discrepancies between our data and the ones reported by DAFM. Some of the figures may be available at the following links:**
+
+- DAFM: Ireland’s Bovine Tuberculosis Programme <https://www.bovinetb.ie>
+- DAFM: Latest national bTB statistics <https://www.gov.ie/en/department-of-agriculture-food-and-the-marine/publications/national-bovine-tb-statistics/>
+- DAFM: Weekly beef kill figures <https://www.gov.ie/en/department-of-agriculture-food-and-the-marine/collections/beef-kill-figures-weekly-reports/>
+- Additional, some data can also be downloaded from the CSO: <https://data.cso.ie/>
+:::
 
 ---
 
-This is an accompanying website to supplement a paper submitted to journal XXX. The purpose of this website is to have a near-real-time version of the output from the paper using more recent data as we obtain it. It also acts as a location to include excess output that didn't make it into the main paper but which we think is still useful for readers. Additional analysis will be added over time.
+This is an accompanying website to supplement a paper submitted for publication. The purpose of this website is to have a near-real-time version of the output from the paper using more recent data as we obtain it. It also acts as a location to include excess output that didn't make it into the main paper but which we think is still useful for readers. Additional analysis will be added over time.
 
-INCLUDE paper reference here
+
 
 The paper highlights various trends from different components of the bovine tuberculosis (bTB) eradication programme in Ireland (from 2008 onwards). This includes cattle population demographics, herd enterprise types, bTB case numbers, herd-level bTB breakdowns, lesion detection at slaughter inspections both in bTB positive animals and routinely slaughtered animals. The data used has been obtained from the Irish national bTB eradication programme (Animal Health Computer System (AHCS) (Department of Agriculture, Food and the Marine (DAFM)), Animal Identification and Movement System (AIM), Laboratory Information Management System (LIMS)), which included results from herd-level skin tests, animal-level laboratory tests (from animals with suspect bTB lesions) and the animal-level IFN-γ blood tests. A bTB eradication timeline is also included which highlights some of the major trials and policy and diagnostic changes introduced during the programme. 
 
@@ -21,9 +31,10 @@ The data has been processed by the Centre for Veterinary Epidemiology and Risk A
 
 ## What's included? {-}
 
-The wesbite is divided into these parts:
+The website is divided into these parts:
 
-- [**Interactive timeline**](#sec-timeline): Highlights major trials, diagnostic and policy changes during the Irish bTB eradication (2005 - 2023).
+- [**Interactive timeline**](#sec-timeline): Highlights major trials, diagnostic and policy changes during the Irish bTB eradication (2005 - current).
+- [**Brief summary overview**](#sec-summary): The website contains a lot of output and so for the purposes of a quick summary, we have extracted a couple of plots from the whole website that summarise some of the main findings - these are some of the plots included in the journal submission.
 - [**Demographics**](#sec-demographics): Changes to demographics over time (herd-types, bovine numbers etc.).
 - [**bTB case numbers and herd-prevalence**](#sec-casenumbers): Examines bTB case numbers over time along with herd prevalence by different herd-types. 
 - **Lesion prevalence**: This includes both visible lesions in animals already classified as a [bTB case entering the factory](#sec-btblesions) and *M.bovis* confirmed [lesions found in animals at routine slaughter](#sec-healthlylesion) (healthy animals)
@@ -35,13 +46,28 @@ The wesbite is divided into these parts:
 
 ## What's not included (yet)? {-}
 
-The focus is primarily at a national level although some county level output is included. We acknowledge there is a strong spatio-temporal distribution of bTB in Ireland but exploring spatial trends is not the focus of this particular work. For a recent spatial analysis of bTB trends in Ireland, see [Madden et al.](https://www.sciencedirect.com/science/article/pii/S187758452100040X){target="_blank"} and for a more current spatial exploration of bTB, see [here](https://www.arcgis.com/apps/dashboards/9306f7eb60b1401a8b18f76f61f20aea){target="_blank"}. There is also no analysis included on age-specific bTB trends - that is a separate piece of work that is ongoing (but may be added here over time). 
+The focus is primarily at a national level although some county level output is included. We acknowledge there is a strong spatio-temporal distribution of bTB in Ireland but exploring spatial trends is not the focus of this particular work. In time, trends at a DVO level will be added. For a recent spatial analysis of bTB trends in Ireland, see [Madden et al.](https://www.sciencedirect.com/science/article/pii/S187758452100040X){target="_blank"} and for a more current spatial exploration of bTB, see [here](https://www.arcgis.com/apps/dashboards/9306f7eb60b1401a8b18f76f61f20aea){target="_blank"}. There is also no analysis included on age-specific bTB trends - that is a separate piece of work that is ongoing (but may be added here over time). 
 
 
 
 ---
 
+## Citing {-}
 
+Once the papers relating to this work have been published, their references will be added here.
+
+If you would like to specifically cite the website, you can use the following: 
+
+```{}
+Madden, J.M. (2025) Temporal trends in bovine herds and bovine tuberculosis breakdowns in Ireland (2008-current), https://j-madden-m.github.io/Irish_bTB_trends/, accessed on YYYY/MM/DD.
+```
+
+
+---
+
+---
+
+The website image represents the count of bTB cases over time.
 
 
 

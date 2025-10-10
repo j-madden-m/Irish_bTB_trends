@@ -20,6 +20,7 @@ knitr::opts_chunk$set(fig.align = "center")
 #source(file.path("R_files", "read_in_quarto_trends.R"))
 
 source("R_files/read_in_quarto_trends.R")
+source("R_files/apt_functions.R")
 bd_df_file <- dir_info("data", type = "file", regexp = "(?i)bd_df.*\\.rds$") %>% 
   subset(subset = modification_time == max(modification_time), select = path, drop = T)
 #bd_df <- readRDS("data/bd_df_14_Nov_2024.rds")
@@ -321,7 +322,47 @@ all_test_types_year_bar_plot
 ```
 
 
+And table format:
 
+```{r}
+#| label: tbl-tableherdlevelsictt
+#| tbl-cap: "Proportion of herd-level SICTTs by all herd-level test-types (presented as %)"
+#| include: TRUE
+#| echo: FALSE
+#| eval: true
+#| warning: FALSE
+#| message: FALSE
+all_test_types_df_year_tab <- master_tb %>% 
+  filter(test_type_animal_or_herd == "Herd") %>% 
+  # 5D; Factory return (Animal/herd) obsolete
+  filter(test_type != "5D") %>% 
+  split(list(.$skin_fixed_test_date_year)) %>%
+  map(~tabyl(.x, test_type_description_number)) %>% 
+  map(., ~mutate(.x, percent = round(percent, 3)*100) %>% select(-n)) %>% 
+  imap(~set_names(.x, ifelse(names(.x) != "test_type_description_number", paste(.y, names(.x), sep = "_"), names(.x)))) %>%
+  reduce(full_join, by = "test_type_description_number")
+
+header_names <- setNames(c("Test type", min(master_tb$skin_fixed_test_date_year):max(master_tb$skin_fixed_test_date_year)),
+                         names(all_test_types_df_year_tab))
+ft <- flextable(all_test_types_df_year_tab) %>% 
+  align_text_col(align = "center") %>% 
+  align(i = NULL, j = 1, align = "left", part = "body") %>% 
+  bold(part = "header") %>% 
+  flextable::set_header_labels(values = header_names) %>% # bold header (split up due to weird error)
+  bold(j = c(1)) %>% 
+  set_caption(paste0("Proportion of herd-level SICTTs by all herd-level test-types (presented as %)")) %>% 
+  #bold(i = 1) %>%  # bold header
+  # add_footer_row(values = glue::glue("AHCS: Animal Health Computer System;\nNo. of herds: count of unique herd numbers that had at least one SICTT or IFN-γ \nControlled finishing units (CFUs): only have data up to 2023 \nAHCS herd type: herd type that is assigned to the herd administratively on AHCS \nPopulation figures are based on the number of animals which were in each herd type (Brock et al.) on 1st of January, May, September of each year using the Animal Identification and Movement System (AIM) \nProportion values represent the proportion of herds within each herd classifications within a given year (i.e., vertical) whereas in the case of CFUs, they represent the proportion in each year (i.e., horizontal)"),
+  #                colwidths = length(final_table_herd_demographics)) %>% 
+  #width of column if too narrow (only visable in word, not )
+  width(width = 2) %>% 
+  fontsize(part = "footer", size = 10) %>% 
+  #title autonum = autonum numbering in word if needed
+  autofit() %>% 
+  set_table_properties(layout = "autofit")
+
+ft
+```
 
 
 ## Timing of round test-type
@@ -472,9 +513,69 @@ round_tests_herd_type_month_plot_facet
 
 
 
+## APT (Animals Reactor per Thousand Animal Tests)
+
+SICTT positive animals per thousand tested
+
+APT is used by DAFM as an administrative metric (which just looks at SICTT)
+
+```{r}
+#| label: fig-aptskin
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 11
+#| fig.cap: "APT"
+# can we replicate Mikes APT plots
+# this will just look at skin reactors so what I need is the number of animals tested
+tmp <- master_tb %>% 
+  select(herd_no, herd_type_ml_description, total_animals, total_reactor_skin, skin_fixed_test_date, skin_fixed_test_date_year) %>% 
+  mutate(year_month = floor_date(skin_fixed_test_date , "month")) %>% 
+  #mutate(skin_month = lubridate::month(skin_fixed_test_date, label = TRUE)) %>% 
+  group_by(year_month) %>% 
+  summarise(total_reactor_skin = sum(total_reactor_skin), total_animals_tested = sum(total_animals)) %>% 
+  ungroup() %>% 
+  mutate(apt_sictt_overall = (total_reactor_skin/total_animals_tested)*1000,
+         year = year(year_month))
+
+min_max_dates_df <- min_max_geom_react_with_var(tmp, apt_sictt_overall)
+min_year <- min(master_tb$skin_fixed_test_date_year)
+max_year <- min(master_tb$skin_fixed_test_date_year)
+apt_plot_function_all(tmp, "year_month", "apt_sictt_overall")
+```
 
 
 
+### APT by herd
+
+```{r}
+#| label: fig-aptskinherd
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 11
+#| fig.cap: "APT by herd-type"
+tmp <- master_tb %>% 
+  select(herd_no, herd_type_ml_description, total_animals, total_reactor_skin, skin_fixed_test_date, skin_fixed_test_date_year) %>% 
+  mutate(year_month = floor_date(skin_fixed_test_date , "month")) %>% 
+  #mutate(skin_month = lubridate::month(skin_fixed_test_date, label = TRUE)) %>% 
+  group_by(year_month, herd_type_ml_description) %>% 
+  summarise(total_reactor_skin = sum(total_reactor_skin), total_animals_tested = sum(total_animals)) %>% 
+  ungroup() %>% 
+  mutate(apt_sictt_overall = (total_reactor_skin/total_animals_tested)*1000,
+         year = year(year_month)) %>% 
+  filter(!herd_type_ml_description  %in% c("Trader", "Unknown", NA, "Store"))
+
+min_max_dates_df <- min_max_geom_react_with_var(tmp, apt_sictt_overall)
+#apt_plot_function(tmp, "year_month", "apt_sictt_overall")
+apt_plot_function(tmp, "year_month", "apt_sictt_overall", facet_var = herd_type_ml_description)
+```
 
 
 

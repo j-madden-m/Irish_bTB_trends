@@ -231,7 +231,7 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
 \hypersetup{
-  pdftitle={DRAFT Temporal trends in bovine herds and bovine tuberculosis breakdowns in Ireland (2008-2024)},
+  pdftitle={Temporal trends in bovine herds and bovine tuberculosis breakdowns in Ireland (2008-current)},
   pdfauthor={Jamie Madden (CVERA)},
   colorlinks=true,
   linkcolor={blue},
@@ -241,10 +241,10 @@
   pdfcreator={LaTeX via pandoc}}
 
 
-\title{DRAFT Temporal trends in bovine herds and bovine tuberculosis
-breakdowns in Ireland (2008-2024)}
+\title{Temporal trends in bovine herds and bovine tuberculosis
+breakdowns in Ireland (2008-current)}
 \author{Jamie Madden (CVERA)}
-\date{2025-05-18}
+\date{2025-10-09}
 \begin{document}
 \maketitle
 
@@ -264,7 +264,7 @@ breakdowns in Ireland (2008-2024)}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-warning-color-frame, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Note}, left=2mm, coltitle=black, rightrule=.15mm, opacityback=0, leftrule=.75mm, breakable, toprule=.15mm, colback=white, bottomrule=.15mm, toptitle=1mm, opacitybacktitle=0.6, arc=.35mm, titlerule=0mm, bottomtitle=1mm, colbacktitle=quarto-callout-warning-color!10!white]
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-warning-color!10!white, opacitybacktitle=0.6, colback=white, breakable, coltitle=black, colframe=quarto-callout-warning-color-frame, arc=.35mm, leftrule=.75mm, rightrule=.15mm, toprule=.15mm, bottomtitle=1mm, toptitle=1mm, opacityback=0, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Note}, bottomrule=.15mm, left=2mm, titlerule=0mm]
 
 \textbf{This is a live, working document - it will be updated
 periodically as we obtain more data. The most current date in the data
@@ -272,7 +272,7 @@ may vary between output type as we do not receive all the relevant data
 at once e.g., we do not receive movement data from the AIM system for
 last year until the later half of the current year and as a result there
 may be a delay in producing some of the output such as estimating the
-\emph{M.bovis} lesion rate within healthly slaughtered animals (which
+\emph{M.bovis} lesion rate within healthy slaughtered animals (which
 relies on knowing the number of animals sent to slaughter from AIM).
 This also means that we don't have last years herd-type or herd-size AIM
 related metrics. In the case of herd-type which is pivotal to much of
@@ -281,16 +281,38 @@ comes in.}
 
 \end{tcolorbox}
 
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-important-color!10!white, opacitybacktitle=0.6, colback=white, breakable, coltitle=black, colframe=quarto-callout-important-color-frame, arc=.35mm, leftrule=.75mm, rightrule=.15mm, toprule=.15mm, bottomtitle=1mm, toptitle=1mm, opacityback=0, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Official DAFM figures}, bottomrule=.15mm, left=2mm, titlerule=0mm]
+
+\textbf{Due to the way CVERA obtain the data, there may be very minor
+discrepancies between our data and the ones reported by DAFM. Some of
+the figures may be available at the following links:}
+
+\begin{itemize}
+\tightlist
+\item
+  DAFM: Ireland's Bovine Tuberculosis Programme
+  \url{https://www.bovinetb.ie}
+\item
+  DAFM: Latest national bTB statistics
+  \url{https://www.gov.ie/en/department-of-agriculture-food-and-the-marine/publications/national-bovine-tb-statistics/}
+\item
+  DAFM: Weekly beef kill figures
+  \url{https://www.gov.ie/en/department-of-agriculture-food-and-the-marine/collections/beef-kill-figures-weekly-reports/}
+\item
+  Additional, some data can also be downloaded from the CSO:
+  \url{https://data.cso.ie/}
+\end{itemize}
+
+\end{tcolorbox}
+
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-This is an accompanying website to supplement a paper submitted to
-journal XXX. The purpose of this website is to have a near-real-time
+This is an accompanying website to supplement a paper submitted for
+publication. The purpose of this website is to have a near-real-time
 version of the output from the paper using more recent data as we obtain
 it. It also acts as a location to include excess output that didn't make
 it into the main paper but which we think is still useful for readers.
 Additional analysis will be added over time.
-
-INCLUDE paper reference here
 
 The paper highlights various trends from different components of the
 bovine tuberculosis (bTB) eradication programme in Ireland (from 2008
@@ -319,14 +341,20 @@ programme visit
 
 \markright{What's included?}
 
-The wesbite is divided into these parts:
+The website is divided into these parts:
 
 \begin{itemize}
 \tightlist
 \item
   \hyperref[sec-timeline]{\textbf{Interactive timeline}}: Highlights
   major trials, diagnostic and policy changes during the Irish bTB
-  eradication (2005 - 2023).
+  eradication (2005 - current).
+\item
+  \hyperref[sec-summary]{\textbf{Brief summary overview}}: The website
+  contains a lot of output and so for the purposes of a quick summary,
+  we have extracted a couple of plots from the whole website that
+  summarise some of the main findings - these are some of the plots
+  included in the journal submission.
 \item
   \hyperref[sec-demographics]{\textbf{Demographics}}: Changes to
   demographics over time (herd-types, bovine numbers etc.).
@@ -368,8 +396,8 @@ The wesbite is divided into these parts:
 The focus is primarily at a national level although some county level
 output is included. We acknowledge there is a strong spatio-temporal
 distribution of bTB in Ireland but exploring spatial trends is not the
-focus of this particular work. For a recent spatial analysis of bTB
-trends in Ireland, see
+focus of this particular work. In time, trends at a DVO level will be
+added. For a recent spatial analysis of bTB trends in Ireland, see
 \href{https://www.sciencedirect.com/science/article/pii/S187758452100040X}{Madden
 et al.} and for a more current spatial exploration of bTB, see
 \href{https://www.arcgis.com/apps/dashboards/9306f7eb60b1401a8b18f76f61f20aea}{here}.
@@ -378,6 +406,23 @@ a separate piece of work that is ongoing (but may be added here over
 time).
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section*{Citing}\label{citing}
+\addcontentsline{toc}{section}{Citing}
+
+\markright{Citing}
+
+Once the papers relating to this work have been published, their
+references will be added here.
+
+If you would like to cite the website specifically, you can use the
+following:
+
+\begin{verbatim}
+Madden, J.M. (2025) Temporal trends in bovine herds and bovine tuberculosis breakdowns in Ireland (2008-2024), https://j-madden-m.github.io/Irish_bTB_trends/, accessed on YYYY/MM/DD.
+\end{verbatim}
+
+The website image represents the count of bTB cases over time.
 
 \part{Timeline}
 
@@ -576,15 +621,101 @@ Northern Ireland. Epidemiol Infect. 2015 Nov;143(15):3182-95. doi:
 10.1017/S0950268815000291. Epub 2015 Mar 17. PMID: 25778830; PMCID:
 PMC9150964. \url{https://pubmed.ncbi.nlm.nih.gov/25778830/}
 
-\subsection{EU Audits (Sante F
-reports)}\label{eu-audits-sante-f-reports}
+\part{Brief summary overview}
 
-\begin{itemize}
-\tightlist
-\item
-  Food Audits and Analysis \textbar{} Food Safety:
-  \url{https://ec.europa.eu/food/audits-analysis/audit-report}
-\end{itemize}
+\chapter{Summary of main findings}\label{sec-summary}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\(~\) \(~\)
+
+The website contains a lot of output and so for the purposes of a quick
+summary, we have extracted a couple of plots from the whole website that
+summarise some of the main findings - these are some of the plots
+included in the journal submission.
+
+\chapter{Demographics overview}\label{demographics-overview}
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{summary_page_files/figure-pdf/fig-demographics-1.pdf}}
+
+}
+
+\caption{\label{fig-demographics}Three main demographic characteristics
+from cattle in Ireland: (a) proportion of herd-types, (b) proportion of
+the bovine population by herd-types and (c) the median herd size by
+herd-type, for each year 2008-2024.}
+
+\end{figure}%
+
+\chapter{bTB burden overview}\label{btb-burden-overview}
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{summary_page_files/figure-pdf/fig-cases-1.pdf}}
+
+}
+
+\caption{\label{fig-cases}Three plots illustrating the burden of bTB
+over time and the variation between different herd-types: (a) total bTB
+cases by diagnostic method, (b) proportion of all bTB cases by herd-type
+and (c) herd-level prevalence of herd types by year.}
+
+\end{figure}%
+
+\chapter{bTB case distribution in herd-level
+BDs}\label{btb-case-distribution-in-herd-level-bds}
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{summary_page_files/figure-pdf/fig-casedistribution-1.pdf}}
+
+}
+
+\caption{\label{fig-casedistribution}The distribution of the total
+number of bTB cases (via all diagnostic methods) in herd-level BDs in
+(a) continous form and (b) by categorizing them by different groupings
+of cases (1, 2-3, 4-5, 5+).}
+
+\end{figure}%
+
+\chapter{Lesion overview}\label{lesion-overview}
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{summary_page_files/figure-pdf/fig-lesion-1.pdf}}
+
+}
+
+\caption{\label{fig-lesion}Lesion prevalence among bTB cases (classified
+by SICTT or IFN-γ) and healthy animals sent to slaughter.}
+
+\end{figure}%
+
+\chapter{Aggregated case count model}\label{aggregated-case-count-model}
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{summary_page_files/figure-pdf/fig-aggcases-1.pdf}}
+
+}
+
+\caption{\label{fig-aggcases}Aggregated negative binomial regression
+model results exploring the association between year and herd-type on
+total count of bTB cases.}
+
+\end{figure}%
 
 \part{Demographics}
 
@@ -633,7 +764,9 @@ We have access to three herd type categorisations:
   data. The original categorisation included \texttt{Seasonal}
   herd-types but these are now no longer included. They have moved into
   \texttt{Traders} or \texttt{Fatteners} respectively, based on their
-  profiles.
+  profiles. The algorithm used in the original study has since been
+  slightly modified (see updated decision tree below). The Brock
+  classifications for this study used this revised algorithm.
 
   The main Brock et al.~herd types are:
 
@@ -699,6 +832,21 @@ We have access to three herd type categorisations:
     Unknown
   \end{itemize}
 \end{itemize}
+
+The following is the revised decision tree for Brock et al.:
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{demographics_files/figure-pdf/fig-brockdecisiontree-1.pdf}}
+
+}
+
+\caption{\label{fig-brockdecisiontree}Revised decision tree/algorithm of
+Brock et al.~used for classifying herds}
+
+\end{figure}%
 
 The following is a brief summary of the main Brock et al.~herd-types:
 
@@ -2058,9 +2206,9 @@ positive animals at slaughter}\label{sec-btblesions}
 
 \section{Introduction}\label{introduction}
 
-This document presents the prevalence of visible lesions at slaughter
-within bTB positive animals separately by those classified by the SICTT
-and IFN-γ. There was no facility within AHCS prior to May 2019 to record
+This page presents the prevalence of visible lesions at slaughter within
+bTB positive animals separately by those classified by the SICTT and
+IFN-γ. There was no facility within AHCS prior to May 2019 to record
 IFN-γ positive animals. Before this, if an animal had a positive IFN-γ
 result, their SICTT results were reinterpreted as positive. As a result,
 we have had to use old raw IFN-γ data to try and differentiate between
@@ -2069,8 +2217,8 @@ missing tag numbers etc. and so we cannot be certain that we have
 assigned all cases to either IFN-γ or SICTT correctly. However, we
 believe, the vast majority of the data is correct.
 
-This is the difference between overall lesion prevalence document and
-this one (i.e.~we make an attempt to seperate SICTT and IFN-γ positive
+This is the difference between overall lesion prevalence page and this
+one (i.e.~we make an attempt to seperate SICTT and IFN-γ positive
 trends).
 
 \section{Definitions}\label{definitions}
@@ -2115,6 +2263,38 @@ did not exist on AHCS prior to May 2019.
 \(~\) \(~\)
 
 \newpage
+
+\section{Lesion counts}\label{lesion-counts}
+
+Before looking at lesion prevalence, the count of lesions by detection
+method is plotted below as a method to look at absolute numbers which
+can be telling a different story.
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{reactor_lesion_skin_gif_seperately_files/figure-pdf/fig-lesioncount-1.pdf}}
+
+}
+
+\caption{\label{fig-lesioncount}Overall lesion counts within SICTT and
+IFN-γ positive animals at slaughter.}
+
+\end{figure}%
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{reactor_lesion_skin_gif_seperately_files/figure-pdf/fig-lesioncountherdtype-1.pdf}}
+
+}
+
+\caption{\label{fig-lesioncountherdtype}Overall lesion counts within
+SICTT and IFN-γ positive animals at slaughter.}
+
+\end{figure}%
 
 \section{Overall lesion prevalence (seperately by SICTT or
 IFN-γ)}\label{overall-lesion-prevalence-seperately-by-sictt-or-ifn-ux3b3}
@@ -2580,19 +2760,12 @@ slaughter}{Prevalence of confirmed M.bovis lesions found in animals at routine s
 
 \section{Introduction}\label{introduction-1}
 
-This document presents the prevalence of animals with confirmed
+This page presents the prevalence of animals with confirmed
 \emph{m.bovis} lesions found at routine slaughter (also known as
 `factory lesion cases').
 
-\textbf{NOTE: This is a draft, live document - it will be updated
-periodically as we obtain more data. The most current date may vary
-between output as we do not receive all the relevant data at once e.g.,
-we obtain data for the previous year from the AIM system in the later
-half of the current year and as a result we won't be able to estimate
-the lesion rate within healthly slaughtered animals. This also means
-that we don't have last years herd-type or herd-size AIM related
-metrics. In the case of herd-type, we carry the latest estimate forward
-until the new data comes in.}
+\textbf{NOTE: This section relies heavily on data from AIM on there is
+usually quite a lag on when this is received.}
 
 \section{Definitions}\label{definitions-1}
 
@@ -3388,20 +3561,22 @@ is done? - differences between factories? - A very small minority might
 specialise in kosher meats and so may inspect animals differently but
 unlike to have an effect nationally
 
-We might expect dairy might have higher lesion rates than beef herds
-(intensification hypothesis of dairy herds) - why dont we see this? -
-possible age effects in dairy? Might need to stratify by age/sex
+From DAFM document
+\url{https://teagasc.ie/wp-content/uploads/2025/05/How-is-bovine-TB-detected-at-slaughter.pdf}:
 
-Replicate above for bTB cases
+What are the average lesion detection rates?
 
-From DAFM:
-
-What are the average lesion detection rates? - 30\% of skin test
-reactors will have visible lesions at post-mortem inspection. - 15\% of
-Gamma Interferon reactors will have visible lesions at post-mortem
-inspection. (This figure relates to cattle, in herds with high risk
-breakdowns, which are in the same groups as cattle that were skin test
-reactors).
+\begin{itemize}
+\tightlist
+\item
+  30\% of skin test reactors will have visible lesions at post-mortem
+  inspection.
+\item
+  15\% of Gamma Interferon reactors will have visible lesions at
+  post-mortem inspection. (This figure relates to cattle, in herds with
+  high risk breakdowns, which are in the same groups as cattle that were
+  skin test reactors).
+\end{itemize}
 
 \textbf{Biology of lesion trends}
 
@@ -3454,10 +3629,10 @@ Policy:
 \begin{itemize}
 \tightlist
 \item
-  I wonder would it be worth considering additionally testing for herds
-  with a lot of chest detections (round of IFN-γ testing)? Or even herds
-  with animals with multiple lesions (more advanced infection)? I am
-  checking the data on this
+  Is it worth considering additionally testing for herds with a lot of
+  chest detections (round of IFN-γ testing)? Or even herds with animals
+  with multiple lesions (more advanced infection)? Investigate this
+  further.
 \end{itemize}
 
 \textbf{Questions/ideas to explore}
@@ -3476,8 +3651,8 @@ Policy:
 \item
   Does it suggests that there a cohort of riskier herds, that send their
   animals to slaughter later in the year (and perhaps, do not send
-  animals earlier in the year and so we miss their infections)- I need
-  to check this.
+  animals earlier in the year and so we miss their infections)-
+  Investigate this further.
 \item
   Change in sensitivity by time of year? Or is it related to previous
   point, that riskier herds are just not sending their animals at that
@@ -3491,10 +3666,9 @@ Policy:
   multiple lesions/chest, may have more advanced disease and increased
   likelihood of having more/missed infection. I need to check this.
 \item
-  It would be really interesting to get the age profile of these -- I
-  will do these at some stage for my age work anyway but it will just
-  take a bit of work. What we are seeing could be a certain aged animal
-  that tends to get sent to slaughter later in the year.
+  It would be really interesting to get the age profile of these -- to
+  do. What we are seeing could be a certain aged animal that tends to
+  get sent to slaughter later in the year.
 \item
   Is there a reporting bias? Does inspection start at head?
 \item
@@ -3771,13 +3945,13 @@ Assess 30, 989--1003 (2016). https://doi.org/10.1007/s00477-015-1140-3
 
 \section{Breakdown (BD) definition}\label{breakdown-bd-definition}
 
-For this study, we defined the start date of a BD in a herd as the date
-when an animal was disclosed as a bTB case, as determined by the SICTT,
-IFN-γ or by the detection of visible lesions at routine slaughter which
-are then laboratory confirmed with \emph{M. bovis} infection (also known
-as `factory lesion cases'). In the situation when a BD started due to
-the detection of a visible lesion, we chose the start date as the date
-when the sample was sent to the lab and not the date in which it was
+Here, we defined the start date of a BD in a herd as the date when an
+animal was disclosed as a bTB case, as determined by the SICTT, IFN-γ or
+by the detection of visible lesions at routine slaughter which are then
+laboratory confirmed with \emph{M. bovis} infection (also known as
+`factory lesion cases'). In the situation when a BD started due to the
+detection of a visible lesion, we chose the start date as the date when
+the sample was sent to the lab and not the date in which it was
 identified as culture positive which could be a number of weeks later.
 Depending on the circumstances, the herds \texttt{trading\_status} on
 AHCS will generally change from \texttt{free} to
@@ -4285,6 +4459,40 @@ disclosed during the BD (top 4 most common herd-types are selected).}
 
 \end{figure}%
 
+\section{Count of no. BDs by detection
+method}\label{count-of-no.-bds-by-detection-method}
+
+\subsection{SICTT initiated BDs}\label{sictt-initiated-bds-1}
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{breakdown_page_files/figure-pdf/fig-countofBDsictt-1.pdf}}
+
+}
+
+\caption{\label{fig-countofBDsictt}The count of the number of BDs
+initiated by SICTT, by herd-type.}
+
+\end{figure}%
+
+\subsection{Slaughter-house initiated
+BDs}\label{slaughter-house-initiated-bds-1}
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{breakdown_page_files/figure-pdf/fig-countofBDslaughter-1.pdf}}
+
+}
+
+\caption{\label{fig-countofBDslaughter}The count of the number of BDs
+initiated by a slaughter-house case, by herd-type.}
+
+\end{figure}%
+
 \section{Tables}\label{tables-1}
 
 \subsection{Overall BD statistics}\label{overall-bd-statistics}
@@ -4643,6 +4851,9 @@ forecasting}\label{sec-timeseries}
 
 \(~\) \(~\)
 
+This section is ongoing and will form the basis of a separate
+time-series/forecasting paper.
+
 \section{bTB case count}\label{btb-case-count}
 
 \subsection{Seasonality}\label{seasonality}
@@ -4704,6 +4915,317 @@ components: the underlying trend, seasonality and the remainder (noise).
 bTB cases for 2025.}
 
 \end{figure}%
+
+\part{Aggregated case count model}
+
+\chapter{bTB case numbers, aggregated Poisson/negative binomial
+models}\label{sec-aggpoisnbmodel}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\chapter{Introduction}\label{introduction-2}
+
+Here, we are exploring an aggregated Poisson model of bTB cases per
+year. Its a crude but useful approach to explore incidence risk ratios
+over time.
+
+As reminder of cases and population (based on AIM data on 1st May),
+below are some plots. Naturally, population is problematic for trader
+herds as the population is fluctuating a lot more than for the other
+herd types as animals are constantly coming and going.
+
+\section{Cases over time}\label{cases-over-time-1}
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{agg_cases_poisson_NB_model_files/figure-pdf/fig-casesovertime-1.pdf}}
+
+}
+
+\caption{\label{fig-casesovertime}Number of bTB cases by year.}
+
+\end{figure}%
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{agg_cases_poisson_NB_model_files/figure-pdf/fig-casesovertime2-1.pdf}}
+
+}
+
+\caption{\label{fig-casesovertime2}Number of bTB cases by year.}
+
+\end{figure}%
+
+\section{Population:}\label{population}
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{agg_cases_poisson_NB_model_files/figure-pdf/fig-popovertime-1.pdf}}
+
+}
+
+\caption{\label{fig-popovertime}Number of animals by year and
+herd-type.}
+
+\end{figure}%
+
+\chapter{Poisson models}\label{poisson-models}
+
+In this first model, I include herd type and year as covariates.
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{agg_cases_poisson_NB_model_files/figure-pdf/fig-mod1_plotbare-1.pdf}}
+
+}
+
+\caption{\label{fig-mod1_plotbare}Basic Poisson model with just year and
+herd-type.}
+
+\end{figure}%
+
+Next, to adjust for counts of events over time, we included an offset
+term based on population to focus on rates (instead of counts).
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{agg_cases_poisson_NB_model_files/figure-pdf/fig-mod1_plot-1.pdf}}
+
+}
+
+\caption{\label{fig-mod1_plot}Basic Poisson model with just year and
+herd-type, and offset of population.}
+
+\end{figure}%
+
+Its now really interesting that trader herds are positively significant
+with a large effect size. It suggests that there are a lot of bTB cases
+in trader herds considering their population.
+
+\section{Combined offset}\label{combined-offset}
+
+Above we included population as an offset. However, for curiosity, we
+included a double offset below, not only accounting for population but
+also the number of tests (at animal level) conducted in the year (based
+solely on SICTT):
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{agg_cases_poisson_NB_model_files/figure-pdf/fig-mod_combined_offset-1.pdf}}
+
+}
+
+\caption{\label{fig-mod_combined_offset}Basic Poisson model with just
+year and herd-type.}
+
+\end{figure}%
+
+The results are perhaps strange at first (the massive IRR estimate for
+trader) but I think they make sense. The large effect on trader herds is
+saying that when you account for testing effort and the population, we
+see a strong effect of trader herds. Trader herds have a high IRR in the
+first model but its attentuated when the number of tests are brought in.
+In essence, its saying that we we see a lot of bTB cases considering the
+population size and number of tests conducted on trader herds. The per
+head, per test value is high. Trader herds will not have as many SICTT
+tests as other herd types (I would imagine a lot of the time if bTB is
+detected, they send their animals to slaughter so the amount of tests
+(at animal level) conducted during follow-up will be lower etc).
+
+This is a bit nuance and admittedly strange to have two offsets (but it
+is permitted in a model).
+
+For now, we am leaving out this combined offset and from here on, we
+will just include population as the offset which is a more standard
+approach.
+
+\section{Model without trader herds}\label{model-without-trader-herds}
+
+Trader herds are problematic here because we are taking a snapshot of
+their population (which is changing a lot). We still believe that this
+approach is ok - the small numbers for the count of cases within traders
+is not really an issue, we see similar numbers in store herds. Repeating
+this by month would be a really useful exercise and one we should (we
+dont have a count of animals in every herd for the 1st of each month,
+just 1st Jan/May/Sept.~It would involve a bit of work to estimate these
+but something we want to do at some stage). We would end up with very
+few cases in some months though.
+
+So with that in mind, we have repeated the model without trader herds:
+
+\begin{center}
+\pandocbounded{\includegraphics[keepaspectratio]{agg_cases_poisson_NB_model_files/figure-pdf/mod_no_trader-1.pdf}}
+\end{center}
+
+\subsection{Dispersion test}\label{dispersion-test}
+
+\begin{verbatim}
+# Overdispersion test
+
+       dispersion ratio =  114.772
+  Pearson's Chi-Squared = 7345.429
+                p-value =  < 0.001
+\end{verbatim}
+
+Over dispersion present, repeat using negative binomial.
+
+\chapter{Negative binomial models}\label{negative-binomial-models}
+
+\section{All herds}\label{all-herds}
+
+\begin{center}
+\pandocbounded{\includegraphics[keepaspectratio]{agg_cases_poisson_NB_model_files/figure-pdf/nbmodel-1.pdf}}
+\end{center}
+
+\section{Trader herds removed}\label{trader-herds-removed}
+
+\begin{center}
+\pandocbounded{\includegraphics[keepaspectratio]{agg_cases_poisson_NB_model_files/figure-pdf/nbmodelnotrader-1.pdf}}
+\end{center}
+
+\section{Estimated rates (per 1000)}\label{estimated-rates-per-1000}
+
+Here, I've estimated marginal means and plots of these.
+
+\begin{verbatim}
+ herd_type_ml_description year response     SE  df asymp.LCL asymp.UCL
+ Beef                     2015    2.231 0.1560 Inf     1.945     2.560
+ Dairy                    2015    3.028 0.2120 Inf     2.639     3.474
+ Store                    2015    0.643 0.0459 Inf     0.559     0.740
+ Fattener                 2015    3.033 0.2130 Inf     2.643     3.481
+ Mixed                    2015    2.502 0.1760 Inf     2.180     2.872
+ Beef                     2008    4.315 0.3010 Inf     3.763     4.948
+ Dairy                    2008    5.855 0.4090 Inf     5.106     6.714
+ Store                    2008    1.244 0.0883 Inf     1.083     1.430
+ Fattener                 2008    5.866 0.4100 Inf     5.115     6.727
+ Mixed                    2008    4.839 0.3380 Inf     4.219     5.550
+ Beef                     2009    3.473 0.2430 Inf     3.028     3.983
+ Dairy                    2009    4.712 0.3300 Inf     4.108     5.405
+ Store                    2009    1.001 0.0712 Inf     0.871     1.151
+ Fattener                 2009    4.721 0.3310 Inf     4.116     5.416
+ Mixed                    2009    3.895 0.2730 Inf     3.395     4.468
+ Beef                     2010    3.227 0.2260 Inf     2.813     3.702
+ Dairy                    2010    4.379 0.3070 Inf     3.817     5.024
+ Store                    2010    0.930 0.0664 Inf     0.809     1.070
+ Fattener                 2010    4.387 0.3080 Inf     3.823     5.034
+ Mixed                    2010    3.619 0.2540 Inf     3.154     4.153
+ Beef                     2011    2.691 0.1890 Inf     2.345     3.089
+ Dairy                    2011    3.652 0.2560 Inf     3.182     4.191
+ Store                    2011    0.776 0.0555 Inf     0.675     0.893
+ Fattener                 2011    3.659 0.2570 Inf     3.188     4.200
+ Mixed                    2011    3.018 0.2120 Inf     2.629     3.465
+ Beef                     2012    2.694 0.1890 Inf     2.348     3.090
+ Dairy                    2012    3.655 0.2560 Inf     3.186     4.193
+ Store                    2012    0.777 0.0553 Inf     0.676     0.893
+ Fattener                 2012    3.662 0.2570 Inf     3.192     4.202
+ Mixed                    2012    3.021 0.2120 Inf     2.633     3.467
+ Beef                     2013    2.374 0.1670 Inf     2.069     2.725
+ Dairy                    2013    3.222 0.2260 Inf     2.808     3.697
+ Store                    2013    0.685 0.0489 Inf     0.595     0.787
+ Fattener                 2013    3.228 0.2270 Inf     2.812     3.705
+ Mixed                    2013    2.663 0.1870 Inf     2.320     3.056
+ Beef                     2014    2.399 0.1680 Inf     2.091     2.753
+ Dairy                    2014    3.256 0.2280 Inf     2.837     3.735
+ Store                    2014    0.692 0.0494 Inf     0.602     0.796
+ Fattener                 2014    3.262 0.2290 Inf     2.842     3.743
+ Mixed                    2014    2.691 0.1890 Inf     2.344     3.088
+ Beef                     2016    2.189 0.1530 Inf     1.908     2.512
+ Dairy                    2016    2.970 0.2080 Inf     2.589     3.408
+ Store                    2016    0.631 0.0450 Inf     0.549     0.726
+ Fattener                 2016    2.976 0.2090 Inf     2.594     3.415
+ Mixed                    2016    2.455 0.1720 Inf     2.139     2.817
+ Beef                     2017    2.243 0.1570 Inf     1.956     2.573
+ Dairy                    2017    3.044 0.2130 Inf     2.654     3.492
+ Store                    2017    0.647 0.0460 Inf     0.563     0.744
+ Fattener                 2017    3.050 0.2140 Inf     2.658     3.499
+ Mixed                    2017    2.516 0.1770 Inf     2.193     2.887
+ Beef                     2018    2.366 0.1660 Inf     2.062     2.714
+ Dairy                    2018    3.210 0.2250 Inf     2.799     3.682
+ Store                    2018    0.682 0.0485 Inf     0.593     0.784
+ Fattener                 2018    3.216 0.2250 Inf     2.803     3.689
+ Mixed                    2018    2.653 0.1860 Inf     2.312     3.044
+ Beef                     2019    2.275 0.1590 Inf     1.983     2.610
+ Dairy                    2019    3.087 0.2160 Inf     2.691     3.541
+ Store                    2019    0.656 0.0467 Inf     0.571     0.754
+ Fattener                 2019    3.093 0.2170 Inf     2.696     3.548
+ Mixed                    2019    2.552 0.1790 Inf     2.224     2.928
+ Beef                     2020    3.004 0.2100 Inf     2.620     3.444
+ Dairy                    2020    4.076 0.2840 Inf     3.555     4.673
+ Store                    2020    0.866 0.0613 Inf     0.754     0.995
+ Fattener                 2020    4.084 0.2850 Inf     3.561     4.683
+ Mixed                    2020    3.369 0.2350 Inf     2.938     3.863
+ Beef                     2021    2.712 0.1890 Inf     2.365     3.109
+ Dairy                    2021    3.680 0.2570 Inf     3.209     4.219
+ Store                    2021    0.782 0.0553 Inf     0.681     0.898
+ Fattener                 2021    3.687 0.2570 Inf     3.215     4.227
+ Mixed                    2021    3.041 0.2130 Inf     2.652     3.488
+ Beef                     2022    3.028 0.2110 Inf     2.641     3.471
+ Dairy                    2022    4.108 0.2860 Inf     3.584     4.709
+ Store                    2022    0.873 0.0617 Inf     0.760     1.003
+ Fattener                 2022    4.116 0.2870 Inf     3.590     4.719
+ Mixed                    2022    3.395 0.2370 Inf     2.961     3.893
+ Beef                     2023    3.575 0.2490 Inf     3.119     4.097
+ Dairy                    2023    4.851 0.3370 Inf     4.233     5.559
+ Store                    2023    1.031 0.0726 Inf     0.898     1.183
+ Fattener                 2023    4.860 0.3380 Inf     4.240     5.571
+ Mixed                    2023    4.009 0.2790 Inf     3.498     4.596
+ Beef                     2024    5.515 0.3830 Inf     4.813     6.318
+ Dairy                    2024    7.483 0.5190 Inf     6.531     8.573
+ Store                    2024    1.590 0.1120 Inf     1.386     1.825
+ Fattener                 2024    7.497 0.5210 Inf     6.543     8.590
+ Mixed                    2024    6.185 0.4300 Inf     5.397     7.087
+
+Confidence level used: 0.95 
+Intervals are back-transformed from the log scale 
+\end{verbatim}
+
+\section{Dispersion test}\label{dispersion-test-1}
+
+\begin{verbatim}
+# Overdispersion test
+
+ dispersion ratio = 1.300
+          p-value = 0.224
+\end{verbatim}
+
+\section{Trader population - ADD IN}\label{trader-population---add-in}
+
+\chapter{Notes/ideas}\label{notesideas}
+
+\begin{itemize}
+\tightlist
+\item
+  We think the trader results are really interesting and would be of
+  interest for policymakers but we do have to keep in mind the issues
+  with this approach. Worth doing a separate analysis on trader herds
+  specifically, even just highlighting the fact that their
+  prevalence/numbers are going up. The fact that they are going up isnt
+  all that surprising but coupled with the small numbers, its
+  interesting that they are getting ``caught'' at all. This is primarily
+  driven by slaughter surveillance. So in essence there are probably two
+  cohorts of herds within trader herds. Those that just trade (and so
+  dont send animals to slaughter) and those that do a bit of everything
+  (looking for a quick sale etc).
+\item
+  in the double offset model, i just looked at count of SICTTs, could
+  expand on that to include count of animals tested at slaughter plant.
+\item
+  Update from AIM data: From the 2023 movement data, approximately a
+  third of trader sales were to slaughterhouses (32.7 \%), 39 \%
+  exports, 23\% farm to farm, and 5 \% via marts.
+\end{itemize}
 
 \part{SICTT test-types}
 
@@ -4916,12 +5438,152 @@ SICTTs by all test-types.}
 
 \end{figure}%
 
+And table format:
+
+\global\setlength{\Oldarrayrulewidth}{\arrayrulewidth}
+
+\global\setlength{\Oldtabcolsep}{\tabcolsep}
+
+\setlength{\tabcolsep}{2pt}
+
+\renewcommand*{\arraystretch}{1.5}
+
+
+
+\providecommand{\ascline}[3]{\noalign{\global\arrayrulewidth #1}\arrayrulecolor[HTML]{#2}\cline{#3}}
+
+\begin{longtable}[c]{cccccccccccccccccc}
+
+\caption{\label{tbl-tableherdlevelsictt}Proportion of herd-level SICTTs
+by all herd-level test-types (presented as \%)}
+
+\tabularnewline
+
+\ascline{1.5pt}{666666}{1-18}
+
+\multicolumn{1}{>{}c}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{Test\ type}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{2008}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{2009}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{2010}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{2011}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{2012}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{2013}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{2014}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{2015}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{2016}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{2017}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{2018}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{2019}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{2020}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{2021}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{2022}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{2023}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{2024}}}}} \\
+
+\ascline{1.5pt}{666666}{1-18}\endfirsthead 
+
+\ascline{1.5pt}{666666}{1-18}
+
+\multicolumn{1}{>{}c}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{Test\ type}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{2008}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{2009}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{2010}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{2011}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{2012}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{2013}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{2014}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{2015}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{2016}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{2017}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{2018}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{2019}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{2020}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{2021}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{2022}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{2023}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{2024}}}}} \\
+
+\ascline{1.5pt}{666666}{1-18}\endhead
+
+
+
+\multicolumn{1}{>{}l}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{10A;\ Balance\ of\ herd\ test\ (factory\ lesion)}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.1}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.1}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.1}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.1}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.1}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.1}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.1}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.1}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.1}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.1}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} \\
+
+
+
+
+
+\multicolumn{1}{>{}l}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{10B;\ Balance\ of\ herd\ test\ (private\ test)}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} \\
+
+
+
+
+
+\multicolumn{1}{>{}l}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{10C;\ Balance\ of\ herd\ test\ (inc\ retest)}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.1}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.1}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.1}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.1}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.1}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.1}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.1}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} \\
+
+
+
+
+
+\multicolumn{1}{>{}l}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{10D;\ Balance\ of\ herd\ test\ (fwd\ trace\ S.C.T.)}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} \\
+
+
+
+
+
+\multicolumn{1}{>{}l}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{1;\ Round\ test}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{64.6}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{67.7}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{70.8}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{72.9}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{73.1}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{75.3}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{75.4}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{76.3}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{77.2}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{76.5}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{74.8}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{73.6}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{71.3}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{69.6}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{71.9}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{70.3}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{67.6}}}} \\
+
+
+
+
+
+\multicolumn{1}{>{}l}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{2;\ New\ Herd\ Special\ Check\ Test\ (S.C.T.)}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.9}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1.1}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1.3}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1.6}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1.4}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1.2}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{2.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1.5}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1.3}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1.1}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.9}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1.2}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1.5}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.8}}}} \\
+
+
+
+
+
+\multicolumn{1}{>{}l}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{4;\ Reactor\ re-test}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{10.2}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{9.1}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{8.2}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{7.4}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{7.2}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{6.7}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{6.6}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{5.9}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{5.7}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{5.8}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{6.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{6.2}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{7.2}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{7.3}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{7.3}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{8.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{9.5}}}} \\
+
+
+
+
+
+\multicolumn{1}{>{}l}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{5A;\ Classification\ related\ S.C.T.}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{3.2}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{3.3}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{3.7}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{3.5}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{3.1}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{2.9}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{2.7}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{2.7}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{2.4}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{2.2}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1.9}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{2.2}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{2.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{2.3}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{2.7}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{2.4}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{2.6}}}} \\
+
+
+
+
+
+\multicolumn{1}{>{}l}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{5B;\ Associated\ to\ a\ reactor\ herd\ S.C.T.}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.1}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} \\
+
+
+
+
+
+\multicolumn{1}{>{}l}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{5C;\ High\ incidence\ Area/DED\ and\ Miscellaneous\ C.T.\ (herd)}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{3.6}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{3.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1.8}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1.2}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.8}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.9}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1.1}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1.3}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.9}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1.6}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{3.4}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{3.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{4.3}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{3.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{3.1}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{3.3}}}} \\
+
+
+
+
+
+\multicolumn{1}{>{}l}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{5E;\ OTF\ regain\ status\ S.C.T.}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.3}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.3}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.3}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.3}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.3}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.4}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.4}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.3}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.3}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.3}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.3}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.3}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.4}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.4}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.5}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.6}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.8}}}} \\
+
+
+
+
+
+\multicolumn{1}{>{}l}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{5F;\ Backward\ trace\ S.C.T.\ (herd)}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.2}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.8}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.9}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.9}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.8}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.8}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.7}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.7}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.6}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.7}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.7}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.6}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.8}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.9}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1.2}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1.3}}}} \\
+
+
+
+
+
+\multicolumn{1}{>{}l}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{7A;\ Post\ depopulation\ C.T.}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0}}}} \\
+
+
+
+
+
+\multicolumn{1}{>{}l}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{7B;\ Post\ de-restriction\ C.T.}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{4.3}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{4.3}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{3.7}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{3.5}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{3.1}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{3.1}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{2.9}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{2.8}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{2.6}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{2.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{2.1}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{2.2}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{2.3}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{2.7}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{2.7}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{2.5}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{2.8}}}} \\
+
+
+
+
+
+\multicolumn{1}{>{}l}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{8;\ Contiguous\ herd\ test}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{10.9}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{8.9}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{8.1}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{7.8}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{8.5}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{7.4}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{8.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{7.1}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{7.4}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{9.1}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{10.3}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{9.5}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{10.6}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{9.9}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{8.7}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{9.5}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{10.0}}}} \\
+
+
+
+
+
+\multicolumn{1}{>{}l}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{\textbf{9A;\ Factory\ lesion\ test}}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1.5}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1.3}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1.3}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1.1}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.9}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.8}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.8}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.8}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.9}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.8}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1.0}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1.1}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1.2}}}} & \multicolumn{1}{>{}r}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1.2}}}} \\
+
+\ascline{1.5pt}{666666}{1-18}
+
+
+\end{longtable}
+
+\arrayrulecolor[HTML]{000000}
+
+\global\setlength{\arrayrulewidth}{\Oldarrayrulewidth}
+
+\global\setlength{\tabcolsep}{\Oldtabcolsep}
+
+\renewcommand*{\arraystretch}{1}
+
 \section{Timing of round test-type}\label{timing-of-round-test-type}
 
 Is there more annual round test during certain months of the year (e.g.,
 summer/autumn) which might reflect more cases being detected?
 
-\subsection{All herds}\label{all-herds}
+\subsection{All herds}\label{all-herds-1}
 
 \begin{figure}
 
@@ -4962,11 +5624,11 @@ round tests by month and herd-type}
 \section{List of publications}\label{list-of-publications}
 
 Below is a list of bTB related publications from
-\href{https://www.ucd.ie/cvera/}{CVERA} (from 1990 to 07-May-2025 (date
-the database was last accessed)). This also encompasses publications
-that may not be directly from CVERA (e.g., where a CVERA member is only
-a co-author on the publication, the list also includes publications from
-the
+\href{https://www.ucd.ie/cvera/}{CVERA} (from 1990 to {07-May-2025}
+(date the database was last accessed)). This also encompasses
+publications that may not be directly from CVERA (e.g., where a CVERA
+member is only a co-author on the publication, the list also includes
+publications from the
 \href{https://www.ucd.ie/vetmed/research/researchthemes/veterinaryepidemiologyandnationaldiseasecontrol/}{Tuberculosis
 Diagnostics \& Immunology Research Laboratory} in UCD).
 

@@ -33,15 +33,17 @@ figcaption {
 
   /* Code Blocks */
   --bs-code-color: #e74c3c;
+  
 }
+
 
 
 .aa-Autocomplete .aa-Form, 
 .aa-DetachedFormContainer .aa-Form {
     align-items: center;
     background-color: #fff; /* White background */
-    border: 6px solid #2a6eb3; /* Blue border */
-    border-radius: .25rem; /* Slightly rounded corners */
+    border: 4px solid #148f77; /* Blue border */
+    border-radius: 7rem; /* Slightly rounded corners */
     color: #212529; /* Dark text color */
     display: flex;
     line-height: 1em;
@@ -51,43 +53,141 @@ figcaption {
 }
 
 
-
-.aa-DetachedSearchButtonIcon::after {
-  margin-left:10px;
-  content: " Search (or `f`)";
+/* background color of navigation bar - handy so it stands out where you are */
+.nav-link.active {
+  background-color: #efc078!important;
 }
 
-
-
-.sidebar-tools-main:not(.tools-wide) {
-  border: 4px solid white; /* Blue border - this helps to make search bar more obvious */
-  border-radius: 5px; /* Optional: Rounded corners */
-    padding: 10px; /* Optional: Adds spacing inside the border */
+/* changes colour of background colour for chapters on right */
+.sidebar-item-container .active {
+  background-color: #148f77 !important;
+  padding: 0.5em 1em !important;     /* Add vertical and horizontal padding */
+  margin: 0.2em 0.5em !important;    /*  add spacing from other items */
+  border-radius: 4px;                /*  rounded corners */
+  display: block;                    /* Ensure it takes full width */
+  width: auto;
 }
 
+/* Place search bar on its own row  */
+.sidebar-tools-main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;  /* aligns children to the left */
+  gap: 5px; /* space between icons and search bar */
+}
 
+/*  add margin or padding around the search */
+#quarto-search {
+  width: 100%;
+  margin-top: 10px;
+}
 
+/*   Style the search button  */
 .sidebar-tools-collapse #quarto-search .aa-DetachedSearchButton,
 .sidebar-tools-main #quarto-search .aa-DetachedSearchButton {
-    border: 3px solid #2a6eb3; /* Blue border */
-    border-radius: 5px; /* Optional: Rounded corners */
-    padding: 5px; /* Adjust padding inside the border */
-    background-color: #ffffff; /* Optional: Ensure background is white */
+  border: 3px solid #148f77;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: #FFFFFF !important;
+  width: 100%;  /* make it take full width in the column */
+  max-width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/*  Make the icon black + set after text  */
+.aa-DetachedSearchButtonIcon svg {
+  color: black !important;
+  fill: black !important;
+}
+
+/* Optional: Add helpful text after the icon */
+.aa-DetachedSearchButtonIcon::after {
+  content: " Press `f`";
+  color: black !important;
+  font-weight: 600;
+  font-size: 1em;
+  display: inline-block;
+  opacity: 1 !important;
+  margin-left: 10px;
+}
+  
+  
+  
+  
+/* Change color of chapter numbers in sidebar */
+.sidebar .chapter-number,
+.sidebar .chapter-title {
+  font-size: 0.825rem;
+  color: #cacfd3;  /* */
 }
 
 
-/* Adjust search bar width */
-#quarto-search .aa-DetachedSearchButton {
-    width: 200px; /* Adjust width as needed */
-    max-width: 90%; /* Prevent it from overflowing */
+/* Change color of sidebar part titles */
+.sidebar .menu-text {
+  color: #FFFFFF; /* or your desired color */
+  font-weight: bold; /* make it stand out */
 }
 
-/* If modifying the expanded search input */
-#quarto-search .aa-Autocomplete {
-    width: 200px; /* Adjust for expanded search */
+/* Force inner input box to have white background */
+.aa-Input {
+  background-color: #FFFFFF !important;
+  color: black !important; /* ensure text is visible */
+}
+
+/* this changes header 1 and underlines it above and below */
+  h1 {
+    /*background-color: #d9e3e4;*/
+      border-top: 3px solid #FFFFFF;
+    border-bottom: 3px solid #FFFFFF;
+    padding: 0.5rem 0;
+    margin-top: 1.5rem;
+  }
+
+
+/* Style the title block */
+  .quarto-title-block {
+    background-color: #4e5d6c;
+      padding: 2rem;
+    border-radius: 6px;
+    color: #FFFFFF;
+      text-align: center; /*  */
+  }
+  
+/* Change sidebar book title color */
+  .sidebar-header,
+.sidebar-header a {
+  color: #cacfd3;  /* your desired color */
+  font-size: 1.0rem; /*default: font-size: 1.3rem; */
 }
 
 
+/* Set the background color of the entire page */
+body {
+  background-color: #FFFFFF; 
+}
 
+
+/*change background colour of callout box to light grey here */
+.callout.callout-style-default .callout-body {
+  background-color: #E8E8E8;
+}
+
+
+/* Change breadcrumb chapter number color */
+.breadcrumb .chapter-number {
+  color: #148f77; /* Change to your desired color */
+}
+
+/* Change breadcrumb chapter title color */
+.breadcrumb .chapter-title {
+  color: #148f77; /* Dark grey */
+}
+
+/* Justify all main body text */
+main {
+  text-align: justify;
+}
 
 

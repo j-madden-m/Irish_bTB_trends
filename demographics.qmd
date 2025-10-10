@@ -60,6 +60,14 @@ master_tb <- readRDS(master_file) %>%
 #tabyl(master_tb, herd_type_ml_sub_class_description)
 
 
+# *************************************************************************
+# read in Jonas Brock updated decision tree ----
+# *************************************************************************
+# density = 300 sets the resolution to 300 DPI for clearer images.
+library(magick)
+brock_decision_tree <- image_read_pdf("D:/Files/bTB_breakdown_trends_paper/figures/brock_decision_tree/decision_tree_update.pdf",
+                                  density = 300) %>% 
+  image_ggplot(interpolate = TRUE)
 
 ```
 
@@ -88,7 +96,7 @@ master_tb <- master_tb %>%
 
 ### Study period
 
-Data is available for 2005-2024 but we found many instances in the early years where a herd was in a BD (`trading_status == withdrawn`) but no bTB cases were reported (the BD may have begun before our earliest date) and so to make fair comparisons between years we have only included data from 2008 onwards.
+Data is available for 2005-current but we found many instances in the early years where a herd was in a BD (`trading_status == withdrawn`) but no bTB cases were reported (the BD may have begun before our earliest date) and so to make fair comparisons between years we have only included data from 2008 onwards.
 
 ### Herd type categorisations
 
@@ -100,7 +108,7 @@ We have access to three herd type categorisations:
     cat(paste("- ", levels(master_tb$herd_type)), sep = "\n")
     ```
 
--   [Brock et al. (2021)](https://www.nature.com/articles/s41598-021-82373-3) created two model based herd categorisation. [Brock et al. (2022)](https://irishvetjournal.biomedcentral.com/articles/10.1186/s13620-022-00212-x) used these to explore enterprises from 2015 to 2019, here we expand on this work and additionally explore more years of data. The original categorisation included `Seasonal` herd-types but these are now no longer included. They have moved into `Traders` or `Fatteners` respectively, based on their profiles.
+-   [Brock et al. (2021)](https://www.nature.com/articles/s41598-021-82373-3) created two model based herd categorisation. [Brock et al. (2022)](https://irishvetjournal.biomedcentral.com/articles/10.1186/s13620-022-00212-x) used these to explore enterprises from 2015 to 2019, here we expand on this work and additionally explore more years of data. The original categorisation included `Seasonal` herd-types but these are now no longer included. They have moved into `Traders` or `Fatteners` respectively, based on their profiles. The algorithm used in the original study has since been slightly modified (see updated decision tree below). The Brock classifications for this study used this revised algorithm. 
 
     The main Brock et al. herd types are:
 
@@ -115,6 +123,24 @@ We have access to three herd type categorisations:
     ```{r bulletlist3, echo = FALSE, eval = TRUE, results = 'asis'}
     cat(paste("- ", levels(master_tb$herd_type_ml_sub_class_description)), sep = "\n")
     ```
+
+
+The following is the revised decision tree for Brock et al.:
+
+
+```{r}
+#| label: fig-brockdecisiontree
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 8 
+#| fig.cap: "Revised decision tree/algorithm of Brock et al. used for classifying herds"
+
+brock_decision_tree
+```
 
 The following is a brief summary of the main Brock et al. herd-types:
 

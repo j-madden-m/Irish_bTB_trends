@@ -91,9 +91,9 @@ include_co_op_chunks = TRUE
 
 ## Introduction
 
-This document presents the prevalence of animals with confirmed *m.bovis* lesions found at routine slaughter (also known as ‘factory lesion cases’). 
+This page presents the prevalence of animals with confirmed *m.bovis* lesions found at routine slaughter (also known as ‘factory lesion cases’). 
 
-**NOTE: This is a draft, live document - it will be updated periodically as we obtain more data. The most current date may vary between output as we do not receive all the relevant data at once e.g., we obtain data for the previous year from the AIM system in the later half of the current year and as a result we won't be able to estimate the lesion rate within healthly slaughtered animals. This also means that we don't have last years herd-type or herd-size AIM related metrics. In the case of herd-type, we carry the latest estimate forward until the new data comes in.**
+**NOTE: This section relies heavily on data from AIM on there is usually quite a lag on when this is received.**
 
 
 
@@ -1756,15 +1756,19 @@ $~$ $~$
 
 ## Notes
 
-Why would lesions in head/chest be increasing? - change in way recording is done? - differences between factories? - A very small minority might specialise in kosher meats and so may inspect animals differently but unlike to have an effect nationally
+Why would lesions in head/chest be increasing? 
+- change in way recording is done? 
+- differences between factories? 
+- A very small minority might specialise in kosher meats and so may inspect animals differently but unlike to have an effect nationally
 
-We might expect dairy might have higher lesion rates than beef herds (intensification hypothesis of dairy herds) - why dont we see this? - possible age effects in dairy? Might need to stratify by age/sex
 
-Replicate above for bTB cases
 
-From DAFM:
+From DAFM document <https://teagasc.ie/wp-content/uploads/2025/05/How-is-bovine-TB-detected-at-slaughter.pdf>:
 
-What are the average lesion detection rates? - 30% of skin test reactors will have visible lesions at post-mortem inspection. - 15% of Gamma Interferon reactors will have visible lesions at post-mortem inspection. (This figure relates to cattle, in herds with high risk breakdowns, which are in the same groups as cattle that were skin test reactors).
+What are the average lesion detection rates? 
+
+- 30% of skin test reactors will have visible lesions at post-mortem inspection. 
+- 15% of Gamma Interferon reactors will have visible lesions at post-mortem inspection. (This figure relates to cattle, in herds with high risk breakdowns, which are in the same groups as cattle that were skin test reactors).
 
 **Biology of lesion trends**
 
@@ -1782,16 +1786,16 @@ What are the average lesion detection rates? - 30% of skin test reactors will ha
 
 Policy:
 
--   I wonder would it be worth considering additionally testing for herds with a lot of chest detections (round of `r gif_string` testing)? Or even herds with animals with multiple lesions (more advanced infection)? I am checking the data on this
+-   Is it worth considering additionally testing for herds with a lot of chest detections (round of `r gif_string` testing)? Or even herds with animals with multiple lesions (more advanced infection)? Investigate this further.
 
 **Questions/ideas to explore**
 
 -   Whats interesting is that dairy seem to send animals primarily to slaughter at the start of the year (presumably during drying period?) but have the most lesions presented at slaughter in the 2nd half of the year. Perhaps these lesioned animals come from a subset of dairy herds who are not spring calving herds?
 -   why do we see a clean, consistent seasonal effect of an increase in lesion prevalence later in the year?
--   Does it suggests that there a cohort of riskier herds, that send their animals to slaughter later in the year (and perhaps, do not send animals earlier in the year and so we miss their infections)- I need to check this.
+-   Does it suggests that there a cohort of riskier herds, that send their animals to slaughter later in the year (and perhaps, do not send animals earlier in the year and so we miss their infections)- Investigate this further.
 -   Change in sensitivity by time of year? Or is it related to previous point, that riskier herds are just not sending their animals at that time? Or, they are not riskier per se, but as they don't have a round test earlier in the year, earlier infections are not detected after winter housing and infection is allowed to seed in the animals and lesions form.
 -   Is there a difference in BD size between a herd with more chest vs head vs multiple lesions? Hypothesis here is that herds with more multiple lesions/chest, may have more advanced disease and increased likelihood of having more/missed infection. I need to check this.
--   It would be really interesting to get the age profile of these – I will do these at some stage for my age work anyway but it will just take a bit of work. What we are seeing could be a certain aged animal that tends to get sent to slaughter later in the year.
+-   It would be really interesting to get the age profile of these – to do. What we are seeing could be a certain aged animal that tends to get sent to slaughter later in the year.
 -   Is there a reporting bias? Does inspection start at head?
 -   Redo to include Brock sub-classes: may help tease out which herds are sending animals at later time of year
 
