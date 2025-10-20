@@ -369,7 +369,57 @@ ft
 
 Is there more annual round test during certain months of the year (e.g., summer/autumn) which might reflect more cases being detected?
 
-### All herds 
+Simple count and proportion is plotted below. 
+
+
+### All herds count
+
+
+```{r}
+#| label: fig-countsicttroundtest
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 11
+#| fig.cap: "The count of all round tests by month"
+library(viridis)
+round_tests_count <- master_tb %>% 
+  filter(test_type == "1") %>% 
+  mutate(skin_month = lubridate::month(skin_fixed_test_date, label = TRUE)) %>% 
+  select(skin_fixed_test_date_year, skin_month) %>% 
+  group_by(skin_fixed_test_date_year, skin_month) %>% 
+  summarise(count_of_round_tests_per_month = n()) %>% 
+  ungroup() 
+# round_tests_count$skin_fixed_test_date_year <- as.numeric(as.character(round_tests$skin_fixed_test_date_year))
+# round_tests$skin_fixed_test_date_year <- as.integer(as.character(round_tests$skin_fixed_test_date_year))
+
+
+ggplot(round_tests_count, aes(x = skin_month, y = count_of_round_tests_per_month)) +
+  geom_line(aes(color = skin_fixed_test_date_year, group = skin_fixed_test_date_year), size = 1) +
+  scale_color_viridis_c(
+    option = "plasma",  # You can try "viridis", "inferno", "magma", etc.
+    name = "Year"
+  ) +
+  labs(
+    x = "Month",
+    y = "Number of annual round tests (test type = 1)",
+    color = "Year",
+    title = "Monthly count of annual round tests (test type = 1) by year"
+  ) +
+  theme_jamie +
+  theme_45_x +
+  theme(plot.caption.position = "plot",
+        #legend.title = element_text(size = 16, face = "bold"),
+        plot.caption = element_text(size = 9, color = "black", face = "italic"),
+        plot.title.position = "plot")
+```
+
+
+
+### All herds proportion
 
 ```{r}
 #| label: fig-propsicttroundtest

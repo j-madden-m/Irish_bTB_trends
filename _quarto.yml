@@ -11,7 +11,7 @@ book:
   date: today
   chapters:
     - index.qmd
-    - part: "Timeline"
+    - part: "Policy timeline plot"
       chapters: 
         - timeline_policy.qmd
     - part: "Brief summary overview"
@@ -39,7 +39,7 @@ book:
     - part: "SICTT test-types"
       chapters:
         - sictt_test_types.qmd 
-    - part: "Publications"
+    - part: "CVERA publications"
       chapters:
         - publications.qmd
   search:

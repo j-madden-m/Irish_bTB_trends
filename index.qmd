@@ -5,7 +5,7 @@
 ::: {.callout-warning}
 ## Note {.unnumbered}
 
-**This is a live, working document - it will be updated periodically as we obtain more data. The most current date in the data may vary between output type as we do not receive all the relevant data at once e.g., we do not receive movement data from the AIM system for last year until the later half of the current year and as a result there may be a delay in producing some of the output such as estimating the *M.bovis* lesion rate within healthy slaughtered animals (which relies on knowing the number of animals sent to slaughter from AIM). This also means that we don't have last years herd-type or herd-size AIM related metrics. In the case of herd-type which is pivotal to much of the analysis, we carry the latest estimate forward until the new data comes in.**
+**This is a live, working document - it will be updated periodically as we obtain more data. The most current date in the data may vary between output type as we do not receive all the relevant data at once e.g., we do not receive movement data from the AIM system for last year until the later half of the current year and as a result there may be a delay in producing some of the output such as estimating the *M.bovis* lesion rate within healthy slaughtered animals (which relies on knowing the number of animals sent to slaughter from AIM). This also means that we don't have last years herd-type or herd-size AIM related metrics. In the case of herd-type which is pivotal to much of the analysis, we carry the latest estimate forward from the previous year, until the new data comes in.**
 :::
 
 :::{.callout-important}
@@ -16,7 +16,8 @@
 - DAFM: Ireland’s Bovine Tuberculosis Programme <https://www.bovinetb.ie>
 - DAFM: Latest national bTB statistics <https://www.gov.ie/en/department-of-agriculture-food-and-the-marine/publications/national-bovine-tb-statistics/>
 - DAFM: Weekly beef kill figures <https://www.gov.ie/en/department-of-agriculture-food-and-the-marine/collections/beef-kill-figures-weekly-reports/>
-- Additional, some data can also be downloaded from the CSO: <https://data.cso.ie/>
+- DAFM: AIM bovine statistics <https://www.gov.ie/en/department-of-agriculture-food-and-the-marine/publications/aim-bovine-statistics-reports/>
+- Additionally, some data can also be downloaded from the CSO: <https://data.cso.ie/>
 :::
 
 ---

@@ -142,6 +142,8 @@ The following is the revised decision tree for Brock et al.:
 brock_decision_tree
 ```
 
+ADD TWO OTHER DECISION TREES!
+
 The following is a brief summary of the main Brock et al. herd-types:
 
 **Dairy**
@@ -152,7 +154,7 @@ The following is a brief summary of the main Brock et al. herd-types:
 
 **Beef**
 
--   (generally just suckler from AHCS I think)
+-   (generally just suckler from AHCS)
 -   Residency in the herd is longer than 30 days for at least 50% of the herd
 -   Proportion of animals in a herd that have ever calved by September, relative to herd size is greater than 25%.
 -   Less than 33% of the animals are of a dairy breed.
@@ -181,9 +183,9 @@ The following is a brief summary of the main Brock et al. herd-types:
 
 **Seasonal**
 
--   Animals are kept in the herd for only part of the year. (As of 2024, "seasonal" is no longer a category - they have been moved into "trader" and "fattener" categories respectively)
+-   Animals are kept in the herd for only part of the year. (As of 2024, "seasonal" is no longer a category - they have been moved into "trader" and "fattener" categories respectively). The ‘seasonal’ herds are those in the top right of the diagram – basically any herd that had animals at at least one of but fewer than three of 1st January, May, September. 
 
-**Unknown** - Self-explanatory.
+**Unknown** - Herds that didnt have animals in them at any of the three time points (1st January, May, September)
 
 ### Relationship of all herd-type categorisations (based on 2023 data)
 
@@ -549,7 +551,7 @@ $~$
 
 ### Newly established herds - AHCS herd types
 
-To explore any potential impact of the removal of milk quotas (2015), the distibution of newly established herds were plotted (particularly to see if there was an increase in dairy herds). Here, newly established herds were herds that did not have a SICTT before 2015 (but had at least one after 2015). This may be slightly different to an official list provided by DAFM but it should be a very close approximation (I think!).
+To explore any potential impact of the removal of milk quotas (2015), the distribution of newly established herds were plotted (particularly to see if there was an increase in dairy herds). Here, newly established herds were herds that did not have a SICTT before 2015 (but had at least one after 2015). This may be slightly different to an official list provided by DAFM but it should be a very close approximation (we believe).
 
 ```{r}
 #| label: fig-newlyestablished

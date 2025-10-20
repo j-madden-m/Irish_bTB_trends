@@ -151,7 +151,7 @@ policy_fixed_period_after_06 <- policy_fixed_period %>%
 
 ## Recent timeline plot
 
-Although the focus in the paper is on data from 2008-2024, here we go slightly further back to help understand important changes to the programme that happended in earlier years.
+Although the focus in the paper is on data from 2008-2024, here we go slightly further back to help understand important changes to the programme that happened in earlier years. Note, this is not an exhaustive list, but we believe it covers the majority of events and changes to policy that may have impacted bTB burden either directly or indirectly.
 
 $~$ $~$
 
@@ -389,6 +389,17 @@ $~$ $~$
 ------------------------------------------------------------------------
 
 $~$ $~$
+
+## WOAH, Manual of Diagnostic Tests and Vaccines for Terrestrial Animals
+
+For official legislation of bTB testing, see
+
+Chapter 3.1.13 of the Manual of Diagnostic Tests and Vaccines for Terrestrial Animals, thirteenth edition 2024
+
+<https://www.woah.org/fileadmin/Home/eng/Health_standards/tahm/A_summry.htm>
+
+
+
 
 ## List of EU-Audit reports (Sante F reports) for Ireland 
 

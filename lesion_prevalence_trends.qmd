@@ -101,6 +101,8 @@ This page presents the prevalence of animals with confirmed *m.bovis* lesions fo
 
 ### Proportion of animals with lesions at routine slaughter
 
+To extract the proportion of animals with lesions at rountine slaughter we used the lab file and AIM database (below is just a snap shot of these files to help understand the process (need to update those))
+
 Lab file:
 
 ```{r}
@@ -260,7 +262,8 @@ no_animals_sent_to_slaughter_month <- healthy_lesion_rate_month %>%
   summarise(no_of_animals_sent_to_slaughter = sum(no_movements_to_factory)) %>% 
   ungroup() %>% 
   mutate(year = year(year_month),
-         year_f = as.character(year))
+         year_f = as.character(year),
+         slaughter_month = lubridate::month(year_month, label = TRUE))
 
 pp <- ggplot(no_animals_sent_to_slaughter_month, aes(x = year_month, y = no_of_animals_sent_to_slaughter, color = year_f)) +
   geom_line(linewidth = 2) + #, color = "#4E79A7") +
@@ -293,6 +296,43 @@ pp <- ggplot(no_animals_sent_to_slaughter_month, aes(x = year_month, y = no_of_a
 #ggplotly(pp)
 pp
 ```
+
+
+
+To explore seasonality further, we plotted the same plot in a different format:
+
+```{r}
+#| label: fig-nosenttoslaughtermonthseasonal
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 8 
+#| fig.cap: "Overall number of animals sent to slaughter by month."
+
+ggplot(no_animals_sent_to_slaughter_month, aes(x = slaughter_month, y = no_of_animals_sent_to_slaughter)) +
+  geom_line(aes(color = year, group = year), size = 1) +
+  scale_color_viridis_c(
+    option = "plasma",  # You can try "viridis", "inferno", "magma", etc.
+    name = "Year"
+  ) +
+  labs(
+    x = "Month",
+    y = "Number of animals sent to slaughter",
+    color = "Year",
+    title = "Number of animals sent to slaughter by year"
+  ) +
+  theme_jamie +
+  theme_45_x +
+  theme(plot.caption.position = "plot",
+        #legend.title = element_text(size = 16, face = "bold"),
+        plot.caption = element_text(size = 9, color = "black", face = "italic"),
+        plot.title.position = "plot")
+
+```
+
 
 $~$ $~$
 
@@ -684,7 +724,8 @@ healthy_lesion_rate_all_month <- healthy_lesion_rate_month %>%
          lesion_rate_other = no_of_other_lesions/no_of_moves_to_factory_not_skin_gif,
          lesion_rate_multiple_lesions = no_of_multiple_lesions/no_of_moves_to_factory_not_skin_gif) %>% 
   mutate(year = year(year_month),
-         year_f = as.character(year))
+         year_f = as.character(year),
+         slaughter_month = lubridate::month(year_month, label = TRUE))
 
 
 
@@ -729,6 +770,75 @@ $~$ $~$
 ------------------------------------------------------------------------
 
 $~$ $~$
+
+
+To explore seasonality further, we plotted the same plot in a different format:
+
+```{r}
+#| label: fig-allhealthylesionprevmonthlyseasonal
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 8 
+#| fig.cap: "Overall lesion prevalence at routine slaughter by month and years."
+ggplot(healthy_lesion_rate_all_month, aes(x = slaughter_month, y = lesion_rate_overall)) +
+  geom_line(aes(color = year, group = year), size = 1) +
+  scale_color_viridis_c(
+    option = "plasma",  # You can try "viridis", "inferno", "magma", etc.
+    name = "Year"
+  ) +
+  labs(
+    x = "Month",
+    y = "Lesion prevalence in healthy slaughter animals",
+    color = "Year",
+    title = "Lesion prevalence in healthy slaughter animals"
+  ) +
+  scale_y_continuous(labels = scales::label_percent(scale = 100)) +
+  theme_jamie +
+  theme_45_x +
+  theme(plot.caption.position = "plot",
+        #legend.title = element_text(size = 16, face = "bold"),
+        plot.caption = element_text(size = 9, color = "black", face = "italic"),
+        plot.title.position = "plot")
+```
+
+
+And a simple count of lesions in healthy slaughter animals:
+
+
+```{r}
+#| label: fig-allhealthylesioncountmonthlyseasonal
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 8 
+#| fig.cap: "Overall lesion count at routine slaughter by month and years."
+ggplot(healthy_lesion_rate_all_month, aes(x = slaughter_month, y = no_of_lab_only)) +
+  geom_line(aes(color = year, group = year), size = 1) +
+  scale_color_viridis_c(
+    option = "plasma",  # You can try "viridis", "inferno", "magma", etc.
+    name = "Year"
+  ) +
+  labs(
+    x = "Month",
+    y = "Count of lesions in healthy slaughter animals",
+    color = "Year",
+    title = "Count of lesions in healthy slaughter animals"
+  ) +
+  # scale_y_continuous(labels = scales::label_percent(scale = 100)) +
+  theme_jamie +
+  theme_45_x +
+  theme(plot.caption.position = "plot",
+        #legend.title = element_text(size = 16, face = "bold"),
+        plot.caption = element_text(size = 9, color = "black", face = "italic"),
+        plot.title.position = "plot")
+```
 
 \newpage
 
@@ -1828,7 +1938,7 @@ Policy:
 
 **Beef**
 
--   (generally just suckler from AHCS I think)
+-   (generally just suckler from AHCS)
 -   Residency in the herd is longer than 30 days for at least 50% of the herd
 -   Proportion of animals in a herd that have ever calved by September, relative to herd size is greater than 25%.
 -   Less than 33% of the animals are of a dairy breed.

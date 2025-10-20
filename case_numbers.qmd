@@ -144,6 +144,37 @@ min_max_dates_df <- min_max_geom_react_with_var(case_count_month, cases)
 case_count_plot_fun(case_count_month, "year_month", "cases", month_interactive = TRUE)
 ```
 
+
+### by herd-type
+
+```{r}
+#| label: fig-caseovertimeherdtype
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 10
+#| fig.height: 8 
+#| fig.cap: "Number of bTB cases by year, herd-type and diagnostic method."
+tmp <- case_count_function(all_cases_collapsed, grouping_vars = c("year", "herd_type_ml_description"))
+ggplot(tmp %>% 
+         filter(!herd_type_ml_description  %in% c(NA, "Unknown")), aes(x = year, y = cases, color = best_estimate_gif_skin_lab_string)) +
+  geom_line(linewidth = 1.5, alpha = 1) +
+  # labs(x = "Year",
+  #      y = "Lesion prevalence",
+  #      title = title_lesions_reactors_ahcs,
+  #      caption = paste0(all_lesions_vector, "\n",
+  #                       reactor_lesion_definition)) +
+  theme_jamie +
+  scale_x_continuous(breaks = nth_element(c(unique(tmp$year)), 1, 1)) +
+  scale_y_continuous(labels = scales::label_comma()) +
+  scale_colour_nejm(name = "Detection type") +
+  facet_wrap(vars(herd_type_ml_description), dir = "h", ncol = 2) +
+  theme_45_x 
+```
+
+
 $~$ $~$
 
 ------------------------------------------------------------------------
