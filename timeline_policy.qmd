@@ -316,7 +316,7 @@ $~$ $~$
 
 ## Historic timeline plot (1988-2005)
 
-The following image has been extracted from More SJ & Good M [2006](https://www.sciencedirect.com/science/article/pii/S0378113505003986?via%3Dihub) with permission.
+The following image has been extracted from More SJ & Good M [2006](https://www.sciencedirect.com/science/article/pii/S0378113505003986?via%3Dihub){target="_blank"} with permission.
 
 ```{r}
 #| label: fig-policyplot19882005

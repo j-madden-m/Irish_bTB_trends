@@ -69,6 +69,17 @@ brock_decision_tree <- image_read_pdf("D:/Files/bTB_breakdown_trends_paper/figur
                                   density = 300) %>% 
   image_ggplot(interpolate = TRUE)
 
+# intermediate one
+brock_decision_tree_intermediate <- image_read_pdf("D:/Files/bTB_breakdown_trends_paper/figures/brock_decision_tree/decision_tree_update_intermediate.pdf",
+                                  density = 300) %>% 
+  image_ggplot(interpolate = TRUE)
+
+# original from paper
+brock_decision_tree_original <- image_read("D:/Files/bTB_breakdown_trends_paper/figures/brock_decision_tree/orginal_paper_decision_tree.webp",
+                                                   density = 300) %>% 
+  image_ggplot(interpolate = TRUE)
+brock_decision_tree_original
+
 ```
 
 ```{r}
@@ -108,7 +119,7 @@ We have access to three herd type categorisations:
     cat(paste("- ", levels(master_tb$herd_type)), sep = "\n")
     ```
 
--   [Brock et al. (2021)](https://www.nature.com/articles/s41598-021-82373-3) created two model based herd categorisation. [Brock et al. (2022)](https://irishvetjournal.biomedcentral.com/articles/10.1186/s13620-022-00212-x) used these to explore enterprises from 2015 to 2019, here we expand on this work and additionally explore more years of data. The original categorisation included `Seasonal` herd-types but these are now no longer included. They have moved into `Traders` or `Fatteners` respectively, based on their profiles. The algorithm used in the original study has since been slightly modified (see updated decision tree below). The Brock classifications for this study used this revised algorithm. 
+-   [Brock et al. (2021)](https://www.nature.com/articles/s41598-021-82373-3){target="_blank"} created two model based herd categorisation. [Brock et al. (2022)](https://irishvetjournal.biomedcentral.com/articles/10.1186/s13620-022-00212-x){target="_blank"} used these to explore enterprises from 2015 to 2019, here we expand on this work and additionally explore more years of data. The original categorisation included `Seasonal` herd-types but these are now no longer included. They have moved into `Traders` or `Fatteners` respectively, based on their profiles. The algorithm used in the original study has since been slightly modified (see updated decision tree below). The Brock classifications for this study used this revised algorithm. 
 
     The main Brock et al. herd types are:
 
@@ -125,11 +136,14 @@ We have access to three herd type categorisations:
     ```
 
 
-The following is the revised decision tree for Brock et al.:
+The following is the revised decision tree for Brock et al. Also included are the original decision tree from the paper and also an intermediary decision tree that was also explored. 
 
+::: {.panel-tabset}
+
+## Revised (most recent)
 
 ```{r}
-#| label: fig-brockdecisiontree
+#| label: fig-brockdecisiontreerevised
 #| include: TRUE
 #| echo: FALSE
 #| eval: TRUE
@@ -142,7 +156,42 @@ The following is the revised decision tree for Brock et al.:
 brock_decision_tree
 ```
 
-ADD TWO OTHER DECISION TREES!
+## Intermediate 
+
+```{r}
+#| label: fig-brockdecisiontreeintermediate
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 8 
+#| fig.cap: "Intermediate decision tree/algorithm of Brock et al. used for classifying herds"
+
+brock_decision_tree_intermediate
+```
+
+
+## Original (from paper) 
+
+```{r}
+#| label: fig-brockdecisiontreeoriginal
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 8 
+#| fig.cap: "Original decision tree/algorithm of Brock et al. used for classifying herds"
+
+brock_decision_tree_original
+```
+
+:::
+
+
 
 The following is a brief summary of the main Brock et al. herd-types:
 
