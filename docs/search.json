@@ -671,7 +671,7 @@
     "href": "sictt_test_types.html#timing-of-round-test-type",
     "title": "10  SICTT test-types",
     "section": "10.2 Timing of round test-type",
-    "text": "10.2 Timing of round test-type\nIs there more annual round test during certain months of the year (e.g., summer/autumn) which might reflect more cases being detected?\nSimple count and proportion is plotted below.\n\n10.2.1 All herds count\n\n\n\n\n\n\n\n\nFigure 10.4: The count of all round tests by month\n\n\n\n\n\n\n\n10.2.2 All herds proportion\n\n\n\n\n\n\n\n\nFigure 10.5: The proportion of all round tests by month\n\n\n\n\n\n\n\n10.2.3 by herd-type\n\n\n\n\n\n\n\n\nFigure 10.6: The proportion of all round tests by month and herd-type",
+    "text": "10.2 Timing of round test-type\nIs there more annual round test during certain months of the year (e.g., summer/autumn) which might reflect more cases being detected?\nSimple count and proportion is plotted below.\n\n10.2.1 All herds count\n\n\n\n\n\n\n\n\nFigure 10.4: The count of all round tests by month\n\n\n\n\n\n\n\n10.2.2 Count by herd-type\n\nFixed axis (for comparison)Free axis\n\n\n\n\n\n\n\n\n\n\nFigure 10.5: The count of all round tests by month\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 10.6: The count of all round tests by month\n\n\n\n\n\n\n\n\n\n\n10.2.3 All herds proportion\n\n\n\n\n\n\n\n\nFigure 10.7: The proportion of all round tests by month\n\n\n\n\n\n\n\n10.2.4 by herd-type\n\n\n\n\n\n\n\n\nFigure 10.8: The proportion of all round tests by month and herd-type",
     "crumbs": [
       "SICTT test-types",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>SICTT test-types</span>"
@@ -682,7 +682,7 @@
     "href": "sictt_test_types.html#apt-animals-reactor-per-thousand-animal-tests",
     "title": "10  SICTT test-types",
     "section": "10.3 APT (Animals Reactor per Thousand Animal Tests)",
-    "text": "10.3 APT (Animals Reactor per Thousand Animal Tests)\nSICTT positive animals per thousand tested\nAPT is used by DAFM as an administrative metric (which just looks at SICTT)\n\n\n\n\n\n\n\n\nFigure 10.7: APT\n\n\n\n\n\n\n10.3.1 APT by herd\n\n\n\n\n\n\n\n\nFigure 10.8: APT by herd-type",
+    "text": "10.3 APT (Animals Reactor per Thousand Animal Tests)\nSICTT positive animals per thousand tested\nAPT is used by DAFM as an administrative metric (which just looks at SICTT)\n\n\n\n\n\n\n\n\nFigure 10.9: APT\n\n\n\n\n\n\n10.3.1 APT by herd\n\n\n\n\n\n\n\n\nFigure 10.10: APT by herd-type",
     "crumbs": [
       "SICTT test-types",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>SICTT test-types</span>"

@@ -418,6 +418,92 @@ ggplot(round_tests_count, aes(x = skin_month, y = count_of_round_tests_per_month
 ```
 
 
+### Count by herd-type
+
+::: panel-tabset
+
+## Fixed axis (for comparison)
+
+
+```{r}
+#| label: fig-countsicttroundtestherdtype
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 11
+#| fig.cap: "The count of all round tests by month"
+round_tests_count_herd_type <- master_tb %>% 
+  filter(!is.na(herd_type_ml_description)) %>% 
+  filter(test_type == "1") %>% 
+  mutate(skin_month = lubridate::month(skin_fixed_test_date, label = TRUE)) %>% 
+  select(skin_fixed_test_date_year, skin_month, herd_type_ml_description) %>% 
+  group_by(skin_fixed_test_date_year, skin_month, herd_type_ml_description) %>% 
+  summarise(count_of_round_tests_per_month = n()) %>% 
+  ungroup() 
+#round_tests_count_herd_type
+
+
+ggplot(round_tests_count_herd_type, aes(x = skin_month, y = count_of_round_tests_per_month)) +
+  geom_line(aes(color = skin_fixed_test_date_year, group = skin_fixed_test_date_year), size = 1) +
+  scale_color_viridis_c(
+    option = "plasma",  # You can try "viridis", "inferno", "magma", etc.
+    name = "Year"
+  ) +
+  labs(
+    x = "Month",
+    y = "Number of annual round tests (test type = 1)",
+    color = "Year",
+    title = "Monthly count of annual round tests (test type = 1) by year"
+  ) +
+  theme_jamie +
+  theme_45_x +
+  theme(plot.caption.position = "plot",
+        #legend.title = element_text(size = 16, face = "bold"),
+        plot.caption = element_text(size = 9, color = "black", face = "italic"),
+        plot.title.position = "plot") +
+  facet_wrap(~herd_type_ml_description)
+```
+
+## Free axis
+
+```{r}
+#| label: fig-countsicttroundtestherdtypefreeaxis
+#| include: TRUE
+#| echo: FALSE
+#| eval: TRUE
+#| warning: FALSE
+#| message: FALSE
+#| fig.width: 12
+#| fig.height: 11
+#| fig.cap: "The count of all round tests by month"
+ggplot(round_tests_count_herd_type, aes(x = skin_month, y = count_of_round_tests_per_month)) +
+  geom_line(aes(color = skin_fixed_test_date_year, group = skin_fixed_test_date_year), size = 1) +
+  scale_color_viridis_c(
+    option = "plasma",  # You can try "viridis", "inferno", "magma", etc.
+    name = "Year"
+  ) +
+  labs(
+    x = "Month",
+    y = "Number of annual round tests (test type = 1)",
+    color = "Year",
+    title = "Monthly count of annual round tests (test type = 1) by year"
+  ) +
+  theme_jamie +
+  theme_45_x +
+  theme(plot.caption.position = "plot",
+        #legend.title = element_text(size = 16, face = "bold"),
+        plot.caption = element_text(size = 9, color = "black", face = "italic"),
+        plot.title.position = "plot") +
+  facet_wrap(~ herd_type_ml_description, scales = "free", ncol = 2)
+```
+
+
+:::
+
+
 
 ### All herds proportion
 
