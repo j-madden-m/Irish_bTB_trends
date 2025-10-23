@@ -4,7 +4,7 @@ project:
 
 
 book:
-  title: "Temporal trends in bovine herds and bovine tuberculosis breakdowns in Ireland (2008-current)"
+  title: "Temporal and seasonal trends in bovine herds and bovine tuberculosis breakdowns in Ireland (2008-current)"
   author: 
   - name: Jamie Madden (CVERA)
     email: jamie.madden@ucd.ie
@@ -36,7 +36,7 @@ book:
     - part: "Aggregated case count model"
       chapters: 
        - agg_cases_poisson_NB_model.qmd
-    - part: "SICTT test-types"
+    - part: "SICTT test-type seasonality"
       chapters:
         - sictt_test_types.qmd 
     - part: "CVERA publications"

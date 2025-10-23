@@ -59,8 +59,13 @@ Once the papers relating to this work have been published, their references will
 
 If you would like to specifically cite the website, you can use the following: 
 
-```{}
-Madden, J.M. (2025) Temporal trends in bovine herds and bovine tuberculosis breakdowns in Ireland (2008-current), https://j-madden-m.github.io/Irish_bTB_trends/, accessed on YYYY/MM/DD.
+```{r}
+#| include: TRUE
+#| echo: TRUE
+#| eval: FALSE
+#| warning: FALSE
+#| message: FALSE
+Madden, J.M. (2025) Temporal and seasonal trends in bovine herds and bovine tuberculosis breakdowns in Ireland (2008-current), https://j-madden-m.github.io/Irish_bTB_trends/, accessed on YYYY/MM/DD.
 ```
 
 

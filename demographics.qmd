@@ -105,10 +105,6 @@ master_tb <- master_tb %>%
 
 ## Data and definitions
 
-### Study period
-
-Data is available for 2005-current but we found many instances in the early years where a herd was in a BD (`trading_status == withdrawn`) but no bTB cases were reported (the BD may have begun before our earliest date) and so to make fair comparisons between years we have only included data from 2008 onwards.
-
 ### Herd type categorisations
 
 We have access to three herd type categorisations:
@@ -119,7 +115,7 @@ We have access to three herd type categorisations:
     cat(paste("- ", levels(master_tb$herd_type)), sep = "\n")
     ```
 
--   [Brock et al. (2021)](https://www.nature.com/articles/s41598-021-82373-3){target="_blank"} created two model based herd categorisation. [Brock et al. (2022)](https://irishvetjournal.biomedcentral.com/articles/10.1186/s13620-022-00212-x){target="_blank"} used these to explore enterprises from 2015 to 2019, here we expand on this work and additionally explore more years of data. The original categorisation included `Seasonal` herd-types but these are now no longer included. They have moved into `Traders` or `Fatteners` respectively, based on their profiles. The algorithm used in the original study has since been slightly modified (see updated decision tree below). The Brock classifications for this study used this revised algorithm.
+-   [Brock et al. (2021)](https://www.nature.com/articles/s41598-021-82373-3){target="_blank"} created two model based herd categorisation. [Brock et al. (2022)](https://irishvetjournal.biomedcentral.com/articles/10.1186/s13620-022-00212-x){target="_blank"} used these to explore enterprises from 2015 to 2019, here we expand on this work and additionally explore more years of data. The original categorisation included `Seasonal` herd-types but these are now no longer included. They have moved into `Traders` or `Fatteners` respectively, based on their profiles. The algorithm used in the original study has since been slightly modified (see updated decision tree below, taken from [Brock et al. (2022)](https://irishvetjournal.biomedcentral.com/articles/10.1186/s13620-022-00212-x){target="_blank"}). The Brock classifications for this study used this revised algorithm.
 
     The main Brock et al. herd types are:
 
@@ -171,11 +167,14 @@ brock_decision_tree_original
 ```
 :::
 
+**Revised decision tree description, taken from [Fig 1](https://irishvetjournal.biomedcentral.com/articles/10.1186/s13620-022-00212-x){target="_blank"}**:
+
+> A decision tree for the classification of the Irish cattle sector adapted from \[11\]. Histograms represent herds remaining at the respective node (decision variable). Numbers and dashed line demarcate thresholds for class assignment. Main herd types: dairy (D), beef (B), mixed (M), store/rearing (S/R), fattening (F), and trading (T) herds. Dairy sub-types: dairy (D), dairy no rearing—contract (DnR-C), dairy no rearing—no contract (DnR-nC), dairy rearing male calves (DRm). Beef sub-types: beef pedigree (BP), beef suckling to weanlings (BSW), beef suckling to youngstock (BSY), beef suckling to youngstock—no rearing (BSY-nR), beef suckling to beef (BSB). Store/rearing sub-types: store dairy males (Sdm), store beef males (Sbm), Store beef females (Sbf), store beef mixed (Sbmx), rearing dairy females (Rdf). In each of the years between 2015 and 2019, an average of 95% of Irish herds were classified by the left tree, 5% by the right.
+
+
 **Original decision tree description, taken from [Fig 5](https://www.nature.com/articles/s41598-021-82373-3){target="_blank"}**:
 
 > A decision tree for the classification of the Irish cattle sector. Histograms represent herds remaining at the respective node. Numbers and dashed line demarcate thresholds for class assignment. Main herd types: dairy (D), beef (B), mixed (M), store/rearing (S/R), fattening (F), and trading (T) herds. Dairy sub-types: dairy (D), dairy no rearing—contract (DnR-C), dairy no rearing—no contract (DnR-nC), dairy rearing male calves (DRm). Beef sub-types: beef pedigree (BP), beef suckling to weanlings (BSW), beef suckling to youngstock (BSY), beef suckling to youngstock—no rearing (BSY-nR), beef suckling to beef (BSB). Store/rearing sub-types: store dairy males (Sdm), store beef males (Sbm), Store beef females (Sbf), store beef mixed (Sbmx), rearing dairy females (Rdf). The grey rectangles among the thresholds indicate the range in which the classification threshold would have to be moved in order to assign 10% of the herds classified in the respective step to the other class.
-
-
 
 The following is a brief summary of the main Brock et al. herd-types:
 

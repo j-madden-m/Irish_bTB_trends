@@ -367,6 +367,8 @@ ft
 
 ## Timing of round test-type
 
+**Seasonality of annual round test (test_type = 1)**
+
 Is there more annual round test during certain months of the year (e.g., summer/autumn) which might reflect more cases being detected?
 
 Simple count and proportion is plotted below. 
@@ -464,7 +466,7 @@ ggplot(round_tests_count_herd_type, aes(x = skin_month, y = count_of_round_tests
         #legend.title = element_text(size = 16, face = "bold"),
         plot.caption = element_text(size = 9, color = "black", face = "italic"),
         plot.title.position = "plot") +
-  facet_wrap(~herd_type_ml_description)
+  facet_wrap(~herd_type_ml_description, ncol = 2)
 ```
 
 ## Free axis

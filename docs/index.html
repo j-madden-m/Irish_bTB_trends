@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Jamie Madden (CVERA)">
-<meta name="dcterms.date" content="2025-10-20">
+<meta name="dcterms.date" content="2025-10-23">
 
-<title>Temporal trends in bovine herds and bovine tuberculosis breakdowns in Ireland (2008-current)</title>
+<title>Temporal and seasonal trends in bovine herds and bovine tuberculosis breakdowns in Ireland (2008-current)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +21,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -101,7 +136,7 @@ ul.task-list li input[type="checkbox"] {
       <img src="./figures/logo_plot.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Temporal trends in bovine herds and bovine tuberculosis breakdowns in Ireland (2008-current)</a> 
+      <a href="./">Temporal and seasonal trends in bovine herds and bovine tuberculosis breakdowns in Ireland (2008-current)</a> 
         <div class="sidebar-tools-main">
     <a href="https://github.com/j-madden-m/Irish_bTB_trends" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <div id="quarto-search" class="quarto-navigation-tool px-1" title="Search"></div>
@@ -261,7 +296,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
- <span class="menu-text">SICTT test-types</span></a>
+ <span class="menu-text">SICTT test-type seasonality</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -316,7 +351,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Temporal trends in bovine herds and bovine tuberculosis breakdowns in Ireland (2008-current)</h1>
+<h1 class="title">Temporal and seasonal trends in bovine herds and bovine tuberculosis breakdowns in Ireland (2008-current)</h1>
 </div>
 
 
@@ -333,7 +368,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 20, 2025</p>
+      <p class="date">October 23, 2025</p>
     </div>
   </div>
   
@@ -409,7 +444,9 @@ Official DAFM figures
 <h2 class="unnumbered anchored" data-anchor-id="citing">Citing</h2>
 <p>Once the papers relating to this work have been published, their references will be added here.</p>
 <p>If you would like to specifically cite the website, you can use the following:</p>
-<pre><code>Madden, J.M. (2025) Temporal trends in bovine herds and bovine tuberculosis breakdowns in Ireland (2008-current), https://j-madden-m.github.io/Irish_bTB_trends/, accessed on YYYY/MM/DD.</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>Madden, <span class="fu">J.M.</span> (<span class="dv">2025</span>) Temporal and seasonal trends <span class="cf">in</span> bovine herds and bovine tuberculosis breakdowns <span class="cf">in</span> <span class="fu">Ireland</span> (<span class="dv">2008</span><span class="sc">-</span>current), https<span class="sc">:</span><span class="er">//</span>j<span class="sc">-</span>madden<span class="sc">-</span>m.github.io<span class="sc">/</span>Irish_bTB_trends<span class="sc">/</span>, accessed on YYYY<span class="sc">/</span>MM<span class="sc">/</span>DD.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <hr>
 <hr>
 <p>The website image represents the count of bTB cases over time.</p>

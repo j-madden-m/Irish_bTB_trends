@@ -41,14 +41,52 @@ master_tb <- readRDS(master_file) %>%
 all_cases_collapsed_file <- dir_info("data", type = "file", regexp = "(?i)all_cases_collapsed.*\\.rds$") %>% 
   subset(subset = modification_time == max(modification_time), select = path, drop = T)
 all_cases_collapsed <- readRDS(all_cases_collapsed_file) %>% 
-     filter(year > 2007) %>% 
-    filter(year != 2025)
+     filter(year > 2007) #%>% 
+    #filter(year != 2025)
 
-# culture for lab
 
-min_year <- min(all_cases_collapsed$year)
-max_year <- max(all_cases_collapsed$year)
+
+# *************************************************************************
+# create function to filter data according to whether plot is yearly or
+# monthly, in case of yearly, we want to ensure, we have the full data for that
+# year
+# prob can move this to kilkenny functions.r
+filter_active_year <- function(data) {
+  
+  if ("year" %in% names(data)) {
+    data %>% 
+      dplyr::filter(year != 2025)
+    
+  } else if ("skin_fixed_test_date_year" %in% names(data)) {
+    data %>% 
+      dplyr::filter(skin_fixed_test_date_year != 2025)
+    
+  } else {
+    stop("Unknown data structure: expected `year` or `skin_fixed_test_date_year` column.")
+  }
+}
+# filter_active_year <- function(data) {
+#   data %>% 
+#     # NB you need dplyr:: here
+#     dplyr::filter(year != 2025)
+# }
+# *************************************************************************
+
+
+
+
+
+
+min_year <- min((all_cases_collapsed %>% 
+                  filter_active_year())$year)
+max_year <- max((all_cases_collapsed %>% 
+                  filter_active_year())$year)
 years_for_study <- c(min_year:max_year)
+
+
+# extract min/max years when incorporating month (i.e. active data)
+min_year_active <- min(all_cases_collapsed$year)
+max_year_active <- max(all_cases_collapsed$year)
 
 
 
@@ -83,6 +121,8 @@ all_cases_collapsed <- all_cases_collapsed %>%
 
 
 
+
+
 ```
 
 $~$ $~$
@@ -103,12 +143,13 @@ $~$ $~$
 #| fig.cap: "Number of bTB cases by year and diagnostic method."
 
 case_count_year_05 <- read_csv("data/edited_output/case_count_year_05.csv")
-case_count_year <- case_count_function(all_cases_collapsed, "year")
+case_count_year <- case_count_function(all_cases_collapsed %>% 
+                                         filter_active_year(), "year")
 #case_count_year
 # saving data for policy plot
 write_csv(case_count_year, "data/edited_output/case_count_year.csv")
 #case_count_plot_fun(case_count_year, "year", "cases")
-case_count_plot_fun(case_count_year, "year", "cases", month_interactive = TRUE)
+case_count_plot_fun(case_count_year, "year", "cases", max_year_var = max_year, month_interactive = TRUE)
 
 
 # adding 2005-2007 data for policy plot
@@ -141,7 +182,7 @@ saveRDS(case_count_year, paste0("data/edited_output/for_paper/case_count_year_fo
 case_count_month <- case_count_function(all_cases_collapsed, "year_month")
 min_max_dates_df <- min_max_geom_react_with_var(case_count_month, cases)
 #case_count_plot_fun(case_count_month, "year_month", "cases")
-case_count_plot_fun(case_count_month, "year_month", "cases", month_interactive = TRUE)
+case_count_plot_fun(case_count_month, "year_month", "cases", max_year_var = max_year_active, month_interactive = TRUE)
 ```
 
 
@@ -157,7 +198,8 @@ case_count_plot_fun(case_count_month, "year_month", "cases", month_interactive =
 #| fig.width: 10
 #| fig.height: 8 
 #| fig.cap: "Number of bTB cases by year, herd-type and diagnostic method."
-tmp <- case_count_function(all_cases_collapsed, grouping_vars = c("year", "herd_type_ml_description"))
+tmp <- case_count_function(all_cases_collapsed %>% 
+                                         filter_active_year(), grouping_vars = c("year", "herd_type_ml_description"))
 ggplot(tmp %>% 
          filter(!herd_type_ml_description  %in% c(NA, "Unknown")), aes(x = year, y = cases, color = best_estimate_gif_skin_lab_string)) +
   geom_line(linewidth = 1.5, alpha = 1) +
@@ -196,7 +238,8 @@ $~$ $~$
 #| fig.height: 8 
 #| fig.cap: "Proportion of cases by AHCS herd-type."
 #proportion_cases_function(all_cases_collapsed, herd_type)
-proportion_cases_function(all_cases_collapsed, herd_type, interactive = TRUE)
+proportion_cases_function(all_cases_collapsed %>% 
+                                         filter_active_year(), herd_type, interactive = TRUE)
 
 ```
 
@@ -213,7 +256,8 @@ proportion_cases_function(all_cases_collapsed, herd_type, interactive = TRUE)
 #| fig.height: 8 
 #| fig.cap: "Proportion of cases by Brock et al. herd-types."
 #proportion_cases_function(all_cases_collapsed, herd_type)
-proportion_cases_function(all_cases_collapsed, herd_type_ml_description, interactive = TRUE)
+proportion_cases_function(all_cases_collapsed %>% 
+                                         filter_active_year(), herd_type_ml_description, interactive = TRUE)
 
 ```
 
@@ -230,7 +274,8 @@ proportion_cases_function(all_cases_collapsed, herd_type_ml_description, interac
 #| fig.height: 8 
 #| fig.cap: "Proportion of cases by Brock et al. herd-type sub-classes."
 #proportion_cases_function(all_cases_collapsed, herd_type)
-proportion_cases_function(all_cases_collapsed, herd_type_ml_sub_class_description, interactive = TRUE)
+proportion_cases_function(all_cases_collapsed %>% 
+                                         filter_active_year(), herd_type_ml_sub_class_description, interactive = TRUE)
 
 ```
 
@@ -259,6 +304,7 @@ $~$ $~$
 #of course this doesnt cover "inactive" herds in the official sense (where they are kept on system
 # for two years or whatever it is). Its if my definition - if they had a test (of any sort) or not
 unique_herds_master_tb <- master_tb %>% 
+  filter_active_year() %>% 
   select(herd_no, fixed_test_date, skin_fixed_test_date, test_date_lab, gif_actual_date, herd_type_ml_description, herd_type_ml_sub_class_description) %>% 
   mutate(skin_fixed_test_date_year = year(skin_fixed_test_date),
          test_date_lab_year = year(test_date_lab),
@@ -285,6 +331,7 @@ unique_herds_master_tb <- unique_herds_master_tb %>%
 # *************************************************************************
 
 prev_master_tb <- master_tb %>% 
+  filter_active_year() %>% 
   select(herd_no, fixed_test_date, skin_fixed_test_date, test_date_lab, 
          gif_actual_date, all_cases, total_animals, total_reactor_skin, total_reactor_slaughter, gif_cases, herd_type_ml_description, herd_type_ml_sub_class_description) %>% 
   mutate(skin_fixed_test_date_year = year(skin_fixed_test_date),
@@ -396,7 +443,8 @@ prev_plot_function(prev_df, "year", "prevalence")
 # i think the simplest thing to do is collapse by all_cases column
 #this function is different to above
 collap_fun_greater_1 <- function(x) {as.numeric(any(x >= 1))}
-prev_master_tb_brock <- collap(master_tb, ~ herd_no + skin_fixed_test_date_year, custom = list(collap_fun_greater_1 = c("all_cases"),
+prev_master_tb_brock <- collap(master_tb %>% 
+                                 filter_active_year(), ~ herd_no + skin_fixed_test_date_year, custom = list(collap_fun_greater_1 = c("all_cases"),
                                                                                               ffirst = c("herd_type_ml_description", "herd_type_ml_sub_class_description")))
 no_of_unique_herds_with_case_brock <- prev_master_tb_brock %>% 
   group_by(herd_type_ml_description, skin_fixed_test_date_year) %>% 
@@ -462,7 +510,9 @@ prev_brock_plot <- prev_brock_df %>%
   labs(x = "Year", y = "Herd-level prevalence", fill = "Brock et al. herd type sub-classes",
         title =
           paste0("Herd-level prevalence of herd types by year (", min(prev_brock_df$year), 
-                 " - ", max(prev_brock_df$year), ")"))
+                 " - ", max(prev_brock_df$year), ")")) +
+    theme(legend.position = "top",
+        plot.caption.position = "plot")
   #      caption = glue::glue(str_wrap(brock_ref, width = 8 * (1.7 * dev.size()[1])),
   #                           "\nHerd size based of no. of animals present in herd on 1st May of each year (herds with zero animals were excluded)"),
   # )
@@ -498,7 +548,7 @@ ggplotly(prev_brock_county_plot)
 #| warning: FALSE
 #| message: FALSE
 #| fig.width: 12
-#| fig.height: 12 
+#| fig.height: 12
 #| fig.cap: "Herd-level prevalence for counties by Brock et al. herd type sub-classes."
 
 source('R_files/brock_sub_prev_quarto.R')

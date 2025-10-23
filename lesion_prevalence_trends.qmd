@@ -93,7 +93,7 @@ include_co_op_chunks = TRUE
 
 This page presents the prevalence of animals with confirmed *m.bovis* lesions found at routine slaughter (also known as ‘factory lesion cases’). 
 
-**NOTE: This section relies heavily on data from AIM on there is usually quite a lag on when this is received.**
+**NOTE: This section relies heavily on data from AIM and there is usually a longer lag on when this is received.**
 
 
 
@@ -101,7 +101,7 @@ This page presents the prevalence of animals with confirmed *m.bovis* lesions fo
 
 ### Proportion of animals with lesions at routine slaughter
 
-To extract the proportion of animals with lesions at rountine slaughter we used the lab file and AIM database (below is just a snap shot of these files to help understand the process (need to update those))
+To extract the proportion of animals with lesions at routine slaughter we used the lab file and AIM database (below is just a snap shot of these files to help understand the process (need to update those))
 
 Lab file:
 
@@ -1882,7 +1882,6 @@ What are the average lesion detection rates?
 
 **Biology of lesion trends**
 
--   Healthy lesion rate seems to mirror reactor lesion rate (previous chapter) which suggests, these are not historic infections but relatively new?
 
 -   Why were levels high in 2008? It seems to be the peak of that cycle at the time and then there was a serious effort to clean-up the whole system (concerted effort): there were focused investigations, hot-spots were priortised (e.g., Monaghan), fraud cases were investigated, the quality control programme was brought in, SICTT & PVP training was increased/introduced, there was much more awareness to look out for lesions due to the ongoing gamma trial at the time etc. `r gif_string` rates were up around 30% indicating that we were missing lots of infection at the time. This may also partly explain why chest prevalence was high back in 2008 - we were missing lots of infection and it had seeded in animals.
 
@@ -1894,9 +1893,7 @@ What are the average lesion detection rates?
 
 -   Re: the lesions, they could take six months to develop, so the later summer lesion profile could well reflect infection dynamics the previous March
 
-Policy:
 
--   Is it worth considering additionally testing for herds with a lot of chest detections (round of `r gif_string` testing)? Or even herds with animals with multiple lesions (more advanced infection)? Investigate this further.
 
 **Questions/ideas to explore**
 
@@ -1908,6 +1905,7 @@ Policy:
 -   It would be really interesting to get the age profile of these – to do. What we are seeing could be a certain aged animal that tends to get sent to slaughter later in the year.
 -   Is there a reporting bias? Does inspection start at head?
 -   Redo to include Brock sub-classes: may help tease out which herds are sending animals at later time of year
+-   Is it worth considering additionally testing for herds with a lot of chest detections (round of `r gif_string` testing)? Or even herds with animals with multiple lesions (more advanced infection)? Investigate this further.
 
 **Follow-up on lesion detection/inspection biases**
 

@@ -34,8 +34,36 @@ source("R_files/reactor_lesion_gif_skin_functions.R", echo = T, print.eval = TRU
 all_cases_collapsed_file <- dir_info("data", type = "file", regexp = "(?i)all_cases_collapsed.*\\.rds$") %>% 
   subset(subset = modification_time == max(modification_time), select = path, drop = T)
 all_cases_collapsed <- readRDS(all_cases_collapsed_file) %>% 
-     filter(year > 2007) %>% 
-    filter(year != 2025)
+     filter(year > 2007) #%>% 
+     #filter(year != 2025)
+
+
+# *************************************************************************
+# create function to filter data according to whether plot is yearly or
+# monthly, in case of yearly, we want to ensure, we have the full data for that
+# year
+# prob can move this to kilkenny functions.r
+filter_active_year <- function(data) {
+  
+  if ("year" %in% names(data)) {
+    data %>% 
+      dplyr::filter(year != 2025)
+    
+  } else if ("skin_fixed_test_date_year" %in% names(data)) {
+    data %>% 
+      dplyr::filter(skin_fixed_test_date_year != 2025)
+    
+  } else {
+    stop("Unknown data structure: expected `year` or `skin_fixed_test_date_year` column.")
+  }
+}
+# filter_active_year <- function(data) {
+#   data %>% 
+#     # NB you need dplyr:: here
+#     dplyr::filter(year != 2025)
+# }
+# *************************************************************************
+
 
 # set as TRUE or FALSE
 include_co_op_chunks = TRUE
@@ -102,6 +130,7 @@ Before looking at lesion prevalence, the count of lesions by detection method is
 #| fig.cap: !expr paste0("Overall lesion counts within SICTT and ", gif_string, " positive animals at slaughter.")
 #| 
 lesion_count_per_year <- all_cases_collapsed %>% 
+  filter_active_year() %>% 
   filter(best_estimate_gif_skin_lab  %in% c("skin", "gif")) %>% 
   group_by(year, best_estimate_gif_skin_lab_string) %>% 
   summarise(count_of_lesions = sum(permit_lesions_yes_no, na.rm = TRUE)) %>% 
@@ -162,6 +191,7 @@ brock_cols_named <- c("Dairy" = "#FFB400",
                       "Trader" =  "#4BB970",
                       "Unknown" = "#70C85D")
 lesion_count_per_year_herd_type <- all_cases_collapsed %>% 
+  filter_active_year() %>% 
   filter(best_estimate_gif_skin_lab  %in% c("skin", "gif")) %>% 
   group_by(year, herd_type_ml_description) %>% 
   summarise(count_of_lesions = sum(permit_lesions_yes_no, na.rm = TRUE)) %>% 
@@ -215,7 +245,8 @@ ggplot(lesion_count_per_year_herd_type, aes(x = factor(year), y = count_of_lesio
 #| fig.width: 12
 #| fig.height: 8 
 #| fig.cap: !expr paste0("Overall lesion prevalence within SICTT and ", gif_string, " positive animals at slaughter.")
-lesion_rate_by_gif_or_skin_year <- lesion_rate_by_gif_or_skin(all_cases_collapsed, c(year))
+lesion_rate_by_gif_or_skin_year <- lesion_rate_by_gif_or_skin(all_cases_collapsed %>% 
+                                                                filter_active_year(), c(year))
 reactor_lesion_by_gif_or_skin_plot_fn(lesion_rate_by_gif_or_skin_year, "year", "lesion_rate")
 ```
 
@@ -272,7 +303,7 @@ $~$ $~$
 #| fig.height: 8 
 #| fig.cap: !expr paste0("Overall lesion prevalence within SICTT and ", gif_string, " positive animals at slaughter by year.")
 
-lesion_rate_by_gif_or_skin_year_ahcs <- lesion_rate_by_gif_or_skin(all_cases_collapsed, c(year, herd_type))
+lesion_rate_by_gif_or_skin_year_ahcs <- lesion_rate_by_gif_or_skin(all_cases_collapsed %>% filter_active_year(), c(year, herd_type))
 reactor_lesion_by_gif_or_skin_plot_fn(lesion_rate_by_gif_or_skin_year_ahcs, "year", "lesion_rate", facet_var = herd_type)
 ```
 
@@ -333,7 +364,7 @@ $~$ $~$
 #| fig.cap: !expr paste0("Overall lesion prevalence within SICTT and ", gif_string, " positive animals at slaughter by Brock et al. herd-types per year.")
 
 
-lesion_rate_by_gif_or_skin_year_brock <- lesion_rate_by_gif_or_skin(all_cases_collapsed, c(year, herd_type_ml_description))
+lesion_rate_by_gif_or_skin_year_brock <- lesion_rate_by_gif_or_skin(all_cases_collapsed %>% filter_active_year(), c(year, herd_type_ml_description))
 reactor_lesion_by_gif_or_skin_plot_fn(lesion_rate_by_gif_or_skin_year_brock %>% 
                                         filter(herd_type_ml_description != "Store"), "year", "lesion_rate", facet_var = herd_type_ml_description)
 ```
@@ -461,7 +492,7 @@ Yearly:
 #| fig.cap: !expr paste0("Overall lesion prevalence within SICTT and ", gif_string, " positive animals at slaughter by lesion location per year.")
 
 
-permit_lesion_head_chest_type_by_gif_skin_year <- permit_lesion_head_chest_type_by_gif_skin(all_cases_collapsed, c(year))
+permit_lesion_head_chest_type_by_gif_skin_year <- permit_lesion_head_chest_type_by_gif_skin(all_cases_collapsed %>%                                                                     filter_active_year(), c(year))
 reactor_gif_or_skin_chest_fn(permit_lesion_head_chest_type_by_gif_skin_year, "year", "lesion_rate", facet_var = best_estimate_gif_skin_lab_string)
 ```
 
@@ -517,6 +548,7 @@ SICTT:
 #| fig.cap: "Proportion of lesions by location for SICTT postive animals by year"
 
 skin_proportion_df <- all_cases_collapsed %>% 
+  filter_active_year() %>% 
   # drop reactors without permit
   filter(!is.na(per_type)) %>% 
   filter(str_detect(best_estimate_gif_skin_lab_string, "IFN")) %>% 
@@ -566,6 +598,7 @@ $~$ $~$
 #| fig.cap: !expr paste0("Proportion of lesions by location for ", gif_string, " postive animals by year")
 
 gif_proportion_df <- all_cases_collapsed %>% 
+  filter_active_year() %>% 
   # drop reactors without permit
   filter(!is.na(per_type)) %>% 
   filter(str_detect(best_estimate_gif_skin_lab_string, "IFN")) %>% 
@@ -618,7 +651,7 @@ $~$
 #| fig.height: 12 
 #| fig.cap: !expr paste0("Overall lesion prevalence within SICTT and ", gif_string, " positive animals at slaughter by lesion location and AHCS herd-types per year.")
 
-permit_lesion_head_chest_type_by_gif_skin_year_ahcs <- permit_lesion_head_chest_type_by_gif_skin(all_cases_collapsed, c(year, herd_type))
+permit_lesion_head_chest_type_by_gif_skin_year_ahcs <- permit_lesion_head_chest_type_by_gif_skin(all_cases_collapsed %>% filter_active_year(), c(year, herd_type))
 
 # N.B. rather than doing a 3 way facet - just pull out gif and skin seperate
 # reactor_gif_or_skin_chest_fn(permit_lesion_head_chest_type_by_gif_skin_year_ahcs %>% 
@@ -711,7 +744,7 @@ $~$ $~$
 #| fig.height: 8 
 #| fig.cap: !expr paste0("Overall lesion prevalence within SICTT and ", gif_string, " positive animals at slaughter by lesion location and Brock et al. herd-types per year.")
 
-permit_lesion_head_chest_type_by_gif_skin_year_brock <- permit_lesion_head_chest_type_by_gif_skin(all_cases_collapsed, c(year, herd_type_ml_description)) 
+permit_lesion_head_chest_type_by_gif_skin_year_brock <- permit_lesion_head_chest_type_by_gif_skin(all_cases_collapsed %>%                                                                             filter_active_year(), c(year, herd_type_ml_description)) 
 reactor_gif_or_skin_chest_fn(permit_lesion_head_chest_type_by_gif_skin_year_brock, "year", "lesion_rate", facet_grid_vars = herd_type_ml_description) 
 ```
 
@@ -764,8 +797,6 @@ reactor_gif_or_skin_chest_fn(permit_lesion_head_chest_type_by_gif_skin_month_bro
 
 ## Questions
 
--   Why is there a peak in lesions in bTB positive animals at the start of the year (seems more pronounced in SICTT?)? Is this simply an administrative issue whereby there is a delay in sending animals to a factory?
+-   Investigate `r gif_string` avain readings pattern.
 
--   Would it have anything to do with a slight increase in avian readings around Sept (this is seen in `r gif_string`, we presume the same in SICTT)? The animals have been exposed to the environment for longer at this stage?
 
--   Avian is lower at the start of the year - is this because the majority of animals will be immunosurpressed (pregnant)(`r gif_string` is mainly testing dairy animals)
