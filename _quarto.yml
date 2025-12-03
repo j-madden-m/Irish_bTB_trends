@@ -8,7 +8,9 @@ book:
   author: 
   - name: Jamie Madden (CVERA)
     email: jamie.madden@ucd.ie
-  date: today
+  date: 2025-02-05
+  date-modified: last-modified
+  date-format: DD MMM YYYY
   chapters:
     - index.qmd
     - part: "Policy timeline plot"
