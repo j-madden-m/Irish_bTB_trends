@@ -80,8 +80,6 @@ bd_df <- bd_df %>%
 
 ```
 
-
-
 ## Breakdown (BD) definition
 
 Here, we defined the start date of a BD in a herd as the date when an animal was disclosed as a bTB case, as determined by the SICTT, IFN-γ or by the detection of visible lesions at routine slaughter which are then laboratory confirmed with *M. bovis* infection (also known as ‘factory lesion cases’). In the situation when a BD started due to the detection of a visible lesion, we chose the start date as the date when the sample was sent to the lab and not the date in which it was identified as culture positive which could be a number of weeks later. Depending on the circumstances, the herds `trading_status` on AHCS will generally change from `free` to `withdrawn`/`suspended`. We defined the BD end date as the date of the next SICTT (whole herd) test where the `trading_status` was restored to `free`. Once a bTB case is detected, a herd will usually remain in a BD until it has had two consecutive, clear whole-herd SICTT tests (usually 60 days apart). There are certain exceptions to the above criteria e.g., singletons.
@@ -138,15 +136,13 @@ years_for_study <- c(min_year:max_year)
 
 $~$ $~$
 
----
+------------------------------------------------------------------------
 
 $~$ $~$
 
 ## Number of BDs over time
 
 ### Per year
-
-
 
 ```{r}
 #| label: fig-bdperyear
@@ -270,13 +266,11 @@ min_max_dates_df <- min_max_geom_react_with_var(bd_df_per_month_herd_type, no_of
 bd_count_month_plot_fun(bd_df_per_month_herd_type, "year_month", "no_of_breakdowns_starting_in_month", color_var = "herd_type_ml_description", month_interactive = TRUE) 
 ```
 
-
 $~$ $~$
 
 ------------------------------------------------------------------------
 
 $~$ $~$
-
 
 ## BD by herd-type
 
@@ -335,11 +329,9 @@ prop_herd_type_bds_bar_plot <- ggplot(prop_herd_type_bds, aes(x = year, y = perc
 prop_herd_type_bds_bar_plot
 ```
 
----
+------------------------------------------------------------------------
 
 $~$ $~$
-
-
 
 ## BD size
 
@@ -975,7 +967,6 @@ bd_df %>%
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) 
 ```
 
-
 ## Count of no. BDs by detection method
 
 ### SICTT initiated BDs
@@ -1024,7 +1015,6 @@ bd_df %>%
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) 
 ```
 
-
 ### Slaughter-house initiated BDs
 
 ```{r}
@@ -1070,8 +1060,6 @@ bd_df %>%
   ) +
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) 
 ```
-
-
 
 ## Tables
 

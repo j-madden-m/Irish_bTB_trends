@@ -435,6 +435,10 @@ $~$ $~$
 
 -   DAFM bTB eradication programme (New Bovine TB Testing Requirements for animal movements etc) <http://www.bovinetb.ie/>
 
+
+- Maher, P., Good, M. & More, S. Trends in cow numbers and culling rate in the Irish cattle population, 2003 to 2006. Ir Vet J 61, 455 (2008). <https://doi.org/10.1186/2046-0481-61-7-455>
+
+
 ### Northern Ireland
 
 Robinson PA. A history of bovine tuberculosis eradication policy in Northern Ireland. Epidemiol Infect. 2015 Nov;143(15):3182-95. doi: 10.1017/S0950268815000291. Epub 2015 Mar 17. PMID: 25778830; PMCID: PMC9150964. <https://pubmed.ncbi.nlm.nih.gov/25778830/>

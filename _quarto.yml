@@ -8,9 +8,11 @@ book:
   author: 
   - name: Jamie Madden (CVERA)
     email: jamie.madden@ucd.ie
-  date: 2025-02-05
-  date-modified: last-modified
-  date-format: DD MMM YYYY
+  #date: 2025-02-05
+  #date-modified: last-modified 
+  # date works in _quarto.yml but last-modified doesnt as its a document variable
+  # and _quarto.yml isnt a document file (qmd file), put it in "index.qmd" instead
+  #date-format: DD MMM YYYY
   chapters:
     - index.qmd
     - part: "Policy timeline plot"

@@ -24,11 +24,17 @@ source("R_files/read_in_quarto_trends.R")
 # read in data
 #healthy_lesion_rate <- read_csv("data/edited_output/healthy_lesion_rate.csv")
 healthy_lesion_rate <- readRDS("data/edited_output/healthy_lesion_rate.Rds")
+healthy_lesion_rate <- healthy_lesion_rate %>% 
+   mutate(herd_type_ml_description = fct_relevel_herd(herd_type_ml_description),
+          herd_type = fct_relevel_herd_ahcs(herd_type))
+
 
 # same but monthly
 #healthy_lesion_rate_month <- read_csv("data/edited_output/healthy_lesion_rate_month.csv")
 healthy_lesion_rate_month <- readRDS("data/edited_output/healthy_lesion_rate_month.Rds")
-
+healthy_lesion_rate_month <- healthy_lesion_rate_month %>% 
+   mutate(herd_type_ml_description = fct_relevel_herd(herd_type_ml_description),
+          herd_type = fct_relevel_herd_ahcs(herd_type))
 
 min_year <- min(healthy_lesion_rate$year)
 max_year <- max(healthy_lesion_rate$year)
@@ -91,17 +97,13 @@ include_co_op_chunks = TRUE
 
 ## Introduction
 
-This page presents the prevalence of animals with confirmed *m.bovis* lesions found at routine slaughter (also known as ‘factory lesion cases’). 
+This page presents the prevalence of animals with confirmed *m.bovis* lesions found at routine slaughter (also known as ‘factory lesion cases’).
 
-**NOTE: This section relies heavily on data from AIM and there is usually a longer lag on when this is received.**
-
-
+**NOTE: This section relies heavily on data from AIM on there is usually quite a lag on when this data is received.**
 
 ## Definitions
 
 ### Proportion of animals with lesions at routine slaughter
-
-To extract the proportion of animals with lesions at routine slaughter we used the lab file and AIM database (below is just a snap shot of these files to help understand the process (need to update those))
 
 Lab file:
 
@@ -297,8 +299,6 @@ pp <- ggplot(no_animals_sent_to_slaughter_month, aes(x = year_month, y = no_of_a
 pp
 ```
 
-
-
 To explore seasonality further, we plotted the same plot in a different format:
 
 ```{r}
@@ -332,7 +332,6 @@ ggplot(no_animals_sent_to_slaughter_month, aes(x = slaughter_month, y = no_of_an
         plot.title.position = "plot")
 
 ```
-
 
 $~$ $~$
 
@@ -370,7 +369,8 @@ ggplot(no_animals_sent_to_slaughter_ahcs_herd_type, aes(x = year, y = no_of_anim
                         "(animals sent to knackeries are excluded here as they are not routinely inspected for lesions)")) +
   #caption = paste0(all_lesions_vector)
   theme_jamie +
-  scale_colour_nejm(name = "Herd-type") +
+  #scale_colour_nejm(name = "Herd-type") +
+  scale_color_manual(values = ahcs_cols, name = "Herd-type") +
   scale_y_continuous(labels = scales::comma) +
   scale_x_continuous(breaks = nth_element(c(unique(no_animals_sent_to_slaughter_ahcs_herd_type$year)), 1, 2)) +
   
@@ -458,7 +458,8 @@ ggplot(no_animals_sent_to_slaughter_ahcs_herd_type_month, aes(x = year_month, y 
   #caption = paste0(all_lesions_vector)
   theme_jamie +
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) + 
-  scale_colour_nejm(name = "Herd-type") +
+  #scale_colour_nejm(name = "Herd-type") +
+  scale_color_manual(values = ahcs_cols, name = "Herd-type") +
   scale_y_continuous(labels = scales::comma) +
   scale_x_continuous(breaks = nth_element(ymd(unique(no_animals_sent_to_slaughter_ahcs_herd_type_month$year), truncated = 2L), 1, 1)) +
   #scale_x_continuous(breaks = nth_element(c(unique(no_animals_sent_to_slaughter_ahcs_herd_type$year)), 1, 2)) +
@@ -504,7 +505,8 @@ ggplot(no_animals_sent_to_slaughter_brock_herd_type, aes(x = year, y = no_of_ani
                         "(animals sent to knackeries are excluded here as they are not routinely inspected for lesions)")) +
   #caption = paste0(all_lesions_vector)
   theme_jamie +
-  scale_colour_nejm(name = "Herd-type") +
+  #scale_colour_nejm(name = "Herd-type") +
+  scale_color_manual(values = brock_cols, name = "Herd-type") +
   scale_y_continuous(labels = scales::comma) +
   scale_x_continuous(breaks = nth_element(c(unique(no_animals_sent_to_slaughter_brock_herd_type$year)), 1, 2)) +
   
@@ -592,7 +594,8 @@ ggplot(no_animals_sent_to_slaughter_brock_herd_type_month, aes(x = year_month, y
                         "(animals sent to knackeries are excluded here as they are not routinely inspected for lesions)")) +
   #caption = paste0(all_lesions_vector)
   theme_jamie +
-  scale_colour_nejm(name = "Herd-type") +
+  #scale_colour_nejm(name = "Herd-type") +
+  scale_color_manual(values = brock_cols, name = "Herd-type") +
   scale_y_continuous(labels = scales::comma) +
   scale_x_continuous(breaks = nth_element(ymd(unique(no_animals_sent_to_slaughter_ahcs_herd_type_month$year), truncated = 2L), 1, 1)) +
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) + 
@@ -771,7 +774,6 @@ $~$ $~$
 
 $~$ $~$
 
-
 To explore seasonality further, we plotted the same plot in a different format:
 
 ```{r}
@@ -805,9 +807,7 @@ ggplot(healthy_lesion_rate_all_month, aes(x = slaughter_month, y = lesion_rate_o
         plot.title.position = "plot")
 ```
 
-
 And a simple count of lesions in healthy slaughter animals:
-
 
 ```{r}
 #| label: fig-allhealthylesioncountmonthlyseasonal
@@ -1085,7 +1085,8 @@ ggplot(healthy_lesion_rate_ahcs_herd_type, aes(x = year, y = lesion_rate_overall
        caption = paste0(all_lesions_vector, " \n",
                  healthy_definition)) +
   theme_jamie +
-  scale_colour_nejm(name = "Herd-type") +
+  #scale_colour_nejm(name = "Herd-type") +
+  scale_color_manual(values = ahcs_cols, name = "Herd-type") +
   scale_y_continuous(labels = scales::label_percent(scale = 100)) +
   scale_x_continuous(breaks = nth_element(c(unique(healthy_lesion_rate_ahcs_herd_type$year)), 1, 2)) +
 
@@ -1193,7 +1194,8 @@ ggplot(healthy_lesion_rate_ahcs_herd_type_month, aes(x = year_month, y = lesion_
                         healthy_definition)) +
   theme_jamie +
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) + 
-  scale_colour_nejm(name = "Herd-type") +
+  #scale_colour_nejm(name = "Herd-type") +
+  scale_color_manual(values = ahcs_cols, name = "Herd-type") +
   scale_y_continuous(labels = scales::label_percent(scale = 100)) +
   scale_x_continuous(breaks = nth_element(ymd(unique(healthy_lesion_rate_ahcs_herd_type_month$year), truncated = 2L), 1, 1)) +
   
@@ -1459,7 +1461,8 @@ ggplot(healthy_lesion_rate_brock_herd_type, aes(x = year, y = lesion_rate_overal
        caption = paste0(all_lesions_vector, " \n",
                         healthy_definition)) +
   theme_jamie +
-  scale_colour_nejm(name = "Brock et al. herd type") +
+  #scale_colour_nejm(name = "Brock et al. herd type") +
+  scale_color_manual(values = brock_cols, name = "Brock et al. herd type") +
   scale_y_continuous(labels = scales::label_percent(scale = 100)) +
   scale_x_continuous(breaks = nth_element(c(unique(healthy_lesion_rate_brock_herd_type$year)), 1, 2)) +
   
@@ -1512,7 +1515,8 @@ ggplot(healthy_lesion_rate_brock_herd_type %>%
        caption = paste0(all_lesions_vector, " \n",
                         healthy_definition)) +
   theme_jamie +
-  scale_colour_nejm(name = "Brock et al. herd type") +
+  #scale_colour_nejm(name = "Brock et al. herd type") +
+  scale_color_manual(values = brock_cols, name = "Brock et al. herd type") +
   scale_y_continuous(labels = scales::label_percent(scale = 100)) +
   scale_x_continuous(breaks = nth_element(c(unique(healthy_lesion_rate_brock_herd_type$year)), 1, 2)) +
   
@@ -1609,7 +1613,8 @@ ggplot(healthy_lesion_rate_brock_herd_type_month %>%
                         healthy_definition)) +
   theme_jamie +
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) + 
-  scale_colour_nejm(name = "Brock et al. herd type") +
+  #scale_colour_nejm(name = "Brock et al. herd type") +
+  scale_color_manual(values = brock_cols, name = "Brock et al. herd type") +
   scale_y_continuous(labels = scales::label_percent(scale = 100)) +
   scale_x_continuous(breaks = nth_element(ymd(unique(healthy_lesion_rate_brock_herd_type_month$year), truncated = 2L), 1, 1)) +
   
@@ -1838,7 +1843,8 @@ ggplot(healthy_lesion_rate_brock_herd_type_by_type %>%
   facet_wrap(~lesion_type, dir = "h", ncol = 2) +
   
   theme_jamie +
-  scale_colour_nejm(name = "Brock et al. herd type") +
+  #scale_colour_nejm(name = "Brock et al. herd type") +
+  scale_color_manual(values = brock_cols, name = "Brock et al. herd type") +
   scale_y_continuous(labels = scales::label_percent(scale = 100)) +
   scale_x_continuous(breaks = nth_element(c(unique(healthy_lesion_rate_brock_herd_type_by_type$year)), 1, 2)) +
   
@@ -1866,22 +1872,18 @@ $~$ $~$
 
 ## Notes
 
-Why would lesions in head/chest be increasing? 
-- change in way recording is done? 
-- differences between factories? 
-- A very small minority might specialise in kosher meats and so may inspect animals differently but unlike to have an effect nationally
-
-
+Why would lesions in head/chest be increasing? - change in way recording is done? - differences between factories? - A very small minority might specialise in kosher meats and so may inspect animals differently but unlike to have an effect nationally
 
 From DAFM document <https://teagasc.ie/wp-content/uploads/2025/05/How-is-bovine-TB-detected-at-slaughter.pdf>:
 
-What are the average lesion detection rates? 
+What are the average lesion detection rates?
 
-- 30% of skin test reactors will have visible lesions at post-mortem inspection. 
-- 15% of Gamma Interferon reactors will have visible lesions at post-mortem inspection. (This figure relates to cattle, in herds with high risk breakdowns, which are in the same groups as cattle that were skin test reactors).
+-   30% of skin test reactors will have visible lesions at post-mortem inspection.
+-   15% of Gamma Interferon reactors will have visible lesions at post-mortem inspection. (This figure relates to cattle, in herds with high risk breakdowns, which are in the same groups as cattle that were skin test reactors).
 
 **Biology of lesion trends**
 
+-   Healthy lesion rate seems to mirror reactor lesion rate (previous chapter) which suggests, these are not historic infections but relatively new?
 
 -   Why were levels high in 2008? It seems to be the peak of that cycle at the time and then there was a serious effort to clean-up the whole system (concerted effort): there were focused investigations, hot-spots were priortised (e.g., Monaghan), fraud cases were investigated, the quality control programme was brought in, SICTT & PVP training was increased/introduced, there was much more awareness to look out for lesions due to the ongoing gamma trial at the time etc. `r gif_string` rates were up around 30% indicating that we were missing lots of infection at the time. This may also partly explain why chest prevalence was high back in 2008 - we were missing lots of infection and it had seeded in animals.
 
@@ -1893,7 +1895,9 @@ What are the average lesion detection rates?
 
 -   Re: the lesions, they could take six months to develop, so the later summer lesion profile could well reflect infection dynamics the previous March
 
+Policy:
 
+-   Is it worth considering additionally testing for herds with a lot of chest detections (round of `r gif_string` testing)? Or even herds with animals with multiple lesions (more advanced infection)? Investigate this further.
 
 **Questions/ideas to explore**
 
@@ -1905,7 +1909,6 @@ What are the average lesion detection rates?
 -   It would be really interesting to get the age profile of these – to do. What we are seeing could be a certain aged animal that tends to get sent to slaughter later in the year.
 -   Is there a reporting bias? Does inspection start at head?
 -   Redo to include Brock sub-classes: may help tease out which herds are sending animals at later time of year
--   Is it worth considering additionally testing for herds with a lot of chest detections (round of `r gif_string` testing)? Or even herds with animals with multiple lesions (more advanced infection)? Investigate this further.
 
 **Follow-up on lesion detection/inspection biases**
 

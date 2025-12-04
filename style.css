@@ -190,4 +190,9 @@ main {
   text-align: justify;
 }
 
+/* change inline code background to transparent*/
+code {
+  background-color: transparent !important;
+  /*color: #d6336c; /* pick any color */
+}
 

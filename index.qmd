@@ -1,3 +1,9 @@
+---
+date: 2025-02-05
+date-modified: last-modified
+date-format: "DD MMM YYYY"
+---
+
 # Background {.unnumbered}
 
 ---
@@ -22,7 +28,7 @@
 
 ---
 
-This is an accompanying website to supplement a paper submitted for publication. The purpose of this website is to have a near-real-time version of the output from the paper using more recent data as we obtain it. It also acts as a location to include excess output that didn't make it into the main paper but which we think is still useful for readers. Additional analysis will be added over time.
+This is an accompanying website to supplement a research paper submitted for publication. The purpose of this website is to have a near-real-time version of the output from the paper using more recent data as we obtain it. It also acts as a location to include excess output that didn't make it into the main paper but which we think is still useful for readers. Additional analysis will be added over time.
 
 
 

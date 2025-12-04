@@ -24,3 +24,5 @@ _book/
 /summary_page_files/
 
 
+
+**/*.quarto_ipynb
