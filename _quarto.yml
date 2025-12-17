@@ -46,6 +46,9 @@ book:
     - part: "CVERA publications"
       chapters:
         - publications.qmd
+    - part: "Other bTB references"
+      chapters:
+        - other_links.qmd
   search:
     location: sidebar # i dont think navbar works in book (only website)
     type: overlay
