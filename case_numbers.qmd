@@ -185,7 +185,6 @@ min_max_dates_df <- min_max_geom_react_with_var(case_count_month, cases)
 case_count_plot_fun(case_count_month, "year_month", "cases", max_year_var = max_year_active, month_interactive = TRUE)
 ```
 
-
 ### by herd-type
 
 ```{r}
@@ -215,7 +214,6 @@ ggplot(tmp %>%
   facet_wrap(vars(herd_type_ml_description), dir = "h", ncol = 2) +
   theme_45_x 
 ```
-
 
 $~$ $~$
 
@@ -477,6 +475,11 @@ prev_brock_df <- unique_herds_each_year_brock %>%
   # filter years that Brock is available for only
   #filter(year %in% c(2011:2021)) %>% 
   filter(!is.na(herd_type_ml_description))
+
+# *************************************************************************
+# save data for the paper
+saveRDS(prev_brock_df, paste0("data/edited_output/for_paper/prev_brock_df_for_paper.rds"))
+# *************************************************************************
 
 prev_brock_plot <- prev_brock_df %>%
   #filter(year != max(bd_df$bd_start_yr)) %>% 

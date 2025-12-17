@@ -24,7 +24,7 @@ book:
     - part: "Demographics"
       chapters: 
         - demographics.qmd
-    - part: "bTB cases"
+    - part: "bTB cases & herd-prevalence"
       chapters: 
         - case_numbers.qmd
     - part: "Lesion prevalence"
@@ -84,7 +84,7 @@ format:
   #pdf:
   #  documentclass: scrreprt
 
-editor: visual
+editor: source # open in source mode
 
 execute:
   cache: false  # Ensures inline R in YAML updates correctly

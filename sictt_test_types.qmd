@@ -1,7 +1,6 @@
 # SICTT test-types {#sec-testtypes}
 
----
-
+------------------------------------------------------------------------
 
 ```{r}
 #| label: global-options
@@ -321,7 +320,6 @@ all_test_types_year_bar_plot <- ggplot(all_test_types_df_year, aes(x = year, y =
 all_test_types_year_bar_plot
 ```
 
-
 And table format:
 
 ```{r}
@@ -364,18 +362,15 @@ ft <- flextable(all_test_types_df_year_tab) %>%
 ft
 ```
 
-
 ## Timing of round test-type
 
 **Seasonality of annual round test (test_type = 1)**
 
 Is there more annual round test during certain months of the year (e.g., summer/autumn) which might reflect more cases being detected?
 
-Simple count and proportion is plotted below. 
-
+Simple count and proportion is plotted below.
 
 ### All herds count
-
 
 ```{r}
 #| label: fig-countsicttroundtest
@@ -419,13 +414,10 @@ ggplot(round_tests_count, aes(x = skin_month, y = count_of_round_tests_per_month
         plot.title.position = "plot")
 ```
 
-
 ### Count by herd-type
 
 ::: panel-tabset
-
 ## Fixed axis (for comparison)
-
 
 ```{r}
 #| label: fig-countsicttroundtestherdtype
@@ -501,11 +493,7 @@ ggplot(round_tests_count_herd_type, aes(x = skin_month, y = count_of_round_tests
         plot.title.position = "plot") +
   facet_wrap(~ herd_type_ml_description, scales = "free", ncol = 2)
 ```
-
-
 :::
-
-
 
 ### All herds proportion
 
@@ -573,9 +561,7 @@ round_tests_month_year_plot <- ggplot(round_tests, aes(x = year, y = percent, fi
 round_tests_month_year_plot
 ```
 
-
 ### by herd-type
-
 
 ```{r}
 #| label: fig-propsicttroundtestherdtype
@@ -649,8 +635,6 @@ round_tests_herd_type_month_plot_facet
 
 ```
 
-
-
 ## APT (Animals Reactor per Thousand Animal Tests)
 
 SICTT positive animals per thousand tested
@@ -685,8 +669,6 @@ max_year <- min(master_tb$skin_fixed_test_date_year)
 apt_plot_function_all(tmp, "year_month", "apt_sictt_overall")
 ```
 
-
-
 ### APT by herd
 
 ```{r}
@@ -714,11 +696,3 @@ min_max_dates_df <- min_max_geom_react_with_var(tmp, apt_sictt_overall)
 #apt_plot_function(tmp, "year_month", "apt_sictt_overall")
 apt_plot_function(tmp, "year_month", "apt_sictt_overall", facet_var = herd_type_ml_description)
 ```
-
-
-
-
-
-
-
-

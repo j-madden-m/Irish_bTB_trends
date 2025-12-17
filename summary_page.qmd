@@ -19,12 +19,12 @@ knitr::opts_chunk$set(fig.align = "center")
 library(magick)
 
 # demographics summary
-demographics_summary <- image_read("figures/merged_plot_02_Apr_2025.png",
+demographics_summary <- image_read("figures/merged_plot_17_Dec_2025.png",
                                   density = 300) %>% 
   image_ggplot(interpolate = TRUE)
 
 # cases summary
-cases_summary <- image_read("figures/merged_plot_cases_prevalance_02_Apr_2025.png") %>% 
+cases_summary <- image_read("figures/merged_plot_cases_prevalance_17_Dec_2025.png") %>% 
   image_ggplot(interpolate = TRUE)
 
 # case distribution summary
@@ -32,7 +32,7 @@ bd_dist_summary <- image_read("figures/merged_plot_bd_size_cats_10_Sep_2025.png"
   image_ggplot(interpolate = TRUE)
 
 # lesion summary
-lesion_summary <- image_read("figures/lesion_plot_07_May_2025.png") %>% 
+lesion_summary <- image_read("figures/lesion_plot_17_Dec_2025.png") %>% 
   image_ggplot(interpolate = TRUE)
 
 # aggregated case count
@@ -41,11 +41,7 @@ nb_model_summary <- image_read("figures/negative_binomial_model_01_Oct_2025.png"
 
 ```
 
-
-
-The website contains a lot of output and so for the purposes of a quick summary, we have extracted a couple of plots from the whole website that summarise some of the main findings - these are some of the plots included in the journal submission. 
-
-
+The website contains a lot of output and so for the purposes of a quick summary, we have extracted a couple of plots from the whole website that summarise some of the main findings - these are some of the plots included in the journal submission.
 
 # Demographics overview
 
@@ -63,7 +59,6 @@ The website contains a lot of output and so for the purposes of a quick summary,
 demographics_summary
 ```
 
-
 # bTB burden overview
 
 ```{r}
@@ -80,11 +75,7 @@ demographics_summary
 cases_summary
 ```
 
-
-
-
 # bTB case distribution in herd-level BDs
-
 
 ```{r}
 #| label: fig-casedistribution
@@ -100,9 +91,7 @@ cases_summary
 bd_dist_summary
 ```
 
-
 # Lesion overview
-
 
 ```{r}
 #| label: fig-lesion
@@ -133,5 +122,3 @@ lesion_summary
 
 nb_model_summary
 ```
-
-

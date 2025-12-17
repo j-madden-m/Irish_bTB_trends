@@ -99,7 +99,7 @@ include_co_op_chunks = TRUE
 
 This page presents the prevalence of animals with confirmed *m.bovis* lesions found at routine slaughter (also known as ‘factory lesion cases’).
 
-**NOTE: This section relies heavily on data from AIM on there is usually quite a lag on when this data is received.**
+**NOTE: This section relies heavily on data from AIM and there is usually quite a lag on when this data is received.**
 
 ## Definitions
 
@@ -1981,6 +1981,8 @@ $~$ $~$
 \newpage
 
 ## bTB slaughter-house/lesion/seasonality papers:
+
+Gomez-Buendia A, Triguero-Ocaña R, Pozo P, Muñoz-Mendoza M, Alvarez-Fidalgo M, Mourelo J, Romero B, Alvarez J. Abattoir surveillance: Identifying risk factors associated with bovine tuberculosis lesion detection in a low prevalence region. Prev Vet Med. 2026 Jan;246:106710. doi: <https://www.sciencedirect.com/science/article/pii/S0167587725002958> Epub 2025 Oct 6. PMID: 41076935.
 
 Clegg TA, Good M, More SJ. Risk factors for cattle presenting with a confirmed bTB lesion at slaughter, from herds with no evidence of within-herd transmission. Prev Vet Med. 2016 Apr 1;126:111-20. doi: 10.1016/j.prevetmed.2016.02.003. Epub 2016 Feb 9. PMID: 26895647. <https://pubmed.ncbi.nlm.nih.gov/26895647/>
 

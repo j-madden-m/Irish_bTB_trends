@@ -121,7 +121,7 @@ For the purposes of this work, we have excluded these cases along with extremely
 # DROP short and zero cases ----
 bd_df <- bd_df %>%
   filter(all_cases != 0) %>% 
-  filter(bd_duration_days >= 60) # ask Miriam?
+  filter(bd_duration_days >= 60) 
 ```
 
 ```{r}
@@ -1074,6 +1074,13 @@ bd_df %>%
 #| warning: FALSE
 #| message: FALSE
 
+
+
+# *************************************************************************
+# this is temp fix until i rerun main code with this in it
+bd_df <- bd_df %>% 
+  mutate(bd_initiated = ifelse(is.na(bd_initiated), "IFN-γ", bd_initiated))
+# *************************************************************************
 
 # for table
 bd_by_cat <- bd_df %>% 
