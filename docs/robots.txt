@@ -1,1 +1,1 @@
-Sitemap: https://github.com/j-madden-m/Irish_bTB_trends/sitemap.xml
+Sitemap: https://j-madden-m.github.io/Irish_bTB_trends/sitemap.xml

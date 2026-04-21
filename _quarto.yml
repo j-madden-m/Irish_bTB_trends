@@ -54,7 +54,7 @@ book:
     type: overlay
   page-navigation: true  # navigate option at bottom of page to next or previous page
   repo-url: https://github.com/j-madden-m/Irish_bTB_trends
-  site-url: https://github.com/j-madden-m/Irish_bTB_trends
+  site-url: https://j-madden-m.github.io/Irish_bTB_trends
   #sharing: [twitter, linkedin]
   #reader-mode: true
   sidebar:
