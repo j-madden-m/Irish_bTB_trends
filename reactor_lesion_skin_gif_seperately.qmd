@@ -47,11 +47,11 @@ filter_active_year <- function(data) {
   
   if ("year" %in% names(data)) {
     data %>% 
-      dplyr::filter(year != 2025)
+      dplyr::filter(year != 2026)
     
   } else if ("skin_fixed_test_date_year" %in% names(data)) {
     data %>% 
-      dplyr::filter(skin_fixed_test_date_year != 2025)
+      dplyr::filter(skin_fixed_test_date_year != 2026)
     
   } else {
     stop("Unknown data structure: expected `year` or `skin_fixed_test_date_year` column.")

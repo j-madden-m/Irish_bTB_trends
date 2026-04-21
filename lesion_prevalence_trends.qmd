@@ -1925,6 +1925,8 @@ Policy:
 -   Multiple lesions (MLs): need to clarify if this means multiple lesions within the one station (so a TVI spots multiple lesions in the head line) or does it mean lesions were spotted in multiple body part locations. Wasn't sure if ML is assigned by TVI on their line of at the end of all the stations. I suppose it could be a mixture of both?
 -   In general, TVIs have moved away from diagnosing a lesion as mbovis (in healthy animals), any suspect lesion is generally just sent to the laboratory for testing
 
+-   Update 05/02/2026 - from about 2027 onwards, "multiple lesions" will no longer be an option, the location of the lesions will be recorded. Additionally, the recording will be done in the factory (as opposed to recording from permit notes at DVO).
+
 **Reactor inspections (animals classified as bTB before entering factory via SICTT or GIF)**
 
 -   In this factory, reactors were inspected at a different time to the healthy animals (e.g. altogether after lunch). TVIs were told that these were reactor animals. The lines were slowed down a little bit (compared to healthy animal) which naturally gave them a small bit more of a thorough inspection. In terms of detecting lesions, naturally, there may be some confirmation bias at play here already knowing that they were reactor animals?
@@ -1982,34 +1984,49 @@ $~$ $~$
 
 ## bTB slaughter-house/lesion/seasonality papers:
 
-Gomez-Buendia A, Triguero-Ocaña R, Pozo P, Muñoz-Mendoza M, Alvarez-Fidalgo M, Mourelo J, Romero B, Alvarez J. Abattoir surveillance: Identifying risk factors associated with bovine tuberculosis lesion detection in a low prevalence region. Prev Vet Med. 2026 Jan;246:106710. doi: <https://www.sciencedirect.com/science/article/pii/S0167587725002958> Epub 2025 Oct 6. PMID: 41076935.
+- Gomez-Buendia A, Triguero-Ocaña R, Pozo P, Muñoz-Mendoza M, Alvarez-Fidalgo M, Mourelo J, Romero B, Alvarez J. Abattoir surveillance: Identifying risk factors associated with bovine tuberculosis lesion detection in a low prevalence region. Prev Vet Med. 2026 Jan;246:106710. doi: <https://www.sciencedirect.com/science/article/pii/S0167587725002958> Epub 2025 Oct 6. PMID: 41076935.
 
-Clegg TA, Good M, More SJ. Risk factors for cattle presenting with a confirmed bTB lesion at slaughter, from herds with no evidence of within-herd transmission. Prev Vet Med. 2016 Apr 1;126:111-20. doi: 10.1016/j.prevetmed.2016.02.003. Epub 2016 Feb 9. PMID: 26895647. <https://pubmed.ncbi.nlm.nih.gov/26895647/>
+- Clegg TA, Good M, More SJ. Risk factors for cattle presenting with a confirmed bTB lesion at slaughter, from herds with no evidence of within-herd transmission. Prev Vet Med. 2016 Apr 1;126:111-20. doi: 10.1016/j.prevetmed.2016.02.003. Epub 2016 Feb 9. PMID: 26895647. <https://pubmed.ncbi.nlm.nih.gov/26895647/>
 
-Willeberg PW, McAloon CG, Houtsma E, Higgins I, Clegg TA, More SJ. The Herd-Level Sensitivity of Abattoir Surveillance for Bovine Tuberculosis: Simulating the Effects of Current and Potentially Modified Meat Inspection Procedures in Irish Cattle. Front Vet Sci. 2018 May 23;5:82. doi: 10.3389/fvets.2018.00082. PMID: 29876359; PMCID: PMC5974157. <https://pubmed.ncbi.nlm.nih.gov/29876359/>
+- Willeberg PW, McAloon CG, Houtsma E, Higgins I, Clegg TA, More SJ. The Herd-Level Sensitivity of Abattoir Surveillance for Bovine Tuberculosis: Simulating the Effects of Current and Potentially Modified Meat Inspection Procedures in Irish Cattle. Front Vet Sci. 2018 May 23;5:82. doi: 10.3389/fvets.2018.00082. PMID: 29876359; PMCID: PMC5974157. <https://pubmed.ncbi.nlm.nih.gov/29876359/>
 
-Gonçalves S, Cardoso MF, Vieira-Pinto M, Gomes-Neves E. Bovine Tuberculosis - Analysis of 10-year cases and impact of visual inspection in the surveillance at the slaughterhouse in Portugal. One Health. 2022 Oct 30;15:100451. doi: 10.1016/j.onehlt.2022.100451. PMID: 36532678; PMCID: PMC9754928. <https://pubmed.ncbi.nlm.nih.gov/36532678/>
+- Gonçalves S, Cardoso MF, Vieira-Pinto M, Gomes-Neves E. Bovine Tuberculosis - Analysis of 10-year cases and impact of visual inspection in the surveillance at the slaughterhouse in Portugal. One Health. 2022 Oct 30;15:100451. doi: 10.1016/j.onehlt.2022.100451. PMID: 36532678; PMCID: PMC9754928. <https://pubmed.ncbi.nlm.nih.gov/36532678/>
 
-Byrne AW, Barrett D, Breslin P, Madden JM, O'Keeffe J, Ryan E. Post-mortem surveillance of bovine tuberculosis in Ireland: herd-level variation in the probability of herds disclosed with lesions at routine slaughter to have skin test reactors at follow-up test. Vet Res Commun. 2020 Nov;44(3-4):131-136. doi: 10.1007/s11259-020-09777-w. Epub 2020 Jun 24. PMID: 32583301; PMCID: PMC7312117. <https://pmc.ncbi.nlm.nih.gov/articles/PMC7312117/>
+- Byrne AW, Barrett D, Breslin P, Madden JM, O'Keeffe J, Ryan E. Post-mortem surveillance of bovine tuberculosis in Ireland: herd-level variation in the probability of herds disclosed with lesions at routine slaughter to have skin test reactors at follow-up test. Vet Res Commun. 2020 Nov;44(3-4):131-136. doi: 10.1007/s11259-020-09777-w. Epub 2020 Jun 24. PMID: 32583301; PMCID: PMC7312117. <https://pmc.ncbi.nlm.nih.gov/articles/PMC7312117/>
 
-Shittu A, Clifton-Hadley RS, Ely ER, Upton PU, Downs SH. Factors associated with bovine tuberculosis confirmation rates in suspect lesions found in cattle at routine slaughter in Great Britain, 2003-2008. Prev Vet Med. 2013 Jul 1;110(3-4):395-404. doi: 10.1016/j.prevetmed.2013.03.001. Epub 2013 Mar 26. PMID: 23540447. <https://pubmed.ncbi.nlm.nih.gov/23540447/>
+- Shittu A, Clifton-Hadley RS, Ely ER, Upton PU, Downs SH. Factors associated with bovine tuberculosis confirmation rates in suspect lesions found in cattle at routine slaughter in Great Britain, 2003-2008. Prev Vet Med. 2013 Jul 1;110(3-4):395-404. doi: 10.1016/j.prevetmed.2013.03.001. Epub 2013 Mar 26. PMID: 23540447. <https://pubmed.ncbi.nlm.nih.gov/23540447/>
 
-Olea-Popelka F, Freeman Z, White P, Costello E, O'Keeffe J, Frankena K, Martin W, More S. Relative effectiveness of irish factories in the surveillance of slaughtered cattle for visible lesions of tuberculosis, 2005-2007. Ir Vet J. 2012 Jan 30;65(1):2. doi: 10.1186/2046-0481-65-2. PMID: 22289139; PMCID: PMC3311595. <https://pubmed.ncbi.nlm.nih.gov/22289139/>
+- Olea-Popelka F, Freeman Z, White P, Costello E, O'Keeffe J, Frankena K, Martin W, More S. Relative effectiveness of irish factories in the surveillance of slaughtered cattle for visible lesions of tuberculosis, 2005-2007. Ir Vet J. 2012 Jan 30;65(1):2. doi: 10.1186/2046-0481-65-2. PMID: 22289139; PMCID: PMC3311595. <https://pubmed.ncbi.nlm.nih.gov/22289139/>
 
-Male Here RR, Ryan E, Breslin P, Frankena K, Byrne AW. Revisiting the relative effectiveness of slaughterhouses in Ireland to detect tuberculosis lesions in cattle (2014-2018). PLoS One. 2022 Oct 7;17(10):e0275259. doi: 10.1371/journal.pone.0275259. PMID: 36206240; PMCID: PMC9543943. <https://pubmed.ncbi.nlm.nih.gov/36206240/>
+- Male Here RR, Ryan E, Breslin P, Frankena K, Byrne AW. Revisiting the relative effectiveness of slaughterhouses in Ireland to detect tuberculosis lesions in cattle (2014-2018). PLoS One. 2022 Oct 7;17(10):e0275259. doi: 10.1371/journal.pone.0275259. PMID: 36206240; PMCID: PMC9543943. <https://pubmed.ncbi.nlm.nih.gov/36206240/>
 
-Frankena K, White PW, O'Keeffe J, Costello E, Martin SW, van Grevenhof I, More SJ. Quantification of the relative efficiency of factory surveillance in the disclosure of tuberculosis lesions in attested Irish cattle. Vet Rec. 2007 Nov 17;161(20):679-84. doi: 10.1136/vr.161.20.679. PMID: 18024922. <https://pubmed.ncbi.nlm.nih.gov/18024922/>
+- Frankena K, White PW, O'Keeffe J, Costello E, Martin SW, van Grevenhof I, More SJ. Quantification of the relative efficiency of factory surveillance in the disclosure of tuberculosis lesions in attested Irish cattle. Vet Rec. 2007 Nov 17;161(20):679-84. doi: 10.1136/vr.161.20.679. PMID: 18024922. <https://pubmed.ncbi.nlm.nih.gov/18024922/>
 
-Pascual-Linaza AV, Gordon AW, Stringer LA, Menzies FD. Efficiency of slaughterhouse surveillance for the detection of bovine tuberculosis in cattle in Northern Ireland. Epidemiol Infect. 2017 Apr;145(5):995-1005. doi: 10.1017/S0950268816003095. Epub 2016 Dec 28. PMID: 28027717; PMCID: PMC9507821. <https://pubmed.ncbi.nlm.nih.gov/28027717/>
+- Pascual-Linaza AV, Gordon AW, Stringer LA, Menzies FD. Efficiency of slaughterhouse surveillance for the detection of bovine tuberculosis in cattle in Northern Ireland. Epidemiol Infect. 2017 Apr;145(5):995-1005. doi: 10.1017/S0950268816003095. Epub 2016 Dec 28. PMID: 28027717; PMCID: PMC9507821. <https://pubmed.ncbi.nlm.nih.gov/28027717/>
 
-A study of the distribution of lesions in cattle caused by Mycobacterium bovis MPI Technical Paper No: 2017/69 New Zealand 2017 <https://www.mpi.govt.nz/dmsdocument/29225-A-study-of-the-distribution-of-lesions-in-cattle-caused-by-Mycobacterium-bovis>
+- A study of the distribution of lesions in cattle caused by Mycobacterium bovis MPI Technical Paper No: 2017/69 New Zealand 2017 <https://www.mpi.govt.nz/dmsdocument/29225-A-study-of-the-distribution-of-lesions-in-cattle-caused-by-Mycobacterium-bovis>
 
-Vaid S, Lee YY, Rawat S, Luthra A, Shah D, Ahuja AT. Tuberculosis in the head and neck--a forgotten differential diagnosis. Clin Radiol. 2010 Jan;65(1):73-81. doi: <https://pubmed.ncbi.nlm.nih.gov/20103425/>
+- Vaid S, Lee YY, Rawat S, Luthra A, Shah D, Ahuja AT. Tuberculosis in the head and neck--a forgotten differential diagnosis. Clin Radiol. 2010 Jan;65(1):73-81. doi: <https://pubmed.ncbi.nlm.nih.gov/20103425/>
 
-Wiseman J, Cassidy JP, Gormley E. The problem that residual Mycobacterium bovis infection poses for the eradication of bovine tuberculosis. Vet J. 2024 Dec;308:106266. doi: 10.1016/j.tvjl.2024.106266. Epub 2024 Nov 9. PMID: 39528077. <https://pubmed.ncbi.nlm.nih.gov/39528077/>
+- Wiseman J, Cassidy JP, Gormley E. The problem that residual Mycobacterium bovis infection poses for the eradication of bovine tuberculosis. Vet J. 2024 Dec;308:106266. doi: 10.1016/j.tvjl.2024.106266. Epub 2024 Nov 9. PMID: 39528077. <https://pubmed.ncbi.nlm.nih.gov/39528077/>
+
+- Gavier-Widén D, Cooke MM, Gallagher J, Chambers MA, Gortázar C. A review of infection of wildlife hosts with Mycobacterium bovis and the diagnostic difficulties of the 'no visible lesion' presentation. N Z Vet J. 2009 Jun;57(3):122-31. <https://pubmed.ncbi.nlm.nih.gov/19521460/> PMID: 19521460.
+
+
+- Byrne AW, Graham J, Brown C, Donaghy A, Guelbenzu-Gonzalo M, McNair J, Skuce R, Allen A, McDowell S. Bovine tuberculosis visible lesions in cattle culled during herd breakdowns: the effects of individual characteristics, trade movement and co-infection. BMC Vet Res. 2017 Dec 29;13(1):400. doi: 10.1186/s12917-017-1321-z. PMID: 29284483; PMCID: PMC5747088. <https://pmc.ncbi.nlm.nih.gov/articles/PMC5747088/>
+
+- Byrne AW, Graham J, Brown C, Donaghy A, Guelbenzu-Gonzalo M, McNair J, Skuce RA, Allen A, McDowell SW. Modelling the variation in skin-test tuberculin reactions, post-mortem lesion counts and case pathology in tuberculosis-exposed cattle: Effects of animal characteristics, histories and co-infection. Transbound Emerg Dis. 2018 Jun;65(3):844-858. doi: 10.1111/tbed.12814. Epub 2018 Jan 23. PMID: 29363285. <https://pubmed.ncbi.nlm.nih.gov/29363285/>
+
+- Collins, John D., and John Hannan. “Tuberculosis in Cattle: Lesions Seen at Slaughter.” 
+University College Dublin. Centre for Veterinary Epidemiology and Risk Analysis, July 1994. <https://researchrepository.ucd.ie/server/api/core/bitstreams/6b03a180-e0a1-4292-911a-b7a01033f45e/content>
+
+- Drehoff, C. C., Munden, K. C., Ray, C., Martinez, H., Robbe-Austerman, S., & Lombard, J. E. (2026). An Examination of Gross Lesions Associated with Bovine Tuberculosis in the U.S. Pathogens, 15(4), 350. <https://doi.org/10.3390/pathogens15040350>
 
 **Seasonality**
 
 Abrupt events and population synchrony in the dynamics of Bovine Tuberculosis Moustakas A, Evans MR, Daliakopoulos IN, Markonis Y. Abrupt events and population synchrony in the dynamics of Bovine Tuberculosis. Nat Commun. 2018 Jul 19;9(1):2821. doi: 10.1038/s41467-018-04915-0. PMID: 30026483; PMCID: PMC6053421.<https://pubmed.ncbi.nlm.nih.gov/30026483/>
 
 Moustakas, A., Evans, M.R. Regional and temporal characteristics of bovine tuberculosis of cattle in Great Britain. Stoch Environ Res Risk Assess 30, 989–1003 (2016). https://doi.org/10.1007/s00477-015-1140-3 <https://link.springer.com/article/10.1007/s00477-015-1140-3#citeas>
+
+
+Robinson SE, Christley RM. Identifying temporal variation in reported births, deaths and movements of cattle in Britain. BMC Vet Res. 2006 Mar 30;2:11. <https://pubmed.ncbi.nlm.nih.gov/16573832/> PMID: 16573832; PMCID: PMC1440854.

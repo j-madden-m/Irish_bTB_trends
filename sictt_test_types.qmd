@@ -24,7 +24,7 @@ bd_df_file <- dir_info("data", type = "file", regexp = "(?i)bd_df.*\\.rds$") %>%
   subset(subset = modification_time == max(modification_time), select = path, drop = T)
 #bd_df <- readRDS("data/bd_df_14_Nov_2024.rds")
 bd_df <- readRDS(bd_df_file) %>% 
-  filter(bd_start_yr > 2007 & bd_start_yr < 2025)
+  filter(bd_start_yr > 2007 & bd_start_yr < 2026)
 bd_df_labels <- as.list(sjlabelled::get_label(bd_df))
 bd_df <- sjlabelled::remove_all_labels(bd_df)
 
@@ -34,7 +34,7 @@ master_file <- dir_info("data", type = "file", regexp = "(?i)master.*\\.rds$") %
   subset(subset = modification_time == max(modification_time), select = path, drop = T)
 master_tb <- readRDS(master_file) %>% 
   filter(skin_fixed_test_date_year > 2007) %>% 
-  filter(skin_fixed_test_date_year != 2025) %>% 
+  filter(skin_fixed_test_date_year != 2026) %>% 
     mutate(test_type_description_number = paste0(test_type, "; ", test_type_description),
          #contig_test_type_binary = ifelse(test_type == "8", 1, 0),
          #contig_test_type_character = ifelse(contig_test_type_binary == 0, "All other test types", "Contig test type")

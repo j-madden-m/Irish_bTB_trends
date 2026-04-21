@@ -28,13 +28,21 @@ source("R_files/bd_count_by_month_fun.R")
 bd_df_file <- dir_info("data", type = "file", regexp = "(?i)bd_df.*\\.rds$") %>% 
   subset(subset = modification_time == max(modification_time), select = path, drop = T)
 #bd_df <- readRDS("data/bd_df_14_Nov_2024.rds")
-bd_df <- readRDS(bd_df_file) %>% 
-  filter(bd_start_yr > 2007 & bd_start_yr < 2025)
+# bd_df <- readRDS(bd_df_file) %>% 
+#   filter(bd_start_yr > 2007 & bd_start_yr < 2026)
+bd_df <- readRDS(bd_df_file) 
+# for the majority of this document, we want it by bd_end_yr
+# but at start we want bd_df_start_yr so i have just created separate file for that
+bd_df_start_df <- bd_df %>% 
+  filter(bd_start_yr > 2007 & bd_start_yr < 2026)
+
+bd_df <- bd_df %>% 
+  filter(bd_end_yr > 2007 & bd_end_yr < 2026) 
 bd_df_labels <- as.list(sjlabelled::get_label(bd_df))
 bd_df <- sjlabelled::remove_all_labels(bd_df)
 # drop years before 2008
 bd_df <- bd_df %>% 
-  filter(bd_start_yr > 2007) %>% 
+  filter(bd_end_yr > 2007) %>% 
   mutate(bd_start_yr_f = as.character(bd_start_yr),
          bd_end_yr_f = as.character(bd_end_yr)) %>% 
   mutate(all_cases_cut = cut(all_cases, 
@@ -53,7 +61,7 @@ all_cases_collapsed_file <- dir_info("data", type = "file", regexp = "(?i)all_ca
   subset(subset = modification_time == max(modification_time), select = path, drop = T)
 all_cases_collapsed <- readRDS(all_cases_collapsed_file) %>% 
      filter(year > 2007) %>% 
-    filter(year != 2025)
+    filter(year != 2026)
 # all_cases_collapsed <- readRDS(paste0("data/edited_output/all_cases_collapsed.rds")) %>% 
 #     filter(year > 2007) 
 # see breakdown_page_testing.R and trends_bd.Rmd for code in this document
@@ -129,9 +137,17 @@ bd_df <- bd_df %>%
 #| echo: false
 #| eval: true
 #| include: false
-min_year <- min(bd_df$bd_start_yr)
-max_year <- max(bd_df$bd_start_yr)
+# min_year <- min(bd_df$bd_start_yr)
+# max_year <- max(bd_df$bd_start_yr)
+min_year <- min(bd_df$bd_end_yr)
+max_year <- max(bd_df$bd_end_yr)
 years_for_study <- c(min_year:max_year)
+
+
+# bd_df_start_df
+min_year_start <- min(bd_df_start_df$bd_start_yr)
+max_year_start <- max(bd_df_start_df$bd_start_yr)
+years_for_study_start <- c(min_year_start:max_year_start)
 ```
 
 $~$ $~$
@@ -157,16 +173,16 @@ $~$ $~$
 # no. BDs in a year ----
 # this is different to no of herds with any reactor (above) but that would result in
 # 0 or 1 for a herd in a particular year but here we could have 2 or 3 BDs in a year
-bd_df <- bd_during_year(bd_df, years_to_check = years_for_study)
+bd_df_start_df <- bd_during_year(bd_df_start_df, years_to_check = years_for_study_start)
 #this just tells you if BD occurred in a year or not, not how many
 #it does actually! because each row is a different BD
-no_bds_df <- bd_df %>% 
+no_bds_df <- bd_df_start_df %>% 
   #group_by(bd_start_yr) %>% 
   summarise(across(contains("during"), 
                    list(total = ~sum(.)), .names = "{fn}_{.col}")) %>% 
   #transpose dataset
   sjmisc::rotate_df(rn = "year") %>% 
-  mutate(year = years_for_study) %>% 
+  mutate(year = years_for_study_start) %>% 
   rename(no_of_bds = 2)
 #no_bds_df
 #plot no. of BDs
@@ -216,7 +232,7 @@ $~$ $~$
 #| fig.height: 8 
 #| fig.cap: "Number of BDs per month."
 # overall
-bd_df_per_month <- bd_df %>% 
+bd_df_per_month <- bd_df_start_df %>% 
   mutate(year_month = floor_date(bd_start , "month")) %>% 
   #select(herd_no, bd_start, year_month) 
   group_by(year_month) %>% 
@@ -247,7 +263,7 @@ $~$ $~$
 #| fig.height: 8 
 #| fig.cap: "Number of BDs per month and herd-type."
 # by herd type
-bd_df_per_month_herd_type <- bd_df %>% 
+bd_df_per_month_herd_type <- bd_df_start_df %>% 
   mutate(year_month = floor_date(bd_start , "month")) %>% 
   #select(herd_no, bd_start, year_month) 
   group_by(year_month, herd_type_ml_description) %>% 
@@ -357,10 +373,12 @@ $~$
 #| message: FALSE
 #| fig.width: 12
 #| fig.height: 14
-#| fig.cap: "Boxplots of the number of bTB cases in BDs that started in each year by Brock et al. herd-types (only including the 4 most common herd-types)."
+#| fig.cap: "Boxplots of the number of bTB cases in BDs that ended in each year by AHCS herd-types."
 ggplot_boxplot_half_plot(bd_df,  
-                         bd_start_yr_f, all_cases, bd_start_yr_f, y_zoom = 20, facet_var = herd_type, no_of_columns = 1) +
-  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) 
+                         bd_end_yr_f, all_cases, bd_end_yr_f, y_zoom = 20, facet_var = herd_type, no_of_columns = 1) +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) +
+  labs(x = "BD end year",
+       y = "All cases")
 
 ```
 
@@ -377,13 +395,14 @@ $~$
 #| message: FALSE
 #| fig.width: 12
 #| fig.height: 14
-#| fig.cap: "Boxplots of the number of bTB cases in BDs that started in each year by AHCS herd-types (only including the 4 most common herd-types)."
-ggplot_boxplot_half_plot(bd_df %>% 
-                           filter(herd_type_ml_description  %in% c("Dairy", "Beef", "Fattener", "Mixed")),  
-                         bd_start_yr_f, all_cases, bd_start_yr_f, 
+#| fig.cap: "Boxplots of the number of bTB cases in BDs that ended in each year by AHCS herd-types."
+ggplot_boxplot_half_plot(bd_df,  
+                         bd_end_yr_f, all_cases, bd_end_yr_f, 
                          #y_zoom = 20, 
                          facet_var = herd_type, no_of_columns = 1) +
-  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) 
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) +
+  labs(x = "BD end year",
+       y = "All cases")
  
 ```
 
@@ -400,13 +419,15 @@ $~$
 #| message: FALSE
 #| fig.width: 12
 #| fig.height: 14 
-#| fig.cap: "Boxplots of the number of bTB cases in BDs that started in each year by AHCS herd-types (only including the 4 most common herd-types)."
+#| fig.cap: "Boxplots of the number of bTB cases in BDs that ended in each year by AHCS herd-types."
 ggplot_boxplot_half_plot(bd_df,  
-                         bd_start_yr_f, all_cases, bd_start_yr_f, 
+                         bd_end_yr_f, all_cases, bd_end_yr_f, 
                          #y_zoom = 20, 
                          facet_var = herd_type, no_of_columns = 1) +
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) +
-  scale_y_log10(labels = scales::comma) 
+  scale_y_log10(labels = scales::comma) +
+  labs(x = "BD end year",
+       y = "All cases")
 ```
 :::
 
@@ -430,11 +451,13 @@ $~$
 #| message: FALSE
 #| fig.width: 12
 #| fig.height: 14
-#| fig.cap: "Boxplots of the number of bTB cases in BDs that started in each year by Brock et al. herd-types (only including the 4 most common herd-types)."
+#| fig.cap: "Boxplots of the number of bTB cases in BDs that ended in each year by Brock et al. herd-types (only including the 4 most common herd-types)."
 ggplot_boxplot_half_plot(bd_df %>% 
                            filter(herd_type_ml_description  %in% c("Dairy", "Beef", "Fattener", "Mixed")),  
-                         bd_start_yr_f, all_cases, bd_start_yr_f, y_zoom = 20, facet_var = herd_type_ml_description, no_of_columns = 1) +
-  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) 
+                         bd_end_yr_f, all_cases, bd_end_yr_f, y_zoom = 20, facet_var = herd_type_ml_description, no_of_columns = 1) +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1))  +
+  labs(x = "BD end year",
+       y = "All cases")
 
 ```
 
@@ -451,13 +474,15 @@ $~$
 #| message: FALSE
 #| fig.width: 12
 #| fig.height: 14
-#| fig.cap: "Boxplots of the number of bTB cases in BDs that started in each year by Brock et al. herd-types (only including the 4 most common herd-types)."
+#| fig.cap: "Boxplots of the number of bTB cases in BDs that ended in each year by Brock et al. herd-types (only including the 4 most common herd-types)."
 ggplot_boxplot_half_plot(bd_df %>% 
                            filter(herd_type_ml_description  %in% c("Dairy", "Beef", "Fattener", "Mixed")),  
-                         bd_start_yr_f, all_cases, bd_start_yr_f, 
+                         bd_end_yr_f, all_cases, bd_end_yr_f, 
                          #y_zoom = 20, 
                          facet_var = herd_type_ml_description, no_of_columns = 1) +
-  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) 
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1))  +
+  labs(x = "BD end year",
+       y = "All cases")
  
 ```
 
@@ -474,18 +499,20 @@ $~$
 #| message: FALSE
 #| fig.width: 12
 #| fig.height: 14 
-#| fig.cap: "Boxplots of the number of bTB cases in BDs that started in each year by Brock et al. herd-types (only including the 4 most common herd-types)."
+#| fig.cap: "Boxplots of the number of bTB cases in BDs that ended in each year by Brock et al. herd-types (only including the 4 most common herd-types)."
 ggplot_boxplot_half_plot(bd_df %>% 
                            filter(herd_type_ml_description  %in% c("Dairy", "Beef", "Fattener", "Mixed")),  
-                         bd_start_yr_f, all_cases, bd_start_yr_f, 
+                         bd_end_yr_f, all_cases, bd_end_yr_f, 
                          #y_zoom = 20, 
                          facet_var = herd_type_ml_description, no_of_columns = 1) +
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) +
-  scale_y_log10(labels = scales::comma) 
+  scale_y_log10(labels = scales::comma)  +
+  labs(x = "BD end year",
+       y = "All cases")
 ```
 :::
 
-### Brock et al. sub-class herd-types by BD size
+### Brock et al. dairy sub-class herd-types by BD size
 
 Rather than plotting all sub-classes, here we focus on dairy sub-classes only as we have seen above that dairy tend to have the largest BDs in terms of the number of bTB cases disclosed.
 
@@ -505,11 +532,13 @@ $~$
 #| message: FALSE
 #| fig.width: 12
 #| fig.height: 14
-#| fig.cap: "Boxplots of the number of bTB cases in BDs that started in each year by Brock et al. sub-classes by dairy herd-types only."
+#| fig.cap: "Boxplots of the number of bTB cases in BDs that ended in each year by Brock et al. sub-classes by dairy herd-types only."
 ggplot_boxplot_half_plot(bd_df %>% 
                            filter(str_detect(herd_type_ml_sub_class_description, "Dairy")),
-                         bd_start_yr_f, all_cases, bd_start_yr_f, y_zoom = 20, facet_var = herd_type_ml_sub_class_description, no_of_columns = 1) +
-  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) 
+                         bd_end_yr_f, all_cases, bd_end_yr_f, y_zoom = 20, facet_var = herd_type_ml_sub_class_description, no_of_columns = 1) +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1))  +
+  labs(x = "BD end year",
+       y = "All cases")
 
 ```
 
@@ -526,13 +555,15 @@ $~$
 #| message: FALSE
 #| fig.width: 12
 #| fig.height: 16
-#| fig.cap: "Boxplots of the number of bTB cases in BDs that started in each year by Brock et al. sub-classes by dairy herd-types only."
+#| fig.cap: "Boxplots of the number of bTB cases in BDs that ended in each year by Brock et al. sub-classes by dairy herd-types only."
 ggplot_boxplot_half_plot(bd_df %>% 
                            filter(str_detect(herd_type_ml_sub_class_description, "Dairy")),
-                         bd_start_yr_f, all_cases, bd_start_yr_f, 
+                         bd_end_yr_f, all_cases, bd_end_yr_f, 
                          #y_zoom = 20, 
                          facet_var = herd_type_ml_sub_class_description, no_of_columns = 1) +
-  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) 
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1))  +
+  labs(x = "BD end year",
+       y = "All cases")
  
 ```
 
@@ -549,14 +580,16 @@ $~$
 #| message: FALSE
 #| fig.width: 12
 #| fig.height: 16 
-#| fig.cap: "Boxplots of the number of bTB cases in BDs that started in each year by Brock et al. sub-classes by dairy herd-types only."
+#| fig.cap: "Boxplots of the number of bTB cases in BDs that ended in each year by Brock et al. sub-classes by dairy herd-types only."
 ggplot_boxplot_half_plot(bd_df %>% 
                            filter(str_detect(herd_type_ml_sub_class_description, "Dairy")),
-                         bd_start_yr_f, all_cases, bd_start_yr_f, 
+                         bd_end_yr_f, all_cases, bd_end_yr_f, 
                          #y_zoom = 20, 
                          facet_var = herd_type_ml_sub_class_description, no_of_columns = 1) +
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) +
-  scale_y_log10(labels = scales::comma) 
+  scale_y_log10(labels = scales::comma)  +
+  labs(x = "BD end year",
+       y = "All cases")
 ```
 :::
 
@@ -576,7 +609,7 @@ ggplot_boxplot_half_plot(bd_df %>%
 #| fig.cap: "Proportion of BD size by category over time (all herds)"
 all_case_5_df <- bd_df %>% 
   filter(!is.na(herd_type)) %>% 
-  split(list(.$bd_start_yr)) %>%
+  split(list(.$bd_end_yr)) %>%
   map(~tabyl(.x, all_cases_cut_5)) %>% 
   map(., ~mutate(.x, percent = round(percent, 2)) %>% select(-n)) %>% 
   imap(~mutate(.x, year = .y)) %>% 
@@ -614,7 +647,7 @@ all_case_5_plot <- ggplot(all_case_5_df, aes(x = year, y = percent, fill = all_c
        #fill = "AHCS herd type",
        title =
          paste0("Proportion of BDs by different size (all herds)"),
-       caption = "Year corresponds to year the BD started") +
+       caption = "Year corresponds to year the BD ended") +
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) +
   scale_x_continuous(breaks = years_for_study)
 
@@ -635,7 +668,7 @@ all_case_5_plot
 #| fig.cap: "Proportion of BD size by category over time"
 all_case_5_df <- bd_df %>% 
   filter(!is.na(herd_type)) %>% 
-  split(list(.$bd_start_yr, .$herd_type)) %>%
+  split(list(.$bd_end_yr, .$herd_type)) %>%
   map(~tabyl(.x, all_cases_cut_5)) %>% 
   map(., ~mutate(.x, percent = round(percent, 2)) %>% select(-n)) %>% 
   imap(~mutate(.x, year = .y)) %>% 
@@ -672,7 +705,7 @@ all_case_5_plot <- ggplot(all_case_5_df, aes(x = year, y = percent, fill = all_c
        #fill = "AHCS herd type",
        title =
          paste0("Proportion of BDs by different size"),
-       caption = "Year corresponds to year the BD started") +
+       caption = "Year corresponds to year the BD ended") +
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) +
   scale_x_continuous(breaks = years_for_study) +
   facet_wrap(vars(herd_type), dir = "h", ncol = 1)
@@ -693,7 +726,7 @@ all_case_5_plot
 #| fig.cap: "Proportion of BD size by category over time"
 all_case_5_df_brock <- bd_df %>% 
   filter(!is.na(herd_type_ml_description)) %>% 
-  split(list(.$bd_start_yr, .$herd_type_ml_description)) %>%
+  split(list(.$bd_end_yr, .$herd_type_ml_description)) %>%
   #split(list(.$bd_start_yr)) %>%
   map(~tabyl(.x, all_cases_cut_5)) %>% 
   map(., ~mutate(.x, percent = round(percent, 2)) %>% select(-n)) %>% 
@@ -734,7 +767,7 @@ all_case_5_brock_plot <- ggplot(all_case_5_df_brock, aes(x = year, y = percent, 
        #fill = "AHCS herd type",
        title =
          paste0("Proportion of BDs by different size"),
-       caption = "Year corresponds to year the BD started") +
+       caption = "Year corresponds to year the BD ended") +
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) +
   scale_x_continuous(breaks = years_for_study) +
   facet_wrap(vars(herd_type_ml_description), dir = "h", ncol = 1)
@@ -755,10 +788,12 @@ $~$
 #| message: FALSE
 #| fig.width: 12
 #| fig.height: 14
-#| fig.cap: "Boxplots of the number of BD durations (in years) by AHCS herd-types (zoomed into 2.5 year)."
+#| fig.cap: "Boxplots of the number of BD durations (in years) by AHCS herd-types (zoomed into 1 year)."
 ggplot_boxplot_half_plot(bd_df,  
-                        bd_start_yr_f, all_cases, bd_start_yr_f, y_zoom = 2.5, facet_var = herd_type, no_of_columns = 1) +
-   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) 
+                        bd_end_yr_f, bd_duration_yrs, bd_end_yr_f, y_zoom = 1, facet_var = herd_type, no_of_columns = 1) +
+   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) +
+  labs(x = "BD end year",
+       y = "BD duration (years)")
 
 
 
@@ -801,7 +836,8 @@ ggplot_boxplot_half_plot(bd_herd_summary,
                          herd_type, bd_no, herd_type, #y_zoom = 20, 
                          #facet_var = herd_type_ml_description, no_of_columns = 1
 ) +
-  labs(y = "No. of BDs")
+  labs(y = "No. of BDs",
+       x = "Herd-type")
 ```
 
 #### Brock et al.:
@@ -821,7 +857,8 @@ ggplot_boxplot_half_plot(bd_herd_summary %>%
                          herd_type_ml_description, bd_no, herd_type_ml_description, #y_zoom = 20, 
                          #facet_var = herd_type_ml_description, no_of_columns = 1
                          ) +
-  labs(y = "No. of BDs")
+  labs(y = "No. of BDs",
+       x = "Herd-type")
 ```
 
 #### Brock et al. sub-classes:
@@ -840,7 +877,8 @@ ggplot_boxplot_half_plot(bd_herd_summary,
                          herd_type_ml_sub_class_description, bd_no, herd_type_ml_sub_class_description, #y_zoom = 20, 
                          #facet_var = herd_type_ml_description, no_of_columns = 1
                          ) +
-  labs(y = "No. of BDs") +
+  labs(y = "No. of BDs",
+       x = "Herd-type") +
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) 
 
 ```
@@ -866,7 +904,7 @@ bd_df %>%
   mutate(cases_not_skin_index = coalesce(all_cases - coalesce(no_skin_reactor_index_test, 0), no_skin_reactor_index_test),
          cases_not_skin_index_binary = ifelse(cases_not_skin_index > 0, 1, 0),
          cases_not_skin_index_yes_no = ifelse(cases_not_skin_index_binary == 1, "Yes", "No")) %>% 
-  split(list(.$bd_start_yr, .$herd_type_ml_description)) %>%
+  split(list(.$bd_end_yr_f, .$herd_type_ml_description)) %>%
   map(~tabyl(.x, cases_not_skin_index_yes_no)) %>% 
   map(., ~mutate(.x, n_percent = paste0(n, " (", round(percent, 3)*100, ")")) %>% select(-n)) %>% 
   imap(~mutate(.x, year = .y)) %>% 
@@ -926,7 +964,7 @@ bd_df %>%
   mutate(cases_not_slaughter_index = coalesce(all_cases - coalesce(no_slaughter_reactor_index_test, 0), no_slaughter_reactor_index_test),
          cases_not_slaughter_index_binary = ifelse(cases_not_slaughter_index > 0, 1, 0),
          cases_not_slaughter_index_yes_no = ifelse(cases_not_slaughter_index_binary == 1, "Yes", "No")) %>% 
-  split(list(.$bd_start_yr, .$herd_type_ml_description)) %>%
+  split(list(.$bd_end_yr, .$herd_type_ml_description)) %>%
   map(~tabyl(.x, cases_not_slaughter_index_yes_no)) %>% 
   map(., ~mutate(.x, n_percent = paste0(n, " (", round(percent, 3)*100, ")")) %>% select(-n)) %>% 
   imap(~mutate(.x, year = .y)) %>% 
@@ -984,10 +1022,10 @@ bd_df %>%
 bd_df %>% 
   filter(bd_initiated == "SICTT") %>% 
   filter(herd_type_ml_description  %in% c("Dairy", "Beef", "Fattener", "Mixed", "Store", "Trader")) %>% 
-  group_by(bd_start_yr_f, herd_type_ml_description) %>% 
+  group_by(bd_end_yr_f, herd_type_ml_description) %>% 
   summarise(no_of_bds_started = n()) %>% 
   ungroup() %>% 
-  ggplot(aes(x = bd_start_yr_f, y = no_of_bds_started, fill = herd_type_ml_description)) +
+  ggplot(aes(x = bd_end_yr_f, y = no_of_bds_started, fill = herd_type_ml_description)) +
   # Implement a grouped bar chart
   geom_col(position = position_dodge2(preserve = "single", padding = 0.1)) +
   labs(x = "Year",
@@ -1030,10 +1068,10 @@ bd_df %>%
 bd_df %>% 
   filter(bd_initiated == "Slaughter (non permit animal)") %>% 
   filter(herd_type_ml_description  %in% c("Dairy", "Beef", "Fattener", "Mixed", "Store", "Trader")) %>% 
-  group_by(bd_start_yr_f, herd_type_ml_description) %>% 
+  group_by(bd_end_yr_f, herd_type_ml_description) %>% 
   summarise(no_of_bds_started = n()) %>% 
   ungroup() %>% 
-  ggplot(aes(x = bd_start_yr_f, y = no_of_bds_started, fill = herd_type_ml_description)) +
+  ggplot(aes(x = bd_end_yr_f, y = no_of_bds_started, fill = herd_type_ml_description)) +
   # Implement a grouped bar chart
   geom_col(position = position_dodge2(preserve = "single", padding = 0.1)) +
   labs(x = "Year",
@@ -1084,14 +1122,14 @@ bd_df <- bd_df %>%
 
 # for table
 bd_by_cat <- bd_df %>% 
-  split(.$bd_start_yr) %>%
+  split(.$bd_end_yr) %>%
   map(~tabyl(.x, all_cases_cut)) %>% 
   map(., ~mutate(.x, n_percent = paste0(n, " (", round(percent, 3)*100, ")")) %>% select(-n, -percent)) %>% 
   imap(~set_names(.x, ifelse(names(.x) != "all_cases_cut", paste(.y, names(.x), sep = "_"), names(.x)))) %>%
   reduce(full_join, by = "all_cases_cut")
 
 bd_median <- bd_df %>% 
-  group_by(bd_start_yr) %>% 
+  group_by(bd_end_yr) %>% 
   summarise(across(all_cases, 
                    list(median_iqr = ~median_range(., 0)), .names = "{fn}"))
 # bd_median
@@ -1099,7 +1137,7 @@ bd_median_t <- rotate_df(bd_median, rn = "bd_start_yr") %>%
   janitor::row_to_names(row_number = 1)
 
 bd_range <- bd_df %>% 
-  group_by(bd_start_yr) %>% 
+  group_by(bd_end_yr) %>% 
   summarise(across(all_cases, 
                    list(bd_range = ~range_one_value(.)), .names = "{fn}"))
 bd_range_t <- rotate_df(bd_range, rn = "bd_start_yr") %>% 
@@ -1117,9 +1155,9 @@ no_of_unique_herds_with_case <- all_cases_collapsed %>%
 
 
 
-no_of_bds_started_in_year <- bd_df %>% 
-  tabyl(bd_start_yr) %>% 
-  mutate(bd_start_in_year = paste0(n, " (", round(percent, 3)*100, ")")) %>% 
+no_of_bds_ended_in_year <- bd_df %>% 
+  tabyl(bd_end_yr) %>% 
+  mutate(bd_end_in_year = paste0(n, " (", round(percent, 3)*100, ")")) %>% 
   select(-n, -percent) %>% 
   rotate_df(rn = "bd_start_yr") %>% 
   janitor::row_to_names(row_number = 1)
@@ -1129,7 +1167,7 @@ no_of_bds_started_in_year <- bd_df %>%
 # BD bd_initiated ----
 # *************************************************************************
 bd_initiated_year <- bd_df %>% 
-  split(.$bd_start_yr) %>%
+  split(.$bd_end_yr) %>%
   map(~tabyl(.x, bd_initiated)) %>% 
   map(., ~mutate(.x, n_percent = paste0(n, " (", round(percent, 3)*100, ")")) %>% select(-n, -percent)) %>% 
   imap(~set_names(.x, ifelse(names(.x) != "bd_initiated", paste(.y, names(.x), sep = "_"), names(.x)))) %>%
@@ -1141,11 +1179,11 @@ bd_initiated_year[] <- lapply(bd_initiated_year, function(x) replace(x, is.na(x)
 # we could just drop 2023 here which simplifies some issues:
 final_table_bd_stats <- force_bind_year(  no_of_unique_herds_with_case,
                                           #bd data
-                                          no_of_bds_started_in_year,
+                                          no_of_bds_ended_in_year,
                                           bd_median_t,
                                           bd_range_t,
                                           bd_by_cat, 
-                                          bd_initiated_year, force_to_character = TRUE, drop_years = "2025") %>% 
+                                          bd_initiated_year, force_to_character = TRUE, drop_years = "2026") %>% 
   select(Variable, everything()) %>% 
   #filter first column, remove bd_start_yr rows
   filter(.[[1]] != "bd_start_yr") %>% 
@@ -1166,7 +1204,7 @@ ft <- flextable(final_table_bd_stats) %>%
   bold(j = c(1, 2)) %>% 
   set_caption(paste0("Table 1: Numbers presented as n (%) where appropriate")) %>% 
   #bold(i = 1) %>%  # bold header
-  add_footer_row(values = glue::glue("BD: herd-level bTB breakdown; SICTT: Single Intradermal Comparative Tuberculin Test; IFN-γ: interferon-gamma assay; AHCS: Animal Health Computer System \nIFN-γ cases prior to May 2019 were recorded as SICTT (i.e., negative SICTT reinterpreted as a positive SICTT), after this date there was a facility to record them separately on AHCS \nBD figures relate to BDs that started in a particular year (i.e., BDs can span over more than one year so when data was summarised, values relate to the year the BD began in)"),
+  add_footer_row(values = glue::glue("BD: herd-level bTB breakdown; SICTT: Single Intradermal Comparative Tuberculin Test; IFN-γ: interferon-gamma assay; AHCS: Animal Health Computer System \nIFN-γ cases prior to May 2019 were recorded as SICTT (i.e., negative SICTT reinterpreted as a positive SICTT), after this date there was a facility to record them separately on AHCS \nBD figures relate to BDs that ended in a particular year (i.e., BDs can span over more than one year so when data was summarised, values relate to the year the BD began in)"),
                  colwidths = length(final_table_bd_stats)) %>%
   fontsize(part = "footer", size = 10) %>% 
   #title autonum = autonum numbering in word if needed
@@ -1190,9 +1228,10 @@ ft
 #| tbl.cap: "BD duration statistics (in years). More recent years will inevitable have shorter BDs (as they may only be in their infancy."
 #| 
 bd_duration_tab <- bd_df %>% 
-  group_by(bd_start_yr) %>% 
+  group_by(bd_end_yr) %>% 
   summarise_at("bd_duration_yrs", sum_stat_list, na.rm = TRUE) %>% 
-  select(-sum)
+  select(-sum) %>% 
+  mutate(bd_end_yr = as.character(bd_end_yr))
 
 header_names <- setNames(c("Year", names(bd_duration_tab)[-1]),
                          names(bd_duration_tab))
@@ -1201,10 +1240,10 @@ ft <- flextable(bd_duration_tab) %>%
   align(i = NULL, j = 1, align = "left", part = "body") %>% 
   bold(part = "header") %>%  # bold header
   set_header_labels(values = header_names) %>% 
-  bold(j = c(1, 2)) %>% 
+  bold(j = c(1, 1)) %>% 
   set_caption(paste0("Table 1: Numbers presented as n (%) where appropriate")) %>% 
   #bold(i = 1) %>%  # bold header
-  add_footer_row(values = "Year represents year the BD started in (it could overlap multiple years)",
+  add_footer_row(values = "Year represents year the BD ended in (it could overlap multiple years)",
                  colwidths = length(bd_duration_tab)) %>%
   fontsize(part = "footer", size = 10) %>% 
   #title autonum = autonum numbering in word if needed

@@ -54,7 +54,7 @@ The website is divided into these parts:
 
 ## What's not included (yet)? {-}
 
-The focus is primarily at a national level although some county level output is included. We acknowledge there is a strong spatio-temporal distribution of bTB in Ireland but exploring spatial trends is not the focus of this particular work. In time, trends at a DVO level will be added. For a recent spatial analysis of bTB trends in Ireland, see [Madden et al.](https://www.sciencedirect.com/science/article/pii/S187758452100040X){target="_blank"} and for a more current spatial exploration of bTB, see [here](https://www.arcgis.com/apps/dashboards/9306f7eb60b1401a8b18f76f61f20aea){target="_blank"}. There is also no analysis included on age-specific bTB trends - that is a separate piece of work that is ongoing (but may be added here over time). 
+The focus is primarily at a national level although some county level output is included. We acknowledge there is a strong spatio-temporal distribution of bTB in Ireland but exploring spatial trends is not the focus of this particular work. In time, trends at a DVO level will be added. For a recent spatial analysis of bTB trends in Ireland, see [Madden et al.](https://www.sciencedirect.com/science/article/pii/S187758452100040X){target="_blank"} and for a more current spatial exploration of bTB, see [DisplayTB](https://www.arcgis.com/apps/dashboards/9306f7eb60b1401a8b18f76f61f20aea){target="_blank"}. There is also no analysis included on age-specific bTB trends - that is a separate piece of work that is ongoing (but may be added here over time). 
 
 
 
@@ -62,7 +62,14 @@ The focus is primarily at a national level although some county level output is 
 
 ## Citing {-}
 
-Once the papers relating to this work have been published, their references will be added here.
+Two pre-prints relating to this work are available:
+
+- Madden, J.M., Gormley, E., Breslin, P., Barrett, D., Brock, J., Tratalos, J.A., Griffin, J., Horan, M., Casey, M. Temporal and seasonal trends of bovine tuberculosis in Irish cattle (2008-2024), 22 December 2025, PREPRINT (Version 1) available at Research Square <https://doi.org/10.21203/rs.3.rs-8387442/v1>
+
+
+- Madden, J.M., Gormley, E., McGrath, G., Casey, M.. A new online tool for near real-time exploration of cattle and bovine tuberculosis trends in Ireland, 06 January 2026, PREPRINT (Version 1) available at Research Square <https://doi.org/10.21203/rs.3.rs-8468046/v1>
+
+
 
 If you would like to specifically cite the website, you can use the following: 
 
@@ -72,7 +79,7 @@ If you would like to specifically cite the website, you can use the following:
 #| eval: FALSE
 #| warning: FALSE
 #| message: FALSE
-Madden, J.M. (2025) Temporal and seasonal trends in bovine herds and bovine tuberculosis breakdowns in Ireland (2008-current), https://j-madden-m.github.io/Irish_bTB_trends/, accessed on YYYY/MM/DD.
+Madden, J.M. (2026) Temporal and seasonal trends in bovine herds and bovine tuberculosis breakdowns in Ireland (2008-current), https://j-madden-m.github.io/Irish_bTB_trends/, accessed on YYYY/MM/DD.
 ```
 
 

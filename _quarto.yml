@@ -62,6 +62,7 @@ book:
     foreground: "#FFFFFF"  
     logo: figures/logo_plot.png
     collapse-level: 1
+  google-analytics: "G-RDZRZ6WBHE"
 
 
 bibliography: references.bib
@@ -80,6 +81,7 @@ format:
     #toc-location: left  # Equivalent to `toc_float: true`
     code-fold: false      # Equivalent to `code_folding: show`
     #cover-image: cover_plot.png
+    lightbox: true
 
 
   # need to update ERROR: Your TexLive version is not updated enough to connect 

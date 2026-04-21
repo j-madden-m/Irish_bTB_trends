@@ -1,6 +1,13 @@
 # Selected references related to bTB {#sec-otherlinks}
 
-## DIVA papers
+## DIVA (Detect/distinguish Infected among Vaccinated Animals) papers
+
+### EFSA opinion on DIVA:
+
+- Scientific Opinion on field trials for bovine tuberculosis vaccination, EFSA Panel on Animal Health and Welfare (AHAW), EFSA Journal 2013;11(12):3475 <https://efsa.onlinelibrary.wiley.com/doi/pdf/10.2903/j.efsa.2013.3475>
+
+
+### Other DIVA papers:
 
 - Jones GJ, Konold T, Hurley S, Holder T, Steinbach S, Coad M, Neil Wedlock D, Buddle BM, Singh M, Martin Vordermeier H. Test performance data demonstrates utility of a cattle DIVA skin test reagent (DST-F) compatible with BCG vaccination. Sci Rep. 2022 Jul 14;12(1):12052. <https://doi.org/10.1038/s41598-022-16092-8> PMID: 35835806; PMCID: PMC9283413.
 
@@ -14,9 +21,13 @@
 
 - Fromsa A, Conlan AJK, Srinivasan S, Gumi B, Bedada W, Zeleke M, Worku D, Lakew M, Tadesse B, Bayissa B, Sirak A, Abdela MG, Mekonnen GA, Chibssa T, Veerasami M, Jones GJ, Vordermeier HM, Juleff N, Wood JLN, Ameni G, Kapur V. Comparative performance of tuberculin and defined-antigen cocktails for detecting bovine tuberculosis in BCG-vaccinated cattle in natural settings. Sci Rep. 2025 Feb 7;15(1):4564. doi: <https://doi.org/10.1038/s41598-025-85389-1> PMID: 39915566; PMCID: PMC11802902.
 
+This is similar to the current sensitivity study ongoing in the UK to approve BCG I think?
+
 - Lakew M, Conlan AJK, Tadesse B, Srinivasan S, Yalew B, Benti T, Olani A, Kinfe G, Ashagrie T, Abebe A, Fromsa A, Abdela MG, Bayissa B, Gebre S, Mihret A, Mekonnen GA, Ameni G, Ashenafi H, Wood JLN, Gumi B, Kapur V. Comparative performance and age dependence of tuberculin and defined antigen bovine tuberculosis skin tests assessed with Bayesian latent class analysis. Sci Rep. 2025 Jun 5;15(1):19728. doi: <https://doi.org/10.1038/s41598-025-05223-6> PMID: 40473835; PMCID: PMC12141502.
 
 - Holder T, Robinson N, Jones GJ. The Impact of Bacillus Calmette-Guérin Vaccination and Mycobacterium bovis Infection on Diagnostic Antibody Tests for Mycobacterial Infections. Vaccines (Basel). 2025 May 28;13(6):578. doi: <https://doi.org/10.3390/vaccines13060578> PMID: 40573909; PMCID: PMC12197674.
+
+- Holder T, Coad M, Allan G, Hogarth PJ, Vordermeier HM, Jones GJ. Vaccination of calves with Bacillus Calmette-Guerin Danish strain 1331 results in a duration of immunity of at least 52 weeks. Vaccine. 2023 Nov 22;41(48):7290-7296. doi: 10.1016/j.vaccine.2023.10.060. Epub 2023 Nov 3. PMID: 37925317. <https://pubmed.ncbi.nlm.nih.gov/37925317/>
 
 - Retamal P, Ábalos P, Alegría-Morán R, Valdivieso N, Vordermeier M, Jones G, Saadi K, Perez Watt C, Salinas C, Ávila C, Padilla V, Benavides B, Orellana R. Vaccination of Holstein heifers with Mycobacterium bovis BCG strain induces protection against bovine tuberculosis and higher milk production yields in a natural transmission setting. Transbound Emerg Dis. 2022 May;69(3):1419-1425. doi: <https://doi.org/10.1111/tbed.14108> Epub 2021 May 22. PMID: 33872473.
 
@@ -24,7 +35,6 @@
 
 - Srinivasan S, Subramanian S, Shankar Balakrishnan S, Ramaiyan Selvaraju K, Manomohan V, Selladurai S, Jothivelu M, Kandasamy S, Gopal DR, Kathaperumal K, Conlan AJK, Veerasami M, Bakker D, Vordermeier M, Kapur V. A Defined Antigen Skin Test That Enables Implementation of BCG Vaccination for Control of Bovine Tuberculosis: Proof of Concept. Front Vet Sci. 2020 Jul 24;7:391. doi: <https://doi.org/10.3389/fvets.2020.00391> PMID: 32793643; PMCID: PMC7393633.
 
-- Scientific Opinion on field trials for bovine tuberculosis vaccination, EFSA Panel on Animal Health and Welfare (AHAW), EFSA Journal 2013;11(12):3475 <https://efsa.onlinelibrary.wiley.com/doi/pdf/10.2903/j.efsa.2013.3475>
 
 
 
@@ -36,5 +46,21 @@
 - <https://tbhub.co.uk/resources/frequently-asked-questions/development-of-a-deployable-tuberculosis-vaccine-for-cattle/>
 - <https://aphascience.blog.gov.uk/2025/10/21/cattle-bovine-tb-vaccine-field-trials/>
 
+
+### bTB epi-genetics
+
+- Tsairidou S, Allen A, Banos G, Coffey M, Anacleto O, Byrne AW, Skuce RA, Glass EJ, Woolliams JA, Doeschl-Wilson AB. Can We Breed Cattle for Lower Bovine TB Infectivity? Front Vet Sci. 2018 Dec 7;5:310. doi: 10.3389/fvets.2018.00310. PMID: 30581821; PMCID: PMC6292866. <https://pubmed.ncbi.nlm.nih.gov/30581821/>
+
+- TB advantage: <https://tbhub.co.uk/preventing-tb-breakdowns/about-bovine-tb/breeding-genetic-resistance-for-bovine-tb/>
+
+- Duygan Madenci PhD (supervised by [Andrea Wilson](https://scholar.google.com/citations?user=c-B1hMQAAAAJ&hl=en){target="_blank"}): “Genetic selection of cattle for reduced bovine tuberculosis transmission” 
+<https://era.ed.ac.uk/items/37c5d780-d4f1-4e49-b7c0-1cea9f504ea9>
+
+- Madenci D, Sánchez-Molano E, Winters M, Mitchell A, Coffey MP, Hadfield JD, Woolliams JA, Banos G, Doeschl-Wilson A. Detection of genetic variability in dairy cattle infectivity for bovine tuberculosis. J Dairy Sci. 2025 Apr;108(4):3835-3849. doi: 10.3168/jds.2024-25697. Epub 2025 Jan 7. PMID: 39788185. <https://pubmed.ncbi.nlm.nih.gov/39788185/>
+
+
+### Modelling 
+
+- Bayesian Individual-based Compartmental Inference (BICI) Chris Pooley <https://github.com/theITEAM/BICI>
 
 

@@ -29,14 +29,14 @@ master_file <- dir_info("data", type = "file", regexp = "(?i)master.*\\.rds$") %
   subset(subset = modification_time == max(modification_time), select = path, drop = T)
 master_tb <- readRDS(master_file) %>% 
   filter(skin_fixed_test_date_year > 2007) %>% 
-  filter(skin_fixed_test_date_year != 2025)
+  filter(skin_fixed_test_date_year != 2026)
 
 
 all_cases_collapsed_file <- dir_info("data", type = "file", regexp = "(?i)all_cases_collapsed.*\\.rds$") %>% 
   subset(subset = modification_time == max(modification_time), select = path, drop = T)
 all_cases_collapsed <- readRDS(all_cases_collapsed_file) %>% 
      filter(year > 2007) %>% 
-    filter(year != 2025)
+    filter(year != 2026)
 
 
 
@@ -84,7 +84,7 @@ This section is ongoing and will form the basis of a separate time-series/foreca
 #| fig.height: 8 
 #| fig.cap: "Seasonality of bTB cases by month."
 seasonality_plot_btb_cases <- all_case_case_month %>%
-  gg_subseries(cases) +
+  ggtime::gg_subseries(cases) +
   labs(x = "Year",
        y = "No. of bTB cases",
        title =  paste0("Seasonality of bTB cases by month (", min_year, " - ", max_year, ")"),

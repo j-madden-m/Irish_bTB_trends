@@ -25,7 +25,7 @@ bd_df_file <- dir_info("data", type = "file", regexp = "(?i)bd_df.*\\.rds$") %>%
   subset(subset = modification_time == max(modification_time), select = path, drop = T)
 #bd_df <- readRDS("data/bd_df_14_Nov_2024.rds")
 bd_df <- readRDS(bd_df_file) %>% 
-  filter(bd_start_yr > 2007 & bd_start_yr < 2025)
+  filter(bd_start_yr > 2007 & bd_start_yr < 2026)
 bd_df_labels <- as.list(sjlabelled::get_label(bd_df))
 bd_df <- sjlabelled::remove_all_labels(bd_df)
 
@@ -35,7 +35,7 @@ master_file <- dir_info("data", type = "file", regexp = "(?i)master.*\\.rds$") %
   subset(subset = modification_time == max(modification_time), select = path, drop = T)
 master_tb <- readRDS(master_file) %>% 
   filter(skin_fixed_test_date_year > 2007) %>% 
-  filter(skin_fixed_test_date_year != 2025)
+  filter(skin_fixed_test_date_year != 2026)
 
 # we want dairy at the bottom so we can see how much its going
 # order_herd_type <- levels(factor(master_tb$herd_type_ml_sub_class_description))
@@ -978,7 +978,7 @@ $~$ $~$
 
 $~$ $~$
 
-## Bovine population
+## Bovine population (usually a year lag)
 
 ### Brock et al.
 
@@ -1451,7 +1451,7 @@ final_table_herd_demographics <- force_bind_year(  unique_herds_each_year_t,
                                  #percentage_year_jan, #population 1st jan
                                  #percentage_year_may, #population 1st 
                                  #percentage_year_sep, #population 1st jan
-                                 force_to_character = TRUE, drop_years = "2025") %>% 
+                                 force_to_character = TRUE, drop_years = "2026") %>% 
   select(Variable, everything()) #%>% 
   #feedlot_prev - change final cell of feedlot to "-" - we dont all 2022 feedlot data
 final_table_herd_demographics <- data.frame(final_table_herd_demographics)
@@ -1511,7 +1511,7 @@ final_table_bov_pop <- force_bind_year(
                                  percentage_year_jan_sub_class, #population 1st jan
                                  percentage_year_may_sub_class, #population 1st 
                                  percentage_year_sep_sub_class,
-                                 force_to_character = TRUE, drop_years = "2025") %>% 
+                                 force_to_character = TRUE, drop_years = "2026") %>% 
   select(Variable, everything()) #%>% 
   #feedlot_prev - change final cell of feedlot to "-" - we dont all 2022 feedlot data
 #final_table_bov_pop <- data.frame(final_table_bov_pop)

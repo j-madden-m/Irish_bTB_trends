@@ -79,7 +79,7 @@ timelines <- read_csv("D:/Files/Miriam/policy_timeline/data/timeline_dates.csv")
          start = start_date,
          end = end_date,
          # add todays date for current group, i.e. still ongoing
-         end_date = if_else(is.na(end_date) & current_or_once_off == "current", as.Date("28-02-2025"), end_date),
+         end_date = if_else(is.na(end_date) & current_or_once_off == "current", as.Date("28-02-2026"), end_date),
          #once date is fixed, change current to fixed time period
          current_or_once_off = ifelse(current_or_once_off == "current", "fixed_period", current_or_once_off)) %>% 
   # probably want to order by date?
@@ -132,7 +132,7 @@ policy_fixed_period_after_06 <- policy_fixed_period %>%
   #filter(start_date >= dmy("31-12-2006")) %>% 
   filter(start_date >= dmy("31-12-2003")) %>%  # this will get in ahcs
   # pick dates before 2025 for now
-  filter(start_date <= dmy("01-02-2025")) %>% 
+  filter(start_date <= dmy("01-02-2026")) %>% 
   # split string so "\n" is inserted after every second word
   mutate(event_new = map_chr(event, ~ insert_newlines(.x, 2))) %>% 
   #rowwise() %>% 
@@ -348,7 +348,7 @@ $~$ $~$
 
 ## Spatial location and timeline of badger trials (after 2005)
 
-The plot below does not include two badger trials that occured much earlier:
+The plot below does not include two badger trials that occurred much earlier:
 
 -   East Offaly project (1988–1995)
 
@@ -384,13 +384,38 @@ Tuberculosis in cattle: the results of the four-area project Griffin et al. 2005
 badger_trial_plot_after_2005
 ```
 
+
+Publications relating to these study interventions:
+
+- Kilkenny badger vaccine field trial (2009 -2013)
+
+**Trial design to estimate the effect of vaccination on tuberculosis incidence in badgers.** Aznar I, McGrath G, Murphy D, Corner LA, Gormley E, Frankena K, More SJ, Martin W, O’Keeffe J, De Jong MC. Vet Microbiol. **2011**;151(1–2):104–11. <https://doi.org/10.1016/j.vetmic.2011.02.032.> Epub 2011 Feb 24. PMID: 21450420.
+
+
+**Oral vaccination of free-living badgers (Meles meles) with Bacille Calmette Guerin (BCG) vaccine confers protection against tuberculosis.** Gormley, E., Ni Bhuachalla, D., O'Keeffe, J., Murphy, D., Aldwell, F. E., Fitzsimons, T., Stanley, P., Tratalos, J. A., McGrath, G., Fogarty, N., Kenny, K., More, S. J., McV Messam, L. L., & Corner, L. A. L. (**2017**). PLoS ONE, 12(1), e0168851. <https://doi.org/10.1371/journal.pone.0168851>
+
+
+**Quantification of Mycobacterium bovis transmission in a badger vaccine field trial.** Prev Vet Med. **2018**;149:29–37. Aznar I, Frankena K, More SJ, O’Keeffe J, McGrath G, de Jong MCM. <https://doi.org/10.1016/j.prevetmed.2017.10.010.> (Epub 2017 Oct 24. PMID: 29290298).
+
+
+**Protective immunity against tuberculosis in a free-living badger population vaccinated orally with Mycobacterium bovis Bacille Calmette-Guérin** Eamonn Gormley 1, Deirdre Ní Bhuachalla 1 2, Tara Fitzsimons 1, James O'Keeffe 2, Guy McGrath 3, Jamie M Madden 3, Naomi Fogarty 4, Kevin Kenny 4, Locksley L McV Messam 1, Denise Murphy 1 2, Leigh A L Corner 1 Transbound Emerg Dis. **2022** Jul;69(4):e10-e19. doi: 10.1111/tbed.14254. Epub 2021 Aug 13. <https://pubmed.ncbi.nlm.nih.gov/34331741/>
+
+
+- Non-inferiority trial (2011-2017)
+
+
+**Is moving from targeted culling to BCG-vaccination of badgers (Meles meles) associated with an unacceptable increased incidence of cattle herd tuberculosis in the Republic of Ireland? A practical non-inferiority wildlife intervention study in the Republic of Ireland (2011–2017).** Martin SW, O’Keeffe J, Byrne AW, Rosen LE, White PW, McGrath G. Prev Vet Med. **2020**;179: 105004. <https://doi.org/10.1016/j.prevetmed.2020.105004.> (Epub 2020 Apr 14. PMID: 32361147).
+
+
+
 $~$ $~$
 
 ------------------------------------------------------------------------
 
 $~$ $~$
 
-## WOAH, Manual of Diagnostic Tests and Vaccines for Terrestrial Animals
+## WOAH (World Organisation for Animal Health, founded as OIE), Manual of Diagnostic Tests and Vaccines for Terrestrial Animals
+
 
 For official legislation of bTB testing, see
 
@@ -418,6 +443,8 @@ $~$ $~$
 ## Irish bTB eradication trends/timeline references
 
 -   Watchorn, R.C.(1965). Bovine Tuberculosis Eradication Scheme 1954-1965. Dublin: Department of Agriculture and Fisheries <https://catalog.hathitrust.org/Record/009378520>
+
+- Robert O'Connor, 1986. A Study of the Bovine Tuberculosis Eradication Scheme <https://www.esri.ie/publications/a-study-of-the-bovine-tuberculosis-eradication-scheme>
 
 -   Sheehy, S.J., Christiansen, K.H., 1992. A cost/benefit analysis of future options for bovine tuberculosis control. Dublin: University College Dublin. <https://researchrepository.ucd.ie/server/api/core/bitstreams/4c2b9eee-71b7-4d68-b718-f1cddf7e1f24/content>
 
