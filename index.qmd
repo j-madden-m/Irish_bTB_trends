@@ -38,7 +38,7 @@ date-format: "DD MMM YYYY"
 
 ---
 
-This is an accompanying website to supplement a research paper submitted for publication. The purpose of this website is to have a near-real-time version of the output from the paper using more recent data as we obtain it. It also acts as a location to include excess output that didn't make it into the main paper but which we think is still useful for readers. Additional analysis will be added over time.
+This is an accompanying website to supplement a [research paper](https://bvajournals.onlinelibrary.wiley.com/doi/10.1002/vetr.71020){target="_blank"}. The purpose of this website is to have a near-real-time version of the output from the paper using more recent data as we obtain it. It also acts as a location to include excess output that didn't make it into the main paper but which we think is still useful for readers. Additional analysis will be added over time.
 
 
 
