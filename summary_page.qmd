@@ -41,7 +41,7 @@ nb_model_summary <- image_read("figures/negative_binomial_model_01_Oct_2025.png"
 
 ```
 
-The website contains a lot of output and so for the purposes of a quick summary, we have extracted a couple of plots from the whole website that summarise some of the main findings - these are some of the plots included in the journal submission. Note, the most current data is not available to us for all plots.
+The website contains a lot of output and so for the purposes of a quick summary, we have extracted a couple of plots from the whole website that summarise some of the main findings - these are some of the plots included in the [main publication](https://bvajournals.onlinelibrary.wiley.com/doi/10.1002/vetr.71020){target="_blank"}. Note, the most current data is not available to us for all plots.
 
 # Demographics overview
 

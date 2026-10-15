@@ -1,0 +1,50 @@
+# Changelog {#sec-news}
+
+------------------------------------------------------------------------
+
+$~$ $~$
+
+## Current available data dates
+
+```{r}
+#| label: tbl-tablelatestdate
+#| tbl-cap: "Latest available date of various data"
+#| include: TRUE
+#| echo: FALSE
+#| eval: true
+#| warning: FALSE
+#| message: FALSE
+library(tidyverse)
+library(flextable)
+latest_dates_table <- readxl::read_excel("D:/Files/bTB_breakdown_trends_paper/data/latest_dates_table_website/latest_dates_for_data.xlsx") #|> 
+#mutate(latest_date = as.Date(latest_date, format = "%d/%m/%Y"))
+#latest_dates_table
+
+header_names <- setNames(c("Data", "Latest date"),
+                         names(latest_dates_table))
+ft <- flextable(latest_dates_table) %>% 
+  align_text_col(align = "center") %>% 
+  align(i = NULL, j = 1, align = "left", part = "body") %>% 
+  bold(part = "header") %>% 
+  flextable::set_header_labels(values = header_names) %>% # bold header (split up due to weird error)
+  bold(j = c(1, 2)) %>% 
+  set_caption(paste0("Latest available date of various data")) %>% 
+  #bold(i = 1) %>%  # bold header
+  add_footer_row(values = paste0("SICTT: Single Intradermal Comparative Tuberculin Test; IFN-γ: interferon-gamma assay"),
+                 colwidths = length(latest_dates_table)) %>% 
+  #width of column if too narrow (only visable in word, not )
+  width(width = 2) %>% 
+  fontsize(part = "footer", size = 10) %>% 
+  #title autonum = autonum numbering in word if needed
+  autofit() %>% 
+  set_table_properties(layout = "autofit")
+
+ft
+
+```
+
+## Date: 14/10/2026
+
+- News/changelog page added to keep track of updates to website for users 
+
+

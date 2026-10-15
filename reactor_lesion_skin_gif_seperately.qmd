@@ -74,11 +74,16 @@ include_co_op_chunks = TRUE
 
 <!---BLOCK_LANDSCAPE_START--->
 
+
+::: {.column-margin}
+Note, the absence of lesions does not indicate the absence of disease or infectiousness. See DAFM flier section: [“Why did my reactors not have lesions at slaughter?”](https://assets.gov.ie/static/documents/how-is-bovine-tuberculosis-detected-at-slaughter.pdf){target="_blank"}
+:::
+
 ## Introduction
 
 This page presents the prevalence of visible lesions at slaughter within bTB positive animals separately by those classified by the SICTT and `r gif_string`. There was no facility within AHCS prior to May 2019 to record `r gif_string` positive animals. Before this, if an animal had a positive `r gif_string` result, their SICTT results were reinterpreted as positive. As a result, we have had to use old raw `r gif_string` data to try and differentiate between which animals were positive on `r gif_string` or SICTT. The old data has some missing tag numbers etc. and so we cannot be certain that we have assigned all cases to either `r gif_string` or SICTT correctly. However, we believe, the vast majority of the data is correct.
 
-This is the difference between overall lesion prevalence page and this one (i.e. we make an attempt to seperate SICTT and `r gif_string` positive trends).
+This is the difference between overall lesion prevalence page and this one (i.e. we make an attempt to separate SICTT and `r gif_string` positive trends).
 
 ## Definitions
 
@@ -231,7 +236,7 @@ ggplot(lesion_count_per_year_herd_type, aes(x = factor(year), y = count_of_lesio
 ```
 
 
-## Overall lesion prevalence (seperately by SICTT or `r gif_string`)
+## Overall lesion prevalence (separately by SICTT or `r gif_string`)
 
 ### All animals combined:
 

@@ -49,6 +49,9 @@ book:
     - part: "Other bTB references"
       chapters:
         - other_links.qmd
+    - part: "News"
+      chapters:
+        - news.qmd
   search:
     location: sidebar # i dont think navbar works in book (only website)
     type: overlay
